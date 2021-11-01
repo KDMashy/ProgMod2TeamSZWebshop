@@ -8,9 +8,10 @@ Viszonylag UX központú
 
 > A koncepció dokumentációja át lett helyezve wikibe.
 
-> Koncepciót készítette:
-    Tesztelő / Elemző:          Tóth Kelemen
-    Frontend,Design:            Benkő Kaba
-    Backend,DB(ERDia)           Till Krisztián
-    Backend,Fejlesztő(ClassDia) Klepe Dominik
-    Tesztelő                    Heindl Jakab
+| Poszt | Tag |
+| ----- | --- |
+| Tesztelő / Elemző: | Tóth Kelemen |
+| Frontend,Design: | Benkő Kaba |
+| Backend,DB(ERDia) | Till Krisztián |
+| Backend,Fejlesztő(ClassDia) | Klepe Dominik |
+| Tesztelő | Heindl Jakab |
