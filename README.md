@@ -6,7 +6,7 @@ Egy átlagos, számítás technikai eszközöket áruló weboldal lesz, nagyjáb
 és könnyű kezelésre alkalmas UI-al
 Viszonylag UX központú
 
-> A koncepció dokumentációja át lett helyezve és írva wikibe.
+> A koncepció dokumentációja át lett helyezve wikibe.
 
 > Koncepciót készítette:
     Tesztelő / Elemző:                     Tóth Kelemen
