@@ -10,8 +10,6 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -29,7 +27,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Egysegarak.findAll", query = "SELECT e FROM Egysegarak e")
     , @NamedQuery(name = "Egysegarak.findByVasarlasSorSzam", query = "SELECT e FROM Egysegarak e WHERE e.egysegarakPK.vasarlasSorSzam = :vasarlasSorSzam")
     , @NamedQuery(name = "Egysegarak.findByTermekTermekID", query = "SELECT e FROM Egysegarak e WHERE e.egysegarakPK.termekTermekID = :termekTermekID")
-    , @NamedQuery(name = "Egysegarak.findByTermekTermekAr", query = "SELECT e FROM Egysegarak e WHERE e.termekTermekAr = :termekTermekAr")})
+    , @NamedQuery(name = "Egysegarak.findByTermekTermekAr", query = "SELECT e FROM Egysegarak e WHERE e.termekTermekAr = :termekTermekAr")
+    , @NamedQuery(name = "Egysegarak.findByTermekMennyiseg", query = "SELECT e FROM Egysegarak e WHERE e.termekMennyiseg = :termekMennyiseg")})
 public class Egysegarak implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -39,12 +38,10 @@ public class Egysegarak implements Serializable {
     @NotNull
     @Column(name = "Termek_TermekAr")
     private int termekTermekAr;
-    @JoinColumn(name = "Termek_TermekID", referencedColumnName = "TermekID", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Termek termek;
-    @JoinColumn(name = "Vasarlas_SorSzam", referencedColumnName = "SorSzam", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Vasarlas vasarlas;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "Termek_Mennyiseg")
+    private int termekMennyiseg;
 
     public Egysegarak() {
     }
@@ -53,9 +50,10 @@ public class Egysegarak implements Serializable {
         this.egysegarakPK = egysegarakPK;
     }
 
-    public Egysegarak(EgysegarakPK egysegarakPK, int termekTermekAr) {
+    public Egysegarak(EgysegarakPK egysegarakPK, int termekTermekAr, int termekMennyiseg) {
         this.egysegarakPK = egysegarakPK;
         this.termekTermekAr = termekTermekAr;
+        this.termekMennyiseg = termekMennyiseg;
     }
 
     public Egysegarak(int vasarlasSorSzam, int termekTermekID) {
@@ -78,20 +76,12 @@ public class Egysegarak implements Serializable {
         this.termekTermekAr = termekTermekAr;
     }
 
-    public Termek getTermek() {
-        return termek;
+    public int getTermekMennyiseg() {
+        return termekMennyiseg;
     }
 
-    public void setTermek(Termek termek) {
-        this.termek = termek;
-    }
-
-    public Vasarlas getVasarlas() {
-        return vasarlas;
-    }
-
-    public void setVasarlas(Vasarlas vasarlas) {
-        this.vasarlas = vasarlas;
+    public void setTermekMennyiseg(int termekMennyiseg) {
+        this.termekMennyiseg = termekMennyiseg;
     }
 
     @Override
