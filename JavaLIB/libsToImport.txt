@@ -2,3 +2,4 @@ Persistence (JPA 2.1)
 Java EE Web 6 API Library
 json-20180813
 commons-codec-1.15
+mysql-connector-java

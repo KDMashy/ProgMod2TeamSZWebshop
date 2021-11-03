@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
-	 version="3.1">
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>WebShopController</servlet-name>
-        <servlet-class>controller.WebShopController</servlet-class>
+        <servlet-name>Register</servlet-name>
+        <servlet-class>controller.Register</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>WebShopController</servlet-name>
-        <url-pattern>/WebShopController</url-pattern>
+        <servlet-name>Register</servlet-name>
+        <url-pattern>/reg</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

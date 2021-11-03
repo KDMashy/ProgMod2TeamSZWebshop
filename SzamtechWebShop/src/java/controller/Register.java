@@ -3,12 +3,12 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import service.WebShopService;
 
-public class WebShopController extends HttpServlet {
+public class Register extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -21,16 +21,22 @@ public class WebShopController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        WebShopService wbservice = new WebShopService();
+        String VevoName = request.getParameter("name");
+        String VevoEmail = request.getParameter("email");
+        String VevoPassw = request.getParameter("password");
+        
+        Boolean saved = wbservice.RegAcc(VevoName, VevoEmail, VevoPassw);
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet WebShopController</title>");            
+            out.println("<title>Servlet Register</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet WebShopController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Register at " + saved + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
