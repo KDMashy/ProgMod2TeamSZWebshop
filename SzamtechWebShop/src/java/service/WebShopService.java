@@ -1,20 +1,47 @@
 package service;
 
 import java.sql.*;
-import java.util.ArrayList;
+import java.util.*;
 import model.*;
 
 public class WebShopService{
-    
+    //global variables DONT TOUCHY-TOUCHY
+    private ArrayList<Vevo> vevokLista = getVevok();
+    private Vevo chosenOne = new Vevo();
     //Belepes
-    //KELL Vevo chosenOne = new Vevo();
-    
+    public Boolean LoginAcc(String name, String password){
+        password = encrypt(password);
+        Boolean exist = Boolean.FALSE;
+        try{
+            for (Integer i = 0; i < vevokLista.size(); i++) {
+                if (vevokLista.get(i).getVevoNev().equals(name) == Boolean.TRUE 
+                        || vevokLista.get(i).getVevoEmail().equals(name) == Boolean.TRUE) {
+                    exist = Boolean.TRUE;
+                    chosenOne = vevokLista.get(i);
+                    break;
+                } else {
+                    exist = Boolean.FALSE;
+                }
+            }
+            if (chosenOne.getVevoPassword().equals(password)) {
+                return Boolean.TRUE;
+            } else{
+                return Boolean.FALSE;
+            }
+        } catch(Exception ex){
+            return Boolean.FALSE;
+        }
+    }
+    //return felhasznalo
+    public Vevo getFelhasznalo(Boolean login){
+        return chosenOne;
+    }
     //Regisztracio
     public Boolean RegAcc(String name, String email, String password){
         password = encrypt(password);
         Boolean exist = Boolean.FALSE;
         try{
-            ArrayList<Vevo> vevokLista = getVevok();
+            //ellenorzes, hogy letezik-e a regisztralando felhasznalo
             for (Integer i = 0; i < vevokLista.size(); i++) {
                 if (vevokLista.get(i).getVevoNev().equals(name) == Boolean.TRUE 
                         || vevokLista.get(i).getVevoEmail().equals(email) == Boolean.TRUE) {
@@ -24,6 +51,7 @@ public class WebShopService{
                     exist = Boolean.FALSE;
                 }
             }
+            //DB meghivas, regisztralando felhasznalo adatainak mentese
             if (exist == Boolean.FALSE) {
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
@@ -160,7 +188,7 @@ public class WebShopService{
         }
     }
     // </editor-fold>
-    
+    //Password encryption
     private static String encrypt(String password){
         password = org.apache.commons.codec.digest.DigestUtils.sha256Hex(password);
         return password;
