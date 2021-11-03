@@ -2,10 +2,12 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Vevo;
 import service.WebShopService;
 
 public class Register extends HttpServlet {
@@ -27,6 +29,7 @@ public class Register extends HttpServlet {
         String VevoPassw = request.getParameter("password");
         
         Boolean saved = wbservice.RegAcc(VevoName, VevoEmail, VevoPassw);
+        
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
