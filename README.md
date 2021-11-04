@@ -12,6 +12,6 @@ Viszonylag UX központú
 | ----- | --- |
 | Tesztelő / Elemző: | Tóth Kelemen |
 | Frontend,Design: | Benkő Kaba |
-| Backend,DB(ERDia) | Till Krisztián |
-| Backend,Fejlesztő(ClassDia) | Klepe Dominik |
+| Backend,DB | Till Krisztián |
+| Backend,Fejlesztő | Klepe Dominik |
 | Tesztelő | Heindl Jakab |
