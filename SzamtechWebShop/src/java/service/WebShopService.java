@@ -14,6 +14,10 @@ public class WebShopService{
      * az adott cimmel kapcsolatos funkciok fognak megjelenni, minden funkcio
      * elott egy commenttel ami jelzi mi a feladata az adott funkcionak
      * 
+     * A login felhasznalo es admin reszrol is ki lett szervezve interfaceba
+     * a fuggvenyek interfaceList.Java-ban vannak
+     * a megirasuk function.java-ban vannak
+     * 
      * ahol szam a visszatero ertek, ott a servleten tobb eset kozott kell donteni
      * pl loginnal a 0 a nem letezo fehasznalo, 1 a letezik a felhasznalo es ha
      * jo a jelszo akkor bejelentkezes, ha 2 akkor admin nev lett beirva es ellenorzi
@@ -32,61 +36,18 @@ public class WebShopService{
     private ArrayList<Admin> adminLista = getAdmins();
     private Vevo chosenOne = new Vevo();
     private Admin chosenAdmin = new Admin();
+    private function f = new function();
     
     // <editor-fold defaultstate="collapsed" desc="Vevo es Admin login">
     //Belepes, ellenorzes ha admin akkor response es ujra login
     public Integer LoginAcc(String name, String password){
         password = encrypt(password);
-        Integer exist = 0;
-        try{
-            for (Integer i = 0; i < vevokLista.size(); i++) {
-                if (vevokLista.get(i).getVevoNev().equals(name) == Boolean.TRUE 
-                  || vevokLista.get(i).getVevoEmail().equals(name) == Boolean.TRUE) {
-                    exist = 1;
-                    chosenOne = vevokLista.get(i);
-                    break;
-                } else {
-                    for (Integer j = 0; j < adminLista.size(); j++) {
-                        if (adminLista.get(j).getAdminname().equals(name) == Boolean.TRUE) {
-                            if (adminLista.get(j).getAdminpassword().equals(password) == Boolean.TRUE) {
-                                chosenAdmin = adminLista.get(j);
-                                exist = 2;
-                                return 2;
-                            }
-                        }
-                    }
-                    exist = 0;
-                }
-            }
-            if (chosenOne.getVevoPassword().equals(password) && exist == 1) {
-                return 1;
-            } else {
-                return 0;
-            }
-        } catch(Exception ex){
-            return 0;
-        }
+        return f.userLogin(name, password, vevokLista, adminLista, chosenOne, chosenAdmin);
     }
     //Admin login after update
     public Boolean adminLogin(String name, String password, String code){
         password = encrypt(password);
-        try{
-            if (chosenAdmin.getAdminname().equals(name) == Boolean.TRUE) {
-                if (chosenAdmin.getAdminpassword().equals(password) == Boolean.TRUE) {
-                    if (chosenAdmin.getAdmincode().equals(code) == Boolean.TRUE) {
-                        return Boolean.TRUE;
-                    } else {
-                        return Boolean.FALSE;
-                    }
-                } else {
-                    return Boolean.FALSE;
-                }
-            } else {
-                return Boolean.FALSE;
-            }
-        } catch(Exception ex){
-            return Boolean.FALSE;
-        }
+        return f.adminLogin(name, password, code, chosenAdmin);
     }
     //return felhasznalo
     public Vevo getFelhasznalo(Boolean login){
