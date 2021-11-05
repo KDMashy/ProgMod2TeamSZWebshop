@@ -6,9 +6,7 @@
 package model;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,12 +14,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -34,8 +30,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Termek.findAll", query = "SELECT t FROM Termek t")
     , @NamedQuery(name = "Termek.findByTermekID", query = "SELECT t FROM Termek t WHERE t.termekID = :termekID")
     , @NamedQuery(name = "Termek.findByTermekNev", query = "SELECT t FROM Termek t WHERE t.termekNev = :termekNev")
-    , @NamedQuery(name = "Termek.findByTermekKep", query = "SELECT t FROM Termek t WHERE t.termekKep = :termekKep")
+    , @NamedQuery(name = "Termek.findByTermekDesc", query = "SELECT t FROM Termek t WHERE t.termekDesc = :termekDesc")
     , @NamedQuery(name = "Termek.findByTermekAr", query = "SELECT t FROM Termek t WHERE t.termekAr = :termekAr")
+    , @NamedQuery(name = "Termek.findByTermekKep", query = "SELECT t FROM Termek t WHERE t.termekKep = :termekKep")
     , @NamedQuery(name = "Termek.findByTermekKeszlet", query = "SELECT t FROM Termek t WHERE t.termekKeszlet = :termekKeszlet")
     , @NamedQuery(name = "Termek.findByTermekKatID", query = "SELECT t FROM Termek t WHERE t.termekKatID = :termekKatID")})
 public class Termek implements Serializable {
@@ -53,13 +50,18 @@ public class Termek implements Serializable {
     private String termekNev;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 200)
-    @Column(name = "TermekKep")
-    private String termekKep;
+    @Size(min = 1, max = 1000)
+    @Column(name = "TermekDesc")
+    private String termekDesc;
     @Basic(optional = false)
     @NotNull
     @Column(name = "TermekAr")
     private int termekAr;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 200)
+    @Column(name = "TermekKep")
+    private String termekKep;
     @Basic(optional = false)
     @NotNull
     @Column(name = "TermekKeszlet")
@@ -68,8 +70,6 @@ public class Termek implements Serializable {
     @NotNull
     @Column(name = "TermekKatID")
     private short termekKatID;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "termek")
-    private Collection<Egysegarak> egysegarakCollection;
 
     public Termek() {
     }
@@ -78,11 +78,12 @@ public class Termek implements Serializable {
         this.termekID = termekID;
     }
 
-    public Termek(Integer termekID, String termekNev, String termekKep, int termekAr, short termekKeszlet, short termekKatID) {
+    public Termek(Integer termekID, String termekNev, String termekDesc, int termekAr, String termekKep, short termekKeszlet, short termekKatID) {
         this.termekID = termekID;
         this.termekNev = termekNev;
-        this.termekKep = termekKep;
+        this.termekDesc = termekDesc;
         this.termekAr = termekAr;
+        this.termekKep = termekKep;
         this.termekKeszlet = termekKeszlet;
         this.termekKatID = termekKatID;
     }
@@ -103,12 +104,12 @@ public class Termek implements Serializable {
         this.termekNev = termekNev;
     }
 
-    public String getTermekKep() {
-        return termekKep;
+    public String getTermekDesc() {
+        return termekDesc;
     }
 
-    public void setTermekKep(String termekKep) {
-        this.termekKep = termekKep;
+    public void setTermekDesc(String termekDesc) {
+        this.termekDesc = termekDesc;
     }
 
     public int getTermekAr() {
@@ -117,6 +118,14 @@ public class Termek implements Serializable {
 
     public void setTermekAr(int termekAr) {
         this.termekAr = termekAr;
+    }
+
+    public String getTermekKep() {
+        return termekKep;
+    }
+
+    public void setTermekKep(String termekKep) {
+        this.termekKep = termekKep;
     }
 
     public short getTermekKeszlet() {
@@ -133,15 +142,6 @@ public class Termek implements Serializable {
 
     public void setTermekKatID(short termekKatID) {
         this.termekKatID = termekKatID;
-    }
-
-    @XmlTransient
-    public Collection<Egysegarak> getEgysegarakCollection() {
-        return egysegarakCollection;
-    }
-
-    public void setEgysegarakCollection(Collection<Egysegarak> egysegarakCollection) {
-        this.egysegarakCollection = egysegarakCollection;
     }
 
     @Override

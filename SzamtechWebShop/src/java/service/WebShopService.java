@@ -34,6 +34,7 @@ public class WebShopService{
     */
     private ArrayList<Vevo> vevokLista = getVevok();
     private ArrayList<Admin> adminLista = getAdmins();
+    private ArrayList<Termek> termekLista = getTermekek();
     private Vevo chosenOne = new Vevo();
     private Admin chosenAdmin = new Admin();
     private function f = new function();
@@ -49,6 +50,7 @@ public class WebShopService{
         password = encrypt(password);
         return f.adminLogin(name, password, code, chosenAdmin);
     }
+    //az alabbi ket funkcio jelenleg kerdeses
     //return felhasznalo
     public Vevo getFelhasznalo(Boolean login){
         return chosenOne;
@@ -174,7 +176,7 @@ public class WebShopService{
                         + "VevoEmail='"+anonym+"', "
                         + "VevoSzamCim='"+anonym+"', "
                         + "VevoAdoszam='"+anonym+"', "
-                        + "TorzsVasarlo="+bool+"";
+                        + "TorzsVasarlo="+bool+" where VevoID="+vid+"";
                 PreparedStatement prestm = DBCon.prepareStatement(sql);
                 prestm.executeUpdate();
                 return Boolean.TRUE;
@@ -188,14 +190,14 @@ public class WebShopService{
         }
     }
     //Vevo nem szukseges tulajdonsagainak megadasa szukseg eseten
-    public Boolean updateFelhasznalo(String name, String szamcim, String adszam, Short bool){
+    public Boolean updateFelhasznalo(String name, String szamcim, String adszam){
         Integer vid;
         try{
             vid = vevoEll(name);
-            if (vid>=0) {
-                if (szamcim.equals("")) szamcim = "NULL";
-                if (adszam.equals("")) adszam = "NULL";
-                String sql = "update vevo set VevoSzamCim='"+szamcim+"', VevoAdoszam='"+adszam+"', TorzsVasarlo="+bool+" where VevoID="+vid+"";
+            if (vid >= 0) {
+                if (szamcim.equals("")) szamcim = vevokLista.get(vid).getVevoSzamCim();
+                if (adszam.equals("")) adszam = vevokLista.get(vid).getVevoAdoszam();
+                String sql = "update vevo set VevoSzamCim='"+szamcim+"', VevoAdoszam='"+adszam+"' where VevoID="+vid+"";
                 PreparedStatement prestm = DBCon.prepareStatement(sql);
                 prestm.executeUpdate();
                 return Boolean.TRUE;
@@ -221,11 +223,138 @@ public class WebShopService{
     // </editor-fold>
     
     // <editor-fold defaultstate="collapsed" desc="Termek letrehozas es update">
+    //Termek Letrehozasa
     /**
-     * Itt lesz majd a termek letrehozasa es kezelese
+     * @param url a kep web/RES/ mappaban valo elerhetoseget tarolja majd
+     * tehat ahhoz hogy megjelenjen a kep nevet es kiterjeszteset kell majd beirni
+     * mivel csak admin kezelheti majd igy lehetseges
     */
+    public ArrayList<String> termekStringData(String name, String desc, String url){
+        ArrayList<String> tStringData = new ArrayList<>();
+        tStringData.add(name); //termek neve,         index = 0
+        tStringData.add(desc); //termek leirasa,      index = 1
+        tStringData.add(url);  //termek kepenek cime, index = 2
+        return tStringData;
+    }
+    public Boolean createTermek(ArrayList<String> StringData, Short bool, Short category,
+            Integer price, String code){
+        try{
+            if (adminCodeSearch(code) == Boolean.TRUE) {
+                String name = StringData.get(0);
+                String desc = StringData.get(1);
+                String url = "ProgMod2TeamSZWebshop\\SzamtechWebShop\\web\\RES/"+StringData.get(2);
+                String sql = "insert into termek (TermekNev,TermekDesc,TermekAr,TermekKep,TermekKeszlet,TermekKatID) "
+                        + "values('"+name+"','"+desc+"',"+price+",'"+url+"',"+bool+","+category+")";
+                PreparedStatement prestm = DBCon.prepareStatement(sql);
+                prestm.execute();
+                return Boolean.TRUE;
+            } else {
+                return Boolean.FALSE;
+            }
+        } catch(SQLException ex){
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+            return Boolean.FALSE;
+        }
+    }
+    //Termekek betoltese
+    /**
+     * rs.get...
+     * 1-ID     4-Ar        7-KatID
+     * 2-Name   5-Kep
+     * 3-Desc   6-Keszlet
+    */
+    public ArrayList<Termek> getTermekek(){
+        ArrayList<Termek> termekek = new ArrayList<>();
+        try{
+            String sql = "select * from termek";
+            PreparedStatement prestm = DBCon.prepareStatement(sql);
+            ResultSet rs = prestm.executeQuery();
+            while (rs.next()){
+                Termek t = new Termek();
+                t.setTermekID(rs.getInt(1));
+                t.setTermekNev(rs.getString(2));
+                t.setTermekDesc(rs.getString(3));
+                t.setTermekAr(rs.getInt(4));
+                t.setTermekKep(rs.getString(5));
+                t.setTermekKeszlet(rs.getShort(6));
+                t.setTermekKatID(rs.getShort(7));
+                termekek.add(t);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return termekek;
+    }
+    //Termek "torles"
+    public Boolean anonymTermek(String code){
+        Integer tid;
+        try{
+            if (adminCodeSearch(code) == Boolean.TRUE) {
+                tid = termekEll(code, getTermekek());
+                if (tid >= 0) {
+                    String name = "anonymTermek"+tid;
+                    String sql = "update termek set TermekNev='"+name+"' where TermekID="+tid+"";
+                    PreparedStatement prestm = DBCon.prepareStatement(sql);
+                    prestm.executeUpdate();
+                    return Boolean.TRUE;
+                } else {
+                    return Boolean.FALSE;
+                }
+            } else {
+                return Boolean.FALSE;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+            return Boolean.FALSE;
+        }
+    }
+    //Termek update
+    public Boolean updateTermek(Integer price, Short bool, String code){
+        Integer tid;
+        try{
+            if (adminCodeSearch(code) == Boolean.TRUE) {
+                tid = termekEll(code, getTermekek());
+                if (tid >= 0) {
+                    if (price == 0) price = termekLista.get(tid).getTermekAr();
+                    if (bool == 0) bool = termekLista.get(tid).getTermekKeszlet();
+                    String sql = "update termek set TermekAr="+price+", TermekKeszlet="+bool+"";
+                    PreparedStatement prestm = DBCon.prepareStatement(sql);
+                    prestm.executeUpdate();
+                    return Boolean.TRUE;
+                } else {
+                    return Boolean.FALSE;
+                }
+            } else {
+                return Boolean.FALSE;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+            return Boolean.FALSE;
+        }
+    }
+    //termek ellenorzes
+    private Integer termekEll(String name, ArrayList<Termek> tList){
+        Integer tid;
+        for (Integer i = 0; i < tList.size(); i++) {
+            if (tList.get(i).getTermekNev().equals(name)) {
+                tid = tList.get(i).getTermekID();
+                return tid;
+            }
+        }
+        return tid = -1;
+    }
+    //termek lekerese
+    public Termek getTermek(String name, ArrayList<Termek> tList){
+        Termek t = new Termek();
+        for (Integer i = 0; i < tList.size(); i++) {
+            if (tList.get(i).getTermekNev().equals(name)) {
+                t = tList.get(i);
+                break;
+            }
+        }
+        return t;
+    }
     // </editor-fold>
-    //dolgozni kell rajta
     
     // <editor-fold defaultstate="collapsed" desc="Read Partner,Gyarto,Szerviz">
     //Partnerek beolvasasa
@@ -284,7 +413,8 @@ public class WebShopService{
     public Boolean createPartner(String name, String elerhetoseg, String code){
         try{
             if (adminCodeSearch(code) == Boolean.TRUE) {
-                String sql = "insert into partner (PartnerNev,PartnerElerhetoseg) values('"+name+"','"+elerhetoseg+"')";
+                String sql = "insert into partner (PartnerNev,PartnerElerhetoseg) "
+                        + "values('"+name+"','"+elerhetoseg+"')";
                 PreparedStatement prestm = DBCon.prepareStatement(sql);
                 prestm.execute();
                 return Boolean.TRUE;
@@ -303,7 +433,8 @@ public class WebShopService{
                 short bool = 0;
                 if (gyartoiGarancia) bool = 1;
                     else bool = 0;
-                String sql = "insert into partner (GyartoNev,GyartoElerhetoseg,GyartoiGarancia) values('"+name+"','"+elerhetoseg+"'"+bool+")";
+                String sql = "insert into partner (GyartoNev,GyartoElerhetoseg,GyartoiGarancia) "
+                        + "values('"+name+"','"+elerhetoseg+"'"+bool+")";
                 PreparedStatement prestm = DBCon.prepareStatement(sql);
                 prestm.execute();
                 return Boolean.TRUE;
@@ -319,7 +450,8 @@ public class WebShopService{
     public Boolean createSzerviz(String name, String elerhetoseg, String code){
         try{
             if (adminCodeSearch(code) == Boolean.TRUE) {
-                String sql = "insert into partner (SzervizNev,SzervizElerhetoseg) values('"+name+"','"+elerhetoseg+"')";
+                String sql = "insert into partner (SzervizNev,SzervizElerhetoseg) "
+                        + "values('"+name+"','"+elerhetoseg+"')";
                 PreparedStatement prestm = DBCon.prepareStatement(sql);
                 prestm.execute();
                 return Boolean.TRUE;
