@@ -29,10 +29,11 @@ public class WebShopService{
      * 
      * @param vevokLista felelos a vevok betolteseert a tablabol
      * @param adminLista felelos az adminok betolteseert a tablabol
+     * @param termekLista felelos a termekek betolteseert a tablabol
      * @param chosenOne egy vevo object adott esetben valo felhasznalasra
      * @param chosenAdmin egy admin object adott esetben valo felhasznalasra
+     * @param f function osztálybeli funkciokert felelos objektum, melynek funkcioi interfacek
     */
-    private ArrayList<Vevo> vevokLista = getVevok();
     private ArrayList<Admin> adminLista = getAdmins();
     private ArrayList<Termek> termekLista = getTermekek();
     private Vevo chosenOne = new Vevo();
@@ -43,21 +44,13 @@ public class WebShopService{
     //Belepes, ellenorzes ha admin akkor response es ujra login
     public Integer LoginAcc(String name, String password){
         password = encrypt(password);
+        ArrayList<Vevo> vevokLista = getVevok();
         return f.userLogin(name, password, vevokLista, adminLista, chosenOne, chosenAdmin);
     }
     //Admin login after update
     public Boolean adminLogin(String name, String password, String code){
         password = encrypt(password);
         return f.adminLogin(name, password, code, chosenAdmin);
-    }
-    //az alabbi ket funkcio jelenleg kerdeses
-    //return felhasznalo
-    public Vevo getFelhasznalo(Boolean login){
-        return chosenOne;
-    }
-    //return admin
-    public Admin getAdmin(Boolean login){
-        return chosenAdmin;
     }
     // </editor-fold>
     
@@ -73,6 +66,7 @@ public class WebShopService{
     //Regisztracio
     public Boolean RegAcc(String name, String email, String password){
         password = encrypt(password);
+        ArrayList<Vevo> vevokLista = getVevok();
         Boolean exist = Boolean.FALSE;
         try{
             //ellenorzes, hogy letezik-e a regisztralando felhasznalo
@@ -103,25 +97,13 @@ public class WebShopService{
             return Boolean.FALSE;
         }
     }
-    //DBConnector fuggveny
-    private Connection DBCon = DBConnector();
-    private Connection DBConnector(){
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-            DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return DBCon;
-    }
-    
     // <editor-fold defaultstate="collapsed" desc="Vevo es Admin betoltes">
     //Vevok betoltese
     public ArrayList<Vevo> getVevok(){
         ArrayList<Vevo> vevok = new ArrayList<>();
         try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
             String sql = "select * from vevo";
             PreparedStatement prestm = DBCon.prepareStatement(sql);
             ResultSet rs = prestm.executeQuery();
@@ -138,6 +120,8 @@ public class WebShopService{
             }
         } catch (SQLException ex) {
             Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return vevok;
     }
@@ -145,6 +129,8 @@ public class WebShopService{
     private ArrayList<Admin> getAdmins(){
         ArrayList<Admin> adminList = new ArrayList<>();
         try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
             String sql = "select * from admin";
             PreparedStatement prestm = DBCon.prepareStatement(sql);
             ResultSet rs = prestm.executeQuery();
@@ -158,6 +144,8 @@ public class WebShopService{
             }
         } catch (SQLException ex) {
             Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return adminList;
     }
@@ -168,6 +156,8 @@ public class WebShopService{
     public Boolean anonymisation(String name){
         Integer vid;
         try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
             vid = vevoEll(name);
             if (vid >= 0) {
                 String anonym = "anonym"+vid;
@@ -187,12 +177,18 @@ public class WebShopService{
         } catch (SQLException ex) {
             Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
             return Boolean.FALSE;
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+            return Boolean.FALSE;
         }
     }
     //Vevo nem szukseges tulajdonsagainak megadasa szukseg eseten
     public Boolean updateFelhasznalo(String name, String szamcim, String adszam){
         Integer vid;
+        ArrayList<Vevo> vevokLista = getVevok();
         try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
             vid = vevoEll(name);
             if (vid >= 0) {
                 if (szamcim.equals("")) szamcim = vevokLista.get(vid).getVevoSzamCim();
@@ -207,11 +203,15 @@ public class WebShopService{
         } catch (SQLException ex) {
             Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
             return Boolean.FALSE;
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+            return Boolean.FALSE;
         }
     }
     //vevo ellenorzes
     private Integer vevoEll(String name){
         Integer vid;
+        ArrayList<Vevo> vevokLista = getVevok();
         for (Integer i = 0; i < vevokLista.size(); i++) {
             if (vevokLista.get(i).getVevoNev().equals(name)) {
                 vid = vevokLista.get(i).getVevoID();
@@ -228,6 +228,7 @@ public class WebShopService{
      * @param url a kep web/RES/ mappaban valo elerhetoseget tarolja majd
      * tehat ahhoz hogy megjelenjen a kep nevet es kiterjeszteset kell majd beirni
      * mivel csak admin kezelheti majd igy lehetseges
+     * 
     */
     public ArrayList<String> termekStringData(String name, String desc, String url){
         ArrayList<String> tStringData = new ArrayList<>();
@@ -239,19 +240,27 @@ public class WebShopService{
     public Boolean createTermek(ArrayList<String> StringData, Short bool, Short category,
             Integer price, String code){
         try{
-            if (adminCodeSearch(code) == Boolean.TRUE) {
-                String name = StringData.get(0);
-                String desc = StringData.get(1);
-                String url = "ProgMod2TeamSZWebshop\\SzamtechWebShop\\web\\RES/"+StringData.get(2);
-                String sql = "insert into termek (TermekNev,TermekDesc,TermekAr,TermekKep,TermekKeszlet,TermekKatID) "
-                        + "values('"+name+"','"+desc+"',"+price+",'"+url+"',"+bool+","+category+")";
-                PreparedStatement prestm = DBCon.prepareStatement(sql);
-                prestm.execute();
-                return Boolean.TRUE;
-            } else {
-                return Boolean.FALSE;
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+            String name = StringData.get(0);
+            String desc = StringData.get(1);
+            String url = "ProgMod2TeamSZWebshop\\SzamtechWebShop\\web\\RES/"+StringData.get(2);
+            for (Integer i = 0; i < termekLista.size(); i++) {
+                if (termekEll(name, termekLista) == -1) {
+                    String sql = "insert into termek (TermekNev,TermekDesc,TermekAr,TermekKep,TermekKeszlet,TermekKatID) "
+                            + "values('"+name+"','"+desc+"',"+price+",'"+url+"',"+bool+","+category+")";
+                    PreparedStatement prestm = DBCon.prepareStatement(sql);
+                    prestm.execute();
+                    return Boolean.TRUE;
+                } else {
+                    return Boolean.FALSE;
+                }
             }
+            return Boolean.FALSE;
         } catch(SQLException ex){
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+            return Boolean.FALSE;
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
             return Boolean.FALSE;
         }
@@ -266,6 +275,8 @@ public class WebShopService{
     public ArrayList<Termek> getTermekek(){
         ArrayList<Termek> termekek = new ArrayList<>();
         try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
             String sql = "select * from termek";
             PreparedStatement prestm = DBCon.prepareStatement(sql);
             ResultSet rs = prestm.executeQuery();
@@ -282,6 +293,8 @@ public class WebShopService{
             }
         } catch (SQLException ex) {
             Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return termekek;
     }
@@ -289,21 +302,22 @@ public class WebShopService{
     public Boolean anonymTermek(String code){
         Integer tid;
         try{
-            if (adminCodeSearch(code) == Boolean.TRUE) {
-                tid = termekEll(code, getTermekek());
-                if (tid >= 0) {
-                    String name = "anonymTermek"+tid;
-                    String sql = "update termek set TermekNev='"+name+"' where TermekID="+tid+"";
-                    PreparedStatement prestm = DBCon.prepareStatement(sql);
-                    prestm.executeUpdate();
-                    return Boolean.TRUE;
-                } else {
-                    return Boolean.FALSE;
-                }
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+            tid = termekEll(code, getTermekek());
+            if (tid >= 0) {
+                String name = "anonymTermek"+tid;
+                String sql = "update termek set TermekNev='"+name+"' where TermekID="+tid+"";
+                PreparedStatement prestm = DBCon.prepareStatement(sql);
+                prestm.executeUpdate();
+                return Boolean.TRUE;
             } else {
                 return Boolean.FALSE;
             }
         } catch (SQLException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+            return Boolean.FALSE;
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
             return Boolean.FALSE;
         }
@@ -312,22 +326,23 @@ public class WebShopService{
     public Boolean updateTermek(Integer price, Short bool, String code){
         Integer tid;
         try{
-            if (adminCodeSearch(code) == Boolean.TRUE) {
-                tid = termekEll(code, getTermekek());
-                if (tid >= 0) {
-                    if (price == 0) price = termekLista.get(tid).getTermekAr();
-                    if (bool == 0) bool = termekLista.get(tid).getTermekKeszlet();
-                    String sql = "update termek set TermekAr="+price+", TermekKeszlet="+bool+"";
-                    PreparedStatement prestm = DBCon.prepareStatement(sql);
-                    prestm.executeUpdate();
-                    return Boolean.TRUE;
-                } else {
-                    return Boolean.FALSE;
-                }
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+            tid = termekEll(code, getTermekek());
+            if (tid >= 0) {
+                if (price == 0) price = termekLista.get(tid).getTermekAr();
+                if (bool == 0) bool = termekLista.get(tid).getTermekKeszlet();
+                String sql = "update termek set TermekAr="+price+", TermekKeszlet="+bool+"";
+                PreparedStatement prestm = DBCon.prepareStatement(sql);
+                prestm.executeUpdate();
+                return Boolean.TRUE;
             } else {
                 return Boolean.FALSE;
             }
         } catch (SQLException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+            return Boolean.FALSE;
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
             return Boolean.FALSE;
         }
@@ -361,6 +376,8 @@ public class WebShopService{
     public ArrayList<Partner> getPartners(){
         ArrayList<Partner> partners = new ArrayList<>();
         try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
             String sql = "select * from partner";
             PreparedStatement prestm = DBCon.prepareStatement(sql);
             ResultSet rs = prestm.executeQuery();
@@ -371,6 +388,8 @@ public class WebShopService{
             }
         } catch (SQLException ex) {
             Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return partners;
     }
@@ -378,6 +397,8 @@ public class WebShopService{
     public ArrayList<Gyarto> getGyartok(){
         ArrayList<Gyarto> gyartok = new ArrayList<>();
         try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
             String sql = "select * from gyarto";
             PreparedStatement prestm = DBCon.prepareStatement(sql);
             ResultSet rs = prestm.executeQuery();
@@ -387,6 +408,8 @@ public class WebShopService{
             }
         } catch (SQLException ex) {
             Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return gyartok;
     }
@@ -394,6 +417,8 @@ public class WebShopService{
     public ArrayList<Szerviz> getszervizek(){
         ArrayList<Szerviz> szervizek = new ArrayList<>();
         try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
             String sql = "select * from szerviz";
             PreparedStatement prestm = DBCon.prepareStatement(sql);
             ResultSet rs = prestm.executeQuery();
@@ -402,6 +427,8 @@ public class WebShopService{
                 szervizek.add(sz);
             }
         } catch (SQLException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return szervizek;
@@ -412,16 +439,17 @@ public class WebShopService{
     //Partner mentese
     public Boolean createPartner(String name, String elerhetoseg, String code){
         try{
-            if (adminCodeSearch(code) == Boolean.TRUE) {
-                String sql = "insert into partner (PartnerNev,PartnerElerhetoseg) "
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+            String sql = "insert into partner (PartnerNev,PartnerElerhetoseg) "
                         + "values('"+name+"','"+elerhetoseg+"')";
-                PreparedStatement prestm = DBCon.prepareStatement(sql);
-                prestm.execute();
-                return Boolean.TRUE;
-            } else {
-                return Boolean.FALSE;
-            }
+            PreparedStatement prestm = DBCon.prepareStatement(sql);
+            prestm.execute();
+            return Boolean.TRUE;
         } catch (SQLException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+            return Boolean.FALSE;
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
             return Boolean.FALSE;
         }
@@ -429,19 +457,20 @@ public class WebShopService{
     //Gyarto mentese
     public Boolean createGyarto(String name, String elerhetoseg, Boolean gyartoiGarancia, String code){
         try{
-            if (adminCodeSearch(code) == Boolean.TRUE) {
-                short bool = 0;
-                if (gyartoiGarancia) bool = 1;
-                    else bool = 0;
-                String sql = "insert into partner (GyartoNev,GyartoElerhetoseg,GyartoiGarancia) "
-                        + "values('"+name+"','"+elerhetoseg+"'"+bool+")";
-                PreparedStatement prestm = DBCon.prepareStatement(sql);
-                prestm.execute();
-                return Boolean.TRUE;
-            } else {
-                return Boolean.FALSE;
-            }
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+            short bool = 0;
+            if (gyartoiGarancia) bool = 1;
+                else bool = 0;
+            String sql = "insert into partner (GyartoNev,GyartoElerhetoseg,GyartoiGarancia) "
+                    + "values('"+name+"','"+elerhetoseg+"'"+bool+")";
+            PreparedStatement prestm = DBCon.prepareStatement(sql);
+            prestm.execute();
+            return Boolean.TRUE;
         } catch (SQLException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+            return Boolean.FALSE;
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
             return Boolean.FALSE;
         }
@@ -449,16 +478,17 @@ public class WebShopService{
     //Szerviz mentese
     public Boolean createSzerviz(String name, String elerhetoseg, String code){
         try{
-            if (adminCodeSearch(code) == Boolean.TRUE) {
-                String sql = "insert into partner (SzervizNev,SzervizElerhetoseg) "
-                        + "values('"+name+"','"+elerhetoseg+"')";
-                PreparedStatement prestm = DBCon.prepareStatement(sql);
-                prestm.execute();
-                return Boolean.TRUE;
-            } else {
-                return Boolean.FALSE;
-            }
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+            String sql = "insert into partner (SzervizNev,SzervizElerhetoseg) "
+                    + "values('"+name+"','"+elerhetoseg+"')";
+            PreparedStatement prestm = DBCon.prepareStatement(sql);
+            prestm.execute();
+            return Boolean.TRUE;
         } catch (SQLException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+            return Boolean.FALSE;
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
             return Boolean.FALSE;
         }
@@ -468,19 +498,16 @@ public class WebShopService{
     //Partnerek adoszamanak beallitasa szukseg eseten
     public Boolean updatePartnerAdoszam(String adszam, Integer pid, String code){
         try{
-            if (adminCodeSearch(code) == Boolean.TRUE) {
-                if (adszam.length() == 11) {
-                    String sql = "update partner set PartnerAdoszam='"+adszam+"' where PartnerID=" + pid + "";
-                    PreparedStatement prestm = DBCon.prepareStatement(sql);
-                    prestm.executeUpdate();
-                    return Boolean.TRUE;
-                } else {
-                    return Boolean.FALSE;
-                }   
-            } else {
-                return Boolean.FALSE;
-            }
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+            String sql = "update partner set PartnerAdoszam='"+adszam+"' where PartnerID=" + pid + "";
+            PreparedStatement prestm = DBCon.prepareStatement(sql);
+            prestm.executeUpdate();
+            return Boolean.TRUE;
         } catch (SQLException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+            return Boolean.FALSE;
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
             return Boolean.FALSE;
         }
