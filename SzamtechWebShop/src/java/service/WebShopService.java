@@ -34,8 +34,6 @@ public class WebShopService{
      * @param chosenAdmin egy admin object adott esetben valo felhasznalasra
      * @param f function osztálybeli funkciokert felelos objektum, melynek funkcioi interfacek
     */
-    private ArrayList<Admin> adminLista = getAdmins();
-    private ArrayList<Termek> termekLista = getTermekek();
     private Vevo chosenOne = new Vevo();
     private Admin chosenAdmin = new Admin();
     private function f = new function();
@@ -45,17 +43,20 @@ public class WebShopService{
     public Integer LoginAcc(String name, String password){
         password = encrypt(password);
         ArrayList<Vevo> vevokLista = getVevok();
-        return f.userLogin(name, password, vevokLista, adminLista, chosenOne, chosenAdmin);
+        ArrayList<Admin> adminLista = getAdmins();
+        return f.userLogin(name, password, vevokLista, adminLista);
     }
-    //Admin login after update
+    //Admin login after update (átalakítás alatt)
     public Boolean adminLogin(String name, String password, String code){
         password = encrypt(password);
-        return f.adminLogin(name, password, code, chosenAdmin);
+        ArrayList<Admin> adminLista = getAdmins();
+        return f.adminLogin(name, password, code, adminLista);
     }
     // </editor-fold>
     
     //admin code search
     private Boolean adminCodeSearch(String code){
+        ArrayList<Admin> adminLista = getAdmins();
         for (Integer i = 0; i < adminLista.size(); i++) {
             if (adminLista.get(i).getAdmincode().equals(code)) {
                 return Boolean.TRUE;
@@ -239,6 +240,7 @@ public class WebShopService{
     }
     public Boolean createTermek(ArrayList<String> StringData, Short bool, Short category,
             Integer price, String code){
+        ArrayList<Termek> termekLista = getTermekek();
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
@@ -325,6 +327,7 @@ public class WebShopService{
     //Termek update
     public Boolean updateTermek(Integer price, Short bool, String code){
         Integer tid;
+        ArrayList<Termek> termekLista = getTermekek();
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
