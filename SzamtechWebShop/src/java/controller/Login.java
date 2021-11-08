@@ -1,17 +1,22 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.*;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.*;
-import service.WebShopService;
 
-public class Register extends HttpServlet {
+/**
+ *
+ * @author domak
+ */
+public class Login extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -24,42 +29,27 @@ public class Register extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        WebShopService wbservice = new WebShopService();
-        String VevoName = request.getParameter("name");
-        String VevoEmail = request.getParameter("email");
-        String VevoPassw = request.getParameter("password");
-        
-        Boolean saved = wbservice.RegAcc(VevoName, VevoEmail, VevoPassw);
-        
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Register</title>");            
+            out.println("<title>Servlet Login</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Register at " + saved + "</h1>");
+            out.println("<h1>Servlet Login at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
     }
-    
-    /*public void doPost(HttpServletRequest request, HttpServletResponse response){
+    /*public void doGet(HttpServletRequest request, HttpServletResponse response)
+             {
         try{
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();
-            String n = request.getParameter("name");
-            out.print("Welcome"+n);
-            
-            Cookie ck = new Cookie("username", n);
-            response.addCookie(ck);
-            
-            out.print("<form action='logAcc'>");
-            out.print("<input type='submit' value='go'>");
-            out.print("</form>");
-            
+            Cookie cks[] = request.getCookies();
+            out.print("Hello"+cks[0].getValue());
             out.close();
         } catch(Exception ex){
             System.out.println(ex.toString());

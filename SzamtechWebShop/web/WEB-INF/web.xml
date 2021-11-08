@@ -4,9 +4,17 @@
         <servlet-name>Register</servlet-name>
         <servlet-class>controller.Register</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>controller.Login</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/reg</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/logAcc</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
