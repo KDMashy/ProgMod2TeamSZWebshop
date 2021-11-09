@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2021. Nov 09. 16:21
+-- Létrehozás ideje: 2021. Nov 09. 21:22
 -- Kiszolgáló verziója: 10.4.21-MariaDB
 -- PHP verzió: 8.0.10
 
@@ -134,9 +134,17 @@ CREATE TABLE `vasarlas` (
   `IRSzam` char(4) NOT NULL,
   `Varos` varchar(45) NOT NULL,
   `UtcaHSzam` varchar(70) NOT NULL,
-  `Idopont` datetime NOT NULL,
+  `Idopont` varchar(100) NOT NULL,
   `Egyeb` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- A tábla adatainak kiíratása `vasarlas`
+--
+
+INSERT INTO `vasarlas` (`SorSzam`, `Felhasznalo`, `Szamla`, `FizMod`, `Osszeg`, `IRSzam`, `Varos`, `UtcaHSzam`, `Idopont`, `Egyeb`) VALUES
+(1, 'Anonym1', 0, 'asd', 3, '0000', 'Anonym1', 'Anonym1', '211109205208', 'DELETED'),
+(2, 'Anonym2', 0, 'asd', 3, '0000', 'Anonym2', 'Anonym2', '211109205208', 'DELETED');
 
 -- --------------------------------------------------------
 
@@ -182,7 +190,7 @@ INSERT INTO `vevo` (`VevoID`, `VevoNev`, `VevoPassword`, `VevoEmail`, `VevoSzamC
 (21, 'anonym21', '275543d2bbaaa1595f97b60d5f1314728ef7069c5c8d648d5d576bd1f2115398', 'anonym21', 'anonym21', 'anonym21', 0),
 (22, 'anonym22', '60eb68565a0c5253b3cae332e58613479fb14ac18f91016f1a95bcabd48e94d4', 'anonym22', 'anonym22', 'anonym22', 0),
 (23, 'anonym23', '441e556cf3c8f609e7320c9024a9c39a2d860e93d2a9b2f0d65519af71b0c6d1', 'anonym23', 'anonym23', 'anonym23', 0),
-(24, 'Mashy', '526d7f366978481daeb425725d9c9ed64aa3160bb59c28ab1548055b5a8138de', 'Mashy@gmail.com', NULL, NULL, NULL);
+(24, 'Mashy', 'c26a9deae1c0bb4a8de9c6003bc3e8ef0dc446f18c513f82f20b3c6c74cce653', 'Mashy@gmail.com', NULL, NULL, NULL);
 
 --
 -- Indexek a kiírt táblákhoz
@@ -288,7 +296,7 @@ ALTER TABLE `termek`
 -- AUTO_INCREMENT a táblához `vasarlas`
 --
 ALTER TABLE `vasarlas`
-  MODIFY `SorSzam` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `SorSzam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT a táblához `vevo`

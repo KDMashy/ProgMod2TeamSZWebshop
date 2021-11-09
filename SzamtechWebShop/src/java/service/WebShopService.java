@@ -1,6 +1,10 @@
 package service;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,14 +26,11 @@ public class WebShopService{
      * pl loginnal a 0 a nem letezo fehasznalo, 1 a letezik a felhasznalo es ha
      * jo a jelszo akkor bejelentkezes, ha 2 akkor admin nev lett beirva es ellenorzi
      * hogy az adott admin nev es jelszo helyes-e, ha igen akkor egy masik login feluletre visz
+     * (utobbi nem ervenyes mar admin reszrol)
      * 
      * ahol TRUE vagy FALSE a visszatero ertek ott a servlet szamara jelez csak hogy mit tegyen
      * illetve visszajelzest ad hogy az adott funkcio mukodott es hiba nelkul vagy valamit
      * helytelenul adtunk meg es jelez, meg lehet szamkodokat adok neki -Klepe
-     * 
-     * @param chosenOne egy vevo object adott esetben valo felhasznalasra
-     * @param chosenAdmin egy admin object adott esetben valo felhasznalasra
-     * @param f function osztálybeli funkciokert felelos objektum, melynek funkcioi interfacek
     */
     
     // <editor-fold defaultstate="collapsed" desc="Vevo es Admin login">
@@ -205,6 +206,30 @@ public class WebShopService{
             return Boolean.FALSE;
         }
     }
+    //Vevo jelszo valtoztatas
+    public Boolean changeVevoPassw(String name, String password){
+        Integer vid;
+        password = encrypt(password);
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+            vid = vevoEll(name);
+            if (vid >= 0) {
+                String sql = "update vevo set VevoPassword='"+password+"' where VevoID="+vid+"";
+                PreparedStatement prestm = DBCon.prepareStatement(sql);
+                prestm.executeUpdate();
+                return Boolean.TRUE;
+            } else {
+                return Boolean.FALSE;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+            return Boolean.FALSE;
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+            return Boolean.FALSE;
+        }
+    }
     //vevo ellenorzes
     private Integer vevoEll(String name){
         Integer vid;
@@ -212,7 +237,7 @@ public class WebShopService{
         for (Integer i = 0; i < vevokLista.size(); i++) {
             if (vevokLista.get(i).getVevoNev().equals(name)) {
                 vid = vevokLista.get(i).getVevoID();
-                return vid;
+                return vid++;
             }
         }
         return vid = -1;
@@ -331,7 +356,7 @@ public class WebShopService{
             if (tid >= 0) {
                 if (price == 0) price = termekLista.get(tid).getTermekAr();
                 if (bool == 0) bool = termekLista.get(tid).getTermekKeszlet();
-                String sql = "update termek set TermekAr="+price+", TermekKeszlet="+bool+"";
+                String sql = "update termek set TermekAr="+price+", TermekKeszlet="+bool+" where TermekID="+tid+"";
                 PreparedStatement prestm = DBCon.prepareStatement(sql);
                 prestm.executeUpdate();
                 return Boolean.TRUE;
@@ -352,7 +377,7 @@ public class WebShopService{
         for (Integer i = 0; i < tList.size(); i++) {
             if (tList.get(i).getTermekNev().equals(name)) {
                 tid = tList.get(i).getTermekID();
-                return tid;
+                return tid++;
             }
         }
         return tid = -1;
@@ -367,6 +392,254 @@ public class WebShopService{
             }
         }
         return t;
+    }
+    // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="Vasarlas, szamlazas, egysegarak">
+    //String ertekek szamla letrehozashoz hogy attekinthetobb legyen
+    public ArrayList<String> szamlaStringData(String user, String fizmod, String varos,
+                    String Hszam, String egyeb, String irszam){
+        ArrayList<String> szStringData = new ArrayList<>();
+        szStringData.add(user); //felhasznalo         index = 0
+        szStringData.add(fizmod); //fizetesi mod      index = 1
+        szStringData.add(varos);  //varos neve        index = 2
+        szStringData.add(Hszam); //hazszam/utca       index = 3
+        szStringData.add(egyeb); //egyeb kozlendo     index = 4
+        szStringData.add(irszam); //iranyitoszam      index = 5
+        return szStringData;
+    }
+    //Vasarlas letrehozasa
+    public Boolean createSzamla(ArrayList<String> stringData, Short szamla,
+                            Integer sum, String date, 
+                            ArrayList<Integer> mennyiseg,
+                            ArrayList<String> vasaroltTermekek){
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+            String user = stringData.get(0);
+            String fizmod = stringData.get(1);
+            String varos = stringData.get(2);
+            String hszam = stringData.get(3);
+            String egyeb = stringData.get(4);
+            String irszam = stringData.get(5);
+            sum = vasarlasSum(mennyiseg, vasaroltTermekek);
+            String sql = "insert into vasarlas (Felhasznalo,Szamla,FizMod,Osszeg,IRSzam,Varos,UtcaHSzam,Idopont,Egyeb) "
+                    + "values('"+user+"',"+szamla+",'"+fizmod+"',"+sum+",'"+irszam+"','"+varos+"','"+hszam+"',"+date+",'"+egyeb+"')";
+            PreparedStatement prestm = DBCon.prepareStatement(sql);
+            prestm.execute();
+            ArrayList<Termek> termekek = getTermekek();
+            Boolean egysegar = createEgysegArak(user, termekek, mennyiseg, vasaroltTermekek);
+            return egysegar;
+        } catch (SQLException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.toString());
+            return Boolean.FALSE;
+        } catch (ClassNotFoundException ex) {
+            System.out.println(ex.toString());
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+            return Boolean.FALSE;
+        }
+    }
+    //sum szamolas
+    private Integer vasarlasSum(ArrayList<Integer> amount, ArrayList<String> tName){
+        Integer sum = 0, tid;
+        ArrayList<Termek> tList = getTermekek();
+        for (Integer i = 0; i < tName.size(); i++) {
+            tid = termekEll(tName.get(i), tList);
+            Integer resz = (sum+tList.get(tid).getTermekAr())*amount.get(i);
+            sum += resz;
+        }
+        return sum;
+    }
+    //Vasarlas lemondasa
+    public Boolean delVasarlas(String name){
+        Integer vid;
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+            vid = vasarlasEll(name);
+            if (vid >= 0) {
+                String sql = "update vasarlas set Egyeb='DELETED' where Felhasznalo='"+name+"'";
+                PreparedStatement prestm = DBCon.prepareStatement(sql);
+                prestm.executeUpdate();
+                return Boolean.TRUE;
+            } else {
+                return Boolean.FALSE;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+            return Boolean.FALSE;
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+            return Boolean.FALSE;
+        }
+    }
+    //Egysegarak leirasa
+    public Boolean createEgysegArak(String name, ArrayList<Termek> tList, 
+                    ArrayList<Integer> mennyiseg,
+                    ArrayList<String> vTermek){
+        Integer vid, tid;
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+            vid = vasarlasEll(name);
+            if (vid >= 0) {
+                for (Integer i = 0; i < vTermek.size(); i++) {
+                    tid = termekEll(name, tList);
+                    Integer ar = tList.get(tid--).getTermekAr();
+                    String sql = "insert into egysegarak (Vasarlas_SorSzam,Termek_TermekID,Termek_TermekAr,Termek_Mennyiseg) "
+                        + "values("+vid+","+tid+","+ar+","+mennyiseg.get(i)+")";
+                    PreparedStatement prestm = DBCon.prepareStatement(sql);
+                    prestm.execute();
+                }
+                return Boolean.TRUE;
+            } else {
+                return Boolean.FALSE;
+            }
+        } catch(Exception ex){
+            System.err.println(ex.toString());
+            return Boolean.FALSE;
+        }
+    }
+    //Vasarlas anonymizalasa
+    public Boolean anonymVasarlas(String name){
+        Integer vid;
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+            vid = vasarlasEll(name);
+            System.out.println(vid);
+            if (vid >= 0) {
+                String anonym = "Anonym"+vid;
+                String sql = "update vasarlas set Felhasznalo='"+anonym+"', IRSzam='0000', "
+                        + "Varos='"+anonym+"', UtcaHSzam='"+anonym+"', Egyeb='DELETED' where SorSzam="+vid+"";
+                PreparedStatement prestm = DBCon.prepareStatement(sql);
+                prestm.executeUpdate();
+                return Boolean.TRUE;
+            } else {
+                return Boolean.FALSE;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+            return Boolean.FALSE;
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+            return Boolean.FALSE;
+        }
+    }
+    //Vasarlasok beolvasasa by name
+    /**
+     * 1-sorszam        6-irszam
+     * 2-felhasznalo    7-varos
+     * 3-szamla         8-Hszam
+     * 4-fizmod         9-date
+     * 5-osszeg
+     */
+    public ArrayList<Vasarlas> getVasarlasok(){
+        ArrayList<Vasarlas> vasarlasok = new ArrayList<>();
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+            String sql = "select * from vasarlas";
+            PreparedStatement prestm = DBCon.prepareStatement(sql);
+            ResultSet rs = prestm.executeQuery();
+            while (rs.next()){
+                Vasarlas va = new Vasarlas();
+                va.setSorSzam(rs.getInt(1));
+                va.setFelhasznalo(rs.getString(2));
+                va.setSzamla(rs.getShort(3));
+                va.setFizMod(rs.getString(4));
+                va.setOsszeg(rs.getInt(5));
+                va.setIRSzam(rs.getString(6));
+                va.setVaros(rs.getString(7));
+                va.setUtcaHSzam(rs.getString(8));
+                va.setIdopont(rs.getString(9));
+                vasarlasok.add(va);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return vasarlasok;
+    }
+    //vasarlas ellenorzes
+    private Integer vasarlasEll(String name){
+        ArrayList<Vasarlas> vList = getVasarlasok();
+        Integer vid;
+        for (Integer i = 0; i < vList.size(); i++) {
+            if (vList.get(i).getFelhasznalo().equals(name)) {
+                vid = vList.get(i).getSorSzam();
+                return vid++;
+            }
+        }
+        return vid = -1;
+    }
+    //vasarlas lekerese
+    public Vasarlas getVasarlas(String name){
+        ArrayList<Vasarlas> vList = getVasarlasok();
+        Vasarlas v = new Vasarlas();
+        for (Integer i = 0; i < vList.size(); i++) {
+            if (vList.get(i).getFelhasznalo().equals(name)) {
+                v = vList.get(i);
+                break;
+            }
+        }
+        return v;
+    }
+    // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="Rendezes, Kereses, Kategoria szures">
+    //Kereses
+    public ArrayList<Termek> termekSearch(String name){
+        ArrayList<Termek> termekek = getTermekek();
+        ArrayList<Termek> searched = new ArrayList<>();
+        String nev = "";
+        try{
+            for (Termek t : termekek){
+                nev = t.getTermekNev();
+                if (nev.equals(name) || nev.contains(name)) searched.add(t);
+            }
+            return searched;
+        } catch(Exception ex){
+            System.out.println(ex.toString());
+            return searched;
+        }
+    }
+    //Rendezes
+    public ArrayList<Termek> termekSort(Boolean bool){
+        ArrayList<Termek> termekek = getTermekek();
+        try{
+            if (bool == Boolean.TRUE) {
+                Collections.sort(termekek);
+            } else {
+                Collections.reverse(termekek);
+            }
+            return termekek;
+        } catch(Exception ex){
+            System.out.println(ex.toString());
+            return termekek;
+        }
+    }
+    //Kategoria kezeles
+    public ArrayList<Termek> termekKatSearch(ArrayList<Short> katID){
+        ArrayList<Termek> termekek = getTermekek();
+        ArrayList<Termek> searched = new ArrayList<>();
+        Short tkid;
+        try{
+            for (Termek t : termekek){
+                tkid = t.getTermekKatID();
+                for (Short i = 0; i < katID.size(); i++) {
+                    if (tkid == katID.get(i)) {
+                        searched.add(t);
+                    }
+                }
+            }
+            return searched;
+        } catch(Exception ex){
+            System.out.println(ex.toString());
+            return searched;
+        }
     }
     // </editor-fold>
     
@@ -495,11 +768,11 @@ public class WebShopService{
     // </editor-fold>
     
     //Partnerek adoszamanak beallitasa szukseg eseten
-    public Boolean updatePartnerAdoszam(String adszam, Integer pid, String code){
+    public Boolean updatePartnerAdoszam(String adszam, String name, String code){
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
-            String sql = "update partner set PartnerAdoszam='"+adszam+"' where PartnerID=" + pid + "";
+            String sql = "update partner set PartnerAdoszam='"+adszam+"' where PartnerNev=" + name + "";
             PreparedStatement prestm = DBCon.prepareStatement(sql);
             prestm.executeUpdate();
             return Boolean.TRUE;

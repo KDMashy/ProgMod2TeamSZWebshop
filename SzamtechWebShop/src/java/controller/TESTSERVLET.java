@@ -7,7 +7,11 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -34,9 +38,21 @@ public class TESTSERVLET extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         WebShopService wbservice = new WebShopService();
-        
-        
-        Boolean anonym = Boolean.FALSE;
+        //szamla torles teszt
+        //Boolean bool = wbservice.anonymVasarlas("asd");
+        //szamla teszt
+        /*ArrayList<String> stringData = new ArrayList<>();
+        stringData.add("asd");
+        stringData.add("asd");
+        stringData.add("asd");
+        stringData.add("asd");
+        stringData.add("asd");
+        stringData.add("asd");
+        Date date = Calendar.getInstance().getTime();
+        DateFormat dateFormat = new SimpleDateFormat("yyMMddHHmmssZ");
+        String ido = dateFormat.format(date);
+        Short x = 0;
+        Boolean bool = wbservice.createSzamla(stringData, x, 3, ido, 1);*/
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -46,7 +62,12 @@ public class TESTSERVLET extends HttpServlet {
             out.println("<title>Servlet TESTSERVLET</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>tesztelésre van</h1>");
+            out.println("<h1>tesztelésre van"+bool+"</h1>");
+            //alabbit tesztelni kell, meg nincsenek termekek xd
+            /*for (Termek t : termekek){
+                out.println("<h2>"+t.getTermekID()+t.getTermekNev()+"</h2>");
+            }*/
+            //teszteltem, anonymizálás egész listára volt
             /*ArrayList<Vevo> vevok = wbservice.getVevok();
             for (Vevo t : vevok) {
                 anonym = wbservice.anonymisation(t.getVevoNev());

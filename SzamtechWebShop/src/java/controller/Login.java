@@ -35,20 +35,38 @@ public class Login extends HttpServlet {
         session.setAttribute("loginName", lName);
         session.setAttribute("loginPassword", lPassword);
         
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Login</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Welcome "+ lName +"</h1>");
-            /*out.println("<form action='TESTSERVLET'>");
-            out.println("<input type='submit' value='TESTSERVLET' />");
-            out.println("</form>");*/
-            out.println("</body>");
-            out.println("</html>");
+        if (Login == 1) {
+            response.setContentType("text/html;charset=UTF-8");
+            try (PrintWriter out = response.getWriter()) {
+                out.println("<!DOCTYPE html>");
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<title>Servlet Login</title>");            
+                out.println("</head>");
+                out.println("<body>");
+                out.println("<h1>Welcome "+ lName +"</h1>");
+                /*out.println("<form action='TESTSERVLET'>");
+                out.println("<input type='submit' value='TESTSERVLET' />");
+                out.println("</form>");*/
+                out.println("</body>");
+                out.println("</html>");
+            }
+        } else {
+            response.setContentType("text/html;charset=UTF-8");
+            try (PrintWriter out = response.getWriter()) {
+                out.println("<!DOCTYPE html>");
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<title>Servlet Login</title>");            
+                out.println("</head>");
+                out.println("<body>");
+                out.println("<h1>ERROR</h1>");
+                /*out.println("<form action='TESTSERVLET'>");
+                out.println("<input type='submit' value='TESTSERVLET' />");
+                out.println("</form>");*/
+                out.println("</body>");
+                out.println("</html>");
+            }
         }
     }
     /*public void doGet(HttpServletRequest request, HttpServletResponse response)

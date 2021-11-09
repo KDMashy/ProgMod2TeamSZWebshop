@@ -6,7 +6,6 @@
 package model;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,8 +15,6 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -84,9 +81,9 @@ public class Vasarlas implements Serializable {
     private String utcaHSzam;
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 100)
     @Column(name = "Idopont")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date idopont;
+    private String idopont;
     @Size(max = 45)
     @Column(name = "Egyeb")
     private String egyeb;
@@ -98,7 +95,7 @@ public class Vasarlas implements Serializable {
         this.sorSzam = sorSzam;
     }
 
-    public Vasarlas(Integer sorSzam, String felhasznalo, short szamla, String fizMod, int osszeg, String iRSzam, String varos, String utcaHSzam, Date idopont) {
+    public Vasarlas(Integer sorSzam, String felhasznalo, short szamla, String fizMod, int osszeg, String iRSzam, String varos, String utcaHSzam, String idopont) {
         this.sorSzam = sorSzam;
         this.felhasznalo = felhasznalo;
         this.szamla = szamla;
@@ -174,11 +171,11 @@ public class Vasarlas implements Serializable {
         this.utcaHSzam = utcaHSzam;
     }
 
-    public Date getIdopont() {
+    public String getIdopont() {
         return idopont;
     }
 
-    public void setIdopont(Date idopont) {
+    public void setIdopont(String idopont) {
         this.idopont = idopont;
     }
 

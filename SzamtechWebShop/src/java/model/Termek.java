@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Termek.findByTermekKep", query = "SELECT t FROM Termek t WHERE t.termekKep = :termekKep")
     , @NamedQuery(name = "Termek.findByTermekKeszlet", query = "SELECT t FROM Termek t WHERE t.termekKeszlet = :termekKeszlet")
     , @NamedQuery(name = "Termek.findByTermekKatID", query = "SELECT t FROM Termek t WHERE t.termekKatID = :termekKatID")})
-public class Termek implements Serializable {
+public class Termek implements Serializable, Comparable<Termek> {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -144,6 +144,14 @@ public class Termek implements Serializable {
         this.termekKatID = termekKatID;
     }
 
+    @Override
+    public int compareTo(Termek t) {
+       if (getTermekID()< 1 || t.getTermekID() < 1) {
+           return 0;
+       }
+       return getTermekID().compareTo(t.getTermekID());
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;

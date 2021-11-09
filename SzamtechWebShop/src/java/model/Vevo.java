@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Vevo.findByVevoSzamCim", query = "SELECT v FROM Vevo v WHERE v.vevoSzamCim = :vevoSzamCim")
     , @NamedQuery(name = "Vevo.findByVevoAdoszam", query = "SELECT v FROM Vevo v WHERE v.vevoAdoszam = :vevoAdoszam")
     , @NamedQuery(name = "Vevo.findByTorzsVasarlo", query = "SELECT v FROM Vevo v WHERE v.torzsVasarlo = :torzsVasarlo")})
-public class Vevo implements Serializable {
+public class Vevo implements Serializable{
 
     private static final long serialVersionUID = 1L;
     @Id
