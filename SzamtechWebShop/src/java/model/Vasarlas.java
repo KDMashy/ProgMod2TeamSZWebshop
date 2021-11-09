@@ -6,9 +6,8 @@
 package model;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,12 +15,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -33,12 +32,14 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Vasarlas.findAll", query = "SELECT v FROM Vasarlas v")
     , @NamedQuery(name = "Vasarlas.findBySorSzam", query = "SELECT v FROM Vasarlas v WHERE v.sorSzam = :sorSzam")
+    , @NamedQuery(name = "Vasarlas.findByFelhasznalo", query = "SELECT v FROM Vasarlas v WHERE v.felhasznalo = :felhasznalo")
     , @NamedQuery(name = "Vasarlas.findBySzamla", query = "SELECT v FROM Vasarlas v WHERE v.szamla = :szamla")
     , @NamedQuery(name = "Vasarlas.findByFizMod", query = "SELECT v FROM Vasarlas v WHERE v.fizMod = :fizMod")
     , @NamedQuery(name = "Vasarlas.findByOsszeg", query = "SELECT v FROM Vasarlas v WHERE v.osszeg = :osszeg")
     , @NamedQuery(name = "Vasarlas.findByIRSzam", query = "SELECT v FROM Vasarlas v WHERE v.iRSzam = :iRSzam")
     , @NamedQuery(name = "Vasarlas.findByVaros", query = "SELECT v FROM Vasarlas v WHERE v.varos = :varos")
     , @NamedQuery(name = "Vasarlas.findByUtcaHSzam", query = "SELECT v FROM Vasarlas v WHERE v.utcaHSzam = :utcaHSzam")
+    , @NamedQuery(name = "Vasarlas.findByIdopont", query = "SELECT v FROM Vasarlas v WHERE v.idopont = :idopont")
     , @NamedQuery(name = "Vasarlas.findByEgyeb", query = "SELECT v FROM Vasarlas v WHERE v.egyeb = :egyeb")})
 public class Vasarlas implements Serializable {
 
@@ -48,6 +49,11 @@ public class Vasarlas implements Serializable {
     @Basic(optional = false)
     @Column(name = "SorSzam")
     private Integer sorSzam;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 100)
+    @Column(name = "Felhasznalo")
+    private String felhasznalo;
     @Basic(optional = false)
     @NotNull
     @Column(name = "Szamla")
@@ -76,13 +82,14 @@ public class Vasarlas implements Serializable {
     @Size(min = 1, max = 70)
     @Column(name = "UtcaHSzam")
     private String utcaHSzam;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "Idopont")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date idopont;
     @Size(max = 45)
     @Column(name = "Egyeb")
     private String egyeb;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "vasarlas")
-    private Collection<Vasarlasszamla> vasarlasszamlaCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "vasarlas")
-    private Collection<Egysegarak> egysegarakCollection;
 
     public Vasarlas() {
     }
@@ -91,14 +98,16 @@ public class Vasarlas implements Serializable {
         this.sorSzam = sorSzam;
     }
 
-    public Vasarlas(Integer sorSzam, short szamla, String fizMod, int osszeg, String iRSzam, String varos, String utcaHSzam) {
+    public Vasarlas(Integer sorSzam, String felhasznalo, short szamla, String fizMod, int osszeg, String iRSzam, String varos, String utcaHSzam, Date idopont) {
         this.sorSzam = sorSzam;
+        this.felhasznalo = felhasznalo;
         this.szamla = szamla;
         this.fizMod = fizMod;
         this.osszeg = osszeg;
         this.iRSzam = iRSzam;
         this.varos = varos;
         this.utcaHSzam = utcaHSzam;
+        this.idopont = idopont;
     }
 
     public Integer getSorSzam() {
@@ -107,6 +116,14 @@ public class Vasarlas implements Serializable {
 
     public void setSorSzam(Integer sorSzam) {
         this.sorSzam = sorSzam;
+    }
+
+    public String getFelhasznalo() {
+        return felhasznalo;
+    }
+
+    public void setFelhasznalo(String felhasznalo) {
+        this.felhasznalo = felhasznalo;
     }
 
     public short getSzamla() {
@@ -157,30 +174,20 @@ public class Vasarlas implements Serializable {
         this.utcaHSzam = utcaHSzam;
     }
 
+    public Date getIdopont() {
+        return idopont;
+    }
+
+    public void setIdopont(Date idopont) {
+        this.idopont = idopont;
+    }
+
     public String getEgyeb() {
         return egyeb;
     }
 
     public void setEgyeb(String egyeb) {
         this.egyeb = egyeb;
-    }
-
-    @XmlTransient
-    public Collection<Vasarlasszamla> getVasarlasszamlaCollection() {
-        return vasarlasszamlaCollection;
-    }
-
-    public void setVasarlasszamlaCollection(Collection<Vasarlasszamla> vasarlasszamlaCollection) {
-        this.vasarlasszamlaCollection = vasarlasszamlaCollection;
-    }
-
-    @XmlTransient
-    public Collection<Egysegarak> getEgysegarakCollection() {
-        return egysegarakCollection;
-    }
-
-    public void setEgysegarakCollection(Collection<Egysegarak> egysegarakCollection) {
-        this.egysegarakCollection = egysegarakCollection;
     }
 
     @Override

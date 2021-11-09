@@ -27,21 +27,16 @@ public class WebShopService{
      * illetve visszajelzest ad hogy az adott funkcio mukodott es hiba nelkul vagy valamit
      * helytelenul adtunk meg es jelez, meg lehet szamkodokat adok neki -Klepe
      * 
-     * @param vevokLista felelos a vevok betolteseert a tablabol
-     * @param adminLista felelos az adminok betolteseert a tablabol
-     * @param termekLista felelos a termekek betolteseert a tablabol
      * @param chosenOne egy vevo object adott esetben valo felhasznalasra
      * @param chosenAdmin egy admin object adott esetben valo felhasznalasra
      * @param f function osztálybeli funkciokert felelos objektum, melynek funkcioi interfacek
     */
-    private Vevo chosenOne = new Vevo();
-    private Admin chosenAdmin = new Admin();
-    private function f = new function();
     
     // <editor-fold defaultstate="collapsed" desc="Vevo es Admin login">
     //Belepes, ellenorzes ha admin akkor response es ujra login
     public Integer LoginAcc(String name, String password){
         password = encrypt(password);
+        function f = new function();
         ArrayList<Vevo> vevokLista = getVevok();
         ArrayList<Admin> adminLista = getAdmins();
         return f.userLogin(name, password, vevokLista, adminLista);
@@ -49,6 +44,7 @@ public class WebShopService{
     //Admin login after update (átalakítás alatt)
     public Boolean adminLogin(String name, String password, String code){
         password = encrypt(password);
+        function f = new function();
         ArrayList<Admin> adminLista = getAdmins();
         return f.adminLogin(name, password, code, adminLista);
     }
@@ -516,8 +512,8 @@ public class WebShopService{
         }
     }
     //Password encryption
-    private static String encrypt(String password){
-        password = org.apache.commons.codec.digest.DigestUtils.sha256Hex(password);
-        return password;
+    public String encrypt(String password){
+        function f = new function();
+        return f.encryptPassword(password);
     }
 }

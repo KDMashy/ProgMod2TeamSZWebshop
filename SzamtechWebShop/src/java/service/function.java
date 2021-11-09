@@ -19,14 +19,6 @@ public class function implements interfaceList{
                     if (vevokLista.get(i).getVevoPassword().equals(password)) {
                         return 1;
                     }
-                } else {
-                    for (Integer j = 0; j < adminLista.size(); j++) {
-                        if (adminLista.get(j).getAdminname().equals(name) == Boolean.TRUE) {
-                            if (adminLista.get(j).getAdminpassword().equals(password) == Boolean.TRUE) {
-                                return 2;
-                            }
-                        }
-                    }
                 }
             }
             return 0;
@@ -54,5 +46,29 @@ public class function implements interfaceList{
             System.err.println(ex.toString());
             return Boolean.FALSE;
         }
+    }
+    
+    //Nev validalasa egy regisztraciokor vagy bejelentkezeskor
+    @Override
+    public Boolean validName(String name){
+        try{
+            if (name.contains("drop")) return Boolean.FALSE;
+            else if (name.contains("update")) return Boolean.FALSE;
+            else if (name.contains("insert")) return Boolean.FALSE;
+            else if (name.contains("alter")) return Boolean.FALSE;
+            else if (name.contains("table")) return Boolean.FALSE;
+            
+            else return Boolean.TRUE;
+        } catch(Exception ex){
+            System.err.println(ex.toString());
+            return Boolean.FALSE;
+        }
+    }
+    
+    //jelszo titkositas
+    @Override
+    public String encryptPassword(String password){
+        password = org.apache.commons.codec.digest.DigestUtils.sha256Hex(password);
+        return password;
     }
 }

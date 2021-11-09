@@ -1,15 +1,26 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import service.*;
+import model.*;
 
-public class Login extends HttpServlet {
+/**
+ *
+ * @author domak
+ */
+public class TESTSERVLET extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -24,45 +35,27 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
         WebShopService wbservice = new WebShopService();
         
-        String lName = request.getParameter("loginName");
-        String lPassword = request.getParameter("loginPassword");
         
-        Integer Login = wbservice.LoginAcc(lName, lPassword);
-        
-        lPassword = wbservice.encrypt(lPassword);
-        
-        HttpSession session = request.getSession();
-        session.setAttribute("loginName", lName);
-        session.setAttribute("loginPassword", lPassword);
-        
+        Boolean anonym = Boolean.FALSE;
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Login</title>");            
+            out.println("<title>Servlet TESTSERVLET</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Welcome "+ lName +"</h1>");
-            /*out.println("<form action='TESTSERVLET'>");
-            out.println("<input type='submit' value='TESTSERVLET' />");
-            out.println("</form>");*/
+            out.println("<h1>tesztelésre van</h1>");
+            /*ArrayList<Vevo> vevok = wbservice.getVevok();
+            for (Vevo t : vevok) {
+                anonym = wbservice.anonymisation(t.getVevoNev());
+                out.println("<h1>Servlet TESTSERVLET at" + anonym + " " + t.getVevoNev() + "</h1>");
+            }*/
             out.println("</body>");
             out.println("</html>");
         }
     }
-    /*public void doGet(HttpServletRequest request, HttpServletResponse response)
-             {
-        try{
-            response.setContentType("text/html");
-            PrintWriter out = response.getWriter();
-            Cookie cks[] = request.getCookies();
-            out.print("Hello"+cks[0].getValue());
-            out.close();
-        } catch(Exception ex){
-            System.out.println(ex.toString());
-        }
-    }*/
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

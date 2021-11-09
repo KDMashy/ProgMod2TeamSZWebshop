@@ -30,10 +30,15 @@ public class Register extends HttpServlet {
         String VevoPassw = request.getParameter("password");
         
         Boolean saved = wbservice.RegAcc(VevoName, VevoEmail, VevoPassw);
+        VevoPassw = wbservice.encrypt(VevoPassw);
+        
+        HttpSession session = request.getSession();
+        session.setAttribute("name", VevoName);
+        session.setAttribute("email", VevoEmail);
+        session.setAttribute("password", VevoPassw);
         
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -41,6 +46,10 @@ public class Register extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Register at " + saved + "</h1>");
+            out.println("<h2>Welcome " + VevoName + "</h2>");
+            /*out.println("<form action='TESTSERVLET'>");
+            out.println("<input type='submit' value='TESTSERVLET' />");
+            out.println("</form>");*/
             out.println("</body>");
             out.println("</html>");
         }
