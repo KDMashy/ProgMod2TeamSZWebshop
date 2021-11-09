@@ -62,7 +62,7 @@ public class TESTSERVLET extends HttpServlet {
             out.println("<title>Servlet TESTSERVLET</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>tesztelésre van"+bool+"</h1>");
+            out.println("<h1>tesztelésre van</h1>");
             //alabbit tesztelni kell, meg nincsenek termekek xd
             /*for (Termek t : termekek){
                 out.println("<h2>"+t.getTermekID()+t.getTermekNev()+"</h2>");
