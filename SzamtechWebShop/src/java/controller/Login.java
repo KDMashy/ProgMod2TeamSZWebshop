@@ -32,11 +32,13 @@ public class Login extends HttpServlet {
         lPassword = wbservice.encrypt(lPassword);
         
         HttpSession session = request.getSession();
-        session.setAttribute("loginName", lName);
-        session.setAttribute("loginPassword", lPassword);
+        
         
         if (Login == 1) {
             response.setContentType("text/html;charset=UTF-8");
+            session.setAttribute("loginName", lName);
+            session.setAttribute("loginPassword", lPassword);
+            session.setAttribute("Type", Login);
             try (PrintWriter out = response.getWriter()) {
                 out.println("<!DOCTYPE html>");
                 out.println("<html>");
@@ -45,6 +47,25 @@ public class Login extends HttpServlet {
                 out.println("</head>");
                 out.println("<body>");
                 out.println("<h1>Welcome "+ lName +"</h1>");
+                /*out.println("<form action='TESTSERVLET'>");
+                out.println("<input type='submit' value='TESTSERVLET' />");
+                out.println("</form>");*/
+                out.println("</body>");
+                out.println("</html>");
+            }
+        } else if (Login == 2) {
+            response.setContentType("text/html;charset=UTF-8");
+            session.setAttribute("loginName", lName);
+            session.setAttribute("loginPassword", lPassword);
+            session.setAttribute("Type", Login);
+            try (PrintWriter out = response.getWriter()) {
+                out.println("<!DOCTYPE html>");
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<title>Servlet ADMIN Login</title>");            
+                out.println("</head>");
+                out.println("<body>");
+                out.println("<h1>Welcome "+ lName +"(admin)</h1>");
                 /*out.println("<form action='TESTSERVLET'>");
                 out.println("<input type='submit' value='TESTSERVLET' />");
                 out.println("</form>");*/

@@ -20,6 +20,13 @@ public class function implements interfaceList{
                     }
                 }
             }
+            for (Integer i = 0; i < adminLista.size(); i++) {
+                if (adminLista.get(i).getAdminname().equals(name) == Boolean.TRUE) {
+                    if (adminLista.get(i).getAdminpassword().equals(password)) {
+                        return 2;
+                    }
+                }
+            }
             return 0;
         } catch(Exception ex){
             System.err.println(ex.toString());

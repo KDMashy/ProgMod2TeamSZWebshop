@@ -33,6 +33,11 @@ public class WebShopService{
      * helytelenul adtunk meg es jelez, meg lehet szamkodokat adok neki -Klepe
     */
     
+    private String DBServer = "jdbc:mysql://localhost:3306/webshop";
+    private String DBUsername = "root";
+    private String DBPassword = "";
+    
+    
     // <editor-fold defaultstate="collapsed" desc="Vevo es Admin login">
     //Belepes, ellenorzes ha admin akkor response es ujra login
     public Integer LoginAcc(String name, String password){
@@ -80,7 +85,7 @@ public class WebShopService{
             //DB meghivas, regisztralando felhasznalo adatainak mentese
             if (exist == Boolean.FALSE) {
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+                Connection con = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
                 String sql = "insert into vevo (VevoNev,VevoPassword,VevoEmail) values('"+name+"','"+password+"','"+email+"')";
                 PreparedStatement prestm = con.prepareStatement(sql);
                 prestm.execute();
@@ -101,7 +106,7 @@ public class WebShopService{
         ArrayList<Vevo> vevok = new ArrayList<>();
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+            Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
             String sql = "select * from vevo";
             PreparedStatement prestm = DBCon.prepareStatement(sql);
             ResultSet rs = prestm.executeQuery();
@@ -128,7 +133,7 @@ public class WebShopService{
         ArrayList<Admin> adminList = new ArrayList<>();
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+            Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
             String sql = "select * from admin";
             PreparedStatement prestm = DBCon.prepareStatement(sql);
             ResultSet rs = prestm.executeQuery();
@@ -155,7 +160,7 @@ public class WebShopService{
         Integer vid;
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+            Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
             vid = vevoEll(name);
             if (vid >= 0) {
                 String anonym = "anonym"+vid;
@@ -186,7 +191,7 @@ public class WebShopService{
         ArrayList<Vevo> vevokLista = getVevok();
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+            Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
             vid = vevoEll(name);
             if (vid >= 0) {
                 if (szamcim.equals("")) szamcim = vevokLista.get(vid).getVevoSzamCim();
@@ -212,7 +217,7 @@ public class WebShopService{
         password = encrypt(password);
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+            Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
             vid = vevoEll(name);
             if (vid >= 0) {
                 String sql = "update vevo set VevoPassword='"+password+"' where VevoID="+vid+"";
@@ -264,7 +269,7 @@ public class WebShopService{
         ArrayList<Termek> termekLista = getTermekek();
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+            Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
             String name = StringData.get(0);
             String desc = StringData.get(1);
             String url = "ProgMod2TeamSZWebshop\\SzamtechWebShop\\web\\RES/"+StringData.get(2);
@@ -299,7 +304,7 @@ public class WebShopService{
         ArrayList<Termek> termekek = new ArrayList<>();
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+            Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
             String sql = "select * from termek";
             PreparedStatement prestm = DBCon.prepareStatement(sql);
             ResultSet rs = prestm.executeQuery();
@@ -326,7 +331,7 @@ public class WebShopService{
         Integer tid;
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+            Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
             tid = termekEll(code, getTermekek());
             if (tid >= 0) {
                 String name = "anonymTermek"+tid;
@@ -351,7 +356,7 @@ public class WebShopService{
         ArrayList<Termek> termekLista = getTermekek();
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+            Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
             tid = termekEll(code, getTermekek());
             if (tid >= 0) {
                 if (price == 0) price = termekLista.get(tid).getTermekAr();
@@ -415,7 +420,7 @@ public class WebShopService{
                             ArrayList<String> vasaroltTermekek){
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+            Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
             String user = stringData.get(0);
             String fizmod = stringData.get(1);
             String varos = stringData.get(2);
@@ -456,7 +461,7 @@ public class WebShopService{
         Integer vid;
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+            Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
             vid = vasarlasEll(name, date);
             if (vid >= 0) {
                 String sql = "update vasarlas set Egyeb='DELETED' where Felhasznalo='"+name+"',Idopont='"+date+"'";
@@ -482,7 +487,7 @@ public class WebShopService{
         Integer vid, tid;
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+            Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
             vid = vasarlasEll(name, date);
             if (vid >= 0) {
                 for (Integer i = 0; i < vTermek.size(); i++) {
@@ -507,7 +512,7 @@ public class WebShopService{
         Integer vid;
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+            Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
             vid = vasarlasEll(name, date);
             System.out.println(vid);
             if (vid >= 0) {
@@ -540,7 +545,7 @@ public class WebShopService{
         ArrayList<Vasarlas> vasarlasok = new ArrayList<>();
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+            Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
             String sql = "select * from vasarlas where Felhasznalo='"+name+"',Idopont='"+date+"'";
             PreparedStatement prestm = DBCon.prepareStatement(sql);
             ResultSet rs = prestm.executeQuery();
@@ -650,7 +655,7 @@ public class WebShopService{
         ArrayList<Partner> partners = new ArrayList<>();
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+            Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
             String sql = "select * from partner";
             PreparedStatement prestm = DBCon.prepareStatement(sql);
             ResultSet rs = prestm.executeQuery();
@@ -671,7 +676,7 @@ public class WebShopService{
         ArrayList<Gyarto> gyartok = new ArrayList<>();
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+            Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
             String sql = "select * from gyarto";
             PreparedStatement prestm = DBCon.prepareStatement(sql);
             ResultSet rs = prestm.executeQuery();
@@ -691,7 +696,7 @@ public class WebShopService{
         ArrayList<Szerviz> szervizek = new ArrayList<>();
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+            Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
             String sql = "select * from szerviz";
             PreparedStatement prestm = DBCon.prepareStatement(sql);
             ResultSet rs = prestm.executeQuery();
@@ -713,7 +718,7 @@ public class WebShopService{
     public Boolean createPartner(String name, String elerhetoseg, String code){
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+            Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
             String sql = "insert into partner (PartnerNev,PartnerElerhetoseg) "
                         + "values('"+name+"','"+elerhetoseg+"')";
             PreparedStatement prestm = DBCon.prepareStatement(sql);
@@ -731,7 +736,7 @@ public class WebShopService{
     public Boolean createGyarto(String name, String elerhetoseg, Boolean gyartoiGarancia, String code){
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+            Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
             short bool = 0;
             if (gyartoiGarancia) bool = 1;
                 else bool = 0;
@@ -752,7 +757,7 @@ public class WebShopService{
     public Boolean createSzerviz(String name, String elerhetoseg, String code){
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+            Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
             String sql = "insert into partner (SzervizNev,SzervizElerhetoseg) "
                     + "values('"+name+"','"+elerhetoseg+"')";
             PreparedStatement prestm = DBCon.prepareStatement(sql);
@@ -772,7 +777,7 @@ public class WebShopService{
     public Boolean updatePartnerAdoszam(String adszam, String name, String code){
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
+            Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
             String sql = "update partner set PartnerAdoszam='"+adszam+"' where PartnerNev=" + name + "";
             PreparedStatement prestm = DBCon.prepareStatement(sql);
             prestm.executeUpdate();
