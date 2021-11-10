@@ -38,6 +38,7 @@ public class TESTSERVLET extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         WebShopService wbservice = new WebShopService();
+        
         //szamla torles teszt
         //Boolean bool = wbservice.anonymVasarlas("asd");
         //szamla teszt

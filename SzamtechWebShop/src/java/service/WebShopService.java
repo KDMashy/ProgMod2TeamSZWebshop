@@ -237,7 +237,7 @@ public class WebShopService{
         for (Integer i = 0; i < vevokLista.size(); i++) {
             if (vevokLista.get(i).getVevoNev().equals(name)) {
                 vid = vevokLista.get(i).getVevoID();
-                return vid++;
+                return vid;
             }
         }
         return vid = -1;
@@ -459,7 +459,7 @@ public class WebShopService{
             Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
             vid = vasarlasEll(name, date);
             if (vid >= 0) {
-                String sql = "update vasarlas set Egyeb='DELETED' where Felhasznalo='"+name+"'";
+                String sql = "update vasarlas set Egyeb='DELETED' where Felhasznalo='"+name+"',Idopont='"+date+"'";
                 PreparedStatement prestm = DBCon.prepareStatement(sql);
                 prestm.executeUpdate();
                 return Boolean.TRUE;
@@ -571,7 +571,7 @@ public class WebShopService{
         for (Integer i = 0; i < vList.size(); i++) {
             if (vList.get(i).getFelhasznalo().equals(name)) {
                 vid = vList.get(i).getSorSzam();
-                return vid++;
+                return vid;
             }
         }
         return vid = -1;
