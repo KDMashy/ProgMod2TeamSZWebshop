@@ -428,7 +428,7 @@ public class WebShopService{
             PreparedStatement prestm = DBCon.prepareStatement(sql);
             prestm.execute();
             ArrayList<Termek> termekek = getTermekek();
-            Boolean egysegar = createEgysegArak(user, termekek, mennyiseg, vasaroltTermekek);
+            Boolean egysegar = createEgysegArak(user, termekek, mennyiseg, vasaroltTermekek, date);
             return egysegar;
         } catch (SQLException ex) {
             Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
@@ -452,12 +452,12 @@ public class WebShopService{
         return sum;
     }
     //Vasarlas lemondasa
-    public Boolean delVasarlas(String name){
+    public Boolean delVasarlas(String name, String date){
         Integer vid;
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
-            vid = vasarlasEll(name);
+            vid = vasarlasEll(name, date);
             if (vid >= 0) {
                 String sql = "update vasarlas set Egyeb='DELETED' where Felhasznalo='"+name+"'";
                 PreparedStatement prestm = DBCon.prepareStatement(sql);
@@ -477,12 +477,13 @@ public class WebShopService{
     //Egysegarak leirasa
     public Boolean createEgysegArak(String name, ArrayList<Termek> tList, 
                     ArrayList<Integer> mennyiseg,
-                    ArrayList<String> vTermek){
+                    ArrayList<String> vTermek,
+                    String date){
         Integer vid, tid;
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
-            vid = vasarlasEll(name);
+            vid = vasarlasEll(name, date);
             if (vid >= 0) {
                 for (Integer i = 0; i < vTermek.size(); i++) {
                     tid = termekEll(name, tList);
@@ -502,12 +503,12 @@ public class WebShopService{
         }
     }
     //Vasarlas anonymizalasa
-    public Boolean anonymVasarlas(String name){
+    public Boolean anonymVasarlas(String name, String date){
         Integer vid;
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
-            vid = vasarlasEll(name);
+            vid = vasarlasEll(name, date);
             System.out.println(vid);
             if (vid >= 0) {
                 String anonym = "Anonym"+vid;
@@ -535,12 +536,12 @@ public class WebShopService{
      * 4-fizmod         9-date
      * 5-osszeg
      */
-    public ArrayList<Vasarlas> getVasarlasok(){
+    public ArrayList<Vasarlas> getVasarlasok(String name, String date){
         ArrayList<Vasarlas> vasarlasok = new ArrayList<>();
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection DBCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/webshop", "root", "");
-            String sql = "select * from vasarlas";
+            String sql = "select * from vasarlas where Felhasznalo='"+name+"',Idopont='"+date+"'";
             PreparedStatement prestm = DBCon.prepareStatement(sql);
             ResultSet rs = prestm.executeQuery();
             while (rs.next()){
@@ -564,8 +565,8 @@ public class WebShopService{
         return vasarlasok;
     }
     //vasarlas ellenorzes
-    private Integer vasarlasEll(String name){
-        ArrayList<Vasarlas> vList = getVasarlasok();
+    private Integer vasarlasEll(String name, String date){
+        ArrayList<Vasarlas> vList = getVasarlasok(name, date);
         Integer vid;
         for (Integer i = 0; i < vList.size(); i++) {
             if (vList.get(i).getFelhasznalo().equals(name)) {
@@ -576,8 +577,8 @@ public class WebShopService{
         return vid = -1;
     }
     //vasarlas lekerese
-    public Vasarlas getVasarlas(String name){
-        ArrayList<Vasarlas> vList = getVasarlasok();
+    public Vasarlas getVasarlas(String name, String date){
+        ArrayList<Vasarlas> vList = getVasarlasok(name, date);
         Vasarlas v = new Vasarlas();
         for (Integer i = 0; i < vList.size(); i++) {
             if (vList.get(i).getFelhasznalo().equals(name)) {
