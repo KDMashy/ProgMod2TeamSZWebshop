@@ -102,9 +102,16 @@ aside form ul{
 
 aside form ul li{
     margin: 25px;
-    
+    display: flex;
+    justify-content: space-between;
 }
 
+aside form ul li .searchInput{
+    width: 70%;
+}
+aside form ul li .radioButton{
+    margin-right: 10px;
+}
 
 aside label{
     font-size: 200%;
@@ -133,6 +140,7 @@ main .termekContainer{
 }
 main .termek{
     width: 32%;
+    margin-top: 20px;
     background-color: blueviolet;
 }
 

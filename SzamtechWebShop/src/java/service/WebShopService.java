@@ -796,3 +796,4 @@ public class WebShopService{
         return f.encryptPassword(password);
     }
 }
+
