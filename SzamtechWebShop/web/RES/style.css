@@ -3,8 +3,14 @@
     margin:0;
     padding:0;
     font-family: sans-serif;
-    box-sizing: border-box;
 }
+
+/*
+HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, 
+HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, 
+HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, 
+
+*/
 
 header
 {
@@ -63,6 +69,19 @@ header .funkciok{
     background: rgba(0, 0, 0, 0.25);
 }
 
+
+/*
+HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, 
+HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, 
+HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, 
+
+*/
+
+
+/*________________________________________________________________________________*/
+
+
+/*leiras.html main - eleje*/
 .mainContainer 
 {
     display: flex;
@@ -79,7 +98,7 @@ main .mainFlex{
     flex-wrap: wrap;
 }
 
-aside
+.leirasAside
 {
     width: 30%;
     background-color: rgba(188, 143, 143, 0.685);
@@ -96,25 +115,18 @@ main .bemutatkozas{
 }
 
 
-aside form ul{
+.leirasAside form ul{
     display: block;
     list-style-type: none;
 }
 
-aside form ul li{
+.leirasAside form ul li{
     margin: 25px;
-    display: flex;
-    justify-content: space-between;
+    
 }
 
-aside form ul li .searchInput{
-    width: 70%;
-}
-aside form ul li .radioButton{
-    margin-right: 10px;
-}
 
-aside label{
+.leirasAside label{
     font-size: 200%;
     background-color: rgba(190, 119, 119, 0.568);
 }
@@ -124,11 +136,6 @@ input[type = checkbox]{
     margin: 10px;
 }
 
-footer{
-    width: 200px;
-    height: 100%;
-    background-color: rgba(243, 64, 64, 0.308);
-}
 
 main .termek img{
     width: 90%;
@@ -141,8 +148,8 @@ main .termekContainer{
 }
 main .termek{
     width: 32%;
-    margin-top: 20px;
     background-color: blueviolet;
+    margin-bottom: 10px;
 }
 
 main .termek .termekAdat{
@@ -151,22 +158,40 @@ main .termek .termekAdat{
     padding: 5px 15px;
 }
 
+/*leiras.html main - vége*/
+/*________________________________________________________________________________*/
+
+
+
+/*regisztracio.html main - kezdete*/
+
+/*
 .logreg{
     width: 80%;
     margin: 0 10%;
 }
+
+
 .logreg .regisztracio, 
 .logreg .bejelentkezes{
     width: 40%;
-    margin: 0 auto;
     padding: 25px 15px 0;
+    background-color: aqua;
+    margin: 20px auto;
+
 }
+
+
 .logreg .regisztracio ul, 
 .logreg .bejelentkezes ul{
     list-style-type: none;
-    
-    
+
 }
+
+*/
+
+
+/*
 .logreg .regisztracio ul li, 
 .logreg .bejelentkezes ul li{
     
@@ -175,12 +200,63 @@ main .termek .termekAdat{
     flex-direction:column;
     padding: 15px 0;
 }
+
+
 .logreg .regisztracio ul li label,
 .logreg .regisztracio ul li input,
 .logreg .bejelentkezes ul li input,
 .logreg .bejelentkezes ul li label{
     width: 100%;
 }
+*/
+/*________________________________________________*/
+.bejelentkezes, .regisztracio{  
+    width: 382px;  
+    overflow: hidden;  
+    margin: 20px auto;  
+    margin: 20 0 0 450px;  
+    padding: 80px;  
+    background: #23463f;  
+    border-radius: 15px ;  
+      
+}  
+.logreg h2{  
+text-align: center;  
+color: #588227;  
+padding: 20px;
+font-size: 200%;
+}  
+.logreg label{  
+color: #08ffd1;  
+font-size: 17px;  
+}  
+.logreg input{  
+width: 300px;  
+height: 30px;  
+border: none;  
+border-radius: 3px;  
+padding-left: 8px;  
+}  
+
+.logreg .bekuld{  
+width: 300px;  
+height: 30px;  
+border: none;  
+border-radius: 17px;  
+padding-left: 7px;  
+color: blue;  
+
+
+}  
+
+
+
+/*leiras.html main - vége*/
+
+/*________________________________________________________________________________*/
+
+
+/*termekleiras.html main - eleje*/
 
 .termekleiras{
     width: 70%;
@@ -205,3 +281,11 @@ main .termek .termekAdat{
 
 }
 
+
+/*termekleiras.html main - vége*/
+
+
+/*________________________________________________________________________________*/
+
+
+/*komment*/

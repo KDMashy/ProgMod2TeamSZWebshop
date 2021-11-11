@@ -27,48 +27,55 @@
     </header>
 
     <main class="logreg">
-        <div class="regisztracio">
-            <form action="reg">
-                <ul>
-                    <li>
-                        <label for="registerName">felhasználó név</label>
-                         <input type="text" name="name" id="registerName" >
-                    </li>
-                    <li>
-                        <label for="registerPasw">Jelszó</label>
-                        <input type="password" name="password" id="registerPasw" >
-                    </li>
-                    <li>
-                        <label for="registerEmail">Email: </label>
-                        <input type="text" name="email" id="registerEmail">
-                    </li>
-                    <li>
-                        <button type="submit">regisztracio</button>
-                    </li>
-                </ul>
-                
-               
-                
-                
-            </form>
-        </div>
-        <div class="bejelentkezes">
-            <form action="logAcc">
-                <ul>
-                    <li>
-                        <label for="registerName">felhasználó név</label>
-                        <input type="text" name="name" id="registerName" >
-                    </li>
-                    <li>
-                        <label for="registerPasw">Jelszó</label>
-                        <input type="password" name="password" id="registerPasw" >
-                    </li>
-                    <li>
-                        <button type="submit">bejlentkezés</button>
-                    </li>
-                </ul>
-            </form>
-        </div>
+  
+        <div class="regisztracio">  
+            <h2>Regisztráció</h2><br>   
+            <form id="logAcc" method="get">    
+                <label><b>Felhasználónév    
+                </b> 
+                <br><br>      
+                </label>    
+                <input type="text" name="name" id="registerName">    
+                <br><br>    
+                <label><b>Jelszó     
+                </b>    
+                <br><br>   
+                </label>    
+                <input type="password" name="password" id="registerPasw">    
+                <br><br>
+                <label><b>Email     
+                </b>    
+                <br><br>   
+                </label>    
+                <input type="text" name="email" id="registerEmail">
+                <br><br>    
+                <input type="submit" id="log" value="Regisztráció" class="bekuld">  
+            </form>     
+        </div>    
+        
+        
+
+       
+    <div class="bejelentkezes">  
+    <h2>Bejelentkezés</h2><br>   
+    <form id="logAcc" method="get">    
+        <label><b>Felhasználónév    
+        </b> 
+        <br><br>      
+        </label>    
+        <input type="text" name="name" id="registerName">    
+        <br><br>    
+        <label><b>Jelszó     
+        </b>    
+        <br><br>   
+        </label>    
+        <input type="password" name="password" id="registerPasw">    
+        <br><br>    
+        <input type="submit" id="log" value="bejelentkezés" class="bekuld">  
+    </form>     
+</div>    
+
     </main>
+    
 
 </body>
