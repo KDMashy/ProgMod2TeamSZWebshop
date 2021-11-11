@@ -1,0 +1,239 @@
+*{
+    font-size: 15px;
+    margin:0;
+    padding:0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+header
+{
+    background: greenyellow;
+    width: 100%;
+}
+
+header nav
+{
+    height: 110px;
+    display: flex;/*egymás mellé rakjuk a logókat*/
+    justify-content: space-between;/*kitölti az elemekkel a teret. Két elem esetén, az egyik megy balra, a másik jobbra*/
+    align-items: center;/*függőleges hözépre igazítás a navon belül*/
+
+}
+header .logo img/*A headeren, logon belüli képek*/
+{
+    width: 100px;
+}
+header .szolgaltatasok img
+{
+    width: 50px;
+}
+
+
+
+header img
+{
+    padding: 30px;
+    
+}
+
+
+header nav button
+{
+    
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 20px 35px ;/*link margók*/
+/*lekerekítés, 50 px el*/
+    transition: background 0.3s;/*a háttér elszíneződés időtartama*/
+    background: rgb(145, 226, 22);
+}
+
+header nav button:hover
+{
+    background: rgba(0, 0, 0, 0.25);
+}
+
+header .funkciok{
+    transition: background 0.3s;
+}
+
+.funkciok:hover{
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.mainContainer 
+{
+    display: flex;
+}
+
+.termekek{
+    width: 70%;
+    background-color:silver;
+    
+}
+main .mainFlex{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+aside
+{
+    width: 30%;
+    background-color: rgba(188, 143, 143, 0.685);
+}
+
+main .bemutatkozas{
+    background-image:url(lany_geppel.jpg);
+    background-size: cover;/*szélesség meg lesz, de a magasság nem*/
+    background-repeat: no-repeat;/*hogy ne legyen ismétlés*/
+    background-position:center;/*biztos, hogy illeszkedni fog a tetejéhet az alsó résznek*/
+
+    width: 100%;
+    height: 500px;
+}
+
+
+aside form ul{
+    display: block;
+    list-style-type: none;
+}
+
+aside form ul li{
+    margin: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+aside form ul li .searchInput{
+    width: 70%;
+}
+aside form ul li .radioButton{
+    margin-right: 10px;
+}
+
+aside label{
+    font-size: 200%;
+    background-color: rgba(190, 119, 119, 0.568);
+}
+
+input[type = checkbox]{
+    transform: scale(2);
+    margin: 10px;
+}
+
+footer{
+    width: 200px;
+    height: 100%;
+    background-color: rgba(243, 64, 64, 0.308);
+}
+
+main .termek img{
+    width: 90%;
+    margin: 5% 15px;
+}
+
+main .termekContainer{
+    display: flex;
+    justify-content: space-around;
+}
+main .termek{
+    width: 32%;
+    margin-top: 20px;
+    background-color: blueviolet;
+}
+
+main .termek .termekAdat{
+    width: 45%;
+    text-align: center;
+    padding: 5px 15px;
+}
+
+.logreg{
+    width: 80%;
+    margin: 0 10%;
+}
+.logreg .regisztracio, 
+.logreg .bejelentkezes{
+    width: 40%;
+    margin: 0 auto;
+    padding: 25px 15px 0;
+}
+.logreg .regisztracio ul, 
+.logreg .bejelentkezes ul{
+    list-style-type: none;
+    
+    
+}
+.logreg .regisztracio ul li, 
+.logreg .bejelentkezes ul li{
+    
+    display: flex;
+    justify-content: space-aroundű;
+    flex-direction:column;
+    padding: 15px 0;
+}
+.logreg .regisztracio ul li label,
+.logreg .regisztracio ul li input,
+.logreg .bejelentkezes ul li input,
+.logreg .bejelentkezes ul li label{
+    width: 100%;
+}
+
+.termekleiras{
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    
+}
+.termekleiras h1{
+    margin: 30px auto;
+    font-size: 200%;
+}
+
+.termekleiras img{
+    width: 50%;
+    margin: 10px auto;
+}
+.termekleiras p{
+    margin: 30px auto;
+    font-size: 110%;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+/*Klepe kontárkodik*/
+.tamogatoinkMain {
+    width: 80%;
+    margin: 0 auto;
+    background-color: rgba(114, 114, 114, 0.21);
+}
+.tamogatoinkMain .theme{
+    width: 90%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    border-left: 5px solid #999;
+    border-right: 5px solid #999;
+}
+.tamogatoinkMain .theme th{
+    background-color: rgba(64, 64, 64, 0.21);
+    padding: 10px 10px;
+    border-bottom: 3px solid #999;
+    border-top: 5px solid #999;
+}
+.tamogatoinkMain .theme td{
+    padding: 15px 10px;
+}
+.tamogatoinkMain .theme .tabl{
+    border-bottom: 1px solid #555;
+    transition: background 0.3s, color 0.3s;
+}
+.tamogatoinkMain .theme .tabl:hover{
+    background-color: rgba(114, 114, 114, 0.62);
+    color: #fff;
+}
+.tamogatoinkMain hr{
+    margin: 25px 0;
+}
