@@ -80,6 +80,42 @@ public class menuLogin extends HttpServlet {
                         "            </form>     \n" +
                         "        </div>    \n" +
                         "    </main>\n" +
+                        "    <footer>\n" +
+                            "    <section class = \"bemutatkozas\">\n" +
+                            "            <div class=\"footer_info_box\">\n" +
+                            "                <h3>Elérhetőségek:</h3>\n" +
+                            "                <br>\n" +
+                            "                <div class=\"footer_elerhetoseg\">\n" +
+                            "                    <img src=\"RES/free-phone-icon-vector-27.jpg\" alt=\"\">\n" +
+                            "                    <p class=\"footer_elerhetoseg_szoveg\">+36 20 123 4567</p>\n" +
+                            "                </div>\n" +
+                            "                <div class=\"footer_elerhetoseg\">\n" +
+                            "                    <img src=\"RES/email-vector-icon-png-17.jpg\" alt=\"\">\n" +
+                            "                    <a href=\"mailto: eznemisletezik@gmail.com\">eznemisletezik@gmail.com</a>\n" +
+                            "                </div>\n" +
+                            "                <div class=\"footer_elerhetoseg\">\n" +
+                            "                    <img src=\"RES/gps-icon-vector-7.jpg\" alt=\"\">\n" +
+                            "                    <p class=\"footer_elerhetoseg_szoveg\">7620 Pécs PTE - TTK</p>\n" +
+                            "                </div>  \n" +
+                            "            </div>\n" +
+                            "            <div class=\"footer_info_box\">\n" +
+                            "                <h3>Információk rólunk: </h3>\n" +
+                            "                <br><br>\n" +
+                            "                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, tempore!</p>\n" +
+                            "                <br>\n" +
+                            "                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem blanditiis ipsum, nulla dicta facere eius quos quae quasi nihil tenetur?</p>\n" +
+                            "                <br>\n" +
+                            "            </div>\n" +
+                            "            <div class=\"footer_info_box\">\n" +
+                            "                <h3>Támogatóint: </h3>\n" +
+                            "                <br><br>\n" +
+                            "                <div class = \"footer_tamogatok\">\n" +
+                            "                    <p>lelépünk a pénzel kft</p>\n" +
+                            "                    <br>\n" +
+                            "                </div>\n" +
+                            "            </div>\n" +
+                            "    </section>\n" +
+                            "</footer>" +
                         "</body>");
         }
     }
