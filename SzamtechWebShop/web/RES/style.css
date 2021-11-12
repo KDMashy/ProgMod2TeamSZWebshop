@@ -22,13 +22,13 @@ header nav
 {
     height: 110px;
     display: flex;/*egymás mellé rakjuk a logókat*/
-    justify-content: space-between;/*kitölti az elemekkel a teret. Két elem esetén, az egyik megy balra, a másik jobbra*/
+    justify-content: space-around;/*kitölti az elemekkel a teret. Két elem esetén, az egyik megy balra, a másik jobbra*/
     align-items: center;/*függőleges hözépre igazítás a navon belül*/
 
 }
 header .logo img/*A headeren, logon belüli képek*/
 {
-    width: 100px;
+    width: 100%;
 }
 header .szolgaltatasok img
 {
@@ -165,51 +165,6 @@ main .termek .termekAdat{
 
 /*regisztracio.html main - kezdete*/
 
-/*
-.logreg{
-    width: 80%;
-    margin: 0 10%;
-}
-
-
-.logreg .regisztracio, 
-.logreg .bejelentkezes{
-    width: 40%;
-    padding: 25px 15px 0;
-    background-color: aqua;
-    margin: 20px auto;
-
-}
-
-
-.logreg .regisztracio ul, 
-.logreg .bejelentkezes ul{
-    list-style-type: none;
-
-}
-
-*/
-
-
-/*
-.logreg .regisztracio ul li, 
-.logreg .bejelentkezes ul li{
-    
-    display: flex;
-    justify-content: space-aroundű;
-    flex-direction:column;
-    padding: 15px 0;
-}
-
-
-.logreg .regisztracio ul li label,
-.logreg .regisztracio ul li input,
-.logreg .bejelentkezes ul li input,
-.logreg .bejelentkezes ul li label{
-    width: 100%;
-}
-*/
-/*________________________________________________*/
 .bejelentkezes, .regisztracio{  
     width: 382px;  
     overflow: hidden;  
@@ -288,4 +243,61 @@ color: blue;
 /*________________________________________________________________________________*/
 
 
-/*komment*/
+/*footer - kezdet*/
+
+footer{
+    width: 100%;
+    height: 250px;
+    background-color: rgba(188, 143, 143, 0.685);
+    display: flex;
+    align-items: center;
+}
+
+
+footer .bemutatkozas{
+    width: 95%;
+    height: 95%;
+    margin: auto auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+    
+
+
+}
+.footer_info_box{
+    width: 30%;
+    display: flex;
+    align-content: stretch;
+    flex-direction: column;
+}
+
+footer .footer_elerhetoseg{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 10px;
+
+}
+
+.footer_elerhetoseg img{
+    width: 40px;
+    height: 40px;
+}
+
+footer h3{
+    font-size: 150%;
+    color:  rgb(68, 33, 24);
+}
+
+footer a{
+    color: rgba(0, 0, 0, 0.7);
+    text-decoration-color: rgba(0, 0, 0, 0.459);
+    
+}
+
+
+
+/*footer - vége*/
+/*________________________________________________________________________________*/
