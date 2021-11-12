@@ -16,6 +16,26 @@
         <servlet-name>menuLogin</servlet-name>
         <servlet-class>controller.menuLogin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>adminSite</servlet-name>
+        <servlet-class>controller.adminSite</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>menuMain</servlet-name>
+        <servlet-class>controller.menuMain</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>menuTermekek</servlet-name>
+        <servlet-class>controller.menuTermekek</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>menuTamogatoink</servlet-name>
+        <servlet-class>controller.menuTamogatoink</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>logOut</servlet-name>
+        <servlet-class>controller.logOut</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/reg</url-pattern>
@@ -31,6 +51,26 @@
     <servlet-mapping>
         <servlet-name>menuLogin</servlet-name>
         <url-pattern>/menuLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>adminSite</servlet-name>
+        <url-pattern>/adminSite</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>menuMain</servlet-name>
+        <url-pattern>/menuMain</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>menuTermekek</servlet-name>
+        <url-pattern>/menuTermekek</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>menuTamogatoink</servlet-name>
+        <url-pattern>/menuTamogatoink</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>logOut</servlet-name>
+        <url-pattern>/logOut</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

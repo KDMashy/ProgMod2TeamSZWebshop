@@ -274,14 +274,14 @@ public class WebShopService{
         return tStringData;
     }
     public Boolean createTermek(ArrayList<String> StringData, Short bool, Short category,
-            Integer price, String code){
+            Integer price){
         ArrayList<Termek> termekLista = getTermekek();
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
             String name = StringData.get(0);
             String desc = StringData.get(1);
-            String url = "ProgMod2TeamSZWebshop\\SzamtechWebShop\\web\\RES/"+StringData.get(2);
+            String url = "ProgMod2TeamSZWebshop\\SzamtechWebShop\\web\\res/"+StringData.get(2);
             for (Integer i = 0; i < termekLista.size(); i++) {
                 if (termekEll(name, termekLista) == -1) {
                     String sql = "insert into termek (TermekNev,TermekDesc,TermekAr,TermekKep,TermekKeszlet,TermekKatID) "
@@ -724,7 +724,7 @@ public class WebShopService{
     
     // <editor-fold defaultstate="collapsed" desc="Create Partner,Gyarto,Szerviz">
     //Partner mentese
-    public Boolean createPartner(String name, String elerhetoseg, String code){
+    public Boolean createPartner(String name, String elerhetoseg){
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
@@ -742,7 +742,7 @@ public class WebShopService{
         }
     }
     //Gyarto mentese
-    public Boolean createGyarto(String name, String elerhetoseg, Boolean gyartoiGarancia, String code){
+    public Boolean createGyarto(String name, String elerhetoseg, Boolean gyartoiGarancia){
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
@@ -763,7 +763,7 @@ public class WebShopService{
         }
     }
     //Szerviz mentese
-    public Boolean createSzerviz(String name, String elerhetoseg, String code){
+    public Boolean createSzerviz(String name, String elerhetoseg){
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);

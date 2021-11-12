@@ -14,7 +14,6 @@ public class menuLogin extends HttpServlet {
         
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             out.print(  "<!DOCTYPE html>\n" +
                         "<html lang='en'>\n" +
                         "<head>\n" +
@@ -28,13 +27,12 @@ public class menuLogin extends HttpServlet {
                         "    <header>\n" +
                         "        <nav>\n" +
                         "            <a href='index.html' class='logo'><img src='res/logo.png' alt='logo helye'></a>\n" +
-                        "            <form action='menuPoints' method='post'>\n" +
-                        "                <button type='submit' name = 'menup' onclick='form.action='''>Kezdőlap</button>\n" +
-                        "                <button type='submit' name = 'menup' onclick='form.action='''>Termékek</button>\n" +
-                        "                <button type='submit' name = 'menup' onclick='form.action='''>Támogatóink</button>\n" +
-                        "                <button type='submit' name = 'menup' onclick='form.action='menuLogin''>Bejelentkezés</button>\n" +
+                        "            <form method='post'>\n" +
+                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\">Kezdőlap</button>\n" +
+                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\">Termékek</button>\n" +
+                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTamogatoink'\">Támogatóink</button>\n" +
+                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuLogin'\">Bejelentkezés</button>\n" +
                         "            </form>\n" +
-                        "\n" +
                         "            <div class='szolgaltatasok'>\n" +
                         "                <a href='' class='funkciok'>\n" +
                         "                    <img src='res/login.png' alt='login kép'>\n" +

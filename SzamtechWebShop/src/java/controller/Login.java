@@ -42,21 +42,10 @@ public class Login extends HttpServlet {
                 out.println("</html>");
             }
         } else if (Login == 2) {
-            response.setContentType("text/html;charset=UTF-8");
             session.setAttribute("name", lName);
             session.setAttribute("password", lPassword);
             session.setAttribute("Type", Login);
-            try (PrintWriter out = response.getWriter()) {
-                out.println("<!DOCTYPE html>");
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<title>Servlet ADMIN Login</title>");            
-                out.println("</head>");
-                out.println("<body>");
-                out.println("<h1>Welcome "+ lName +"(admin)</h1>");
-                out.println("</body>");
-                out.println("</html>");
-            }
+            response.sendRedirect("adminSite");
         } else {
             response.setContentType("text/html;charset=UTF-8");
             try (PrintWriter out = response.getWriter()) {

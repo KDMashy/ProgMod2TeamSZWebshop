@@ -8,14 +8,13 @@
     <link rel="stylesheet" href="RES/style.css">
 </head>
 <body>
-    
     <header>
         <nav>
             <a href="index.html" class="logo"><img src="res/logo.png" alt="logo helye"></a>
-            <form action="menuPoints">
-                <button type="submit" name = "menup" onclick="form.action=''">Kezdőlap</button>
-                <button type="submit" name = "menup" onclick="form.action=''">Termékek</button>
-                <button type="submit" name = "menup" onclick="form.action=''">Támogatóink</button>
+            <form method='post'>
+                <button type="submit" name = "menup" onclick="form.action='menuMain'">Kezdőlap</button>
+                <button type="submit" name = "menup" onclick="form.action='menuTermekek'">Termékek</button>
+                <button type="submit" name = "menup" onclick="form.action='menuTamogatoink'">Támogatóink</button>
                 <button type="submit" name = "menup" onclick="form.action='menuLogin'">Bejelentkezés</button>
             </form>
 
@@ -25,17 +24,11 @@
             </div>
         </nav>
     </header>
-
-
     <main>
-
-        
-        
         <p>a</p>
-
     </main>
-<footer>
-    <section class = "bemutatkozas">
+    <footer>
+        <section class = "bemutatkozas">
             <div class="footer_info_box">
                 <h3>Elérhetőségek:</h3>
                 <br>
@@ -52,8 +45,6 @@
                     <p class="footer_elerhetoseg_szoveg">7620 Pécs PTE - TTK</p>
                 </div>  
             </div>
-
-
             <div class="footer_info_box">
                 <h3>Információk rólunk: </h3>
                 <br><br>
@@ -62,9 +53,6 @@
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem blanditiis ipsum, nulla dicta facere eius quos quae quasi nihil tenetur?</p>
                 <br>
             </div>
-
-
-
             <div class="footer_info_box">
                 <h3>Támogatóint: </h3>
                 <br><br>
@@ -73,9 +61,7 @@
                     <br>
                 </div>
             </div>
-        
-    </section>
-</footer>
-
+        </section>
+    </footer>
 </body>
 </html>
