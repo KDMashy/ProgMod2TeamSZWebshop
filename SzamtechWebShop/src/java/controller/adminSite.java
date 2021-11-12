@@ -40,10 +40,10 @@ public class adminSite extends HttpServlet {
                         "        <main>\n" +
                         "            <div class='function'>\n" +
                         "               <form method='post'>\n" +
-                        "                   <button type='submit' onclick='form.action='listTermek''>Termékek listázása</button><br>\n" +
-                        "                   <button type='submit' onclick='form.action='listPartnerekAdmin''>Partnerek listázása</button><br>\n" +
-                        "                   <button type='submit' onclick='form.action='listGyartokAdmin''>Gyártók listázása</button><br>\n" +
-                        "                   <button type='submit' onclick='form.action='listSzervizAdmin''>Szervízek listázása</button><br>\n" +
+                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='listTermek'\">Termékek listázás</button>\n" +
+                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='listPartner'\">Partnerek Listázása</button>\n" +
+                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='listGyarto'\">Gyártók listázása</button>\n" +
+                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='listSzerviz'\">Szervízek Listázása</button>\n" +
                         "               </form>\n" +
                         "            </div>\n" +
                         "            <div class='function'>\n" +
@@ -71,7 +71,7 @@ public class adminSite extends HttpServlet {
                         "                    <select name='KategoriaVal' id='KatVal'>\n" +
                         "                        <option value='1'>pelda</option>\n" +
                         "                    </select><br>\n" +
-                        "                    <button type='submit'>Termék létrehozása</button>\n" +
+                        "                    <button type=\"submit\">Termék létrehozása</button>\n" +
                         "                </form>\n" +
                         "            </div>\n" +
                         "            <div class='function'>\n" +
@@ -93,11 +93,11 @@ public class adminSite extends HttpServlet {
                         "                    <div class='Tradio'>\n" +
                         "                        <div class='TradioIgen'>\n" +
                         "                            <span>Igen</span>\n" +
-                        "                            <input type='radio' name='stock' value='0' id='Tradio' checked>\n" +
+                        "                            <input type='radio' name='gar' value='1' id='Tradio' checked>\n" +
                         "                        </div>\n" +
                         "                        <div class='TradioNem'>\n" +
                         "                            <span>Nem</span>\n" +
-                        "                            <input type='radio' name='stock' value='1' id='Tradio'>\n" +
+                        "                            <input type='radio' name='gar' value='0' id='Tradio'>\n" +
                         "                        </div>\n" +
                         "                    </div>\n" +
                         "                    <button type='submit'>Gyártó létrehozása</button>\n" +

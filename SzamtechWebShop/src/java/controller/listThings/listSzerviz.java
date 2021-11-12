@@ -10,13 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 import model.*;
 import service.*;
 
-public class listPartner extends HttpServlet {
-    
+public class listSzerviz extends HttpServlet {
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         WebShopService wbservice = new WebShopService();
         
-        ArrayList<Partner> partnerek = wbservice.getPartners();
+        ArrayList<Szerviz> szervizek = wbservice.getszervizek();
         
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -43,18 +43,16 @@ public class listPartner extends HttpServlet {
                         "                <table class='theme'>\n" +
                         "                    <thead>\n" +
                         "                        <tr>\n" +
-                        "                            <td>Partner neve</td>\n" +
+                        "                            <td>Szervíz neve</td>\n" +
                         "                            <td>Elérhetősége</td>\n" +
-                        "                            <td>Adószáma</td>\n" +
                         "                        </tr>\n" +
                         "                    </thead>\n" +
                         "                    <tbody>\n");
-            for (Partner t : partnerek){
-                if (t.getPartnerNev().contains("anonym") == Boolean.FALSE) {
+            for (Szerviz t : szervizek){
+                if (t.getSzervizNev().contains("anonym") == Boolean.FALSE) {
                     out.print(  "                        <tr>\n" +
-                            "                            <td>"+t.getPartnerNev()+"</td>\n" +
-                            "                            <td>"+t.getPartnerElerhetoseg()+"</td>\n" +
-                            "                            <td>"+t.getPartnerAdoszam()+"</td>\n" +
+                            "                            <td>"+t.getSzervizNev()+"</td>\n" +
+                            "                            <td>"+t.getSzervizElerhetoseg()+"</td>\n" +
                             "                        </tr>\n");
                 }
             }

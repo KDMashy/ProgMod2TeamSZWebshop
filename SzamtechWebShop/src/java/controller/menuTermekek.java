@@ -68,7 +68,8 @@ public class menuTermekek extends HttpServlet {
                         "        <main class='termekek'>\n" +
                         "            <div class = 'mainFlex'>\n");
             for (Termek t :  termekek){
-                out.print(  "                <div class='termek'>\n" +
+                if (t.getTermekNev().contains("anonym") == Boolean.FALSE) {
+                    out.print(  "                <div class='termek'>\n" +
                             "                    <img src='RES/lany_geppel.jpg' alt=''>\n" + //ide majd be kell rakni a kepek URLjet, de meg nincs, anonym nem is fog megjelenni
                             "                    <div class='termekContainer'>\n" +
                             "                        <h3 class='termekAdat'>"+t.getTermekNev()+"</h3>\n" +
@@ -78,6 +79,7 @@ public class menuTermekek extends HttpServlet {
                             "                        </form>\n" +
                             "                    </div>\n" +
                             "                </div>\n");
+                }
             }
             out.print(  "            </div>\n" +
                         "        </main>\n" +

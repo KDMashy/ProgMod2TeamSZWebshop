@@ -10,13 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 import model.*;
 import service.*;
 
-public class listPartner extends HttpServlet {
-    
+public class listGyarto extends HttpServlet {
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         WebShopService wbservice = new WebShopService();
         
-        ArrayList<Partner> partnerek = wbservice.getPartners();
+        ArrayList<Gyarto> gyartok = wbservice.getGyartok();
         
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -43,20 +43,18 @@ public class listPartner extends HttpServlet {
                         "                <table class='theme'>\n" +
                         "                    <thead>\n" +
                         "                        <tr>\n" +
-                        "                            <td>Partner neve</td>\n" +
-                        "                            <td>Elérhetősége</td>\n" +
-                        "                            <td>Adószáma</td>\n" +
+                        "                            <td>Gyártó neve</td>\n" +
+                        "                            <td>Elérhetőség</td>\n" +
+                        "                            <td>Gyártói Garancia</td>\n" +
                         "                        </tr>\n" +
                         "                    </thead>\n" +
                         "                    <tbody>\n");
-            for (Partner t : partnerek){
-                if (t.getPartnerNev().contains("anonym") == Boolean.FALSE) {
-                    out.print(  "                        <tr>\n" +
-                            "                            <td>"+t.getPartnerNev()+"</td>\n" +
-                            "                            <td>"+t.getPartnerElerhetoseg()+"</td>\n" +
-                            "                            <td>"+t.getPartnerAdoszam()+"</td>\n" +
+            for (Gyarto t : gyartok){
+                out.print(  "                        <tr>\n" +
+                            "                            <td>"+t.getGyartoNev()+"</td>\n" +
+                            "                            <td>"+t.getGyartoElerhetoseg()+"</td>\n" +
+                            "                            <td>"+t.getGyartoiGarancia()+"</td>\n" +
                             "                        </tr>\n");
-                }
             }
             out.print(  "                    </tbody>\n" +
                         "                                        </table>\n" +

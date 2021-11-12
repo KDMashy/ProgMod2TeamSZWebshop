@@ -31,6 +31,7 @@ public class createTermek extends HttpServlet {
         TData.add(TImg);
         
         Boolean create = wbservice.createTermek(TData, bool, katID, price);
+        
         if (create) {
             response.sendRedirect("listTermek");
         } else {

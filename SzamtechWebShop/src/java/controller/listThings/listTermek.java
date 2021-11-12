@@ -53,7 +53,8 @@ public class listTermek extends HttpServlet {
                         "                    </thead>\n" +
                         "                    <tbody>\n");
             for (Termek t : termekek){
-                out.print(  "                        <tr>\n" +
+                if (t.getTermekNev().contains("anonym") == Boolean.FALSE) {
+                    out.print(  "                        <tr>\n" +
                             "                            <td>"+t.getTermekNev()+"</td>\n" +
                             "                            <td>"+t.getTermekDesc()+"</td>\n" +
                             "                            <td>"+t.getTermekAr()+"</td>\n" +
@@ -61,6 +62,7 @@ public class listTermek extends HttpServlet {
                             "                            <td>"+t.getTermekKeszlet()+"</td>\n" +
                             "                            <td>"+t.getTermekKatID()+"</td>\n" +
                             "                        </tr>\n");
+                }
             }
             out.print(  "                    </tbody>\n" +
                         "                                        </table>\n" +

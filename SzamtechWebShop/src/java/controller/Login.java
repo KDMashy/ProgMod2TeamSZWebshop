@@ -14,7 +14,7 @@ public class Login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         WebShopService wbservice = new WebShopService();
-        
+        request.setCharacterEncoding("UTF-8");
         String lName = request.getParameter("name");
         String lPassword = request.getParameter("password");
         

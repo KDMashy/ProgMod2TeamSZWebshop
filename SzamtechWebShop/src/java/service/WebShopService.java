@@ -326,9 +326,7 @@ public class WebShopService{
                 t.setTermekKep(rs.getString(5));
                 t.setTermekKeszlet(rs.getShort(6));
                 t.setTermekKatID(rs.getShort(7));
-                if (t.getTermekNev().contains("anonym") == Boolean.FALSE) {
-                    termekek.add(t);
-                }
+                termekek.add(t);
             }
         } catch (SQLException ex) {
             Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
@@ -744,15 +742,12 @@ public class WebShopService{
         }
     }
     //Gyarto mentese
-    public Boolean createGyarto(String name, String elerhetoseg, Boolean gyartoiGarancia){
+    public Boolean createGyarto(String name, String elerhetoseg, Short gyartoiGarancia){
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
-            short bool = 0;
-            if (gyartoiGarancia) bool = 1;
-                else bool = 0;
-            String sql = "insert into partner (GyartoNev,GyartoElerhetoseg,GyartoiGarancia) "
-                    + "values('"+name+"','"+elerhetoseg+"'"+bool+")";
+            String sql = "insert into gyarto (GyartoNev,GyartoElerhetoseg,GyartoiGarancia) "
+                    + "values('"+name+"','"+elerhetoseg+"',"+gyartoiGarancia+")";
             PreparedStatement prestm = DBCon.prepareStatement(sql);
             prestm.execute();
             return Boolean.TRUE;
@@ -769,7 +764,7 @@ public class WebShopService{
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
-            String sql = "insert into partner (SzervizNev,SzervizElerhetoseg) "
+            String sql = "insert into szerviz (SzervizNev,SzervizElerhetoseg) "
                     + "values('"+name+"','"+elerhetoseg+"')";
             PreparedStatement prestm = DBCon.prepareStatement(sql);
             prestm.execute();

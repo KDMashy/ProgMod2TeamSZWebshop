@@ -56,6 +56,22 @@
         <servlet-name>listPartner</servlet-name>
         <servlet-class>controller.listThings.listPartner</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>createGyarto</servlet-name>
+        <servlet-class>controller.createThings.createGyarto</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>listGyarto</servlet-name>
+        <servlet-class>controller.listThings.listGyarto</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>createSzerviz</servlet-name>
+        <servlet-class>controller.createThings.createSzerviz</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>listSzerviz</servlet-name>
+        <servlet-class>controller.listThings.listSzerviz</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/reg</url-pattern>
@@ -111,6 +127,22 @@
     <servlet-mapping>
         <servlet-name>listPartner</servlet-name>
         <url-pattern>/listPartner</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>createGyarto</servlet-name>
+        <url-pattern>/createGyarto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>listGyarto</servlet-name>
+        <url-pattern>/listGyarto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>createSzerviz</servlet-name>
+        <url-pattern>/createSzerviz</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>listSzerviz</servlet-name>
+        <url-pattern>/listSzerviz</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
