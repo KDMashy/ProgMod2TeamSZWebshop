@@ -2,15 +2,24 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.*;
+import service.*;
 
 public class menuTamogatoink extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        WebShopService wbservice = new WebShopService();
+        
+        ArrayList<Partner> partnerek = wbservice.getPartners();
+        ArrayList<Gyarto> gyartok = wbservice.getGyartok();
+        ArrayList<Szerviz> szervizek = wbservice.getszervizek();
+        
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -46,77 +55,64 @@ public class menuTamogatoink extends HttpServlet {
                         "    <main class=\"tamogatoinkMain\">\n" +
                         "        <table class=\"theme\">\n" +
                         "            <thead>\n" +
-                        "                <th>asd1</th>\n" +
-                        "                <th>asd2</th>\n" +
-                        "                <th>asd3</th>\n" +
+                        "                <th>Partnerek nevei</th>\n" +
+                        "                <th>Elérhetőségeik</th>\n" +
                         "            </thead>\n" +
-                        "            <tbody>\n" +
-                        "                <tr>\n" +
-                        "                    <td>dsa1</td>\n" +
-                        "                    <td>dsa2</td>\n" +
-                        "                    <td>dsa3</td>\n" +
-                        "                </tr>\n" +
-                        "            </tbody>\n" +
+                        "            <tbody>\n");
+            for (Partner p : partnerek){
+                if (p.getPartnerNev().contains("anonym") == Boolean.FALSE) {
+                    out.print(  "                <tr>\n" +
+                            "                    <td style='text-align: center'>"+p.getPartnerNev()+"</td>\n" +
+                            "                    <td style='text-align: center'>"+p.getPartnerElerhetoseg()+"</td>\n" +
+                            "                </tr>\n");
+                }
+            }
+            out.print(  "            </tbody>\n" +
                         "        </table>\n" +
                         "        <hr>\n" +
                         "        <table class=\"theme\">\n" +
                         "            <thead>\n" +
-                        "                <th>asd1</th>\n" +
-                        "                <th>asd2</th>\n" +
-                        "                <th>asd3</th>\n" +
+                        "                <th>Gyártók nevei</th>\n" +
+                        "                <th>Elérhetőségeik</th>\n" +
+                        "                <th>Garanciát vállalnak-e</th>\n" +
                         "            </thead>\n" +
-                        "            <tbody>\n" +
-                        "                <tr>\n" +
-                        "                    <td>dsa1</td>\n" +
-                        "                    <td>dsa2</td>\n" +
-                        "                    <td>dsa3</td>\n" +
-                        "                </tr>\n" +
-                        "                <tr>\n" +
-                        "                    <td>dsa1</td>\n" +
-                        "                    <td>dsa2</td>\n" +
-                        "                    <td>dsa3</td>\n" +
-                        "                </tr>\n" +
-                        "                <tr>\n" +
-                        "                    <td>dsa1</td>\n" +
-                        "                    <td>dsa2</td>\n" +
-                        "                    <td>dsa3</td>\n" +
-                        "                </tr>\n" +
-                        "                <tr>\n" +
-                        "                    <td>dsa1</td>\n" +
-                        "                    <td>dsa2</td>\n" +
-                        "                    <td>dsa3</td>\n" +
-                        "                </tr>\n" +
-                        "                <tr>\n" +
-                        "                    <td>dsa1</td>\n" +
-                        "                    <td>dsa2</td>\n" +
-                        "                    <td>dsa3</td>\n" +
-                        "                </tr>\n" +
-                        "                <tr>\n" +
-                        "                    <td>dsa1</td>\n" +
-                        "                    <td>dsa2</td>\n" +
-                        "                    <td>dsa3</td>\n" +
-                        "                </tr>\n" +
-                        "                <tr>\n" +
-                        "                    <td>dsa1</td>\n" +
-                        "                    <td>dsa2</td>\n" +
-                        "                    <td>dsa3</td>\n" +
-                        "                </tr>\n" +
-                        "            </tbody>\n" +
+                        "            <tbody>\n");
+            for (Gyarto g : gyartok){
+                String val = "";
+                Short bool = g.getGyartoiGarancia();
+                if (bool == 1) {
+                    val = "Vállal";
+                } else {
+                    val = "Nem vállal";
+                }
+                if (g.getGyartoNev().contains("anonym") == Boolean.FALSE) {
+                    out.print(  "                <tr>\n" +
+                            "                    <td style='text-align: center'>"+g.getGyartoNev()+"</td>\n" +
+                            "                    <td style='text-align: center'>"+g.getGyartoElerhetoseg()+"</td>\n" +
+                            "                    <td style='text-align: center'>"+val+"</td>\n" +
+                            "                </tr>\n");
+                }
+            }
+            out.print(  "            </tbody>\n" +
                         "        </table>\n" +
                         "        <hr>\n" +
                         "        <table class=\"theme\">\n" +
                         "            <thead>\n" +
-                        "                <th>asd1</th>\n" +
-                        "                <th>asd2</th>\n" +
-                        "                <th>asd3</th>\n" +
+                        "               <tr>\n" +
+                        "                    <th>Szervíz nevek</th>\n" +
+                        "                    <th>Elérhetőségeik</th>\n" +
+                        "               </tr>\n" +
                         "            </thead>\n" +
-                        "            <tbody>\n" +
-                        "                <tr>\n" +
-                        "                    <td>dsa1</td>\n" +
-                        "                    <td>dsa2</td>\n" +
-                        "                    <td>dsa3</td>\n" +
-                        "                </tr>\n" +
-                        "            </tbody>\n" +
+                        "            <tbody>\n");
+            for (Szerviz s : szervizek){
+                if (s.getSzervizNev().contains("anonym") == Boolean.FALSE) {
+                    out.print(  "               <tr>\n" +
+                            "                    <td style='text-align: center'>"+s.getSzervizNev()+"</td>\n" +
+                            "                    <td style='text-align: center'>"+s.getSzervizElerhetoseg()+"</td>\n" +
+                            "               </tr>\n");
+                }
+            }
+            out.print(  "            </tbody>\n" +
                         "        </table>\n" +
                         "    </main>\n" +
                         "</body>\n" +
