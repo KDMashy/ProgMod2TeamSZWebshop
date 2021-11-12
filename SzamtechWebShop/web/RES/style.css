@@ -334,3 +334,59 @@ footer a{
 .tamogatoinkMain hr{
     margin: 25px 0;
 }
+/*még mindig*/
+.mainProfil{
+    width: 70%;
+    margin: 0 auto;
+    background-color: rgba(108, 108, 108, 0.13);
+}
+.mainProfil .felhasznalo{
+    width: 50%;
+    margin: 0 auto;
+    padding: 50px 0;
+    background-color: rgba(153, 153, 153, 0.1);
+    text-align: center;
+    border: 1px solid #999;
+}
+.mainProfil .fhMainInfo{
+    padding: 25px 0;
+    border: 1px solid #999;
+    border-radius: 100px;
+}
+.mainProfil .fhMainInfo .fName{
+    font-size: 150%;
+    text-transform: uppercase;
+}
+.mainProfil .fhMainInfo .femail{
+    font-size: 125%;
+    text-transform: lowercase;
+}
+.mainProfil .fhMainInfo .fName,
+.mainProfil .fhMainInfo .femail{
+    line-height: 2;
+}
+.mainProfil .fhOtherInfo{
+    margin: 25px 0;
+    padding: 30px 0;
+    border: 1px solid #999;
+    border-radius: 100px;
+}
+.mainProfil .fhOtherInfo span{
+    font-size: 130%;
+    line-height: 3;
+}
+.mainProfil .fhFunction{
+    margin: 50px 0;
+    padding: 25px 0;
+    border: 1px solid #999;
+    border-radius: 100px;
+}
+.mainProfil .fhFunction input{
+    width: 40%;
+    margin: 10px 0;
+    height: 25px;
+}
+.mainProfil .fhFunction button{
+    margin: 20px;
+    padding: 15px 25px;
+}

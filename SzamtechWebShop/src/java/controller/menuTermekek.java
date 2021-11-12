@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import service.*;
 import model.*;
 
@@ -18,73 +19,219 @@ public class menuTermekek extends HttpServlet {
         
         ArrayList<Termek> termekek = wbservice.getTermekek();
         
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            out.print(  "<!DOCTYPE html>\n" +
-                        "<html lang='en'>\n" +
-                        "<head>\n" +
-                        "    <meta charset='UTF-8'>\n" +
-                        "    <meta http-equiv='X-UA-Compatible' content='IE=edge'>\n" +
-                        "    <meta name='viewport' content='width=device-width, initial-scale=1.0'>\n" +
-                        "    <title>Webshop</title>\n" +
-                        "    <link rel='stylesheet' href='RES/style.css'>\n" +
-                        "</head>\n" +
-                        "<body>\n" +
-                        "    <header>\n" +
-                        "        <nav>\n" +
-                        "            <a href='index.html'class='logo'><img src='res/logo.png' alt='logo helye'></a>\n" +
-                        "            <form method='post'>\n" +
-                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\">Kezdőlap</button>\n" +
-                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\">Termékek</button>\n" +
-                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTamogatoink'\">Támogatóink</button>\n" +
-                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuLogin'\">Bejelentkezés</button>\n" +
-                        "            </form>\n" +
-                        "            <div class='szolgaltatasok'>\n" +
-                        "            <a href='' class='funkciok'><img src='res/login.png' alt='login kép'></a>\n" +
-                        "            <a href='' class='funkciok'><img src='res/basket.png' alt='kosár kép'></a>\n" +
-                        "            </div>\n" +
-                        "        </nav>\n" +
-                        "    </header>\n" +
-                        "    <div class='mainContainer'>\n" +
-                        "        <aside class='leirasAside'>\n" +
-                        "            <form action='szures' method='post'>\n" +
-                        "                <ul>\n" +
-                        "                    <li>\n" +
-                        "                        <input type='checkbox' id = '1' name = '2'>\n" +
-                        "                       <label for='1'>Szamitogep</label>\n" +
-                        "                    </li>\n" +
-                        "                    <li>\n" +
-                        "                        <input type='checkbox' id = '2' name = '2'>\n" +
-                        "                      <label for='2'>telefonok</label>\n" +
-                        "                    </li>\n" +
-                        "                    <li>\n" +
-                        "                        <input type='checkbox' id = '3' name = '2'>\n" +
-                        "                        <label for='3'>tabletek</label>\n" +
-                        "                    </li>\n" +
-                        "                </ul>\n" +
-                        "                <button type='submit'>Szűrés</button>\n" +
-                        "            </form>\n" +
-                        "        </aside>\n" +
-                        "        <main class='termekek'>\n" +
-                        "            <div class = 'mainFlex'>\n");
-            for (Termek t :  termekek){
-                if (t.getTermekNev().contains("anonym") == Boolean.FALSE) {
-                    out.print(  "                <div class='termek'>\n" +
-                            "                    <img src='RES/lany_geppel.jpg' alt=''>\n" + //ide majd be kell rakni a kepek URLjet, de meg nincs, anonym nem is fog megjelenni
-                            "                    <div class='termekContainer'>\n" +
-                            "                        <h3 class='termekAdat'>"+t.getTermekNev()+"</h3>\n" +
-                            "                        <h4 class='termekAdat'>"+t.getTermekAr()+"</h4>\n" +
-                            "                        <form class='termekAdat' action='termekOldal' method='post'>\n" +
-                            "                           <button type='submit' name='"+t.getTermekNev()+"'>Megtekintes</button>\n" +
-                            "                        </form>\n" +
-                            "                    </div>\n" +
-                            "                </div>\n");
+        HttpSession session = request.getSession();
+        Integer type = (Integer)session.getAttribute("Type");
+        
+        if (type == 1) {
+            response.setContentType("text/html;charset=UTF-8");
+            try (PrintWriter out = response.getWriter()) {
+                out.print(  "<!DOCTYPE html>\n" +
+                            "<html lang='en'>\n" +
+                            "<head>\n" +
+                            "    <meta charset='UTF-8'>\n" +
+                            "    <meta http-equiv='X-UA-Compatible' content='IE=edge'>\n" +
+                            "    <meta name='viewport' content='width=device-width, initial-scale=1.0'>\n" +
+                            "    <title>Webshop</title>\n" +
+                            "    <link rel='stylesheet' href='RES/style.css'>\n" +
+                            "</head>\n" +
+                            "<body>\n" +
+                            "    <header>\n" +
+                            "        <nav>\n" +
+                            "            <a href='index.html'class='logo'><img src='res/logo.png' alt='logo helye'></a>\n" +
+                            "            <form method='post'>\n" +
+                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\">Kezdőlap</button>\n" +
+                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\">Termékek</button>\n" +
+                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTamogatoink'\">Támogatóink</button>\n" +
+                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuProfil'\">Profil</button>\n" +
+                            "            </form>\n" +
+                            "            <div class='szolgaltatasok'>\n" +
+                            "            <a href='' class='funkciok'><img src='res/login.png' alt='login kép'></a>\n" +
+                            "            <a href='' class='funkciok'><img src='res/basket.png' alt='kosár kép'></a>\n" +
+                            "            </div>\n" +
+                            "        </nav>\n" +
+                            "    </header>\n" +
+                            "    <div class='mainContainer'>\n" +
+                            "        <aside class='leirasAside'>\n" +
+                            "            <form action='szures' method='post'>\n" +
+                            "                <ul>\n" +
+                            "                    <li>\n" +
+                            "                        <input type='checkbox' id = '1' name = '2'>\n" +
+                            "                       <label for='1'>Szamitogep</label>\n" +
+                            "                    </li>\n" +
+                            "                    <li>\n" +
+                            "                        <input type='checkbox' id = '2' name = '2'>\n" +
+                            "                      <label for='2'>telefonok</label>\n" +
+                            "                    </li>\n" +
+                            "                    <li>\n" +
+                            "                        <input type='checkbox' id = '3' name = '2'>\n" +
+                            "                        <label for='3'>tabletek</label>\n" +
+                            "                    </li>\n" +
+                            "                </ul>\n" +
+                            "                <button type='submit'>Szűrés</button>\n" +
+                            "            </form>\n" +
+                            "        </aside>\n" +
+                            "        <main class='termekek'>\n" +
+                            "            <div class = 'mainFlex'>\n");
+                for (Termek t :  termekek){
+                    if (t.getTermekNev().contains("anonym") == Boolean.FALSE) {
+                        out.print(  "                <div class='termek'>\n" +
+                                "                    <img src='RES/lany_geppel.jpg' alt=''>\n" + //ide majd be kell rakni a kepek URLjet, de meg nincs, anonym nem is fog megjelenni
+                                "                    <div class='termekContainer'>\n" +
+                                "                        <h3 class='termekAdat'>"+t.getTermekNev()+"</h3>\n" +
+                                "                        <h4 class='termekAdat'>"+t.getTermekAr()+"</h4>\n" +
+                                "                        <form class='termekAdat' action='termekOldal' method='post'>\n" +
+                                "                           <button type='submit' name='"+t.getTermekNev()+"'>Megtekintes</button>\n" +
+                                "                        </form>\n" +
+                                "                    </div>\n" +
+                                "                </div>\n");
+                    }
                 }
+                out.print(  "            </div>\n" +
+                            "        </main>\n" +
+                            "    </div>\n" +
+                            "    <footer>\n" +
+                            "        <section class = \"bemutatkozas\">\n" +
+                            "            <div class=\"footer_info_box\">\n" +
+                            "                <h3>Elérhetőségek:</h3>\n" +
+                            "                <br>\n" +
+                            "                <div class=\"footer_elerhetoseg\">\n" +
+                            "                    <img src=\"RES/free-phone-icon-vector-27.jpg\" alt=\"\">\n" +
+                            "                    <p class=\"footer_elerhetoseg_szoveg\">+36 20 123 4567</p>\n" +
+                            "                </div>\n" +
+                            "                <div class=\"footer_elerhetoseg\">\n" +
+                            "                    <img src=\"RES/email-vector-icon-png-17.jpg\" alt=\"\">\n" +
+                            "                    <a href=\"mailto: eznemisletezik@gmail.com\">eznemisletezik@gmail.com</a>\n" +
+                            "                </div>\n" +
+                            "                <div class=\"footer_elerhetoseg\">\n" +
+                            "                    <img src=\"RES/gps-icon-vector-7.jpg\" alt=\"\">\n" +
+                            "                    <p class=\"footer_elerhetoseg_szoveg\">7620 Pécs PTE - TTK</p>\n" +
+                            "                </div>  \n" +
+                            "            </div>\n" +
+                            "            <div class=\"footer_info_box\">\n" +
+                            "                <h3>Információk rólunk: </h3>\n" +
+                            "                <br><br>\n" +
+                            "                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, tempore!</p>\n" +
+                            "                <br>\n" +
+                            "                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem blanditiis ipsum, nulla dicta facere eius quos quae quasi nihil tenetur?</p>\n" +
+                            "                <br>\n" +
+                            "            </div>\n" +
+                            "            <div class=\"footer_info_box\">\n" +
+                            "                <h3>Támogatóint: </h3>\n" +
+                            "                <br><br>\n" +
+                            "                <div class = \"footer_tamogatok\">\n" +
+                            "                    <p>lelépünk a pénzel kft</p>\n" +
+                            "                    <br>\n" +
+                            "                </div>\n" +
+                            "            </div>\n" +
+                            "        </section>\n" +
+                            "    </footer>" +
+                            "</body>");
             }
-            out.print(  "            </div>\n" +
-                        "        </main>\n" +
-                        "    </div>\n" +
-                        "</body>");
+        } else {
+            response.setContentType("text/html;charset=UTF-8");
+            try (PrintWriter out = response.getWriter()) {
+                out.print(  "<!DOCTYPE html>\n" +
+                            "<html lang='en'>\n" +
+                            "<head>\n" +
+                            "    <meta charset='UTF-8'>\n" +
+                            "    <meta http-equiv='X-UA-Compatible' content='IE=edge'>\n" +
+                            "    <meta name='viewport' content='width=device-width, initial-scale=1.0'>\n" +
+                            "    <title>Webshop</title>\n" +
+                            "    <link rel='stylesheet' href='RES/style.css'>\n" +
+                            "</head>\n" +
+                            "<body>\n" +
+                            "    <header>\n" +
+                            "        <nav>\n" +
+                            "            <a href='index.html'class='logo'><img src='res/logo.png' alt='logo helye'></a>\n" +
+                            "            <form method='post'>\n" +
+                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\">Kezdőlap</button>\n" +
+                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\">Termékek</button>\n" +
+                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTamogatoink'\">Támogatóink</button>\n" +
+                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuLogin'\">Bejelentkezés</button>\n" +
+                            "            </form>\n" +
+                            "            <div class='szolgaltatasok'>\n" +
+                            "            <a href='' class='funkciok'><img src='res/login.png' alt='login kép'></a>\n" +
+                            "            <a href='' class='funkciok'><img src='res/basket.png' alt='kosár kép'></a>\n" +
+                            "            </div>\n" +
+                            "        </nav>\n" +
+                            "    </header>\n" +
+                            "    <div class='mainContainer'>\n" +
+                            "        <aside class='leirasAside'>\n" +
+                            "            <form action='szures' method='post'>\n" +
+                            "                <ul>\n" +
+                            "                    <li>\n" +
+                            "                        <input type='checkbox' id = '1' name = '2'>\n" +
+                            "                       <label for='1'>Szamitogep</label>\n" +
+                            "                    </li>\n" +
+                            "                    <li>\n" +
+                            "                        <input type='checkbox' id = '2' name = '2'>\n" +
+                            "                      <label for='2'>telefonok</label>\n" +
+                            "                    </li>\n" +
+                            "                    <li>\n" +
+                            "                        <input type='checkbox' id = '3' name = '2'>\n" +
+                            "                        <label for='3'>tabletek</label>\n" +
+                            "                    </li>\n" +
+                            "                </ul>\n" +
+                            "                <button type='submit'>Szűrés</button>\n" +
+                            "            </form>\n" +
+                            "        </aside>\n" +
+                            "        <main class='termekek'>\n" +
+                            "            <div class = 'mainFlex'>\n");
+                for (Termek t :  termekek){
+                    if (t.getTermekNev().contains("anonym") == Boolean.FALSE) {
+                        out.print(  "                <div class='termek'>\n" +
+                                "                    <img src='RES/lany_geppel.jpg' alt=''>\n" + //ide majd be kell rakni a kepek URLjet, de meg nincs, anonym nem is fog megjelenni
+                                "                    <div class='termekContainer'>\n" +
+                                "                        <h3 class='termekAdat'>"+t.getTermekNev()+"</h3>\n" +
+                                "                        <h4 class='termekAdat'>"+t.getTermekAr()+"</h4>\n" +
+                                "                        <form class='termekAdat' action='termekOldal' method='post'>\n" +
+                                "                           <button type='submit' name='"+t.getTermekNev()+"'>Megtekintes</button>\n" +
+                                "                        </form>\n" +
+                                "                    </div>\n" +
+                                "                </div>\n");
+                    }
+                }
+                out.print(  "            </div>\n" +
+                            "        </main>\n" +
+                            "    </div>\n" +
+                            "    <footer>\n" +
+                            "        <section class = \"bemutatkozas\">\n" +
+                            "            <div class=\"footer_info_box\">\n" +
+                            "                <h3>Elérhetőségek:</h3>\n" +
+                            "                <br>\n" +
+                            "                <div class=\"footer_elerhetoseg\">\n" +
+                            "                    <img src=\"RES/free-phone-icon-vector-27.jpg\" alt=\"\">\n" +
+                            "                    <p class=\"footer_elerhetoseg_szoveg\">+36 20 123 4567</p>\n" +
+                            "                </div>\n" +
+                            "                <div class=\"footer_elerhetoseg\">\n" +
+                            "                    <img src=\"RES/email-vector-icon-png-17.jpg\" alt=\"\">\n" +
+                            "                    <a href=\"mailto: eznemisletezik@gmail.com\">eznemisletezik@gmail.com</a>\n" +
+                            "                </div>\n" +
+                            "                <div class=\"footer_elerhetoseg\">\n" +
+                            "                    <img src=\"RES/gps-icon-vector-7.jpg\" alt=\"\">\n" +
+                            "                    <p class=\"footer_elerhetoseg_szoveg\">7620 Pécs PTE - TTK</p>\n" +
+                            "                </div>  \n" +
+                            "            </div>\n" +
+                            "            <div class=\"footer_info_box\">\n" +
+                            "                <h3>Információk rólunk: </h3>\n" +
+                            "                <br><br>\n" +
+                            "                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, tempore!</p>\n" +
+                            "                <br>\n" +
+                            "                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem blanditiis ipsum, nulla dicta facere eius quos quae quasi nihil tenetur?</p>\n" +
+                            "                <br>\n" +
+                            "            </div>\n" +
+                            "            <div class=\"footer_info_box\">\n" +
+                            "                <h3>Támogatóint: </h3>\n" +
+                            "                <br><br>\n" +
+                            "                <div class = \"footer_tamogatok\">\n" +
+                            "                    <p>lelépünk a pénzel kft</p>\n" +
+                            "                    <br>\n" +
+                            "                </div>\n" +
+                            "            </div>\n" +
+                            "        </section>\n" +
+                            "    </footer>" +
+                            "</body>");
+            }
         }
     }
 

@@ -72,6 +72,10 @@
         <servlet-name>listSzerviz</servlet-name>
         <servlet-class>controller.listThings.listSzerviz</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>menuProfil</servlet-name>
+        <servlet-class>controller.menuProfil</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/reg</url-pattern>
@@ -143,6 +147,10 @@
     <servlet-mapping>
         <servlet-name>listSzerviz</servlet-name>
         <url-pattern>/listSzerviz</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>menuProfil</servlet-name>
+        <url-pattern>/menuProfil</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -83,12 +83,14 @@ public class WebShopService{
                     exist = Boolean.FALSE;
                 }
             }
-            for (Integer i = 0; i < adminLista.size(); i++) {
-                if (adminLista.get(i).getAdminname().equals(name) == Boolean.TRUE) {
-                    exist = Boolean.TRUE;
-                    break;
-                } else {
-                    exist = Boolean.FALSE;
+            if (exist == Boolean.FALSE) {
+                for (Integer i = 0; i < adminLista.size(); i++) {
+                    if (adminLista.get(i).getAdminname().equals(name) == Boolean.TRUE) {
+                        exist = Boolean.TRUE;
+                        break;
+                    } else {
+                        exist = Boolean.FALSE;
+                    }
                 }
             }
             //DB meghivas, regisztralando felhasznalo adatainak mentese

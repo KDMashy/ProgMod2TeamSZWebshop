@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebShop</title>
+    <link rel="stylesheet" href="RES/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html"class="logo"><img src="res/logo.png" alt="logo helye"></a>
+            <form method='post'>
+                <button type="submit" name = "menup" onclick="form.action='menuMain'">Kezdőlap</button>
+                <button type="submit" name = "menup" onclick="form.action='menuTermekek'">Termékek</button>
+                <button type="submit" name = "menup" onclick="form.action='menuTamogatoink'">Támogatóink</button>
+                <button type="submit" name = "menup" onclick="form.action='menuProfil'">Profil</button>
+            </form>
+            <div class="szolgaltatasok">
+                <a href="" class="funkciok">
+                    <img src="res/basket.png" alt="kosár kép">
+                </a>
+            </div>
+        </nav>
+    </header>
+    <main class="mainProfil">
+        <div class="felhasznalo">
+            <div class="fhMainInfo">
+                <h1 class="fName">NAMEPLACEHOLDER</h1>
+                <span class="femail">EMAILPLACEHOLDER</span>
+            </div>
+            <div class="fhOtherInfo">
+                <span>Számlázási cím: </span><br>
+                <span>Adószám: </span><br>
+                <span>Törzs vásárló: </span><br>
+            </div>
+            <div class="fhFunction">
+                <form action="chPassw" method="post">
+                    <input type="password" name="chPassword" /><br>
+                    <button type="submit">Jelszó változtatás</button>
+                </form>
+            </div>
+            <div class="fhFunction">
+                <form action="chUserSettings" method="post">
+                    <input type="text" name="szamCim" /><br>
+                    <input type="text" name="adSzam" /><br>
+                    <button type="submit">Adatok változtatása</button>
+                </form>
+            </div>
+            <div class="fhFunction">
+                <form action="logOut" method="post">
+                    <button type="submit">Kijelentkezés</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <section class = "bemutatkozas">
+            <div class="footer_info_box">
+                <h3>Elérhetőségek:</h3>
+                <br>
+                <div class="footer_elerhetoseg">
+                    <img src="RES/free-phone-icon-vector-27.jpg" alt="">
+                    <p class="footer_elerhetoseg_szoveg">+36 20 123 4567</p>
+                </div>
+                <div class="footer_elerhetoseg">
+                    <img src="RES/email-vector-icon-png-17.jpg" alt="">
+                    <a href="mailto: eznemisletezik@gmail.com">eznemisletezik@gmail.com</a>
+                </div>
+                <div class="footer_elerhetoseg">
+                    <img src="RES/gps-icon-vector-7.jpg" alt="">
+                    <p class="footer_elerhetoseg_szoveg">7620 Pécs PTE - TTK</p>
+                </div>  
+            </div>
+            <div class="footer_info_box">
+                <h3>Információk rólunk: </h3>
+                <br><br>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, tempore!</p>
+                <br>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem blanditiis ipsum, nulla dicta facere eius quos quae quasi nihil tenetur?</p>
+                <br>
+            </div>
+            <div class="footer_info_box">
+                <h3>Támogatóint: </h3>
+                <br><br>
+                <div class = "footer_tamogatok">
+                    <p>lelépünk a pénzel kft</p>
+                    <br>
+                </div>
+            </div>
+        </section>
+    </footer>
+</body>
+</html>
