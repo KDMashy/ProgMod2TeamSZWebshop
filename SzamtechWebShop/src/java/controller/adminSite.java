@@ -13,6 +13,7 @@ public class adminSite extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
+        
         String adminName = session.getAttribute("name").toString();
         
         response.setContentType("text/html;charset=UTF-8");
@@ -38,8 +39,15 @@ public class adminSite extends HttpServlet {
                         "        </header>\n" +
                         "        <main>\n" +
                         "            <div class='function'>\n" +
+                        "               <form method='post'>\n" +
+                        "                   <button type='submit' onclick='form.action='listTermek''>Termékek listázása</button><br>\n" +
+                        "                   <button type='submit' onclick='form.action='listPartnerekAdmin''>Partnerek listázása</button><br>\n" +
+                        "                   <button type='submit' onclick='form.action='listGyartokAdmin''>Gyártók listázása</button><br>\n" +
+                        "                   <button type='submit' onclick='form.action='listSzervizAdmin''>Szervízek listázása</button><br>\n" +
+                        "               </form>\n" +
+                        "            </div>\n" +
+                        "            <div class='function'>\n" +
                         "                <form action='createTermek' method='post'>\n" +
-                        "                    <button type='submit' onclick='form.action='listTermekekAdmin''>Termékek listázása</button><br>\n" +
                         "                    <span>Termék neve</span><br>\n" +
                         "                    <input type='text' name='termekName'><br>\n" +
                         "                    <span>Leírás</span><br>\n" +
@@ -52,11 +60,11 @@ public class adminSite extends HttpServlet {
                         "                    <div class='Tradio'>\n" +
                         "                        <div class='TradioIgen'>\n" +
                         "                            <span>Igen</span>\n" +
-                        "                            <input type='radio' name='stock' value='0' id='Tradio' checked>\n" +
+                        "                            <input type='radio' name='stock' value='1' id='Tradio' checked>\n" +
                         "                        </div>\n" +
                         "                        <div class='TradioNem'>\n" +
                         "                            <span>Nem</span>\n" +
-                        "                            <input type='radio' name='stock' value='1' id='Tradio'>\n" +
+                        "                            <input type='radio' name='stock' value='0' id='Tradio'>\n" +
                         "                        </div>\n" +
                         "                    </div>\n" +
                         "                    <span>Kategória Választás</span><br>\n" +
@@ -68,21 +76,19 @@ public class adminSite extends HttpServlet {
                         "            </div>\n" +
                         "            <div class='function'>\n" +
                         "                <form action='createPartner' method='post'>\n" +
-                        "                    <button type='submit' onclick='form.action='listPartnerekAdmin''>Partnerek listázása</button><br>\n" +
                         "                    <span>Partner neve</span><br>\n" +
-                        "                    <input type='text' name='termekName'><br>\n" +
+                        "                    <input type='text' name='partnerName'><br>\n" +
                         "                    <span>Elérhetőség</span><br>\n" +
-                        "                    <textarea name='termekDesc' cols='70' rows='10'></textarea><br>\n" +
+                        "                    <textarea name='partnerDesc' cols='70' rows='10'></textarea><br>\n" +
                         "                    <button type='submit'>Partner létrehozása</button>\n" +
                         "                </form>\n" +
                         "            </div>\n" +
                         "            <div class='function'>\n" +
                         "                <form action='createGyarto' method='post'>\n" +
-                        "                    <button type='submit' onclick='form.action='listGyartokAdmin''>Gyártók listázása</button><br>\n" +
                         "                    <span>Gyártó neve</span><br>\n" +
-                        "                    <input type='text' name='termekName'><br>\n" +
+                        "                    <input type='text' name='gyartoName'><br>\n" +
                         "                    <span>Elérhetőség</span><br>\n" +
-                        "                    <textarea name='termekDesc' cols='70' rows='10'></textarea><br>\n" +
+                        "                    <textarea name='gyartoDesc' cols='70' rows='10'></textarea><br>\n" +
                         "                    <span>Gyrátói garancia van-e</span><br>\n" +
                         "                    <div class='Tradio'>\n" +
                         "                        <div class='TradioIgen'>\n" +
@@ -99,11 +105,10 @@ public class adminSite extends HttpServlet {
                         "            </div>\n" +
                         "            <div class='function'>\n" +
                         "                <form action='createSzerviz' method='post'>\n" +
-                        "                    <button type='submit' onclick='form.action='listSzervizAdmin''>Szervízek listázása</button><br>\n" +
                         "                    <span>Szervíz neve</span><br>\n" +
-                        "                    <input type='text' name='termekName'><br>\n" +
+                        "                    <input type='text' name='szervizName'><br>\n" +
                         "                    <span>Elérhetőség</span><br>\n" +
-                        "                    <textarea name='termekDesc' cols='70' rows='10'></textarea><br>\n" +
+                        "                    <textarea name='szervizDesc' cols='70' rows='10'></textarea><br>\n" +
                         "                    <button type='submit'>Szervíz létrehozása</button>\n" +
                         "                </form>\n" +
                         "            </div>\n" +

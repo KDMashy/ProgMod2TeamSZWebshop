@@ -43,74 +43,80 @@ public class menuTamogatoink extends HttpServlet {
                         "            </div>\n" +
                         "        </nav>\n" +
                         "    </header>\n" +
-                        "    <main class='tamogatoinkMain'>\n" +
-                        "        <table class='theme'>\n" +
-                        "            <tr>\n" +
+                        "    <main class=\"tamogatoinkMain\">\n" +
+                        "        <table class=\"theme\">\n" +
+                        "            <thead>\n" +
                         "                <th>asd1</th>\n" +
                         "                <th>asd2</th>\n" +
                         "                <th>asd3</th>\n" +
-                        "            </tr>\n" +
-                        "            <tr class='tabl'>\n" +
-                        "                <td>dsa1</td>\n" +
-                        "                <td>dsa2</td>\n" +
-                        "                <td>dsa3</td>\n" +
-                        "            </tr>\n" +
+                        "            </thead>\n" +
+                        "            <tbody>\n" +
+                        "                <tr>\n" +
+                        "                    <td>dsa1</td>\n" +
+                        "                    <td>dsa2</td>\n" +
+                        "                    <td>dsa3</td>\n" +
+                        "                </tr>\n" +
+                        "            </tbody>\n" +
                         "        </table>\n" +
                         "        <hr>\n" +
-                        "        <table class='theme'>\n" +
-                        "            <tr>\n" +
+                        "        <table class=\"theme\">\n" +
+                        "            <thead>\n" +
                         "                <th>asd1</th>\n" +
                         "                <th>asd2</th>\n" +
                         "                <th>asd3</th>\n" +
-                        "            </tr>\n" +
-                        "            <tr class='tabl'>\n" +
-                        "                <td>dsa1</td>\n" +
-                        "                <td>dsa2</td>\n" +
-                        "                <td>dsa3</td>\n" +
-                        "            </tr>\n" +
-                        "            <tr class='tabl'>\n" +
-                        "                <td>dsa1</td>\n" +
-                        "                <td>dsa2</td>\n" +
-                        "                <td>dsa3</td>\n" +
-                        "            </tr>\n" +
-                        "            <tr class='tabl'>\n" +
-                        "                <td>dsa1</td>\n" +
-                        "                <td>dsa2</td>\n" +
-                        "                <td>dsa3</td>\n" +
-                        "            </tr>\n" +
-                        "            <tr class='tabl'>\n" +
-                        "                <td>dsa1</td>\n" +
-                        "                <td>dsa2</td>\n" +
-                        "                <td>dsa3</td>\n" +
-                        "            </tr>\n" +
-                        "            <tr class='tabl'>\n" +
-                        "                <td>dsa1</td>\n" +
-                        "                <td>dsa2</td>\n" +
-                        "                <td>dsa3</td>\n" +
-                        "            </tr>\n" +
-                        "            <tr class='tabl'>\n" +
-                        "                <td>dsa1</td>\n" +
-                        "                <td>dsa2</td>\n" +
-                        "                <td>dsa3</td>\n" +
-                        "            </tr>\n" +
-                        "            <tr class='tabl'>\n" +
-                        "                <td>dsa1</td>\n" +
-                        "                <td>dsa2</td>\n" +
-                        "                <td>dsa3</td>\n" +
-                        "            </tr>\n" +
+                        "            </thead>\n" +
+                        "            <tbody>\n" +
+                        "                <tr>\n" +
+                        "                    <td>dsa1</td>\n" +
+                        "                    <td>dsa2</td>\n" +
+                        "                    <td>dsa3</td>\n" +
+                        "                </tr>\n" +
+                        "                <tr>\n" +
+                        "                    <td>dsa1</td>\n" +
+                        "                    <td>dsa2</td>\n" +
+                        "                    <td>dsa3</td>\n" +
+                        "                </tr>\n" +
+                        "                <tr>\n" +
+                        "                    <td>dsa1</td>\n" +
+                        "                    <td>dsa2</td>\n" +
+                        "                    <td>dsa3</td>\n" +
+                        "                </tr>\n" +
+                        "                <tr>\n" +
+                        "                    <td>dsa1</td>\n" +
+                        "                    <td>dsa2</td>\n" +
+                        "                    <td>dsa3</td>\n" +
+                        "                </tr>\n" +
+                        "                <tr>\n" +
+                        "                    <td>dsa1</td>\n" +
+                        "                    <td>dsa2</td>\n" +
+                        "                    <td>dsa3</td>\n" +
+                        "                </tr>\n" +
+                        "                <tr>\n" +
+                        "                    <td>dsa1</td>\n" +
+                        "                    <td>dsa2</td>\n" +
+                        "                    <td>dsa3</td>\n" +
+                        "                </tr>\n" +
+                        "                <tr>\n" +
+                        "                    <td>dsa1</td>\n" +
+                        "                    <td>dsa2</td>\n" +
+                        "                    <td>dsa3</td>\n" +
+                        "                </tr>\n" +
+                        "            </tbody>\n" +
                         "        </table>\n" +
                         "        <hr>\n" +
-                        "        <table class='theme'>\n" +
-                        "            <tr>\n" +
+                        "        <table class=\"theme\">\n" +
+                        "            <thead>\n" +
                         "                <th>asd1</th>\n" +
                         "                <th>asd2</th>\n" +
                         "                <th>asd3</th>\n" +
-                        "            </tr>\n" +
-                        "            <tr class='tabl'>\n" +
-                        "                <td>dsa1</td>\n" +
-                        "                <td>dsa2</td>\n" +
-                        "                <td>dsa3</td>\n" +
-                        "            </tr>\n" +
+                        "            </thead>\n" +
+                        "            <tbody>\n" +
+                        "                <tr>\n" +
+                        "                    <td>dsa1</td>\n" +
+                        "                    <td>dsa2</td>\n" +
+                        "                    <td>dsa3</td>\n" +
+                        "                </tr>\n" +
+                        "            </tbody>\n" +
                         "        </table>\n" +
                         "    </main>\n" +
                         "</body>\n" +

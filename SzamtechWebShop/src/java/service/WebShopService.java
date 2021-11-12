@@ -281,7 +281,7 @@ public class WebShopService{
             Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
             String name = StringData.get(0);
             String desc = StringData.get(1);
-            String url = "ProgMod2TeamSZWebshop\\SzamtechWebShop\\web\\res/"+StringData.get(2);
+            String url = "RES/"+StringData.get(2);
             for (Integer i = 0; i < termekLista.size(); i++) {
                 if (termekEll(name, termekLista) == -1) {
                     String sql = "insert into termek (TermekNev,TermekDesc,TermekAr,TermekKep,TermekKeszlet,TermekKatID) "
@@ -326,7 +326,9 @@ public class WebShopService{
                 t.setTermekKep(rs.getString(5));
                 t.setTermekKeszlet(rs.getShort(6));
                 t.setTermekKatID(rs.getShort(7));
-                termekek.add(t);
+                if (t.getTermekNev().contains("anonym") == Boolean.FALSE) {
+                    termekek.add(t);
+                }
             }
         } catch (SQLException ex) {
             Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);

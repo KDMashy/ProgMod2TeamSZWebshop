@@ -13,3 +13,10 @@ Amit itt látsz, azzal teszteltem a regisztrációt
         <form action="TESTSERVLET" method="post">
             <input type="submit" value="TESTSERVLET"/>
         </form>
+
+<form method='post'>\n" +
+                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\">Kezdőlap</button>\n" +
+                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\">Termékek</button>\n" +
+                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTamogatoink'\">Támogatóink</button>\n" +
+                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuLogin'\">Bejelentkezés</button>\n" +
+                        "            </form>\n" +

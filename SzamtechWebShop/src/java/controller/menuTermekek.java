@@ -2,15 +2,22 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import service.*;
+import model.*;
 
 public class menuTermekek extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        WebShopService wbservice = new WebShopService();
+        
+        ArrayList<Termek> termekek = wbservice.getTermekek();
+        
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             out.print(  "<!DOCTYPE html>\n" +
@@ -40,7 +47,7 @@ public class menuTermekek extends HttpServlet {
                         "    </header>\n" +
                         "    <div class='mainContainer'>\n" +
                         "        <aside class='leirasAside'>\n" +
-                        "            <form action='szures' method='oszt'>\n" +
+                        "            <form action='szures' method='post'>\n" +
                         "                <ul>\n" +
                         "                    <li>\n" +
                         "                        <input type='checkbox' id = '1' name = '2'>\n" +
@@ -55,39 +62,24 @@ public class menuTermekek extends HttpServlet {
                         "                        <label for='3'>tabletek</label>\n" +
                         "                    </li>\n" +
                         "                </ul>\n" +
+                        "                <button type='submit'>Szűrés</button>\n" +
                         "            </form>\n" +
                         "        </aside>\n" +
                         "        <main class='termekek'>\n" +
-                        "            <div class = 'mainFlex'>\n" +
-                        "                <div class='termek'>\n" +
-                        "                    <img src='res/lany_geppel.jpg' alt=''>\n" +
-                        "                    <div class='termekContainer'>\n" +
-                        "                        <h3 class='termekAdat'>Termék neve</h3>\n" +
-                        "                        <form class='termekAdat' action='termekOldal' method='post'><button type='submit' name='t1'>megtekintes</button></form>\n" +
-                        "                    </div>\n" +
-                        "                </div>\n" +
-                        "                <div class='termek'>\n" +
-                        "                    <img src='res/lany_geppel.jpg' alt=''>\n" +
-                        "                    <div class='termekContainer'>\n" +
-                        "                        <h3 class='termekAdat'>Termék neve</h3>\n" +
-                        "                        <form class='termekAdat' action='termekOldal' method='post'><button type='submit' name='t2'>megtekintes</button></form>\n" +
-                        "                    </div>\n" +
-                        "                </div>\n" +
-                        "                <div class='termek'>\n" +
-                        "                    <img src='res/lany_geppel.jpg' alt=''>\n" +
-                        "                    <div class='termekContainer'>\n" +
-                        "                        <h3 class='termekAdat'>Termék neve</h3>\n" +
-                        "                        <form class='termekAdat' action='termekOldal' method='post'><button type='submit' name='t3'>megtekintes</button></form>\n" +
-                        "                    </div>\n" +
-                        "                </div>\n" +
-                        "                <div class='termek'>\n" +
-                        "                    <img src='res/lany_geppel.jpg' alt=''>\n" +
-                        "                    <div class='termekContainer'>\n" +
-                        "                        <h3 class='termekAdat'>Termék neve</h3>\n" +
-                        "                        <form class='termekAdat' action='termekOldal' method='post'><button type='submit' name='t4'>megtekintes</button></form>\n" +
-                        "                    </div>\n" +
-                        "                </div>\n" +
-                        "            </div>\n" +
+                        "            <div class = 'mainFlex'>\n");
+            for (Termek t :  termekek){
+                out.print(  "                <div class='termek'>\n" +
+                            "                    <img src='RES/lany_geppel.jpg' alt=''>\n" + //ide majd be kell rakni a kepek URLjet, de meg nincs, anonym nem is fog megjelenni
+                            "                    <div class='termekContainer'>\n" +
+                            "                        <h3 class='termekAdat'>"+t.getTermekNev()+"</h3>\n" +
+                            "                        <h4 class='termekAdat'>"+t.getTermekAr()+"</h4>\n" +
+                            "                        <form class='termekAdat' action='termekOldal' method='post'>\n" +
+                            "                           <button type='submit' name='"+t.getTermekNev()+"'>Megtekintes</button>\n" +
+                            "                        </form>\n" +
+                            "                    </div>\n" +
+                            "                </div>\n");
+            }
+            out.print(  "            </div>\n" +
                         "        </main>\n" +
                         "    </div>\n" +
                         "</body>");

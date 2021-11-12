@@ -18,6 +18,14 @@
         </header>
         <main>
             <div class="function">
+                <form method="post">
+                    <button type="submit" onclick="form.action='listTermekekAdmin'">Termékek listázása</button><br>
+                    <button type="submit" onclick="form.action='listPartnerekAdmin'">Partnerek listázása</button><br>
+                    <button type="submit" onclick="form.action='listGyartokAdmin'">Gyártók listázása</button><br>
+                    <button type="submit" onclick="form.action='listSzervizAdmin'">Szervízek listázása</button><br>
+                </form>
+            </div>
+            <div class="function">
                 <form action="createTermek" method="post">
                     <button type="submit" onclick="form.action='listTermekekAdmin'">Termékek listázása</button><br>
                     <span>Termék neve</span><br>
@@ -86,6 +94,30 @@
                     <textarea name="termekDesc" cols="70" rows="10"></textarea><br>
                     <button type="submit">Szervíz létrehozása</button>
                 </form>
+            </div>
+            <div class="function">
+                <table class="theme">
+                    <thead>
+                        <tr>
+                            <td>Termék neve</td>
+                            <td>Leírás</td>
+                            <td>Ár</td>
+                            <td>Kép</td>
+                            <td>Készleten van-e</td>
+                            <td>Kategória</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </main>
     </div>

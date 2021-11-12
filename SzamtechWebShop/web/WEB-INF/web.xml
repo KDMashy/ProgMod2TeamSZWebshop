@@ -36,6 +36,26 @@
         <servlet-name>logOut</servlet-name>
         <servlet-class>controller.logOut</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>createTermek</servlet-name>
+        <servlet-class>controller.createThings.createTermek</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>listTermek</servlet-name>
+        <servlet-class>controller.listThings.listTermek</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>backAdmin</servlet-name>
+        <servlet-class>controller.backAdmin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>createPartner</servlet-name>
+        <servlet-class>controller.createThings.createPartner</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>listPartner</servlet-name>
+        <servlet-class>controller.listThings.listPartner</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/reg</url-pattern>
@@ -71,6 +91,26 @@
     <servlet-mapping>
         <servlet-name>logOut</servlet-name>
         <url-pattern>/logOut</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>createTermek</servlet-name>
+        <url-pattern>/createTermek</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>listTermek</servlet-name>
+        <url-pattern>/listTermek</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>backAdmin</servlet-name>
+        <url-pattern>/backAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>createPartner</servlet-name>
+        <url-pattern>/createPartner</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>listPartner</servlet-name>
+        <url-pattern>/listPartner</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
