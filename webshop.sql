@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2021. Nov 12. 01:33
+-- Létrehozás ideje: 2021. Nov 12. 14:49
 -- Kiszolgáló verziója: 10.4.21-MariaDB
 -- PHP verzió: 8.0.10
 
@@ -39,7 +39,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`ADMINID`, `ADMINNAME`, `ADMINPASSWORD`, `ADMINCODE`) VALUES
-(1, 'Mashy', 'b35ad0b811f1c7e5b7abe6f9e6f275d769f529aa62f7c03093a222db99628035', '20001210213');
+(1, 'Mashy', 'b35ad0b811f1c7e5b7abe6f9e6f275d769f529aa62f7c03093a222db99628035', '20001210213'),
+(2, 'Admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', '00000000000');
 
 -- --------------------------------------------------------
 
@@ -91,6 +92,13 @@ CREATE TABLE `partner` (
   `PartnerAdoszam` char(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- A tábla adatainak kiíratása `partner`
+--
+
+INSERT INTO `partner` (`PartnerID`, `PartnerNev`, `PartnerElerhetoseg`, `PartnerAdoszam`) VALUES
+(1, 'TesztPartner1', 'áéő', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -111,13 +119,30 @@ CREATE TABLE `szerviz` (
 
 CREATE TABLE `termek` (
   `TermekID` int(11) NOT NULL,
-  `TermekNev` varchar(100) NOT NULL,
-  `TermekDesc` varchar(1000) NOT NULL,
-  `TermekAr` int(10) UNSIGNED NOT NULL,
-  `TermekKep` varchar(200) NOT NULL,
+  `TermekNev` varchar(100) CHARACTER SET utf8 COLLATE utf8_hungarian_ci NOT NULL,
+  `TermekDesc` varchar(1000) CHARACTER SET utf8 COLLATE utf8_hungarian_ci NOT NULL,
+  `TermekAr` int(10) NOT NULL,
+  `TermekKep` varchar(200) CHARACTER SET utf8 COLLATE utf8_hungarian_ci NOT NULL,
   `TermekKeszlet` tinyint(4) NOT NULL,
-  `TermekKatID` smallint(5) UNSIGNED NOT NULL
+  `TermekKatID` smallint(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- A tábla adatainak kiíratása `termek`
+--
+
+INSERT INTO `termek` (`TermekID`, `TermekNev`, `TermekDesc`, `TermekAr`, `TermekKep`, `TermekKeszlet`, `TermekKatID`) VALUES
+(1, 'anonymTermek1', 'teszt', 366, 'RES/asd.png', 0, 1),
+(2, 'anonymTermek2', 'tesztelÃ©sre van, van mÃ©g remÃ©ny', 367, 'RES/teszt.png', 0, 1),
+(3, 'anonymTermek3', 'TesztelÃ©sre van, van mÃ©g remÃ©ny 2x', 368, 'RES/vanremeny.png', 1, 1),
+(4, 'anonymTermek4', 'dsa', 1000, 'RES/asd.png', 1, 1),
+(5, 'anonymTermek5', 'asd', 370, 'RES/asd.png', 1, 1),
+(6, 'anonymTermek6', 'MÃ©g Ã©l a remÃ©ny', 369, 'RES/sadvagyok.png', 1, 1),
+(7, 'anonymTermek7', 'MÃ©g van remÃ©ny', 2000, 'RES/asd.png', 1, 1),
+(8, 'anonymTermek8', 'teszt', 122, 'RES/asd.png', 1, 1),
+(9, 'anonymTermek9', 'Tesztelek Ã©s sÃ­rok', 124, 'RES/asd.png', 0, 1),
+(10, 'anonymTermek10', 'Ã¡Ã©Å', 136, 'RES/asd.png', 0, 1),
+(11, 'anonymTermek11', 'áéő', 333, 'RES/asd.png', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -263,7 +288,7 @@ ALTER TABLE `vevo`
 -- AUTO_INCREMENT a táblához `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `ADMINID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ADMINID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT a táblához `gyarto`
@@ -281,7 +306,7 @@ ALTER TABLE `kategoria`
 -- AUTO_INCREMENT a táblához `partner`
 --
 ALTER TABLE `partner`
-  MODIFY `PartnerID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PartnerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT a táblához `szerviz`
@@ -293,7 +318,7 @@ ALTER TABLE `szerviz`
 -- AUTO_INCREMENT a táblához `termek`
 --
 ALTER TABLE `termek`
-  MODIFY `TermekID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `TermekID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT a táblához `vasarlas`
