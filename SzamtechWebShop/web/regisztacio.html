@@ -8,29 +8,45 @@
     <link rel="stylesheet" href="res/style.css">
 </head>
 <body>
-    
     <header>
         <nav>
-            <a href="index.html"class="logo"><img src="res/logo.png" alt="logo helye"></a>
-            <form action="menu">
-                <button type="submit" name = "kezdolap">Kezdőlap</button>
-                <button type="submit" name = "szamitogepek">szamitogepek</button>
-                <button type="submit" name = "telefonok">telefonok</button>
-                <button type="submit" name = "tabletek">tabletek</button>
+            <a href="index.html" class="logo"><img src="res/logo.png" alt="logo helye"></a>
+            <form action="menuPoints" method="post">
+                <button type="submit" name = "menup" onclick="form.action=''">Kezdőlap</button>
+                <button type="submit" name = "menup" onclick="form.action=''">Termékek</button>
+                <button type="submit" name = "menup" onclick="form.action=''">Támogatóink</button>
+                <button type="submit" name = "menup" onclick="form.action='menuLogin'">Bejelentkezés</button>
             </form>
 
             <div class="szolgaltatasok">
-            <a href="" class="funkciok"><img src="res/login.png" alt="login kép"></a>
-            <a href="" class="funkciok"><img src="res/basket.png" alt="kosár kép"></a>
+                <a href="" class="funkciok">
+                    <img src="res/login.png" alt="login kép">
+                </a>
+                <a href="" class="funkciok">
+                    <img src="res/basket.png" alt="kosár kép">
+                </a>
             </div>
         </nav>
     </header>
-
     <main class="logreg">
-  
-        <div class="regisztracio">  
-            <h2>Regisztráció</h2><br>   
-            <form id="logAcc" method="get">    
+            <div class="regisztracio">  
+                <h2>Regisztráció</h2><br>   
+                <form id="logAcc" method="post">    
+                    <label><b>Felhasználónév</b><br><br></label>    
+                    <input type="text" name="name" id="registerName">    
+                    <br><br>    
+                    <label><b>Jelszó</b><br><br></label>    
+                    <input type="password" name="password" id="registerPasw">    
+                    <br><br>
+                    <label><b>Email</b><br><br></label>    
+                    <input type="text" name="email" id="registerEmail">
+                    <br><br>    
+                    <input type="submit" id="log" value="Regisztráció" class="bekuld">  
+                </form>     
+            </div>
+        <div class="bejelentkezes">  
+            <h2>Bejelentkezés</h2><br>   
+            <form id="logAcc" method="post">    
                 <label><b>Felhasználónév    
                 </b> 
                 <br><br>      
@@ -42,40 +58,9 @@
                 <br><br>   
                 </label>    
                 <input type="password" name="password" id="registerPasw">    
-                <br><br>
-                <label><b>Email     
-                </b>    
-                <br><br>   
-                </label>    
-                <input type="text" name="email" id="registerEmail">
                 <br><br>    
-                <input type="submit" id="log" value="Regisztráció" class="bekuld">  
+                <input type="submit" id="log" value="bejelentkezés" class="bekuld">  
             </form>     
         </div>    
-        
-        
-
-       
-    <div class="bejelentkezes">  
-    <h2>Bejelentkezés</h2><br>   
-    <form id="logAcc" method="get">    
-        <label><b>Felhasználónév    
-        </b> 
-        <br><br>      
-        </label>    
-        <input type="text" name="name" id="registerName">    
-        <br><br>    
-        <label><b>Jelszó     
-        </b>    
-        <br><br>   
-        </label>    
-        <input type="password" name="password" id="registerPasw">    
-        <br><br>    
-        <input type="submit" id="log" value="bejelentkezés" class="bekuld">  
-    </form>     
-</div>    
-
     </main>
-    
-
 </body>

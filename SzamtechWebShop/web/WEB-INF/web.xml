@@ -12,6 +12,10 @@
         <servlet-name>TESTSERVLET</servlet-name>
         <servlet-class>controller.TESTSERVLET</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>menuLogin</servlet-name>
+        <servlet-class>controller.menuLogin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/reg</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>TESTSERVLET</servlet-name>
         <url-pattern>/TESTSERVLET</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>menuLogin</servlet-name>
+        <url-pattern>/menuLogin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

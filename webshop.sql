@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2021. Nov 09. 21:22
+-- Létrehozás ideje: 2021. Nov 12. 01:33
 -- Kiszolgáló verziója: 10.4.21-MariaDB
 -- PHP verzió: 8.0.10
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `admin` (
   `ADMINID` int(10) UNSIGNED NOT NULL,
   `ADMINNAME` varchar(45) NOT NULL,
-  `ADMINPASSWORD` varchar(45) NOT NULL,
+  `ADMINPASSWORD` varchar(200) NOT NULL,
   `ADMINCODE` char(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -39,7 +39,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`ADMINID`, `ADMINNAME`, `ADMINPASSWORD`, `ADMINCODE`) VALUES
-(1, 'Mashy', '526d7f366978481daeb425725d9c9ed64aa3160bb59c2', '20001210213');
+(1, 'Mashy', 'b35ad0b811f1c7e5b7abe6f9e6f275d769f529aa62f7c03093a222db99628035', '20001210213');
 
 -- --------------------------------------------------------
 
@@ -190,7 +190,10 @@ INSERT INTO `vevo` (`VevoID`, `VevoNev`, `VevoPassword`, `VevoEmail`, `VevoSzamC
 (21, 'anonym21', '275543d2bbaaa1595f97b60d5f1314728ef7069c5c8d648d5d576bd1f2115398', 'anonym21', 'anonym21', 'anonym21', 0),
 (22, 'anonym22', '60eb68565a0c5253b3cae332e58613479fb14ac18f91016f1a95bcabd48e94d4', 'anonym22', 'anonym22', 'anonym22', 0),
 (23, 'anonym23', '441e556cf3c8f609e7320c9024a9c39a2d860e93d2a9b2f0d65519af71b0c6d1', 'anonym23', 'anonym23', 'anonym23', 0),
-(24, 'Mashy', 'c26a9deae1c0bb4a8de9c6003bc3e8ef0dc446f18c513f82f20b3c6c74cce653', 'Mashy@gmail.com', NULL, NULL, NULL);
+(24, 'anonym24', 'c26a9deae1c0bb4a8de9c6003bc3e8ef0dc446f18c513f82f20b3c6c74cce653', 'anonym24', 'anonym24', 'anonym24', 0),
+(25, 'Klepe', 'daf9358fe344ec2f58f2a501d411091db9e1fa1febd72840e9ad483be0a67b44', 'Klepe@gmail.com', NULL, NULL, NULL),
+(26, 'KlepeTesztel03', 'a4b4be1a41389805870471a4dad44bcc6c3e4d76197e74a348b4a15c632a880a', 'KlepeT@gmail.com', NULL, NULL, NULL),
+(27, 'KlepeTesztel30', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'KlepeT3@gmail.com', NULL, NULL, NULL);
 
 --
 -- Indexek a kiírt táblákhoz
@@ -302,7 +305,7 @@ ALTER TABLE `vasarlas`
 -- AUTO_INCREMENT a táblához `vevo`
 --
 ALTER TABLE `vevo`
-  MODIFY `VevoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `VevoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Megkötések a kiírt táblákhoz

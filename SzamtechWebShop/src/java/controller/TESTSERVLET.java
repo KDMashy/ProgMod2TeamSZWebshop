@@ -38,8 +38,6 @@ public class TESTSERVLET extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         WebShopService wbservice = new WebShopService();
-        
-        String name = request.getParameter("name");
         //szamla torles teszt
         //Boolean bool = wbservice.anonymVasarlas("asd");
         //szamla teszt
@@ -64,7 +62,7 @@ public class TESTSERVLET extends HttpServlet {
             out.println("<title>Servlet TESTSERVLET</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>tesztelésre van "+name+"</h1>");
+            out.println("<h1>tesztelésre van</h1>");
             //alabbit tesztelni kell, meg nincsenek termekek xd
             /*for (Termek t : termekek){
                 out.println("<h2>"+t.getTermekID()+t.getTermekNev()+"</h2>");

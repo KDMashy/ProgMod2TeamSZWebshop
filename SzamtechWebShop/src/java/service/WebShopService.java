@@ -70,12 +70,21 @@ public class WebShopService{
     public Boolean RegAcc(String name, String email, String password){
         password = encrypt(password);
         ArrayList<Vevo> vevokLista = getVevok();
+        ArrayList<Admin> adminLista = getAdmins();
         Boolean exist = Boolean.FALSE;
         try{
             //ellenorzes, hogy letezik-e a regisztralando felhasznalo
             for (Integer i = 0; i < vevokLista.size(); i++) {
                 if (vevokLista.get(i).getVevoNev().equals(name) == Boolean.TRUE 
                         || vevokLista.get(i).getVevoEmail().equals(email) == Boolean.TRUE) {
+                    exist = Boolean.TRUE;
+                    break;
+                } else {
+                    exist = Boolean.FALSE;
+                }
+            }
+            for (Integer i = 0; i < adminLista.size(); i++) {
+                if (adminLista.get(i).getAdminname().equals(name) == Boolean.TRUE) {
                     exist = Boolean.TRUE;
                     break;
                 } else {

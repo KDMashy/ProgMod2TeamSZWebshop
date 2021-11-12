@@ -47,7 +47,7 @@ public class Admin implements Serializable {
     private String adminname;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 45)
+    @Size(min = 1, max = 200)
     @Column(name = "ADMINPASSWORD")
     private String adminpassword;
     @Basic(optional = false)

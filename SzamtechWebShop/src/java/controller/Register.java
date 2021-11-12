@@ -12,16 +12,7 @@ import model.*;
 import service.WebShopService;
 
 public class Register extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         WebShopService wbservice = new WebShopService();
@@ -47,33 +38,10 @@ public class Register extends HttpServlet {
             out.println("<body>");
             out.println("<h1>Servlet Register at " + saved + "</h1>");
             out.println("<h2>Welcome " + VevoName + "</h2>");
-            /*out.println("<form action='TESTSERVLET'>");
-            out.println("<input type='submit' value='TESTSERVLET' />");
-            out.println("</form>");*/
             out.println("</body>");
             out.println("</html>");
         }
     }
-    
-    /*public void doPost(HttpServletRequest request, HttpServletResponse response){
-        try{
-            response.setContentType("text/html");
-            PrintWriter out = response.getWriter();
-            String n = request.getParameter("name");
-            out.print("Welcome"+n);
-            
-            Cookie ck = new Cookie("username", n);
-            response.addCookie(ck);
-            
-            out.print("<form action='logAcc'>");
-            out.print("<input type='submit' value='go'>");
-            out.print("</form>");
-            
-            out.close();
-        } catch(Exception ex){
-            System.out.println(ex.toString());
-        }
-    }*/
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
