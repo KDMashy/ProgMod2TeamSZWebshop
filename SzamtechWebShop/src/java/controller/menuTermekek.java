@@ -32,12 +32,12 @@ public class menuTermekek extends HttpServlet {
                             "    <meta http-equiv='X-UA-Compatible' content='IE=edge'>\n" +
                             "    <meta name='viewport' content='width=device-width, initial-scale=1.0'>\n" +
                             "    <title>Webshop</title>\n" +
-                            "    <link rel='stylesheet' href='res/style.css'>\n" +
+                            "    <link rel='stylesheet' href='RES/style.css'>\n" +
                             "</head>\n" +
                             "<body>\n" +
                             "    <header>\n" +
                             "        <nav>\n" +
-                            "            <a href='index.html'class='logo'><img src='res/logo.png' alt='logo helye'></a>\n" +
+                            "            <a href='index.html'class='logo'><img src='RES/logo.png' alt='logo helye'></a>\n" +
                             "            <form method='post'>\n" +
                             "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\">Kezdőlap</button>\n" +
                             "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\">Termékek</button>\n" +
@@ -45,8 +45,8 @@ public class menuTermekek extends HttpServlet {
                             "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuProfil'\">Profil</button>\n" +
                             "            </form>\n" +
                             "            <div class='szolgaltatasok'>\n" +
-                            "            <a href='' class='funkciok'><img src='res/login.png' alt='login kép'></a>\n" +
-                            "            <a href='' class='funkciok'><img src='res/basket.png' alt='kosár kép'></a>\n" +
+                            "            <a href='' class='funkciok'><img src='RES/login.png' alt='login kép'></a>\n" +
+                            "            <a href='' class='funkciok'><img src='RES/basket.png' alt='kosár kép'></a>\n" +
                             "            </div>\n" +
                             "        </nav>\n" +
                             "    </header>\n" +
@@ -75,7 +75,7 @@ public class menuTermekek extends HttpServlet {
                 for (Termek t :  termekek){
                     if (t.getTermekNev().contains("anonym") == Boolean.FALSE) {
                         out.print(  "                <div class='termek'>\n" +
-                                "                    <img src='res/lany_geppel.jpg' alt=''>\n" + //ide majd be kell rakni a kepek URLjet, de meg nincs, anonym nem is fog megjelenni
+                                "                    <img src='RES/lany_geppel.jpg' alt=''>\n" + //ide majd be kell rakni a kepek URLjet, de meg nincs, anonym nem is fog megjelenni
                                 "                    <div class='termekContainer'>\n" +
                                 "                        <h3 class='termekAdat'>"+t.getTermekNev()+"</h3>\n" +
                                 "                        <h4 class='termekAdat'>"+t.getTermekAr()+"</h4>\n" +
@@ -95,15 +95,15 @@ public class menuTermekek extends HttpServlet {
                             "                <h3>Elérhetőségek:</h3>\n" +
                             "                <br>\n" +
                             "                <div class=\"footer_elerhetoseg\">\n" +
-                            "                    <img src=\"res/free-phone-icon-vector-27.jpg\" alt=\"\">\n" +
+                            "                    <img src=\"RES/free-phone-icon-vector-27.jpg\" alt=\"\">\n" +
                             "                    <p class=\"footer_elerhetoseg_szoveg\">+36 20 123 4567</p>\n" +
                             "                </div>\n" +
                             "                <div class=\"footer_elerhetoseg\">\n" +
-                            "                    <img src=\"res/email-vector-icon-png-17.jpg\" alt=\"\">\n" +
+                            "                    <img src=\"RES/email-vector-icon-png-17.jpg\" alt=\"\">\n" +
                             "                    <a href=\"mailto: eznemisletezik@gmail.com\">eznemisletezik@gmail.com</a>\n" +
                             "                </div>\n" +
                             "                <div class=\"footer_elerhetoseg\">\n" +
-                            "                    <img src=\"res/gps-icon-vector-7.jpg\" alt=\"\">\n" +
+                            "                    <img src=\"RES/gps-icon-vector-7.jpg\" alt=\"\">\n" +
                             "                    <p class=\"footer_elerhetoseg_szoveg\">7620 Pécs PTE - TTK</p>\n" +
                             "                </div>  \n" +
                             "            </div>\n" +
@@ -137,7 +137,7 @@ public class menuTermekek extends HttpServlet {
                             "    <meta http-equiv='X-UA-Compatible' content='IE=edge'>\n" +
                             "    <meta name='viewport' content='width=device-width, initial-scale=1.0'>\n" +
                             "    <title>Webshop</title>\n" +
-                            "    <link rel='stylesheet' href='res/style.css'>\n" +
+                            "    <link rel='stylesheet' href='RES/style.css'>\n" +
                             "</head>\n" +
                             "<body>\n" +
                             "    <header>\n" +
@@ -180,7 +180,7 @@ public class menuTermekek extends HttpServlet {
                 for (Termek t :  termekek){
                     if (t.getTermekNev().contains("anonym") == Boolean.FALSE) {
                         out.print(  "                <div class='termek'>\n" +
-                                "                    <img src='res/lany_geppel.jpg' alt=''>\n" + //ide majd be kell rakni a kepek URLjet, de meg nincs, anonym nem is fog megjelenni
+                                "                    <img src='RES/lany_geppel.jpg' alt=''>\n" + //ide majd be kell rakni a kepek URLjet, de meg nincs, anonym nem is fog megjelenni
                                 "                    <div class='termekContainer'>\n" +
                                 "                        <h3 class='termekAdat'>"+t.getTermekNev()+"</h3>\n" +
                                 "                        <h4 class='termekAdat'>"+t.getTermekAr()+"</h4>\n" +
@@ -200,15 +200,15 @@ public class menuTermekek extends HttpServlet {
                             "                <h3>Elérhetőségek:</h3>\n" +
                             "                <br>\n" +
                             "                <div class=\"footer_elerhetoseg\">\n" +
-                            "                    <img src=\"res/free-phone-icon-vector-27.jpg\" alt=\"\">\n" +
+                            "                    <img src=\"RES/free-phone-icon-vector-27.jpg\" alt=\"\">\n" +
                             "                    <p class=\"footer_elerhetoseg_szoveg\">+36 20 123 4567</p>\n" +
                             "                </div>\n" +
                             "                <div class=\"footer_elerhetoseg\">\n" +
-                            "                    <img src=\"res/email-vector-icon-png-17.jpg\" alt=\"\">\n" +
+                            "                    <img src=\"RES/email-vector-icon-png-17.jpg\" alt=\"\">\n" +
                             "                    <a href=\"mailto: eznemisletezik@gmail.com\">eznemisletezik@gmail.com</a>\n" +
                             "                </div>\n" +
                             "                <div class=\"footer_elerhetoseg\">\n" +
-                            "                    <img src=\"res/gps-icon-vector-7.jpg\" alt=\"\">\n" +
+                            "                    <img src=\"RES/gps-icon-vector-7.jpg\" alt=\"\">\n" +
                             "                    <p class=\"footer_elerhetoseg_szoveg\">7620 Pécs PTE - TTK</p>\n" +
                             "                </div>  \n" +
                             "            </div>\n" +

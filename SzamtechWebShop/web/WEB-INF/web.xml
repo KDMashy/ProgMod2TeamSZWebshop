@@ -12,6 +12,70 @@
         <servlet-name>TESTSERVLET</servlet-name>
         <servlet-class>controller.TESTSERVLET</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>menuLogin</servlet-name>
+        <servlet-class>controller.menuLogin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>adminSite</servlet-name>
+        <servlet-class>controller.adminSite</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>menuMain</servlet-name>
+        <servlet-class>controller.menuMain</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>menuTermekek</servlet-name>
+        <servlet-class>controller.menuTermekek</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>menuTamogatoink</servlet-name>
+        <servlet-class>controller.menuTamogatoink</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>logOut</servlet-name>
+        <servlet-class>controller.logOut</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>createTermek</servlet-name>
+        <servlet-class>controller.createThings.createTermek</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>listTermek</servlet-name>
+        <servlet-class>controller.listThings.listTermek</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>backAdmin</servlet-name>
+        <servlet-class>controller.backAdmin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>createPartner</servlet-name>
+        <servlet-class>controller.createThings.createPartner</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>listPartner</servlet-name>
+        <servlet-class>controller.listThings.listPartner</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>createGyarto</servlet-name>
+        <servlet-class>controller.createThings.createGyarto</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>listGyarto</servlet-name>
+        <servlet-class>controller.listThings.listGyarto</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>createSzerviz</servlet-name>
+        <servlet-class>controller.createThings.createSzerviz</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>listSzerviz</servlet-name>
+        <servlet-class>controller.listThings.listSzerviz</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>menuProfil</servlet-name>
+        <servlet-class>controller.menuProfil</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/reg</url-pattern>
@@ -23,6 +87,70 @@
     <servlet-mapping>
         <servlet-name>TESTSERVLET</servlet-name>
         <url-pattern>/TESTSERVLET</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>menuLogin</servlet-name>
+        <url-pattern>/menuLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>adminSite</servlet-name>
+        <url-pattern>/adminSite</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>menuMain</servlet-name>
+        <url-pattern>/menuMain</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>menuTermekek</servlet-name>
+        <url-pattern>/menuTermekek</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>menuTamogatoink</servlet-name>
+        <url-pattern>/menuTamogatoink</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>logOut</servlet-name>
+        <url-pattern>/logOut</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>createTermek</servlet-name>
+        <url-pattern>/createTermek</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>listTermek</servlet-name>
+        <url-pattern>/listTermek</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>backAdmin</servlet-name>
+        <url-pattern>/backAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>createPartner</servlet-name>
+        <url-pattern>/createPartner</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>listPartner</servlet-name>
+        <url-pattern>/listPartner</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>createGyarto</servlet-name>
+        <url-pattern>/createGyarto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>listGyarto</servlet-name>
+        <url-pattern>/listGyarto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>createSzerviz</servlet-name>
+        <url-pattern>/createSzerviz</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>listSzerviz</servlet-name>
+        <url-pattern>/listSzerviz</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>menuProfil</servlet-name>
+        <url-pattern>/menuProfil</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

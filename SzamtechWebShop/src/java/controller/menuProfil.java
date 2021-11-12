@@ -39,12 +39,12 @@ public class menuProfil extends HttpServlet {
                         "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n" +
                         "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
                         "    <title>WebShop</title>\n" +
-                        "    <link rel=\"stylesheet\" href=\"res/style.css\">\n" +
+                        "    <link rel=\"stylesheet\" href=\"RES/style.css\">\n" +
                         "</head>\n" +
                         "<body>\n" +
                         "    <header>\n" +
                         "        <nav>\n" +
-                        "            <a href=\"index.html\"class=\"logo\"><img src=\"res/logo.png\" alt=\"logo helye\"></a>\n" +
+                        "            <a href=\"index.html\"class=\"logo\"><img src=\"RES/logo.png\" alt=\"logo helye\"></a>\n" +
                         "            <form method='post'>\n" +
                         "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\">Kezdőlap</button>\n" +
                         "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\">Termékek</button>\n" +
@@ -53,7 +53,7 @@ public class menuProfil extends HttpServlet {
                         "            </form>\n" +
                         "            <div class=\"szolgaltatasok\">\n" +
                         "                <a href=\"\" class=\"funkciok\">\n" +
-                        "                    <img src=\"res/basket.png\" alt=\"kosár kép\">\n" +
+                        "                    <img src=\"RES/basket.png\" alt=\"kosár kép\">\n" +
                         "                </a>\n" +
                         "            </div>\n" +
                         "        </nav>\n" +
@@ -95,15 +95,15 @@ public class menuProfil extends HttpServlet {
                         "                <h3>Elérhetőségek:</h3>\n" +
                         "                <br>\n" +
                         "                <div class=\"footer_elerhetoseg\">\n" +
-                        "                    <img src=\"res/free-phone-icon-vector-27.jpg\" alt=\"\">\n" +
+                        "                    <img src=\"RES/free-phone-icon-vector-27.jpg\" alt=\"\">\n" +
                         "                    <p class=\"footer_elerhetoseg_szoveg\">+36 20 123 4567</p>\n" +
                         "                </div>\n" +
                         "                <div class=\"footer_elerhetoseg\">\n" +
-                        "                    <img src=\"res/email-vector-icon-png-17.jpg\" alt=\"\">\n" +
+                        "                    <img src=\"RES/email-vector-icon-png-17.jpg\" alt=\"\">\n" +
                         "                    <a href=\"mailto: eznemisletezik@gmail.com\">eznemisletezik@gmail.com</a>\n" +
                         "                </div>\n" +
                         "                <div class=\"footer_elerhetoseg\">\n" +
-                        "                    <img src=\"res/gps-icon-vector-7.jpg\" alt=\"\">\n" +
+                        "                    <img src=\"RES/gps-icon-vector-7.jpg\" alt=\"\">\n" +
                         "                    <p class=\"footer_elerhetoseg_szoveg\">7620 Pécs PTE - TTK</p>\n" +
                         "                </div>  \n" +
                         "            </div>\n" +

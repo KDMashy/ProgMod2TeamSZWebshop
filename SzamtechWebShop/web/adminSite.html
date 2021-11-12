@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>adminSite</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+    <div class="adminContainer">
+        <header>
+            <h1 class="showAdminName">asd</h1>
+            <div class="function">
+                <form action="adminLogout" method="post">
+                    <button type="submit">Kijelentkezés</button>
+                </form>
+            </div>
+        </header>
+        <main>
+            <div class="function">
+                <form method="post">
+                    <button type="submit" onclick="form.action='listTermekekAdmin'">Termékek listázása</button><br>
+                    <button type="submit" onclick="form.action='listPartnerekAdmin'">Partnerek listázása</button><br>
+                    <button type="submit" onclick="form.action='listGyartokAdmin'">Gyártók listázása</button><br>
+                    <button type="submit" onclick="form.action='listSzervizAdmin'">Szervízek listázása</button><br>
+                </form>
+            </div>
+            <div class="function">
+                <form action="createTermek" method="post">
+                    <button type="submit" onclick="form.action='listTermekekAdmin'">Termékek listázása</button><br>
+                    <span>Termék neve</span><br>
+                    <input type="text" name="termekName"><br>
+                    <span>Leírás</span><br>
+                    <textarea name="termekDesc" cols="70" rows="20"></textarea><br>
+                    <span>Ár</span><br>
+                    <input type="number" name="termekAr"><br>
+                    <span>Feltöltött kép neve (res mappából)</span><br>
+                    <input type="text" name="termekKepURL"><br>
+                    <span>Készlenen van-e</span><br>
+                    <div class="Tradio">
+                        <div class="TradioIgen">
+                            <span>Igen</span>
+                            <input type="radio" name="stock" value="0" id="Tradio" checked>
+                        </div>
+                        <div class="TradioNem">
+                            <span>Nem</span>
+                            <input type="radio" name="stock" value="1" id="Tradio">
+                        </div>
+                    </div>
+                    <span>Kategória Választás</span><br>
+                    <select name="KategoriaVal" id="KatVal">
+                        <option value="1">pelda</option>
+                    </select><br>
+                    <button type="submit">Termék létrehozása</button>
+                </form>
+            </div>
+            <div class="function">
+                <form action="createPartner" method="post">
+                    <button type="submit" onclick="form.action='listPartnerekAdmin'">Partnerek listázása</button><br>
+                    <span>Partner neve</span><br>
+                    <input type="text" name="termekName"><br>
+                    <span>Elérhetőség</span><br>
+                    <textarea name="termekDesc" cols="70" rows="10"></textarea><br>
+                    <button type="submit">Partner létrehozása</button>
+                </form>
+            </div>
+            <div class="function">
+                <form action="createGyarto" method="post">
+                    <button type="submit" onclick="form.action='listGyartokAdmin'">Gyártók listázása</button><br>
+                    <span>Gyártó neve</span><br>
+                    <input type="text" name="termekName"><br>
+                    <span>Elérhetőség</span><br>
+                    <textarea name="termekDesc" cols="70" rows="10"></textarea><br>
+                    <span>Gyrátói garancia van-e</span><br>
+                    <div class="Tradio">
+                        <div class="TradioIgen">
+                            <span>Igen</span>
+                            <input type="radio" name="stock" value="0" id="Tradio" checked>
+                        </div>
+                        <div class="TradioNem">
+                            <span>Nem</span>
+                            <input type="radio" name="stock" value="1" id="Tradio">
+                        </div>
+                    </div>
+                    <button type="submit">Gyártó létrehozása</button>
+                </form>
+            </div>
+            <div class="function">
+                <form action="createSzerviz" method="post">
+                    <button type="submit" onclick="form.action='listSzervizAdmin'">Szervízek listázása</button><br>
+                    <span>Szervíz neve</span><br>
+                    <input type="text" name="termekName"><br>
+                    <span>Elérhetőség</span><br>
+                    <textarea name="termekDesc" cols="70" rows="10"></textarea><br>
+                    <button type="submit">Szervíz létrehozása</button>
+                </form>
+            </div>
+            <div class="function">
+                <table class="theme">
+                    <thead>
+                        <tr>
+                            <td>Termék neve</td>
+                            <td>Leírás</td>
+                            <td>Ár</td>
+                            <td>Kép</td>
+                            <td>Készleten van-e</td>
+                            <td>Kategória</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

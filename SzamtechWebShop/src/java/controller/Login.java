@@ -10,22 +10,13 @@ import javax.servlet.http.HttpSession;
 import service.*;
 
 public class Login extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         WebShopService wbservice = new WebShopService();
-        
-        String lName = request.getParameter("loginName");
-        String lPassword = request.getParameter("loginPassword");
+        request.setCharacterEncoding("UTF-8");
+        String lName = request.getParameter("name");
+        String lPassword = request.getParameter("password");
         
         Integer Login = wbservice.LoginAcc(lName, lPassword);
         
@@ -36,59 +27,18 @@ public class Login extends HttpServlet {
         
         if (Login == 1) {
             response.setContentType("text/html;charset=UTF-8");
-            session.setAttribute("loginName", lName);
-            session.setAttribute("loginPassword", lPassword);
+            session.setAttribute("name", lName);
+            session.setAttribute("password", lPassword);
             session.setAttribute("Type", Login);
-            try (PrintWriter out = response.getWriter()) {
-                out.println("<!DOCTYPE html>");
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<title>Servlet Login</title>");            
-                out.println("</head>");
-                out.println("<body>");
-                out.println("<h1>Welcome "+ lName +"</h1>");
-                /*out.println("<form action='TESTSERVLET'>");
-                out.println("<input type='submit' value='TESTSERVLET' />");
-                out.println("</form>");*/
-                out.println("</body>");
-                out.println("</html>");
-            }
+            response.sendRedirect("menuProfil");
         } else if (Login == 2) {
-            response.setContentType("text/html;charset=UTF-8");
-            session.setAttribute("loginName", lName);
-            session.setAttribute("loginPassword", lPassword);
+            session.setAttribute("name", lName);
+            session.setAttribute("password", lPassword);
             session.setAttribute("Type", Login);
-            try (PrintWriter out = response.getWriter()) {
-                out.println("<!DOCTYPE html>");
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<title>Servlet ADMIN Login</title>");            
-                out.println("</head>");
-                out.println("<body>");
-                out.println("<h1>Welcome "+ lName +"(admin)</h1>");
-                /*out.println("<form action='TESTSERVLET'>");
-                out.println("<input type='submit' value='TESTSERVLET' />");
-                out.println("</form>");*/
-                out.println("</body>");
-                out.println("</html>");
-            }
+            response.sendRedirect("adminSite");
         } else {
             response.setContentType("text/html;charset=UTF-8");
             try (PrintWriter out = response.getWriter()) {
-<<<<<<< Updated upstream
-                out.println("<!DOCTYPE html>");
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<title>Servlet Login</title>");            
-                out.println("</head>");
-                out.println("<body>");
-                out.println("<h1>ERROR</h1>");
-                /*out.println("<form action='TESTSERVLET'>");
-                out.println("<input type='submit' value='TESTSERVLET' />");
-                out.println("</form>");*/
-                out.println("</body>");
-                out.println("</html>");
-=======
                 out.print(  "<!DOCTYPE html>\n" +
                         "<html lang='en'>\n" +
                         "<head>\n" +
@@ -96,12 +46,12 @@ public class Login extends HttpServlet {
                         "    <meta http-equiv='X-UA-Compatible' content='IE=edge'>\n" +
                         "    <meta name='viewport' content='width=device-width, initial-scale=1.0'>\n" +
                         "    <title>Webshop</title>\n" +
-                        "    <link rel='stylesheet' href='res/style.css'>\n" +
+                        "    <link rel='stylesheet' href='RES/style.css'>\n" +
                         "</head>\n" +
                         "<body>\n" +
                         "    <header>\n" +
                         "        <nav>\n" +
-                        "            <a href='index.html' class='logo'><img src='res/logo.png' alt='logo helye'></a>\n" +
+                        "            <a href='index.html' class='logo'><img src='RES/logo.png' alt='logo helye'></a>\n" +
                         "            <form method='post'>\n" +
                         "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\">Kezdőlap</button>\n" +
                         "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\">Termékek</button>\n" +
@@ -110,10 +60,10 @@ public class Login extends HttpServlet {
                         "            </form>\n" +
                         "            <div class='szolgaltatasok'>\n" +
                         "                <a href='' class='funkciok'>\n" +
-                        "                    <img src='res/login.png' alt='login kép'>\n" +
+                        "                    <img src='RES/login.png' alt='login kép'>\n" +
                         "                </a>\n" +
                         "                <a href='' class='funkciok'>\n" +
-                        "                    <img src='res/basket.png' alt='kosár kép'>\n" +
+                        "                    <img src='RES/basket.png' alt='kosár kép'>\n" +
                         "                </a>\n" +
                         "            </div>\n" +
                         "        </nav>\n" +
@@ -160,15 +110,15 @@ public class Login extends HttpServlet {
                             "                <h3>Elérhetőségek:</h3>\n" +
                             "                <br>\n" +
                             "                <div class=\"footer_elerhetoseg\">\n" +
-                            "                    <img src=\"res/free-phone-icon-vector-27.jpg\" alt=\"\">\n" +
+                            "                    <img src=\"RES/free-phone-icon-vector-27.jpg\" alt=\"\">\n" +
                             "                    <p class=\"footer_elerhetoseg_szoveg\">+36 20 123 4567</p>\n" +
                             "                </div>\n" +
                             "                <div class=\"footer_elerhetoseg\">\n" +
-                            "                    <img src=\"res/email-vector-icon-png-17.jpg\" alt=\"\">\n" +
+                            "                    <img src=\"RES/email-vector-icon-png-17.jpg\" alt=\"\">\n" +
                             "                    <a href=\"mailto: eznemisletezik@gmail.com\">eznemisletezik@gmail.com</a>\n" +
                             "                </div>\n" +
                             "                <div class=\"footer_elerhetoseg\">\n" +
-                            "                    <img src=\"res/gps-icon-vector-7.jpg\" alt=\"\">\n" +
+                            "                    <img src=\"RES/gps-icon-vector-7.jpg\" alt=\"\">\n" +
                             "                    <p class=\"footer_elerhetoseg_szoveg\">7620 Pécs PTE - TTK</p>\n" +
                             "                </div>  \n" +
                             "            </div>\n" +
@@ -191,22 +141,9 @@ public class Login extends HttpServlet {
                             "    </section>\n" +
                             "</footer>" +
                         "</body>");
->>>>>>> Stashed changes
             }
         }
     }
-    /*public void doGet(HttpServletRequest request, HttpServletResponse response)
-             {
-        try{
-            response.setContentType("text/html");
-            PrintWriter out = response.getWriter();
-            Cookie cks[] = request.getCookies();
-            out.print("Hello"+cks[0].getValue());
-            out.close();
-        } catch(Exception ex){
-            System.out.println(ex.toString());
-        }
-    }*/
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

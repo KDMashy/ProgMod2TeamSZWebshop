@@ -70,6 +70,7 @@ public class WebShopService{
     public Boolean RegAcc(String name, String email, String password){
         password = encrypt(password);
         ArrayList<Vevo> vevokLista = getVevok();
+        ArrayList<Admin> adminLista = getAdmins();
         Boolean exist = Boolean.FALSE;
         try{
             //ellenorzes, hogy letezik-e a regisztralando felhasznalo
@@ -80,6 +81,16 @@ public class WebShopService{
                     break;
                 } else {
                     exist = Boolean.FALSE;
+                }
+            }
+            if (exist == Boolean.FALSE) {
+                for (Integer i = 0; i < adminLista.size(); i++) {
+                    if (adminLista.get(i).getAdminname().equals(name) == Boolean.TRUE) {
+                        exist = Boolean.TRUE;
+                        break;
+                    } else {
+                        exist = Boolean.FALSE;
+                    }
                 }
             }
             //DB meghivas, regisztralando felhasznalo adatainak mentese
@@ -265,14 +276,14 @@ public class WebShopService{
         return tStringData;
     }
     public Boolean createTermek(ArrayList<String> StringData, Short bool, Short category,
-            Integer price, String code){
+            Integer price){
         ArrayList<Termek> termekLista = getTermekek();
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
             String name = StringData.get(0);
             String desc = StringData.get(1);
-            String url = "ProgMod2TeamSZWebshop\\SzamtechWebShop\\web\\RES/"+StringData.get(2);
+            String url = "RES/"+StringData.get(2);
             for (Integer i = 0; i < termekLista.size(); i++) {
                 if (termekEll(name, termekLista) == -1) {
                     String sql = "insert into termek (TermekNev,TermekDesc,TermekAr,TermekKep,TermekKeszlet,TermekKatID) "
@@ -715,7 +726,7 @@ public class WebShopService{
     
     // <editor-fold defaultstate="collapsed" desc="Create Partner,Gyarto,Szerviz">
     //Partner mentese
-    public Boolean createPartner(String name, String elerhetoseg, String code){
+    public Boolean createPartner(String name, String elerhetoseg){
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
@@ -733,15 +744,12 @@ public class WebShopService{
         }
     }
     //Gyarto mentese
-    public Boolean createGyarto(String name, String elerhetoseg, Boolean gyartoiGarancia, String code){
+    public Boolean createGyarto(String name, String elerhetoseg, Short gyartoiGarancia){
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
-            short bool = 0;
-            if (gyartoiGarancia) bool = 1;
-                else bool = 0;
-            String sql = "insert into partner (GyartoNev,GyartoElerhetoseg,GyartoiGarancia) "
-                    + "values('"+name+"','"+elerhetoseg+"'"+bool+")";
+            String sql = "insert into gyarto (GyartoNev,GyartoElerhetoseg,GyartoiGarancia) "
+                    + "values('"+name+"','"+elerhetoseg+"',"+gyartoiGarancia+")";
             PreparedStatement prestm = DBCon.prepareStatement(sql);
             prestm.execute();
             return Boolean.TRUE;
@@ -754,11 +762,11 @@ public class WebShopService{
         }
     }
     //Szerviz mentese
-    public Boolean createSzerviz(String name, String elerhetoseg, String code){
+    public Boolean createSzerviz(String name, String elerhetoseg){
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
-            String sql = "insert into partner (SzervizNev,SzervizElerhetoseg) "
+            String sql = "insert into szerviz (SzervizNev,SzervizElerhetoseg) "
                     + "values('"+name+"','"+elerhetoseg+"')";
             PreparedStatement prestm = DBCon.prepareStatement(sql);
             prestm.execute();
@@ -796,3 +804,4 @@ public class WebShopService{
         return f.encryptPassword(password);
     }
 }
+
