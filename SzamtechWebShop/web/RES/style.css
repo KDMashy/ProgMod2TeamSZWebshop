@@ -216,26 +216,32 @@ color: blue;
     width: 70%;
     margin: 0 auto;
     display: flex;
-    flex-direction: column;
-    
+    flex-direction: column;   
 }
 .termekleiras h1{
     margin: 30px auto;
     font-size: 200%;
 }
-
 .termekleiras img{
     width: 50%;
     margin: 10px auto;
 }
 .termekleiras p{
-    margin: 30px auto;
     font-size: 110%;
     font-family: 'Times New Roman', Times, serif;
-
+    margin: 25px auto;
+    text-align: center;
 }
-
-
+.termekleiras .leiras{
+    width: 70%;
+}
+.termekleiras .ar,
+.termekleiras .raktaron{
+    text-align: center;
+}
+.termekleiras form{
+    margin: 15px auto;
+}
 /*termekleiras.html main - vége*/
 
 

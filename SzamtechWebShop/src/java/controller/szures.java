@@ -144,8 +144,8 @@ public class szures extends HttpServlet {
                                 "                    <div class='termekContainer'>\n" +
                                 "                        <h3 class='termekAdat'>"+t.getTermekNev()+"</h3>\n" +
                                 "                        <h4 class='termekAdat'>"+t.getTermekAr()+"</h4>\n" +
-                                "                        <form class='termekAdat' action='termekOldal' method='post'>\n" +
-                                "                           <button type='submit' name='"+t.getTermekNev()+"'>Megtekintes</button>\n" +
+                                "                        <form class='termekAdat' action='targyOldal' method='post'>\n" +
+                                "                           <button type='submit' name='getTermek' value='"+t.getTermekID()+"'>Megtekintes</button>\n" +
                                 "                        </form>\n" +
                                 "                    </div>\n" +
                                 "                </div>\n");
@@ -252,8 +252,8 @@ public class szures extends HttpServlet {
                                 "                    <div class='termekContainer'>\n" +
                                 "                        <h3 class='termekAdat'>"+t.getTermekNev()+"</h3>\n" +
                                 "                        <h4 class='termekAdat'>"+t.getTermekAr()+"</h4>\n" +
-                                "                        <form class='termekAdat' action='termekOldal' method='post'>\n" +
-                                "                           <button type='submit' name='"+t.getTermekNev()+"'>Megtekintes</button>\n" +
+                                "                        <form class='termekAdat' action='targyOldal' method='post'>\n" +
+                                "                           <button type='submit' name='getTermek' value='"+t.getTermekID()+"'>Megtekintes</button>\n" +
                                 "                        </form>\n" +
                                 "                    </div>\n" +
                                 "                </div>\n");

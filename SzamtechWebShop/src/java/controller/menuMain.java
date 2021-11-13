@@ -41,7 +41,6 @@ public class menuMain extends HttpServlet {
                         "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuProfil'\">Profil</button>\n" +
                         "            </form>\n" +
                         "            <div class=\"szolgaltatasok\">\n" +
-                        "            <a href=\"\" class=\"funkciok\"><img src=\"RES/login.png\" alt=\"login kép\"></a>\n" +
                         "            <a href=\"\" class=\"funkciok\"><img src=\"RES/basket.png\" alt=\"kosár kép\"></a>\n" +
                         "            </div>\n" +
                         "        </nav>\n" +
@@ -108,7 +107,6 @@ public class menuMain extends HttpServlet {
                         "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuLogin'\">Bejelentkezés</button>\n" +
                         "            </form>\n" +
                         "            <div class=\"szolgaltatasok\">\n" +
-                        "            <a href=\"\" class=\"funkciok\"><img src=\"RES/login.png\" alt=\"login kép\"></a>\n" +
                         "            <a href=\"\" class=\"funkciok\"><img src=\"RES/basket.png\" alt=\"kosár kép\"></a>\n" +
                         "            </div>\n" +
                         "        </nav>\n" +

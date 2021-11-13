@@ -51,9 +51,6 @@ public class menuTamogatoink extends HttpServlet {
                         "            </form>\n" +
                         "            <div class='szolgaltatasok'>\n" +
                         "                <a href='' class='funkciok'>\n" +
-                        "                    <img src='RES/login.png' alt='login kép'>\n" +
-                        "                </a>\n" +
-                        "                <a href='' class='funkciok'>\n" +
                         "                    <img src='RES/basket.png' alt='kosár kép'>\n" +
                         "                </a>\n" +
                         "            </div>\n" +
@@ -181,9 +178,6 @@ public class menuTamogatoink extends HttpServlet {
                         "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuLogin'\">Bejelentkezés</button>\n" +
                         "            </form>\n" +
                         "            <div class='szolgaltatasok'>\n" +
-                        "                <a href='' class='funkciok'>\n" +
-                        "                    <img src='RES/login.png' alt='login kép'>\n" +
-                        "                </a>\n" +
                         "                <a href='' class='funkciok'>\n" +
                         "                    <img src='RES/basket.png' alt='kosár kép'>\n" +
                         "                </a>\n" +

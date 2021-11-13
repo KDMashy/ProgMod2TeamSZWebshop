@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2021. Nov 12. 14:49
+-- Létrehozás ideje: 2021. Nov 13. 15:40
 -- Kiszolgáló verziója: 10.4.21-MariaDB
 -- PHP verzió: 8.0.10
 
@@ -68,6 +68,13 @@ CREATE TABLE `gyarto` (
   `GyartoiGarancia` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- A tábla adatainak kiíratása `gyarto`
+--
+
+INSERT INTO `gyarto` (`GyartoID`, `GyartoNev`, `GyartoElerhetoseg`, `GyartoiGarancia`) VALUES
+(1, 'TesztGyártó', 'áéő', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -78,6 +85,17 @@ CREATE TABLE `kategoria` (
   `KategoriaID` int(11) NOT NULL,
   `KategoriaNev` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- A tábla adatainak kiíratása `kategoria`
+--
+
+INSERT INTO `kategoria` (`KategoriaID`, `KategoriaNev`) VALUES
+(1, 'alaplap'),
+(2, 'processzor'),
+(3, 'videókártya'),
+(4, 'memória'),
+(5, 'monitor');
 
 -- --------------------------------------------------------
 
@@ -97,7 +115,8 @@ CREATE TABLE `partner` (
 --
 
 INSERT INTO `partner` (`PartnerID`, `PartnerNev`, `PartnerElerhetoseg`, `PartnerAdoszam`) VALUES
-(1, 'TesztPartner1', 'áéő', NULL);
+(1, 'TesztPartner1', 'áéő', NULL),
+(2, 'anonymPartner2', 'Tesztelés', NULL);
 
 -- --------------------------------------------------------
 
@@ -110,6 +129,13 @@ CREATE TABLE `szerviz` (
   `SzervizNev` varchar(200) NOT NULL,
   `SzervizElerhetoseg` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- A tábla adatainak kiíratása `szerviz`
+--
+
+INSERT INTO `szerviz` (`SzervizID`, `SzervizNev`, `SzervizElerhetoseg`) VALUES
+(1, 'TesztSzervíz', 'áéő');
 
 -- --------------------------------------------------------
 
@@ -142,7 +168,29 @@ INSERT INTO `termek` (`TermekID`, `TermekNev`, `TermekDesc`, `TermekAr`, `Termek
 (8, 'anonymTermek8', 'teszt', 122, 'RES/asd.png', 1, 1),
 (9, 'anonymTermek9', 'Tesztelek Ã©s sÃ­rok', 124, 'RES/asd.png', 0, 1),
 (10, 'anonymTermek10', 'Ã¡Ã©Å', 136, 'RES/asd.png', 0, 1),
-(11, 'anonymTermek11', 'áéő', 333, 'RES/asd.png', 0, 1);
+(11, 'anonymTermek11', 'áéő', 333, 'RES/asd.png', 0, 1),
+(12, 'anonymTermek12', 'asd', 13321, 'RES/asd.png', 1, 1),
+(13, 'anonymTermek13', 'áéő', 1000, 'RES/asd.png', 1, 1),
+(14, 'ASRock A520M-HVS', 'mATX méretű, DDR4-es memória foglalat, max 32GB memória, AM4 CPU foglalat', 13000, 'RES/asrock.jpg', 1, 1),
+(15, 'Gigabyte H310M S2', 'mATX méretű, DDR4-es memória foglalat, max 32GB memória, LGA1151 CPU foglalat', 15000, 'RES/gbh310.jpg', 0, 1),
+(16, 'Gigabyte B540M GAMING', 'mATX méretű, DDR4-es memória foglalat, max 32GB memória, AM4 CPU foglalat', 24200, 'RES/gbb450.jpg', 0, 1),
+(17, 'Asus PRIME B360M-C', 'mATX méretű, DDR4-es memória foglalat, max 64GB memória, LGA1151 CPU foglalat', 48500, 'RES/asus.jpg', 1, 1),
+(18, 'Intel Pentium Gold G6600', '2mag / 4szál, LGA1200 foglalat, UHD Graphics 630 VGA típus', 45500, 'RES/intelPentium.jpg', 1, 2),
+(19, 'Intel Core i3-10100', '4mag / 8szál, LGA1200 foglalat, UHD Graphics 630 VGA típus', 50100, 'RES/corei3.jpg', 0, 2),
+(20, 'AMD Ryzen 7 3700X', '8mag / 16szál, AM4 foglalat', 107400, 'RES/ryzen7.jpg', 1, 2),
+(21, 'AMD Epyc 7742', '64mag / 128szál, SP3 foglalat', 2921600, 'RES/amdepyc.jpg', 1, 2),
+(22, 'Gigabyte GeForce GT 730', '2GB GDDR5 videó memória, aktív hűtéses', 32955, 'RES/gt730.jpg', 1, 3),
+(23, 'Asus Phoenix GeForce GTX 1050', '4GB GDDR5 videó memória, aktív hűtéses', 148900, 'RES/asusPhoenix.jpg', 1, 3),
+(24, 'Gigabyte GV-N166TOC-6GD GeForce GTX 1660 Ti OC', '6GB GDDR6 videó memória, aktív hűtéses', 259575, 'RES/gtx1660.jpg', 0, 3),
+(25, 'Gigabyte GeForce RTX 3070 GAMING OC', '8GB GDDR6 videó memória, aktív hűtéses', 549200, 'RES/rtx3070.jpg', 1, 3),
+(26, 'Kingston 4GB', '4GB DDR4 memória, 2666MHz', 8100, 'RES/kingston4gb.jpg', 1, 4),
+(27, 'Corsair Vengeance', '4GB DDR3 memória, 1600MHz', 10500, 'RES/corsair.jpg', 0, 4),
+(28, 'Kingston Fury Beast', '8GB DDR4 memória, 2666MHz', 13200, 'RES/kingston8gb.jpg', 1, 4),
+(29, 'G.Skill CL16 Aegis', '8GB DDR4 memória, 3000MHz', 13600, 'RES/gskill.jpg', 1, 4),
+(30, 'Acer V246HQLbi', '23.6”, 1920x1080 felbontású 1080p, HDMI csatlakozó, LED kijelző', 41800, 'RES/acer236.jpg', 1, 5),
+(31, 'Samsung F24T350FHR', '24”, 1920x1080 felbontású 1080p, HDMI csatlakozó, LED IPS kijelző', 55200, 'RES/samsung24.jpg', 0, 5),
+(32, 'LG 24MP59G-P', '23.8”, 1920x1080 felbontású 1080p, HDMI csatlakozó, IPS kijelző', 50400, 'RES/lg24.jpg', 0, 5),
+(33, 'Acer Nitro VG240Ybmiix', '23.8”, 1920x1080 felbontású 1080p, HDMI csatlakozó, IPS LED kijelző', 41800, 'RES/acer238.jpg', 1, 5);
 
 -- --------------------------------------------------------
 
@@ -168,8 +216,8 @@ CREATE TABLE `vasarlas` (
 --
 
 INSERT INTO `vasarlas` (`SorSzam`, `Felhasznalo`, `Szamla`, `FizMod`, `Osszeg`, `IRSzam`, `Varos`, `UtcaHSzam`, `Idopont`, `Egyeb`) VALUES
-(1, 'Anonym1', 0, 'asd', 3, '0000', 'Anonym1', 'Anonym1', '211109205208', 'DELETED'),
-(2, 'Anonym2', 0, 'asd', 3, '0000', 'Anonym2', 'Anonym2', '211109205208', 'DELETED');
+(1, 'anonym1', 0, 'asd', 3, '0000', 'Anonym1', 'Anonym1', '211109205208', 'DELETED'),
+(2, 'anonym2', 0, 'asd', 3, '0000', 'Anonym2', 'Anonym2', '211109205208', 'DELETED');
 
 -- --------------------------------------------------------
 
@@ -182,9 +230,9 @@ CREATE TABLE `vevo` (
   `VevoNev` varchar(45) NOT NULL,
   `VevoPassword` varchar(200) NOT NULL,
   `VevoEmail` varchar(100) NOT NULL,
-  `VevoSzamCim` varchar(45) DEFAULT NULL,
-  `VevoAdoszam` char(11) DEFAULT NULL,
-  `TorzsVasarlo` tinyint(4) DEFAULT NULL
+  `VevoSzamCim` varchar(45) DEFAULT 'Nincs',
+  `VevoAdoszam` char(11) DEFAULT 'Nincs',
+  `TorzsVasarlo` tinyint(4) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -218,7 +266,15 @@ INSERT INTO `vevo` (`VevoID`, `VevoNev`, `VevoPassword`, `VevoEmail`, `VevoSzamC
 (24, 'anonym24', 'c26a9deae1c0bb4a8de9c6003bc3e8ef0dc446f18c513f82f20b3c6c74cce653', 'anonym24', 'anonym24', 'anonym24', 0),
 (25, 'Klepe', 'daf9358fe344ec2f58f2a501d411091db9e1fa1febd72840e9ad483be0a67b44', 'Klepe@gmail.com', NULL, NULL, NULL),
 (26, 'KlepeTesztel03', 'a4b4be1a41389805870471a4dad44bcc6c3e4d76197e74a348b4a15c632a880a', 'KlepeT@gmail.com', NULL, NULL, NULL),
-(27, 'KlepeTesztel30', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'KlepeT3@gmail.com', NULL, NULL, NULL);
+(27, 'KlepeTesztel30', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'KlepeT3@gmail.com', NULL, NULL, NULL),
+(28, 'RandomFelhasználó', '1c1c65e8f2de96f1f1dd8a3b574871477a13cc8fbd46b591e988206170735238', 'Random@gmail.com', NULL, NULL, NULL),
+(29, 'KlepeT', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'KlepeT0@gmail.com', NULL, NULL, 0),
+(30, 'KlepeTesztel33', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'KlepeT33@gmail.com', 'Nincs', 'Nincs', 0),
+(31, 'Klepe123', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Klepe123@gmail.com', 'Nincs', 'Nincs', 0),
+(32, 'TesztReg', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'TREG@gmail.com', 'Nincs', 'Nincs', 0),
+(33, 'anonym33', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'anonym33', 'anonym33', 'anonym33', 0),
+(34, 'anonym34', '688787d8ff144c502c7f5cffaafe2cc588d86079f9de88304c26b0cb99ce91c6', 'anonym34', 'anonym34', 'anonym34', 0),
+(35, 'regTeszt', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'regTeszt@gmail.com', 'TESZTHELY', '12345678911', 0);
 
 --
 -- Indexek a kiírt táblákhoz
@@ -294,31 +350,31 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT a táblához `gyarto`
 --
 ALTER TABLE `gyarto`
-  MODIFY `GyartoID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `GyartoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT a táblához `kategoria`
 --
 ALTER TABLE `kategoria`
-  MODIFY `KategoriaID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `KategoriaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT a táblához `partner`
 --
 ALTER TABLE `partner`
-  MODIFY `PartnerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `PartnerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT a táblához `szerviz`
 --
 ALTER TABLE `szerviz`
-  MODIFY `SzervizID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `SzervizID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT a táblához `termek`
 --
 ALTER TABLE `termek`
-  MODIFY `TermekID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `TermekID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT a táblához `vasarlas`
@@ -330,7 +386,7 @@ ALTER TABLE `vasarlas`
 -- AUTO_INCREMENT a táblához `vevo`
 --
 ALTER TABLE `vevo`
-  MODIFY `VevoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `VevoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- Megkötések a kiírt táblákhoz

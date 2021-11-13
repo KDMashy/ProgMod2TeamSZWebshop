@@ -96,6 +96,10 @@
         <servlet-name>listVasarlasok</servlet-name>
         <servlet-class>controller.listThings.listVasarlasok</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>targyOldal</servlet-name>
+        <servlet-class>controller.targyOldal</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/reg</url-pattern>
@@ -191,6 +195,10 @@
     <servlet-mapping>
         <servlet-name>listVasarlasok</servlet-name>
         <url-pattern>/listVasarlasok</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>targyOldal</servlet-name>
+        <url-pattern>/targyOldal</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -34,9 +34,6 @@ public class menuLogin extends HttpServlet {
                         "            </form>\n" +
                         "            <div class='szolgaltatasok'>\n" +
                         "                <a href='' class='funkciok'>\n" +
-                        "                    <img src='RES/login.png' alt='login kép'>\n" +
-                        "                </a>\n" +
-                        "                <a href='' class='funkciok'>\n" +
                         "                    <img src='RES/basket.png' alt='kosár kép'>\n" +
                         "                </a>\n" +
                         "            </div>\n" +
