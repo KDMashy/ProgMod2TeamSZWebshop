@@ -63,7 +63,7 @@ public class targyOldal extends HttpServlet {
                             "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuProfil'\">Profil</button>\n" +
                             "            </form>\n" +
                             "            <div class=\"szolgaltatasok\">\n" +
-                            "            <a href=\"\" class=\"funkciok\"><img src=\"RES/basket.png\" alt=\"kosár kép\"></a>\n" +
+                            "            <a href=\"Kosar\" class=\"funkciok\"><img src=\"RES/basket.png\" alt=\"kosár kép\"></a>\n" +
                             "            </div>\n" +
                             "        </nav>\n" +
                             "    </header>\n" +
@@ -74,8 +74,8 @@ public class targyOldal extends HttpServlet {
                             "        <p class=\"ar\">"+t.getTermekAr()+" + ÁFA</p>\n" +
                             "        <p class=\"raktaron\">"+van+"</p>\n" +
                             "        <form action=\"kosarhozAdas\">\n" +
-                            "            <input type=\"number\" name=\"amount\">\n" +
-                            "            <button type=\"submit\" value=\"\">Kosárhoz adás</button>\n" +
+                            "            <input type=\"number\" name=\"amount\" required>\n" +
+                            "            <button type=\"submit\" name=\"getTermek\" value=\"" + termekName + "\">Kosárhoz adás</button>\n" +
                             "        </form>" +
                             "    </main>\n" +
                             "    <footer>\n" +
@@ -136,7 +136,7 @@ public class targyOldal extends HttpServlet {
                             "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuLogin'\">Bejelentkezés</button>\n" +
                             "            </form>\n" +
                             "            <div class=\"szolgaltatasok\">\n" +
-                            "            <a href=\"\" class=\"funkciok\"><img src=\"RES/basket.png\" alt=\"kosár kép\"></a>\n" +
+                            "            <a href=\"Kosar\" class=\"funkciok\"><img src=\"RES/basket.png\" alt=\"kosár kép\"></a>\n" +
                             "            </div>\n" +
                             "        </nav>\n" +
                             "    </header>\n" +

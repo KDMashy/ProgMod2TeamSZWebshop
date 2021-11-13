@@ -1,25 +1,57 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.KosarElem;
 
-public class logOut extends HttpServlet {
+/**
+ *
+ * @author Krisztian
+ */
+@WebServlet(name = "kosarhozAdas", urlPatterns = {"/kosarhozAdas"})
+public class kosarhozAdas extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        
+        String termekName = request.getParameter("getTermek");
+        String Amount = request.getParameter("amount");
+        
         HttpSession session = request.getSession();
+        List<KosarElem> Kosar = (List<KosarElem>)session.getAttribute("kosar");
         
-        session.setAttribute("name", "");
-        session.setAttribute("password", "");
-        session.setAttribute("Type", 0);
-        session.setAttribute("Kosar", null);
+        if (Kosar == null) {
+            Kosar = new ArrayList();
+        }
         
-        response.sendRedirect("menuMain");
+        Kosar.add(new KosarElem(Integer.parseInt(termekName), Integer.parseInt(Amount)));
+        
+        session.setAttribute("kosar", Kosar);
+        
+        response.sendRedirect("menuTermekek");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
