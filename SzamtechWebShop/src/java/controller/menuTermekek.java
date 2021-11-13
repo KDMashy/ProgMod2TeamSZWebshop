@@ -52,7 +52,7 @@ public class menuTermekek extends HttpServlet {
                             "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuProfil'\">Profil</button>\n" +
                             "            </form>\n" +
                             "            <div class='szolgaltatasok'>\n" +
-                            "            <a href='' class='funkciok'><img src='RES/basket.png' alt='kosár kép'></a>\n" +
+                            "            <a href='Kosar' class='funkciok'><img src='RES/basket.png' alt='kosár kép'></a>\n" +
                             "            </div>\n" +
                             "        </nav>\n" +
                             "        <div class=\"header_atmenet\">\n" +
@@ -163,7 +163,7 @@ public class menuTermekek extends HttpServlet {
                             "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuLogin'\">Bejelentkezés</button>\n" +
                             "            </form>\n" +
                             "            <div class='szolgaltatasok'>\n" +
-                            "            <a href='' class='funkciok'><img src='RES/basket.png' alt='kosár kép'></a>\n" +
+                            "            <a href='Kosar' class='funkciok'><img src='RES/basket.png' alt='kosár kép'></a>\n" +
                             "            </div>\n" +
                             "        </nav>\n" +
                             "        <div class=\"header_atmenet\">\n" +
