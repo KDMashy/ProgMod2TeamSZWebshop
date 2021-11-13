@@ -25,7 +25,7 @@ public class menuMain extends HttpServlet {
                         "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n" +
                         "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
                         "    <title>Webshop</title>\n" +
-                        "    <link rel=\"stylesheet\" href=\"RES/style.css\">\n" +
+                        "    <link rel=\"stylesheet\" href=\"res/style.css\">\n" +
                         "</head>\n" +
                         "<body>\n" +
                         "    <header>\n" +
@@ -52,15 +52,15 @@ public class menuMain extends HttpServlet {
                         "                <h3>Elérhetőségek:</h3>\n" +
                         "                <br>\n" +
                         "                <div class=\"footer_elerhetoseg\">\n" +
-                        "                    <img src=\"RES/free-phone-icon-vector-27.jpg\" alt=\"\">\n" +
+                        "                    <img src=\"res/free-phone-icon-vector-27.jpg\" alt=\"\">\n" +
                         "                    <p class=\"footer_elerhetoseg_szoveg\">+36 20 123 4567</p>\n" +
                         "                </div>\n" +
                         "                <div class=\"footer_elerhetoseg\">\n" +
-                        "                    <img src=\"RES/email-vector-icon-png-17.jpg\" alt=\"\">\n" +
+                        "                    <img src=\"res/email-vector-icon-png-17.jpg\" alt=\"\">\n" +
                         "                    <a href=\"mailto: eznemisletezik@gmail.com\">eznemisletezik@gmail.com</a>\n" +
                         "                </div>\n" +
                         "                <div class=\"footer_elerhetoseg\">\n" +
-                        "                    <img src=\"RES/gps-icon-vector-7.jpg\" alt=\"\">\n" +
+                        "                    <img src=\"res/gps-icon-vector-7.jpg\" alt=\"\">\n" +
                         "                    <p class=\"footer_elerhetoseg_szoveg\">7620 Pécs PTE - TTK</p>\n" +
                         "                </div>  \n" +
                         "            </div>\n" +
@@ -92,7 +92,7 @@ public class menuMain extends HttpServlet {
                         "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n" +
                         "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
                         "    <title>Webshop</title>\n" +
-                        "    <link rel=\"stylesheet\" href=\"RES/style.css\">\n" +
+                        "    <link rel=\"stylesheet\" href=\"res/style.css\">\n" +
                         "</head>\n" +
                         "<body>\n" +
                         "    <header>\n" +
@@ -119,15 +119,15 @@ public class menuMain extends HttpServlet {
                         "                <h3>Elérhetőségek:</h3>\n" +
                         "                <br>\n" +
                         "                <div class=\"footer_elerhetoseg\">\n" +
-                        "                    <img src=\"RES/free-phone-icon-vector-27.jpg\" alt=\"\">\n" +
+                        "                    <img src=\"res/free-phone-icon-vector-27.jpg\" alt=\"\">\n" +
                         "                    <p class=\"footer_elerhetoseg_szoveg\">+36 20 123 4567</p>\n" +
                         "                </div>\n" +
                         "                <div class=\"footer_elerhetoseg\">\n" +
-                        "                    <img src=\"RES/email-vector-icon-png-17.jpg\" alt=\"\">\n" +
+                        "                    <img src=\"res/email-vector-icon-png-17.jpg\" alt=\"\">\n" +
                         "                    <a href=\"mailto: eznemisletezik@gmail.com\">eznemisletezik@gmail.com</a>\n" +
                         "                </div>\n" +
                         "                <div class=\"footer_elerhetoseg\">\n" +
-                        "                    <img src=\"RES/gps-icon-vector-7.jpg\" alt=\"\">\n" +
+                        "                    <img src=\"res/gps-icon-vector-7.jpg\" alt=\"\">\n" +
                         "                    <p class=\"footer_elerhetoseg_szoveg\">7620 Pécs PTE - TTK</p>\n" +
                         "                </div>  \n" +
                         "            </div>\n" +

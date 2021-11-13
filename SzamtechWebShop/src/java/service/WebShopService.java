@@ -798,6 +798,28 @@ public class WebShopService{
             return Boolean.FALSE;
         }
     }
+    //load Category
+    public ArrayList<Kategoria> getCategoryes(){
+        ArrayList<Kategoria> kategoriak = new ArrayList<>();
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
+            String sql = "select * from kategoria";
+            PreparedStatement prestm = DBCon.prepareStatement(sql);
+            ResultSet rs = prestm.executeQuery();
+            while (rs.next()){
+                Kategoria k = new Kategoria();
+                k.setKategoriaID(rs.getInt(1));
+                k.setKategoriaNev(rs.getString(2));
+                kategoriak.add(k);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return kategoriak;
+    }
     //Password encryption
     public String encrypt(String password){
         function f = new function();
