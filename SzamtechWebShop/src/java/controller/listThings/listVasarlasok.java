@@ -2,27 +2,126 @@ package controller.listThings;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.*;
+import service.*;
 
 public class listVasarlasok extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        WebShopService wbservice = new WebShopService();
+        
+        HttpSession session = request.getSession();
+        String name = session.getAttribute("name").toString();
+        
+        ArrayList<Vasarlas> vasarlasok = wbservice.getVasarlasokByName(name);
+        
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet listVasarlasok</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet listVasarlasok at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            out.print(  "<!DOCTYPE html>\n" +
+                        "<html lang='en'>\n" +
+                        "<head>\n" +
+                        "    <meta charset='UTF-8'>\n" +
+                        "    <meta http-equiv='X-UA-Compatible' content='IE=edge'>\n" +
+                        "    <meta name='viewport' content='width=device-width, initial-scale=1.0'>\n" +
+                        "    <title>WebShop</title>\n" +
+                        "    <link rel='stylesheet' href='RES/style.css'>\n" +
+                        "</head>\n" +
+                        "<body>\n" +
+                        "    <header>\n" +
+                        "        <nav>\n" +
+                        "            <a href='index.html'class='logo'><img src='RES/logo.png' alt='logo helye'></a>\n" +
+                        "            <form method='post'>\n" +
+                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\">Kezdőlap</button>\n" +
+                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\">Termékek</button>\n" +
+                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTamogatoink'\">Támogatóink</button>\n" +
+                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuProfil'\">Profil</button>\n" +
+                        "            </form>\n" +
+                        "            <div class='szolgaltatasok'>\n" +
+                        "                <a href='' class='funkciok'>\n" +
+                        "                    <img src='RES/login.png' alt='login kép'>\n" +
+                        "                </a>\n" +
+                        "                <a href='' class='funkciok'>\n" +
+                        "                    <img src='RES/basket.png' alt='kosár kép'>\n" +
+                        "                </a>\n" +
+                        "            </div>\n" +
+                        "        </nav>\n" +
+                        "    </header>\n" +
+                        "    <main class=\"tamogatoinkMain\">\n" +
+                        "        <table class=\"theme\">\n" +
+                        "            <thead>\n" +
+                        "                <th>Számla</th>\n" +
+                        "                <th>Fizetési mód</th>\n" +
+                        "                <th>Összeg</th>\n" +
+                        "                <th>Irányítószám</th>\n" +
+                        "                <th>Város</th>\n" +
+                        "                <th>Utca - Házszám</th>\n" +
+                        "                <th>Időpont</th>\n" +
+                        "                <th>Egyéb</th>\n" +
+                        "            </thead>\n" +
+                        "            <tbody>\n");
+            for (Vasarlas v : vasarlasok){
+                if (v.getFelhasznalo().contains("anonym") == Boolean.FALSE) {
+                    out.print(  "            <tr>\n" +
+                            "                    <td style='text-align: center'>"+v.getSzamla()+"</td>\n" +
+                            "                    <td style='text-align: center'>"+v.getFizMod()+"</td>\n" +
+                            "                    <td style='text-align: center'>"+v.getOsszeg()+"</td>\n" +
+                            "                    <td style='text-align: center'>"+v.getIRSzam()+"</td>\n" +
+                            "                    <td style='text-align: center'>"+v.getVaros()+"</td>\n" +
+                            "                    <td style='text-align: center'>"+v.getUtcaHSzam()+"</td>\n" +
+                            "                    <td style='text-align: center'>"+v.getIdopont()+"</td>\n" +
+                            "                    <td style='text-align: center'>"+v.getEgyeb()+"</td>\n" +
+                            "                </tr>\n");
+                }
+            }
+            out.print(  "            </tbody>\n" +
+                        "        </table>\n" +
+                        "        <hr>\n" +
+                        "    </main>\n" +
+                        "    <footer>\n" +
+                        "        <section class = \"bemutatkozas\">\n" +
+                        "            <div class=\"footer_info_box\">\n" +
+                        "                <h3>Elérhetőségek:</h3>\n" +
+                        "                <br>\n" +
+                        "                <div class=\"footer_elerhetoseg\">\n" +
+                        "                    <img src=\"RES/free-phone-icon-vector-27.jpg\" alt=\"\">\n" +
+                        "                    <p class=\"footer_elerhetoseg_szoveg\">+36 20 123 4567</p>\n" +
+                        "                </div>\n" +
+                        "                <div class=\"footer_elerhetoseg\">\n" +
+                        "                    <img src=\"RES/email-vector-icon-png-17.jpg\" alt=\"\">\n" +
+                        "                    <a href=\"mailto: eznemisletezik@gmail.com\">eznemisletezik@gmail.com</a>\n" +
+                        "                </div>\n" +
+                        "                <div class=\"footer_elerhetoseg\">\n" +
+                        "                    <img src=\"RES/gps-icon-vector-7.jpg\" alt=\"\">\n" +
+                        "                    <p class=\"footer_elerhetoseg_szoveg\">7620 Pécs PTE - TTK</p>\n" +
+                        "                </div>  \n" +
+                        "            </div>\n" +
+                        "            <div class=\"footer_info_box\">\n" +
+                        "                <h3>Információk rólunk: </h3>\n" +
+                        "                <br><br>\n" +
+                        "                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, tempore!</p>\n" +
+                        "                <br>\n" +
+                        "                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem blanditiis ipsum, nulla dicta facere eius quos quae quasi nihil tenetur?</p>\n" +
+                        "                <br>\n" +
+                        "            </div>\n" +
+                        "            <div class=\"footer_info_box\">\n" +
+                        "                <h3>Támogatóint: </h3>\n" +
+                        "                <br><br>\n" +
+                        "                <div class = \"footer_tamogatok\">\n" +
+                        "                    <p>lelépünk a pénzel kft</p>\n" +
+                        "                    <br>\n" +
+                        "                </div>\n" +
+                        "            </div>\n" +
+                        "        </section>\n" +
+                        "    </footer>" +
+                        "</body>\n" +
+                        "</html>");
         }
     }
 

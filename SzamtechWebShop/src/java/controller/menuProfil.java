@@ -83,7 +83,7 @@ public class menuProfil extends HttpServlet {
                         "                </form>\n" +
                         "            </div>\n" +
                         "            <div class=\"fhFunction\">\n" +
-                        "                <form action=\"vasarlasokList\">\n" +
+                        "                <form action=\"listVasarlasok\">\n" +
                         "                    <button type=\"submit\">Vásárlások listázása</button>\n" +
                         "                </form>\n" +
                         "            </div>" +

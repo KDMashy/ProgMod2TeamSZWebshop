@@ -544,7 +544,7 @@ public class WebShopService{
             return Boolean.FALSE;
         }
     }
-    //Vasarlasok beolvasasa by name
+    //Vasarlasok beolvasasa
     /**
      * 1-sorszam        6-irszam
      * 2-felhasznalo    7-varos
@@ -558,6 +558,35 @@ public class WebShopService{
             Class.forName("com.mysql.jdbc.Driver");
             Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
             String sql = "select * from vasarlas where Felhasznalo='"+name+"',Idopont='"+date+"'";
+            PreparedStatement prestm = DBCon.prepareStatement(sql);
+            ResultSet rs = prestm.executeQuery();
+            while (rs.next()){
+                Vasarlas va = new Vasarlas();
+                va.setSorSzam(rs.getInt(1));
+                va.setFelhasznalo(rs.getString(2));
+                va.setSzamla(rs.getShort(3));
+                va.setFizMod(rs.getString(4));
+                va.setOsszeg(rs.getInt(5));
+                va.setIRSzam(rs.getString(6));
+                va.setVaros(rs.getString(7));
+                va.setUtcaHSzam(rs.getString(8));
+                va.setIdopont(rs.getString(9));
+                vasarlasok.add(va);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return vasarlasok;
+    }
+    //Vasarlasok lekerese by name
+    public ArrayList<Vasarlas> getVasarlasokByName(String name){
+        ArrayList<Vasarlas> vasarlasok = new ArrayList<>();
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
+            String sql = "select * from vasarlas where Felhasznalo='"+name+"'";
             PreparedStatement prestm = DBCon.prepareStatement(sql);
             ResultSet rs = prestm.executeQuery();
             while (rs.next()){

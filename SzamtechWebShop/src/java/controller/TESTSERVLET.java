@@ -49,7 +49,7 @@ public class TESTSERVLET extends HttpServlet {
         stringData.add("asd");
         stringData.add("asd");
         Date date = Calendar.getInstance().getTime();
-        DateFormat dateFormat = new SimpleDateFormat("yyMMddHHmmssZ");
+        DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmssZ");
         String ido = dateFormat.format(date);
         Short x = 0;
         Boolean bool = wbservice.createSzamla(stringData, x, 3, ido, 1);*/
