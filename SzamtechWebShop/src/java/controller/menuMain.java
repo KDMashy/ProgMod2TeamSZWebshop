@@ -18,6 +18,8 @@ public class menuMain extends HttpServlet {
             type = 0;
         }
         
+        String kepLink = "http://localhost:20500/SzamtechWebShop/menuMain";
+        
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             if (type == 1) {
@@ -33,7 +35,7 @@ public class menuMain extends HttpServlet {
                         "<body>\n" +
                         "    <header>\n" +
                         "        <nav>\n" +
-                        "            <a href=\"index.html\" class=\"logo\"><img src=\"RES/logo.png\" alt=\"logo helye\"></a>\n" +
+                        "            <a href=\""+kepLink+"\" class=\"logo\"><img src=\"RES/logo.png\" alt=\"logo helye\"></a>\n" +
                         "            <form method='post'>\n" +
                         "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\">Kezdőlap</button>\n" +
                         "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\">Termékek</button>\n" +
@@ -44,114 +46,152 @@ public class menuMain extends HttpServlet {
                         "            <a href=\"\" class=\"funkciok\"><img src=\"RES/basket.png\" alt=\"kosár kép\"></a>\n" +
                         "            </div>\n" +
                         "        </nav>\n" +
-                        "    </header>\n" +
-                        "    <main>\n" +
-                        "        <p>a</p>\n" +
-                        "    </main>\n" +
-                        "    <footer>\n" +
-                        "        <section class = \"bemutatkozas\">\n" +
-                        "            <div class=\"footer_info_box\">\n" +
-                        "                <h3>Elérhetőségek:</h3>\n" +
-                        "                <br>\n" +
-                        "                <div class=\"footer_elerhetoseg\">\n" +
-                        "                    <img src=\"RES/free-phone-icon-vector-27.jpg\" alt=\"\">\n" +
-                        "                    <p class=\"footer_elerhetoseg_szoveg\">+36 20 123 4567</p>\n" +
-                        "                </div>\n" +
-                        "                <div class=\"footer_elerhetoseg\">\n" +
-                        "                    <img src=\"RES/email-vector-icon-png-17.jpg\" alt=\"\">\n" +
-                        "                    <a href=\"mailto: eznemisletezik@gmail.com\">eznemisletezik@gmail.com</a>\n" +
-                        "                </div>\n" +
-                        "                <div class=\"footer_elerhetoseg\">\n" +
-                        "                    <img src=\"RES/gps-icon-vector-7.jpg\" alt=\"\">\n" +
-                        "                    <p class=\"footer_elerhetoseg_szoveg\">7620 Pécs PTE - TTK</p>\n" +
-                        "                </div>  \n" +
-                        "            </div>\n" +
-                        "            <div class=\"footer_info_box\">\n" +
-                        "                <h3>Információk rólunk: </h3>\n" +
-                        "                <br><br>\n" +
-                        "                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, tempore!</p>\n" +
-                        "                <br>\n" +
-                        "                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem blanditiis ipsum, nulla dicta facere eius quos quae quasi nihil tenetur?</p>\n" +
-                        "                <br>\n" +
-                        "            </div>\n" +
-                        "            <div class=\"footer_info_box\">\n" +
-                        "                <h3>Támogatóint: </h3>\n" +
-                        "                <br><br>\n" +
-                        "                <div class = \"footer_tamogatok\">\n" +
-                        "                    <p>lelépünk a pénzel kft</p>\n" +
-                        "                    <br>\n" +
-                        "                </div>\n" +
-                        "            </div>\n" +
-                        "        </section>\n" +
-                        "    </footer>\n" +
-                        "</body>\n" +
-                        "</html>");
+                            "        <div class=\"header_atmenet\">\n" +
+                            "        </div>\n" +
+                            "    </header>\n" +
+                            "    <main class=\"index_main\">\n" +
+                            "        <div class=\"index_fix_hatter\">\n" +
+                            "            <div class=\"index_promo_teglalapok\">\n" +
+                            "                <div class=\"index_promo_teglalap_1\">\n" +
+                            "                    <p>Megbízhatóak vagyunk</p>\n" +
+                            "                </div>\n" +
+                            "                <div class=\"index_promo_teglalap_2\">\n" +
+                            "                    <p>Esküszöm, még soha nem loptam</p>\n" +
+                            "                </div>\n" +
+                            "                <div class=\"index_promo_teglalap_3\">\n" +
+                            "                    <p>Cégünk, mindig az ön rendelkezésére áll (asszonyom)</p>\n" +
+                            "                </div>\n" +
+                            "            </div>\n" +
+                            "        </div>\n" +
+                            "        <div class=\"index_ures\">\n" +
+                            "            asdf\n" +
+                            "        </div>\n" +
+                            "    </main>\n" +
+                            "    <footer>\n" +
+                            "        <section class = \"bemutatkozas\">\n" +
+                            "            <div class=\"footer_atmenet\">\n" +
+                            "            </div>\n" +
+                            "            <div class=\"footer_info_box\">\n" +
+                            "                <h3>Elérhetőségek:</h3>\n" +
+                            "                <br>\n" +
+                            "                <div class=\"footer_elerhetoseg\">\n" +
+                            "                    <img src=\"RES/free-phone-icon-vector-27.jpg\" alt=\"\">\n" +
+                            "                    <p class=\"footer_elerhetoseg_szoveg\">+36 20 123 4567</p>\n" +
+                            "                </div>\n" +
+                            "                <div class=\"footer_elerhetoseg\">\n" +
+                            "                    <img src=\"RES/email-vector-icon-png-17.jpg\" alt=\"\">\n" +
+                            "                    <a href=\"mailto: eznemisletezik@gmail.com\">eznemisletezik@gmail.com</a>\n" +
+                            "                </div>\n" +
+                            "                <div class=\"footer_elerhetoseg\">\n" +
+                            "                    <img src=\"RES/gps-icon-vector-7.jpg\" alt=\"\">\n" +
+                            "                    <p class=\"footer_elerhetoseg_szoveg\">7620 Pécs PTE - TTK</p>\n" +
+                            "                </div>  \n" +
+                            "            </div>\n" +
+                            "            <div class=\"footer_info_box\">\n" +
+                            "                <h3>Információk rólunk: </h3>\n" +
+                            "                <br><br>\n" +
+                            "                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, tempore!</p>\n" +
+                            "                <br>\n" +
+                            "                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem blanditiis ipsum, nulla dicta facere eius quos quae quasi nihil tenetur?</p>\n" +
+                            "                <br>\n" +
+                            "            </div>\n" +
+                            "            <div class=\"footer_info_box\">\n" +
+                            "                <h3>Támogatóint: </h3>\n" +
+                            "                <br><br>\n" +
+                            "                <div class = \"footer_tamogatok\">\n" +
+                            "                    <p>lelépünk a pénzel kft</p>\n" +
+                            "                    <br>\n" +
+                            "                </div>\n" +
+                            "            </div>\n" +
+                            "        </section>\n" +
+                            "    </footer>\n" +
+                            "</body>\n" +
+                            "</html>");
             } else {
                 out.print(  "<!DOCTYPE html>\n" +
-                        "<html lang=\"en\">\n" +
-                        "<head>\n" +
-                        "    <meta charset=\"UTF-8\">\n" +
-                        "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n" +
-                        "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
-                        "    <title>Webshop</title>\n" +
-                        "    <link rel=\"stylesheet\" href=\"RES/style.css\">\n" +
-                        "</head>\n" +
-                        "<body>\n" +
-                        "    <header>\n" +
-                        "        <nav>\n" +
-                        "            <a href=\"index.html\" class=\"logo\"><img src=\"RES/logo.png\" alt=\"logo helye\"></a>\n" +
-                        "            <form method='post'>\n" +
-                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\">Kezdőlap</button>\n" +
-                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\">Termékek</button>\n" +
-                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTamogatoink'\">Támogatóink</button>\n" +
-                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuLogin'\">Bejelentkezés</button>\n" +
-                        "            </form>\n" +
-                        "            <div class=\"szolgaltatasok\">\n" +
-                        "            <a href=\"\" class=\"funkciok\"><img src=\"RES/basket.png\" alt=\"kosár kép\"></a>\n" +
-                        "            </div>\n" +
-                        "        </nav>\n" +
-                        "    </header>\n" +
-                        "    <main>\n" +
-                        "        <p>a</p>\n" +
-                        "    </main>\n" +
-                        "    <footer>\n" +
-                        "        <section class = \"bemutatkozas\">\n" +
-                        "            <div class=\"footer_info_box\">\n" +
-                        "                <h3>Elérhetőségek:</h3>\n" +
-                        "                <br>\n" +
-                        "                <div class=\"footer_elerhetoseg\">\n" +
-                        "                    <img src=\"RES/free-phone-icon-vector-27.jpg\" alt=\"\">\n" +
-                        "                    <p class=\"footer_elerhetoseg_szoveg\">+36 20 123 4567</p>\n" +
-                        "                </div>\n" +
-                        "                <div class=\"footer_elerhetoseg\">\n" +
-                        "                    <img src=\"RES/email-vector-icon-png-17.jpg\" alt=\"\">\n" +
-                        "                    <a href=\"mailto: eznemisletezik@gmail.com\">eznemisletezik@gmail.com</a>\n" +
-                        "                </div>\n" +
-                        "                <div class=\"footer_elerhetoseg\">\n" +
-                        "                    <img src=\"RES/gps-icon-vector-7.jpg\" alt=\"\">\n" +
-                        "                    <p class=\"footer_elerhetoseg_szoveg\">7620 Pécs PTE - TTK</p>\n" +
-                        "                </div>  \n" +
-                        "            </div>\n" +
-                        "            <div class=\"footer_info_box\">\n" +
-                        "                <h3>Információk rólunk: </h3>\n" +
-                        "                <br><br>\n" +
-                        "                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, tempore!</p>\n" +
-                        "                <br>\n" +
-                        "                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem blanditiis ipsum, nulla dicta facere eius quos quae quasi nihil tenetur?</p>\n" +
-                        "                <br>\n" +
-                        "            </div>\n" +
-                        "            <div class=\"footer_info_box\">\n" +
-                        "                <h3>Támogatóint: </h3>\n" +
-                        "                <br><br>\n" +
-                        "                <div class = \"footer_tamogatok\">\n" +
-                        "                    <p>lelépünk a pénzel kft</p>\n" +
-                        "                    <br>\n" +
-                        "                </div>\n" +
-                        "            </div>\n" +
-                        "        </section>\n" +
-                        "    </footer>\n" +
-                        "</body>\n" +
-                        "</html>");
+                            "<html lang=\"en\">\n" +
+                            "<head>\n" +
+                            "    <meta charset=\"UTF-8\">\n" +
+                            "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n" +
+                            "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
+                            "    <title>Webshop</title>\n" +
+                            "    <link rel=\"stylesheet\" href=\"RES/style.css\">\n" +
+                            "</head>\n" +
+                            "<body>\n" +
+                            "    <header>\n" +
+                            "        <nav>\n" +
+                            "            <a href=\""+kepLink+"\" class=\"logo\"><img src=\"RES/logo.png\" alt=\"logo helye\"></a>\n" +
+                            "            <form method='post'>\n" +
+                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\">Kezdőlap</button>\n" +
+                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\">Termékek</button>\n" +
+                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTamogatoink'\">Támogatóink</button>\n" +
+                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuLogin'\">Bejelentkezés</button>\n" +
+                            "            </form>\n" +
+                            "            <div class=\"szolgaltatasok\">\n" +
+                            "            <a href=\"\" class=\"funkciok\"><img src=\"RES/basket.png\" alt=\"kosár kép\"></a>\n" +
+                            "            </div>\n" +
+                            "        </nav>\n" +
+                            "        <div class=\"header_atmenet\">\n" +
+                            "        </div>\n" +
+                            "    </header>\n" +
+                            "    <main class=\"index_main\">\n" +
+                            "        <div class=\"index_fix_hatter\">\n" +
+                            "            <div class=\"index_promo_teglalapok\">\n" +
+                            "                <div class=\"index_promo_teglalap_1\">\n" +
+                            "                    <p>Megbízhatóak vagyunk</p>\n" +
+                            "                </div>\n" +
+                            "                <div class=\"index_promo_teglalap_2\">\n" +
+                            "                    <p>Esküszöm, még soha nem loptam</p>\n" +
+                            "                </div>\n" +
+                            "                <div class=\"index_promo_teglalap_3\">\n" +
+                            "                    <p>Cégünk, mindig az ön rendelkezésére áll (asszonyom)</p>\n" +
+                            "                </div>\n" +
+                            "            </div>\n" +
+                            "        </div>\n" +
+                            "        <div class=\"index_ures\">\n" +
+                            "            asdf\n" +
+                            "        </div>\n" +
+                            "    </main>\n" +
+                            "    <footer>\n" +
+                            "        <section class = \"bemutatkozas\">\n" +
+                            "            <div class=\"footer_atmenet\">\n" +
+                            "            </div>\n" +
+                            "            <div class=\"footer_info_box\">\n" +
+                            "                <h3>Elérhetőségek:</h3>\n" +
+                            "                <br>\n" +
+                            "                <div class=\"footer_elerhetoseg\">\n" +
+                            "                    <img src=\"RES/free-phone-icon-vector-27.jpg\" alt=\"\">\n" +
+                            "                    <p class=\"footer_elerhetoseg_szoveg\">+36 20 123 4567</p>\n" +
+                            "                </div>\n" +
+                            "                <div class=\"footer_elerhetoseg\">\n" +
+                            "                    <img src=\"RES/email-vector-icon-png-17.jpg\" alt=\"\">\n" +
+                            "                    <a href=\"mailto: eznemisletezik@gmail.com\">eznemisletezik@gmail.com</a>\n" +
+                            "                </div>\n" +
+                            "                <div class=\"footer_elerhetoseg\">\n" +
+                            "                    <img src=\"RES/gps-icon-vector-7.jpg\" alt=\"\">\n" +
+                            "                    <p class=\"footer_elerhetoseg_szoveg\">7620 Pécs PTE - TTK</p>\n" +
+                            "                </div>  \n" +
+                            "            </div>\n" +
+                            "            <div class=\"footer_info_box\">\n" +
+                            "                <h3>Információk rólunk: </h3>\n" +
+                            "                <br><br>\n" +
+                            "                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, tempore!</p>\n" +
+                            "                <br>\n" +
+                            "                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem blanditiis ipsum, nulla dicta facere eius quos quae quasi nihil tenetur?</p>\n" +
+                            "                <br>\n" +
+                            "            </div>\n" +
+                            "            <div class=\"footer_info_box\">\n" +
+                            "                <h3>Támogatóint: </h3>\n" +
+                            "                <br><br>\n" +
+                            "                <div class = \"footer_tamogatok\">\n" +
+                            "                    <p>lelépünk a pénzel kft</p>\n" +
+                            "                    <br>\n" +
+                            "                </div>\n" +
+                            "            </div>\n" +
+                            "        </section>\n" +
+                            "    </footer>\n" +
+                            "</body>\n" +
+                            "</html>");
             }
         }
     }

@@ -16,6 +16,7 @@ button, input{
 HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, 
 HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, 
 HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, 
+
 */
 
 header
@@ -30,7 +31,7 @@ header
 
 header nav
 {
-    height: 110px;
+    height: 16vh;
     display: flex;/*egymás mellé rakjuk a logókat*/
     justify-content: space-around;/*kitölti az elemekkel a teret. Két elem esetén, az egyik megy balra, a másik jobbra*/
     align-items: center;/*függőleges hözépre igazítás a navon belül*/
@@ -38,30 +39,29 @@ header nav
 }
 header .logo img/*A headeren, logon belüli képek*/
 {
-    width: 100%;
+    width: 7vw;
 }
 header .szolgaltatasok img
 {
-    width: 50px;
+    width: 4vw;
 }
 
 
 
 header img
 {
-    padding: 30px;
+    padding: 1vw;
     
 }
 
 
-header nav button
+header nav form button
 {
     
     color: white;
     text-decoration: none;
     text-transform: uppercase;
-    padding: 20px 35px ;/*link margók*/
-/*lekerekítés, 50 px el*/
+    padding: 3vh 4vw;
     transition: background 0.3s;/*a háttér elszíneződés időtartama*/
     background: rgb(145, 226, 22);
 }
@@ -82,18 +82,19 @@ header .funkciok{
 
 .header_atmenet{
     width: 100%;
-    height: 20px;
+    height: 2vh;
     background: linear-gradient(rgba(172, 255, 47, 1), rgba(172, 255, 47, 0.1));
     display: block;
     position:absolute;
     z-index: 2;
-    top: 110px;
+    top: 16vh;
 }
 
 /*
 HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, 
 HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, 
 HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, 
+
 */
 
 
@@ -107,11 +108,11 @@ HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE,
 .index_fix_hatter{
     background-image:url(lany_geppel.jpg);
     display: block;
-    background-size: 100%;
+    background-size: cover;
     background-repeat: no-repeat;
-    size: 100%;
-    background-position:70%;
-    height: 500px;
+    background-position: center center;
+    height: 80vh;
+    
 
 
 
@@ -123,7 +124,7 @@ HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE,
     position:absolute;    
     top: 30%;
     left: 5%;
-    width: 50%;
+    
     flex-direction: column;
     
     
@@ -134,25 +135,25 @@ HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE,
 
 .index_promo_teglalapok p{
     position: relative;
-     width: 100%;
      height: 100%;
      display: flex;
     align-items: center; /** Y-axis align **/
     justify-content: center; /** X-axis align **/
 
     font-weight: bold;
-    font-size: 120%;
+    font-size: 1.5vw;
     font-family: monospace;
+    padding: 1vw;
+    width: 30vw;
+    
     
 
 }
 
 
 .index_promo_teglalap_1{
-    height: 50px;
-    width: 90%;
     background-color: rgba(65, 65, 65, 0.685);
-    margin-bottom: 10px;
+    margin-bottom: 2vh;
     border-radius: 20px;
     
 
@@ -163,9 +164,7 @@ HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE,
 .index_promo_teglalap_2{
     background-color: blanchedalmond;
     border-radius: 20px;
-    height: 50px;
-    width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 2vh;
     
 
 }
@@ -173,10 +172,6 @@ HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE,
 .index_promo_teglalap_3{
     background-color: rgba(65, 65, 65, 0.685);
     border-radius: 20px;
-    height: 60px;
-    width: 120%;
-    padding: 10px;
-
     
 }
 /*felirat beállítások*/
@@ -192,7 +187,7 @@ HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE,
 }
 
 .index_ures{
-    height: 500px;
+    height: 30vw;
     background-color: rgba(0, 0, 255, 0.116);
 }
 
@@ -365,11 +360,15 @@ color: blue;
 
 footer{
     width: 100%;
-    height: 250px;
+    height: 40vh;
     background-color: rgba(188, 143, 143, 0.685);
     display: flex;
     align-items: center;
     position: relative;
+}
+
+footer p{
+    font-size: 1vw;
 }
 
 
@@ -401,18 +400,19 @@ footer .footer_elerhetoseg{
 }
 
 .footer_elerhetoseg img{
-    width: 40px;
-    height: 40px;
+    width: 10%;
+    height: 10%;
 }
 
 footer h3{
-    font-size: 150%;
+    font-size: 2vw;
     color:  rgb(68, 33, 24);
 }
 
 footer a{
     color: rgba(0, 0, 0, 0.7);
     text-decoration-color: rgba(0, 0, 0, 0.459);
+    font-size: 1vw;
     
 }
 
@@ -439,7 +439,7 @@ footer a{
 }
 .tamogatoinkMain .theme{
     width: 90%;
-    margin: 0 auto;
+    margin: 100px auto;
     border-collapse: collapse;
     border-left: 5px solid #999;
     border-right: 5px solid #999;

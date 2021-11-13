@@ -17,6 +17,8 @@ public class menuTermekek extends HttpServlet {
             throws ServletException, IOException {
         WebShopService wbservice = new WebShopService();
         
+        String kepLink = "http://localhost:20500/SzamtechWebShop/menuMain";
+        
         ArrayList<Termek> termekek = wbservice.getTermekek();
         
         ArrayList<Kategoria> cat = wbservice.getCategoryes();
@@ -42,7 +44,7 @@ public class menuTermekek extends HttpServlet {
                             "<body>\n" +
                             "    <header>\n" +
                             "        <nav>\n" +
-                            "            <a href='index.html'class='logo'><img src='RES/logo.png' alt='logo helye'></a>\n" +
+                            "            <a href='"+kepLink+"'class='logo'><img src='RES/logo.png' alt='logo helye'></a>\n" +
                             "            <form method='post'>\n" +
                             "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\">Kezdőlap</button>\n" +
                             "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\">Termékek</button>\n" +
@@ -53,6 +55,8 @@ public class menuTermekek extends HttpServlet {
                             "            <a href='' class='funkciok'><img src='RES/basket.png' alt='kosár kép'></a>\n" +
                             "            </div>\n" +
                             "        </nav>\n" +
+                            "        <div class=\"header_atmenet\">\n" +
+                            "        </div>\n" +
                             "    </header>\n" +
                             "    <div class='mainContainer'>\n" +
                             "        <aside class='leirasAside'>\n" +
@@ -98,6 +102,8 @@ public class menuTermekek extends HttpServlet {
                             "    </div>\n" +
                             "    <footer>\n" +
                             "        <section class = \"bemutatkozas\">\n" +
+                            "            <div class=\"footer_atmenet\">\n" +
+                            "            </div>\n" +
                             "            <div class=\"footer_info_box\">\n" +
                             "                <h3>Elérhetőségek:</h3>\n" +
                             "                <br>\n" +
@@ -149,7 +155,7 @@ public class menuTermekek extends HttpServlet {
                             "<body>\n" +
                             "    <header>\n" +
                             "        <nav>\n" +
-                            "            <a href='index.html'class='logo'><img src='RES/logo.png' alt='logo helye'></a>\n" +
+                            "            <a href='"+kepLink+"'class='logo'><img src='RES/logo.png' alt='logo helye'></a>\n" +
                             "            <form method='post'>\n" +
                             "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\">Kezdőlap</button>\n" +
                             "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\">Termékek</button>\n" +
@@ -160,6 +166,8 @@ public class menuTermekek extends HttpServlet {
                             "            <a href='' class='funkciok'><img src='RES/basket.png' alt='kosár kép'></a>\n" +
                             "            </div>\n" +
                             "        </nav>\n" +
+                            "        <div class=\"header_atmenet\">\n" +
+                            "        </div>\n" +
                             "    </header>\n" +
                             "    <div class='mainContainer'>\n" +
                             "        <aside class='leirasAside'>\n" +
@@ -205,6 +213,8 @@ public class menuTermekek extends HttpServlet {
                             "    </div>\n" +
                             "    <footer>\n" +
                             "        <section class = \"bemutatkozas\">\n" +
+                            "            <div class=\"footer_atmenet\">\n" +
+                            "            </div>\n" +
                             "            <div class=\"footer_info_box\">\n" +
                             "                <h3>Elérhetőségek:</h3>\n" +
                             "                <br>\n" +

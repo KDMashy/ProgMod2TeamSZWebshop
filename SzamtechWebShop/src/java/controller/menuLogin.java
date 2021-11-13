@@ -11,6 +11,8 @@ public class menuLogin extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String kepLink = "http://localhost:20500/SzamtechWebShop/menuMain";
+        
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             out.print(  "<!DOCTYPE html>\n" +
@@ -25,7 +27,7 @@ public class menuLogin extends HttpServlet {
                         "<body>\n" +
                         "    <header>\n" +
                         "        <nav>\n" +
-                        "            <a href='index.html' class='logo'><img src='RES/logo.png' alt='logo helye'></a>\n" +
+                        "            <a href='"+kepLink+"' class='logo'><img src='RES/logo.png' alt='logo helye'></a>\n" +
                         "            <form method='post'>\n" +
                         "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\">Kezdőlap</button>\n" +
                         "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\">Termékek</button>\n" +
@@ -38,6 +40,8 @@ public class menuLogin extends HttpServlet {
                         "                </a>\n" +
                         "            </div>\n" +
                         "        </nav>\n" +
+                            "        <div class=\"header_atmenet\">\n" +
+                            "        </div>\n" +
                         "    </header>\n" +
                         "    <main class='logreg'>\n" +
                         "        <div class='regisztracio'>  \n" +
@@ -76,6 +80,8 @@ public class menuLogin extends HttpServlet {
                         "    </main>\n" +
                         "    <footer>\n" +
                             "    <section class = \"bemutatkozas\">\n" +
+                            "            <div class=\"footer_atmenet\">\n" +
+                            "            </div>\n" +
                             "            <div class=\"footer_info_box\">\n" +
                             "                <h3>Elérhetőségek:</h3>\n" +
                             "                <br>\n" +

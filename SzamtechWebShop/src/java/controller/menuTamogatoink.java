@@ -27,6 +27,8 @@ public class menuTamogatoink extends HttpServlet {
             type = 0;
         }
         
+        String kepLink = "http://localhost:20500/SzamtechWebShop/menuMain";
+        
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             if (type == 1) {
@@ -42,7 +44,7 @@ public class menuTamogatoink extends HttpServlet {
                         "<body>\n" +
                         "    <header>\n" +
                         "        <nav>\n" +
-                        "            <a href='index.html'class='logo'><img src='RES/logo.png' alt='logo helye'></a>\n" +
+                        "            <a href='"+kepLink+"'class='logo'><img src='RES/logo.png' alt='logo helye'></a>\n" +
                         "            <form method='post'>\n" +
                         "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\">Kezdőlap</button>\n" +
                         "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\">Termékek</button>\n" +
@@ -55,6 +57,8 @@ public class menuTamogatoink extends HttpServlet {
                         "                </a>\n" +
                         "            </div>\n" +
                         "        </nav>\n" +
+                            "        <div class=\"header_atmenet\">\n" +
+                            "        </div>\n" +
                         "    </header>\n" +
                         "    <main class=\"tamogatoinkMain\">\n" +
                         "        <table class=\"theme\">\n" +
@@ -121,6 +125,8 @@ public class menuTamogatoink extends HttpServlet {
                         "    </main>\n" +
                         "    <footer>\n" +
                         "        <section class = \"bemutatkozas\">\n" +
+                            "            <div class=\"footer_atmenet\">\n" +
+                            "            </div>\n" +
                         "            <div class=\"footer_info_box\">\n" +
                         "                <h3>Elérhetőségek:</h3>\n" +
                         "                <br>\n" +
@@ -170,7 +176,7 @@ public class menuTamogatoink extends HttpServlet {
                         "<body>\n" +
                         "    <header>\n" +
                         "        <nav>\n" +
-                        "            <a href='index.html'class='logo'><img src='RES/logo.png' alt='logo helye'></a>\n" +
+                        "            <a href='"+kepLink+"'class='logo'><img src='RES/logo.png' alt='logo helye'></a>\n" +
                         "            <form method='post'>\n" +
                         "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\">Kezdőlap</button>\n" +
                         "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\">Termékek</button>\n" +
@@ -183,6 +189,8 @@ public class menuTamogatoink extends HttpServlet {
                         "                </a>\n" +
                         "            </div>\n" +
                         "        </nav>\n" +
+                            "        <div class=\"header_atmenet\">\n" +
+                            "        </div>\n" +
                         "    </header>\n" +
                         "    <main class=\"tamogatoinkMain\">\n" +
                         "        <table class=\"theme\">\n" +
@@ -249,6 +257,8 @@ public class menuTamogatoink extends HttpServlet {
                         "    </main>\n" +
                         "    <footer>\n" +
                         "        <section class = \"bemutatkozas\">\n" +
+                            "            <div class=\"footer_atmenet\">\n" +
+                            "            </div>\n" +
                         "            <div class=\"footer_info_box\">\n" +
                         "                <h3>Elérhetőségek:</h3>\n" +
                         "                <br>\n" +
