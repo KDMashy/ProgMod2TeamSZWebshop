@@ -16,7 +16,6 @@ button, input{
 HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, 
 HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, 
 HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, 
-
 */
 
 header
@@ -95,7 +94,6 @@ header .funkciok{
 HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, 
 HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, 
 HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, 
-
 */
 
 
@@ -112,7 +110,7 @@ HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE,
     background-size: 100%;
     background-repeat: no-repeat;
     size: 100%;
-    background-position-y:70%;
+    background-position:70%;
     height: 500px;
 
 
@@ -123,9 +121,9 @@ HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE,
 .index_promo_teglalapok{
     display: flex;
     position:absolute;    
-    top: 50%;
+    top: 30%;
     left: 5%;
-    width: 20%;
+    width: 50%;
     flex-direction: column;
     
     
@@ -271,6 +269,7 @@ main .termek{
 }
 
 main .termek .termekAdat{
+    width: 45%;
     text-align: center;
     padding: 5px 15px;
 }
@@ -334,32 +333,26 @@ color: blue;
     width: 70%;
     margin: 0 auto;
     display: flex;
-    flex-direction: column;   
+    flex-direction: column;
+    
 }
 .termekleiras h1{
     margin: 30px auto;
     font-size: 200%;
 }
+
 .termekleiras img{
     width: 50%;
     margin: 10px auto;
 }
 .termekleiras p{
+    margin: 30px auto;
     font-size: 110%;
     font-family: 'Times New Roman', Times, serif;
-    margin: 25px auto;
-    text-align: center;
+
 }
-.termekleiras .leiras{
-    width: 70%;
-}
-.termekleiras .ar,
-.termekleiras .raktaron{
-    text-align: center;
-}
-.termekleiras form{
-    margin: 15px auto;
-}
+
+
 /*termekleiras.html main - vége*/
 
 
