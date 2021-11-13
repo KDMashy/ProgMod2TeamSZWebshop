@@ -5,6 +5,13 @@
     font-family: sans-serif;
 }
 
+
+button, input{
+    cursor: pointer;
+}
+
+
+
 /*
 HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, 
 HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, 
@@ -14,9 +21,13 @@ HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, HEADER ELEJE,
 
 header
 {
-    background: greenyellow;
+    background: rgb(172, 255, 47);
     width: 100%;
+    display: flex;
+    flex-direction: column;
 }
+
+
 
 header nav
 {
@@ -70,6 +81,16 @@ header .funkciok{
 }
 
 
+.header_atmenet{
+    width: 100%;
+    height: 20px;
+    background: linear-gradient(rgba(172, 255, 47, 1), rgba(172, 255, 47, 0.1));
+    display: block;
+    position:absolute;
+    z-index: 2;
+    top: 110px;
+}
+
 /*
 HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, 
 HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, 
@@ -80,7 +101,105 @@ HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE,
 
 /*________________________________________________________________________________*/
 
+/*________________________________________________________________________________*/
+/*index.html main - vége*/
 
+
+
+.index_fix_hatter{
+    background-image:url(lany_geppel.jpg);
+    display: block;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    size: 100%;
+    background-position-y:70%;
+    height: 500px;
+
+
+
+    
+}
+
+.index_promo_teglalapok{
+    display: flex;
+    position:absolute;    
+    top: 50%;
+    left: 5%;
+    width: 20%;
+    flex-direction: column;
+    
+    
+    
+}
+
+    
+
+.index_promo_teglalapok p{
+    position: relative;
+     width: 100%;
+     height: 100%;
+     display: flex;
+    align-items: center; /** Y-axis align **/
+    justify-content: center; /** X-axis align **/
+
+    font-weight: bold;
+    font-size: 120%;
+    font-family: monospace;
+    
+
+}
+
+
+.index_promo_teglalap_1{
+    height: 50px;
+    width: 90%;
+    background-color: rgba(65, 65, 65, 0.685);
+    margin-bottom: 10px;
+    border-radius: 20px;
+    
+
+    
+
+}
+
+.index_promo_teglalap_2{
+    background-color: blanchedalmond;
+    border-radius: 20px;
+    height: 50px;
+    width: 100%;
+    margin-bottom: 10px;
+    
+
+}
+
+.index_promo_teglalap_3{
+    background-color: rgba(65, 65, 65, 0.685);
+    border-radius: 20px;
+    height: 60px;
+    width: 120%;
+    padding: 10px;
+
+    
+}
+/*felirat beállítások*/
+
+.index_promo_teglalap_1 p, .index_promo_teglalap_3 p{
+    
+    color: blanchedalmond;
+
+}
+
+.index_promo_teglalap_2 p{
+    color: rgb(19, 14, 14);
+}
+
+.index_ures{
+    height: 500px;
+    background-color: rgba(0, 0, 255, 0.116);
+}
+
+/*index.html main - vége*/
+/*________________________________________________________________________________*/
 /*leiras.html main - eleje*/
 .mainContainer 
 {
@@ -109,7 +228,6 @@ main .bemutatkozas{
     background-size: cover;/*szélesség meg lesz, de a magasság nem*/
     background-repeat: no-repeat;/*hogy ne legyen ismétlés*/
     background-position:center;/*biztos, hogy illeszkedni fog a tetejéhet az alsó résznek*/
-
     width: 100%;
     height: 500px;
 }
@@ -250,12 +368,15 @@ color: blue;
 
 /*footer - kezdet*/
 
+
+
 footer{
     width: 100%;
     height: 250px;
     background-color: rgba(188, 143, 143, 0.685);
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 
@@ -302,7 +423,17 @@ footer a{
     
 }
 
-
+.footer_atmenet{
+    
+    width: 100%;
+    height: 20px;
+    background: linear-gradient(rgba(172, 255, 47, 0), rgba(188, 143, 143, 0.685));
+    position:absolute;
+    z-index: 2;
+    top: -20px;
+    
+    
+}
 
 /*footer - vége*/
 /*________________________________________________________________________________*/
