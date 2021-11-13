@@ -12,6 +12,7 @@ public class menuMain extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String basket = "http://localhost:20500/SzamtechWebShop/kosar";
         HttpSession session = request.getSession();
         Integer type = (Integer)session.getAttribute("Type");
         if (type == null) {
@@ -43,7 +44,7 @@ public class menuMain extends HttpServlet {
                         "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuProfil'\">Profil</button>\n" +
                         "            </form>\n" +
                         "            <div class=\"szolgaltatasok\">\n" +
-                        "            <a href=\"\" class=\"funkciok\"><img src=\"RES/basket.png\" alt=\"kosár kép\"></a>\n" +
+                        "            <a href=\""+basket+"\" class=\"funkciok\"><img src=\"RES/basket.png\" alt=\"kosár kép\"></a>\n" +
                         "            </div>\n" +
                         "        </nav>\n" +
                             "        <div class=\"header_atmenet\">\n" +
@@ -127,9 +128,6 @@ public class menuMain extends HttpServlet {
                             "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTamogatoink'\">Támogatóink</button>\n" +
                             "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuLogin'\">Bejelentkezés</button>\n" +
                             "            </form>\n" +
-                            "            <div class=\"szolgaltatasok\">\n" +
-                            "            <a href=\"\" class=\"funkciok\"><img src=\"RES/basket.png\" alt=\"kosár kép\"></a>\n" +
-                            "            </div>\n" +
                             "        </nav>\n" +
                             "        <div class=\"header_atmenet\">\n" +
                             "        </div>\n" +

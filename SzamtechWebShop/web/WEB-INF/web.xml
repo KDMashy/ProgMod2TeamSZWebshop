@@ -200,6 +200,22 @@
         <servlet-name>targyOldal</servlet-name>
         <url-pattern>/targyOldal</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>Kosar</servlet-name>
+        <servlet-class>controller.Kosar</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Kosar</servlet-name>
+        <url-pattern>/kosar</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>kosarhozAdas</servlet-name>
+        <servlet-class>controller.kosarhozAdas</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>kosarhozAdas</servlet-name>
+        <url-pattern>/kosarba</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

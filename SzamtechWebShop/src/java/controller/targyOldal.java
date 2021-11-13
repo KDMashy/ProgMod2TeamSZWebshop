@@ -16,7 +16,7 @@ public class targyOldal extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         WebShopService wbservice = new WebShopService();
-        
+        String basket = "http://localhost:20500/SzamtechWebShop/kosar";
         ArrayList<Termek> termekek = wbservice.getTermekek();
         
         String termekName = request.getParameter("getTermek");
@@ -66,7 +66,7 @@ public class targyOldal extends HttpServlet {
                             "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuProfil'\">Profil</button>\n" +
                             "            </form>\n" +
                             "            <div class=\"szolgaltatasok\">\n" +
-                            "            <a href=\"Kosar\" class=\"funkciok\"><img src=\"RES/basket.png\" alt=\"kosár kép\"></a>\n" +
+                            "            <a href=\""+basket+"\" class=\"funkciok\"><img src=\"RES/basket.png\" alt=\"kosár kép\"></a>\n" +
                             "            </div>\n" +
                             "        </nav>\n" +
                             "    </header>\n" +
@@ -77,11 +77,20 @@ public class targyOldal extends HttpServlet {
                             "        <p class =\"leiras\">"+t.getTermekDesc()+"</p>\n" +
                             "        <p class=\"ar\">"+t.getTermekAr()+" + ÁFA</p>\n" +
                             "        <p class=\"raktaron\">"+van+"</p>\n" +
-                            "        <form action=\"kosarhozAdas\">\n" +
+                            "        <form action=\"kosarhozAdas\" style='text-align: center; margin: 20px auto'>\n" +
                             "            <input type=\"number\" name=\"amount\" required>\n" +
                             "            <button type=\"submit\" name=\"getTermek\" value=\"" + termekName + "\">Kosárhoz adás</button>\n" +
-                            "        </form>" +
-                            "    </main>\n" +
+                            "        </form><h1 style='text-transform: uppercase'>Értékelés</h1>" +
+                            "        <form action='termekErtekeles' method='post' "
+                                    + "style='margin: 20px auto; text-align: center'>"
+                                    + "<input type='number' name='ertekelt' min='1' max='5' value='5' style='margin: 20px auto'><br>"
+                                    + "<textarea name='ertekelesComment' cols='70' rows='20' style='margin: 20px auto'></textarea><br>"
+                                    + "<button type='submit' style='margin: 20px auto; padding: 15px 30px;'>Értékelés</button><br>"
+                                    + "</form>\n<h1 style='text-transform: uppercase'>Étékelések</h1>");
+                for (Ertekeles ertek : ertekek){
+                    out.print("<p style='text-align: center; border: 1px solid #999; padding: 30px 50px'>Értékelés:<br>"+ertek.getErtek()+"asd<br>Comment:<br>asd"+ertek.getComment()+"asd</p>");
+                }
+                out.print(  "    </main>\n" +
                             "    <footer>\n" +
                             "        <section class = \"bemutatkozas\">\n" +
                             "            <div class=\"footer_info_box\">\n" +
@@ -151,14 +160,17 @@ public class targyOldal extends HttpServlet {
                             "        <p class =\"leiras\">"+t.getTermekDesc()+"</p>\n" +
                             "        <p class=\"ar\">"+t.getTermekAr()+" + ÁFA</p>\n" +
                             "        <p class=\"raktaron\">"+van+"</p>\n" +
-                            "        <p>A vásárlás lehetőség csak bejelentkezés után elérhető</p>\n" +
+                            "        <p>A vásárlás lehetőség csak bejelentkezés után elérhető</p><h1 style='text-transform: uppercase'>Étékelés</h1>\n" +
                             "        <form action='termekErtekeles' method='post' "
                                     + "style='margin: 20px auto; text-align: center'>"
-                                    + "<input type='number' name='ertekelt' min='1' max='5' style='margin: 20px auto'><br>"
+                                    + "<input type='number' name='ertekelt' min='1' max='5' value='5' style='margin: 20px auto'><br>"
                                     + "<textarea name='ertekelesComment' cols='70' rows='20' style='margin: 20px auto'></textarea><br>"
                                     + "<button type='submit' style='margin: 20px auto; padding: 15px 30px;'>Értékelés</button><br>"
-                                    + "</form>\n" +
-                            "    </main>\n" +
+                                    + "</form>\n<h1 style='text-transform: uppercase'>Étékelések</h1>");
+                for (Ertekeles ertek : ertekek){
+                    out.print("<p style='text-align: center; border: 1px solid #999; padding: 30px 50px'>Értékelés:<br>"+ertek.getErtek()+"asd<br>Comment:<br>asd"+ertek.getComment()+"asd</p>");
+                }
+                out.print(  "    </main>\n" +
                             "    <footer>\n" +
                             "        <section class = \"bemutatkozas\">\n" +
                             "            <div class=\"footer_info_box\">\n" +

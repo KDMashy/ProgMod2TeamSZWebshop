@@ -16,7 +16,7 @@ public class menuProfil extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         WebShopService wbservice = new WebShopService();
-        
+        String basket = "http://localhost:20500/SzamtechWebShop/kosar";
         HttpSession session = request.getSession();
         String fname = session.getAttribute("name").toString();
         
@@ -53,7 +53,7 @@ public class menuProfil extends HttpServlet {
                         "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuProfil'\">Profil</button>\n" +
                         "            </form>\n" +
                         "            <div class=\"szolgaltatasok\">\n" +
-                        "                <a href=\"\" class=\"funkciok\">\n" +
+                        "                <a href=\""+basket+"\" class=\"funkciok\">\n" +
                         "                    <img src=\"RES/basket.png\" alt=\"kosár kép\">\n" +
                         "                </a>\n" +
                         "            </div>\n" +

@@ -34,11 +34,6 @@ public class menuLogin extends HttpServlet {
                         "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTamogatoink'\">Támogatóink</button>\n" +
                         "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuLogin'\">Bejelentkezés</button>\n" +
                         "            </form>\n" +
-                        "            <div class='szolgaltatasok'>\n" +
-                        "                <a href='' class='funkciok'>\n" +
-                        "                    <img src='RES/basket.png' alt='kosár kép'>\n" +
-                        "                </a>\n" +
-                        "            </div>\n" +
                         "        </nav>\n" +
                             "        <div class=\"header_atmenet\">\n" +
                             "        </div>\n" +

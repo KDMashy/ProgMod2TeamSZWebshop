@@ -18,6 +18,7 @@ public class menuTermekek extends HttpServlet {
         WebShopService wbservice = new WebShopService();
         
         String kepLink = "http://localhost:20500/SzamtechWebShop/menuMain";
+        String basket = "http://localhost:20500/SzamtechWebShop/kosar";
         
         ArrayList<Termek> termekek = wbservice.getTermekek();
         
@@ -52,7 +53,7 @@ public class menuTermekek extends HttpServlet {
                             "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuProfil'\">Profil</button>\n" +
                             "            </form>\n" +
                             "            <div class='szolgaltatasok'>\n" +
-                            "            <a href='Kosar' class='funkciok'><img src='RES/basket.png' alt='kosár kép'></a>\n" +
+                            "            <a href='"+basket+"' class='funkciok'><img src='RES/basket.png' alt='kosár kép'></a>\n" +
                             "            </div>\n" +
                             "        </nav>\n" +
                             "        <div class=\"header_atmenet\">\n" +
@@ -162,9 +163,6 @@ public class menuTermekek extends HttpServlet {
                             "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTamogatoink'\">Támogatóink</button>\n" +
                             "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuLogin'\">Bejelentkezés</button>\n" +
                             "            </form>\n" +
-                            "            <div class='szolgaltatasok'>\n" +
-                            "            <a href='Kosar' class='funkciok'><img src='RES/basket.png' alt='kosár kép'></a>\n" +
-                            "            </div>\n" +
                             "        </nav>\n" +
                             "        <div class=\"header_atmenet\">\n" +
                             "        </div>\n" +
