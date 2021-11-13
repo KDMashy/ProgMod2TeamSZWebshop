@@ -34,6 +34,9 @@ public class targyOldal extends HttpServlet {
             van = "Van raktáron";
         }
         
+        ArrayList<Ertekeles> ertekek = wbservice.getErtekeles(t.getTermekID());
+        float atl = wbservice.ertekelesForTermek(ertekek);
+        
         HttpSession session = request.getSession();
         Integer type = (Integer)session.getAttribute("Type");
         if (type == null) {
@@ -70,6 +73,7 @@ public class targyOldal extends HttpServlet {
                             "    <main class=\"termekleiras\">\n" +
                             "        <h1>"+t.getTermekNev()+"</h1>\n" +
                             "        <img src=\""+t.getTermekKep()+"\" alt=\"\">\n" +
+                            "        <p>Értékelés: "+atl+"</p>\n" +
                             "        <p class =\"leiras\">"+t.getTermekDesc()+"</p>\n" +
                             "        <p class=\"ar\">"+t.getTermekAr()+" + ÁFA</p>\n" +
                             "        <p class=\"raktaron\">"+van+"</p>\n" +
@@ -143,10 +147,17 @@ public class targyOldal extends HttpServlet {
                             "    <main class=\"termekleiras\">\n" +
                             "        <h1>"+t.getTermekNev()+"</h1>\n" +
                             "        <img src=\""+t.getTermekKep()+"\" alt=\"\">\n" +
+                            "        <p>Értékelés: "+atl+"</p>\n" +
                             "        <p class =\"leiras\">"+t.getTermekDesc()+"</p>\n" +
                             "        <p class=\"ar\">"+t.getTermekAr()+" + ÁFA</p>\n" +
                             "        <p class=\"raktaron\">"+van+"</p>\n" +
                             "        <p>A vásárlás lehetőség csak bejelentkezés után elérhető</p>\n" +
+                            "        <form action='termekErtekeles' method='post' "
+                                    + "style='margin: 20px auto; text-align: center'>"
+                                    + "<input type='number' name='ertekelt' min='1' max='5' style='margin: 20px auto'><br>"
+                                    + "<textarea name='ertekelesComment' cols='70' rows='20' style='margin: 20px auto'></textarea><br>"
+                                    + "<button type='submit' style='margin: 20px auto; padding: 15px 30px;'>Értékelés</button><br>"
+                                    + "</form>\n" +
                             "    </main>\n" +
                             "    <footer>\n" +
                             "        <section class = \"bemutatkozas\">\n" +

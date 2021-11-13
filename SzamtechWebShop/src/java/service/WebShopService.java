@@ -810,6 +810,58 @@ public class WebShopService{
     }
     // </editor-fold>
     
+    //Ertekeles letrehozasa
+    public Boolean createErtekeles(Integer tid, Integer rate, String comm){
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
+            String sql = "insert into ertekeles (tErtekID,Ertek,Comment) "
+                        + "values("+tid+","+rate+",'"+comm+"')";
+            PreparedStatement prestm = DBCon.prepareStatement(sql);
+            prestm.execute();
+            return Boolean.TRUE;
+        } catch (SQLException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+            return Boolean.FALSE;
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+            return Boolean.FALSE;
+        }
+    }
+    //ertekelesek beolvasasa
+    public ArrayList<Ertekeles> getErtekeles(Integer tid){
+        ArrayList<Ertekeles> ertekelesek = new ArrayList<>();
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
+            String sql = "select * from ertekeles where tErtekID="+tid+"";
+            PreparedStatement prestm = DBCon.prepareStatement(sql);
+            ResultSet rs = prestm.executeQuery();
+            while (rs.next()){
+                Ertekeles e = new Ertekeles();
+                e.setErtekID(rs.getInt(1));
+                e.setTErtekID(rs.getInt(2));
+                e.setErtek(rs.getInt(3));
+                e.setComment(rs.getString(4));
+                ertekelesek.add(e);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return ertekelesek;
+    }
+    //ertekeles kiszamolasa
+    public float ertekelesForTermek(ArrayList<Ertekeles> ertekek){
+        float atl = 0;
+        for (Ertekeles e: ertekek){
+            atl += e.getErtek();
+        }
+        atl /= ertekek.size();
+        return atl;
+    }
+    
     //Partnerek adoszamanak beallitasa szukseg eseten
     public Boolean updatePartnerAdoszam(String adszam, String name, String code){
         try{
