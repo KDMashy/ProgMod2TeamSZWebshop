@@ -64,6 +64,7 @@ public class listVasarlasok extends HttpServlet {
                         "                <th>Utca - Házszám</th>\n" +
                         "                <th>Időpont</th>\n" +
                         "                <th>Egyéb</th>\n" +
+                        "                <th>Lemondás</th>\n" +
                         "            </thead>\n" +
                         "            <tbody>\n");
             for (Vasarlas v : vasarlasok){
@@ -76,8 +77,17 @@ public class listVasarlasok extends HttpServlet {
                             "                    <td style='text-align: center'>"+v.getVaros()+"</td>\n" +
                             "                    <td style='text-align: center'>"+v.getUtcaHSzam()+"</td>\n" +
                             "                    <td style='text-align: center'>"+v.getIdopont()+"</td>\n" +
-                            "                    <td style='text-align: center'>"+v.getEgyeb()+"</td>\n" +
-                            "                </tr>\n");
+                            "                    <td style='text-align: center'>"+v.getEgyeb()+"</td>\n");
+                    if (v.getEgyeb().equals("DELETED")) {
+                        out.print("              <td style='text-align: center'>"+v.getEgyeb()+"</td>\n \n" +
+                                  "          </tr>\n");
+                    } else {
+                        out.print("              <td style='text-align: center'>\n " +
+                                  "              <form method='post'><button type='submit' name='lemond' value='"+v.getSorSzam()+"'>Vásárlás lemondása</button></form>\n" +
+                                  "              </td>\n \n" +
+                                  "          </tr>\n");
+                    }
+                            
                 }
             }
             out.print(  "            </tbody>\n" +
