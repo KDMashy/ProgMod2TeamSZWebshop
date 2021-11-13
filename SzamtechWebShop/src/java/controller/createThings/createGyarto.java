@@ -23,7 +23,7 @@ public class createGyarto extends HttpServlet {
         Boolean create = wbservice.createGyarto(GyName, GyEl, bool);
         
         if (create) {
-            response.sendRedirect("listGyarto");
+            response.sendRedirect("adminSite");
         } else {
             response.sendRedirect("adminSite");
         }

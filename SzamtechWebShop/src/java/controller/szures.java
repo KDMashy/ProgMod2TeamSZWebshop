@@ -11,17 +11,74 @@ import javax.servlet.http.HttpSession;
 import service.*;
 import model.*;
 
-public class menuTermekek extends HttpServlet {
+public class szures extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         WebShopService wbservice = new WebShopService();
+        request.setCharacterEncoding("UTF-8");
+        HttpSession session = request.getSession();
+        String searchTermek = request.getParameter("szurText");
+        Short bool = Short.parseShort(request.getParameter("order"));
+        String selected[] = request.getParameterValues("category");
+        Integer happened = 0;
         
         ArrayList<Termek> termekek = wbservice.getTermekek();
-        
+        ArrayList<Termek> searched = new ArrayList<>();
+        ArrayList<Termek> categorysed = new ArrayList<>();
         ArrayList<Kategoria> cat = wbservice.getCategoryes();
         
-        HttpSession session = request.getSession();
+        if (searchTermek.equals("") == Boolean.FALSE) {
+            for (Termek t : termekek) {
+                if (t.getTermekNev().toLowerCase().contains(searchTermek.toLowerCase())) {
+                    searched.add(t);
+                }
+            }
+            happened = 1;
+        }
+        
+        if (happened == 1) {
+            termekek = searched;
+        }
+        
+        Termek x = new Termek();
+        if (bool == 0) {
+            for (Integer j = 0; j < termekek.size() - 1; j++) {
+                for (Integer i = j + 1; i < termekek.size(); i++) {
+                    if (termekek.get(j).getTermekAr()< termekek.get(i).getTermekAr()) {
+                        x = termekek.get(j);
+                        termekek.set(j, termekek.get(i));
+                        termekek.set(i, x);
+                    }
+                }
+            }
+        } else if (bool == 1){
+            for (Integer j = 0; j < termekek.size() - 1; j++) {
+                for (Integer i = j + 1; i < termekek.size(); i++) {
+                    if (termekek.get(j).getTermekAr()> termekek.get(i).getTermekAr()) {
+                        x = termekek.get(j);
+                        termekek.set(j, termekek.get(i));
+                        termekek.set(i, x);
+                    }
+                }
+            }
+        }
+        
+        if (Integer.parseInt(selected[0]) != 6) {
+            for (Integer i = 0; i < termekek.size(); i++) {
+                for (Integer j = 0; j < selected.length; j++) {
+                    if (termekek.get(i).getTermekKatID() == Short.parseShort(selected[j])) {
+                        categorysed.add(termekek.get(i));
+                        happened = 2;
+                    }
+                }
+            }
+
+            if (happened == 2) {
+                termekek = categorysed;
+            }
+        }
+        
         Integer type = (Integer)session.getAttribute("Type");
         if (type == null) {
             type = 0;
@@ -251,28 +308,28 @@ public class menuTermekek extends HttpServlet {
      * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request
-     * @param RESponse servlet RESponse
+     * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse RESponse)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, RESponse);
+        processRequest(request, response);
     }
 
     /**
      * Handles the HTTP <code>POST</code> method.
      *
      * @param request servlet request
-     * @param RESponse servlet RESponse
+     * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse RESponse)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, RESponse);
+        processRequest(request, response);
     }
 
     /**

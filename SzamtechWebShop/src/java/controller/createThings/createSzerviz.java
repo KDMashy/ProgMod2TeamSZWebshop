@@ -21,7 +21,7 @@ public class createSzerviz extends HttpServlet {
         
         Boolean create = wbservice.createSzerviz(SName, SEl);
         if (create) {
-            response.sendRedirect("listSzerviz");
+            response.sendRedirect("adminSite");
         } else {
             response.sendRedirect("adminSite");
         }

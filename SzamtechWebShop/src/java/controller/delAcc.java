@@ -1,4 +1,4 @@
-package controller.createThings;
+package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -6,25 +6,26 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.*;
 import service.*;
 
-public class createPartner extends HttpServlet {
+public class delAcc extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         WebShopService wbservice = new WebShopService();
-        //adatok lekerese
-        request.setCharacterEncoding("UTF-8");
-        String SName = request.getParameter("partnerName");
-        String SEl = request.getParameter("partnerDesc");
+        HttpSession session = request.getSession();
         
-        Boolean create = wbservice.createPartner(SName, SEl);
-        if (create) {
-            response.sendRedirect("adminSite");
-        } else {
-            response.sendRedirect("adminSite");
-        }
+        String name = session.getAttribute("name").toString();
+        
+        Boolean saved = wbservice.anonymisation(name);
+        
+        session.setAttribute("name", "");
+        session.setAttribute("password", "");
+        session.setAttribute("Type", 0);
+        
+        response.sendRedirect("menuLogin");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

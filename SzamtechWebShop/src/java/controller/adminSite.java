@@ -2,19 +2,26 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import service.*;
+import model.*;
 
 public class adminSite extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        WebShopService wbservice = new WebShopService();
+        
         HttpSession session = request.getSession();
         
         String adminName = session.getAttribute("name").toString();
+        
+        ArrayList<Kategoria> cat = wbservice.getCategoryes();
         
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -54,9 +61,9 @@ public class adminSite extends HttpServlet {
                         "                    <textarea name='termekDesc' cols='70' rows='20'></textarea><br>\n" +
                         "                    <span>Ár</span><br>\n" +
                         "                    <input type='number' name='termekAr'><br>\n" +
-                        "                    <span>Feltöltött kép neve (res mappából)</span><br>\n" +
+                        "                    <span>Feltöltött kép neve (RES mappából)</span><br>\n" +
                         "                    <input type='text' name='termekKepURL'><br>\n" +
-                        "                    <span>Készlenen van-e</span><br>\n" +
+                        "                    <span>Készleten van-e</span><br>\n" +
                         "                    <div class='Tradio'>\n" +
                         "                        <div class='TradioIgen'>\n" +
                         "                            <span>Igen</span>\n" +
@@ -68,9 +75,11 @@ public class adminSite extends HttpServlet {
                         "                        </div>\n" +
                         "                    </div>\n" +
                         "                    <span>Kategória Választás</span><br>\n" +
-                        "                    <select name='KategoriaVal' id='KatVal'>\n" +
-                        "                        <option value='1'>pelda</option>\n" +
-                        "                    </select><br>\n" +
+                        "                    <select name='KategoriaVal' id='KatVal'>\n");
+            for (Kategoria k : cat){
+                out.print("                        <option value='"+k.getKategoriaID()+"'>"+k.getKategoriaNev()+"</option>\n");
+            }
+            out.print(  "                    </select><br>\n" +
                         "                    <button type=\"submit\">Termék létrehozása</button>\n" +
                         "                </form>\n" +
                         "            </div>\n" +

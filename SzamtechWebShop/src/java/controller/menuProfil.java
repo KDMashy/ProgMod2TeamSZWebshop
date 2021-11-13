@@ -39,12 +39,12 @@ public class menuProfil extends HttpServlet {
                         "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n" +
                         "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
                         "    <title>WebShop</title>\n" +
-                        "    <link rel=\"stylesheet\" href=\"res/style.css\">\n" +
+                        "    <link rel=\"stylesheet\" href=\"RES/style.css\">\n" +
                         "</head>\n" +
                         "<body>\n" +
                         "    <header>\n" +
                         "        <nav>\n" +
-                        "            <a href=\"index.html\"class=\"logo\"><img src=\"res/logo.png\" alt=\"logo helye\"></a>\n" +
+                        "            <a href=\"index.html\"class=\"logo\"><img src=\"RES/logo.png\" alt=\"logo helye\"></a>\n" +
                         "            <form method='post'>\n" +
                         "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\">Kezdőlap</button>\n" +
                         "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\">Termékek</button>\n" +
@@ -53,7 +53,7 @@ public class menuProfil extends HttpServlet {
                         "            </form>\n" +
                         "            <div class=\"szolgaltatasok\">\n" +
                         "                <a href=\"\" class=\"funkciok\">\n" +
-                        "                    <img src=\"res/basket.png\" alt=\"kosár kép\">\n" +
+                        "                    <img src=\"RES/basket.png\" alt=\"kosár kép\">\n" +
                         "                </a>\n" +
                         "            </div>\n" +
                         "        </nav>\n" +
@@ -71,15 +71,20 @@ public class menuProfil extends HttpServlet {
                         "            </div>\n" +
                         "            <div class=\"fhFunction\">\n" +
                         "                <form action=\"chPassw\" method=\"post\">\n" +
-                        "                    <input type=\"password\" name=\"chPassword\" /><br>\n" +
+                        "                    <input type=\"password\" name=\"password\" /><br>\n" +
                         "                    <button type=\"submit\">Jelszó változtatás</button>\n" +
                         "                </form>\n" +
                         "            </div>\n" +
                         "            <div class=\"fhFunction\">\n" +
                         "                <form action=\"chUserSettings\" method=\"post\">\n" +
                         "                    <input type=\"text\" name=\"szamCim\" /><br>\n" +
-                        "                    <input type=\"text\" name=\"adSzam\" /><br>\n" +
+                        "                    <input type=\"text\" name=\"adSzam\" minlength=\"11\" maxlength=\"11\"/><br>\n" +
                         "                    <button type=\"submit\">Adatok változtatása</button>\n" +
+                        "                </form>\n" +
+                        "            </div>\n" +
+                        "            <div class=\"fhFunction\">\n" +
+                        "                <form action=\"vasarlasokList\">\n" +
+                        "                    <button type=\"submit\">Vásárlások listázása</button>\n" +
                         "                </form>\n" +
                         "            </div>" +
                         "            <div class=\"fhFunction\">\n" +
@@ -87,6 +92,11 @@ public class menuProfil extends HttpServlet {
                         "                    <button type=\"submit\">Kijelentkezés</button>\n" +
                         "                </form>\n" +
                         "            </div>\n" +
+                        "            <div class=\"fhFunction\">\n" +
+                        "                <form action=\"delAcc\">\n" +
+                        "                    <button type=\"submit\" style='background-color: RED; color: YELLOW'>Account törlése</button>\n" +
+                        "                </form>\n" +
+                        "            </div>" +
                         "        </div>\n" +
                         "    </main>\n" +
                         "    <footer>\n" +
@@ -95,15 +105,15 @@ public class menuProfil extends HttpServlet {
                         "                <h3>Elérhetőségek:</h3>\n" +
                         "                <br>\n" +
                         "                <div class=\"footer_elerhetoseg\">\n" +
-                        "                    <img src=\"res/free-phone-icon-vector-27.jpg\" alt=\"\">\n" +
+                        "                    <img src=\"RES/free-phone-icon-vector-27.jpg\" alt=\"\">\n" +
                         "                    <p class=\"footer_elerhetoseg_szoveg\">+36 20 123 4567</p>\n" +
                         "                </div>\n" +
                         "                <div class=\"footer_elerhetoseg\">\n" +
-                        "                    <img src=\"res/email-vector-icon-png-17.jpg\" alt=\"\">\n" +
+                        "                    <img src=\"RES/email-vector-icon-png-17.jpg\" alt=\"\">\n" +
                         "                    <a href=\"mailto: eznemisletezik@gmail.com\">eznemisletezik@gmail.com</a>\n" +
                         "                </div>\n" +
                         "                <div class=\"footer_elerhetoseg\">\n" +
-                        "                    <img src=\"res/gps-icon-vector-7.jpg\" alt=\"\">\n" +
+                        "                    <img src=\"RES/gps-icon-vector-7.jpg\" alt=\"\">\n" +
                         "                    <p class=\"footer_elerhetoseg_szoveg\">7620 Pécs PTE - TTK</p>\n" +
                         "                </div>  \n" +
                         "            </div>\n" +
@@ -135,28 +145,28 @@ public class menuProfil extends HttpServlet {
      * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request
-     * @param response servlet response
+     * @param RESponse servlet RESponse
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse RESponse)
             throws ServletException, IOException {
-        processRequest(request, response);
+        processRequest(request, RESponse);
     }
 
     /**
      * Handles the HTTP <code>POST</code> method.
      *
      * @param request servlet request
-     * @param response servlet response
+     * @param RESponse servlet RESponse
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse RESponse)
             throws ServletException, IOException {
-        processRequest(request, response);
+        processRequest(request, RESponse);
     }
 
     /**

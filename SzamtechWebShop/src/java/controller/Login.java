@@ -51,7 +51,7 @@ public class Login extends HttpServlet {
                         "<body>\n" +
                         "    <header>\n" +
                         "        <nav>\n" +
-                        "            <a href='index.html' class='logo'><img src='res/logo.png' alt='logo helye'></a>\n" +
+                        "            <a href='index.html' class='logo'><img src='RES/logo.png' alt='logo helye'></a>\n" +
                         "            <form method='post'>\n" +
                         "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\">Kezdőlap</button>\n" +
                         "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\">Termékek</button>\n" +
@@ -60,10 +60,10 @@ public class Login extends HttpServlet {
                         "            </form>\n" +
                         "            <div class='szolgaltatasok'>\n" +
                         "                <a href='' class='funkciok'>\n" +
-                        "                    <img src='res/login.png' alt='login kép'>\n" +
+                        "                    <img src='RES/login.png' alt='login kép'>\n" +
                         "                </a>\n" +
                         "                <a href='' class='funkciok'>\n" +
-                        "                    <img src='res/basket.png' alt='kosár kép'>\n" +
+                        "                    <img src='RES/basket.png' alt='kosár kép'>\n" +
                         "                </a>\n" +
                         "            </div>\n" +
                         "        </nav>\n" +
@@ -150,28 +150,28 @@ public class Login extends HttpServlet {
      * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request
-     * @param response servlet response
+     * @param RESponse servlet RESponse
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse RESponse)
             throws ServletException, IOException {
-        processRequest(request, response);
+        processRequest(request, RESponse);
     }
 
     /**
      * Handles the HTTP <code>POST</code> method.
      *
      * @param request servlet request
-     * @param response servlet response
+     * @param RESponse servlet RESponse
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse RESponse)
             throws ServletException, IOException {
-        processRequest(request, response);
+        processRequest(request, RESponse);
     }
 
     /**

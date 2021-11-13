@@ -33,7 +33,7 @@ public class createTermek extends HttpServlet {
         Boolean create = wbservice.createTermek(TData, bool, katID, price);
         
         if (create) {
-            response.sendRedirect("listTermek");
+            response.sendRedirect("adminSite");
         } else {
             response.sendRedirect("adminSite");
         }

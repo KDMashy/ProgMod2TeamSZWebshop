@@ -76,6 +76,22 @@
         <servlet-name>menuProfil</servlet-name>
         <servlet-class>controller.menuProfil</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>szures</servlet-name>
+        <servlet-class>controller.szures</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>chPassw</servlet-name>
+        <servlet-class>controller.chPassw</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>chUserSettings</servlet-name>
+        <servlet-class>controller.chUserSettings</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>delAcc</servlet-name>
+        <servlet-class>controller.delAcc</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/reg</url-pattern>
@@ -151,6 +167,22 @@
     <servlet-mapping>
         <servlet-name>menuProfil</servlet-name>
         <url-pattern>/menuProfil</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>szures</servlet-name>
+        <url-pattern>/szures</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>chPassw</servlet-name>
+        <url-pattern>/chPassw</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>chUserSettings</servlet-name>
+        <url-pattern>/chUserSettings</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>delAcc</servlet-name>
+        <url-pattern>/delAcc</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
