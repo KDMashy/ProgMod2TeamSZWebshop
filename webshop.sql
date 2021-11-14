@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2021. Nov 13. 15:40
+-- Létrehozás ideje: 2021. Nov 14. 18:25
 -- Kiszolgáló verziója: 10.4.21-MariaDB
 -- PHP verzió: 8.0.10
 
@@ -208,7 +208,7 @@ CREATE TABLE `vasarlas` (
   `Varos` varchar(45) NOT NULL,
   `UtcaHSzam` varchar(70) NOT NULL,
   `Idopont` varchar(100) NOT NULL,
-  `Egyeb` varchar(45) DEFAULT NULL
+  `Egyeb` varchar(10000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -217,7 +217,31 @@ CREATE TABLE `vasarlas` (
 
 INSERT INTO `vasarlas` (`SorSzam`, `Felhasznalo`, `Szamla`, `FizMod`, `Osszeg`, `IRSzam`, `Varos`, `UtcaHSzam`, `Idopont`, `Egyeb`) VALUES
 (1, 'anonym1', 0, 'asd', 3, '0000', 'Anonym1', 'Anonym1', '211109205208', 'DELETED'),
-(2, 'anonym2', 0, 'asd', 3, '0000', 'Anonym2', 'Anonym2', '211109205208', 'DELETED');
+(2, 'anonym2', 0, 'asd', 3, '0000', 'Anonym2', 'Anonym2', '211109205208', 'DELETED'),
+(3, 'anonym3', 1, 'Kártyás', 39200, '7960', 'Teszthely', 'Teszthely', '20211114160935', 'TESZTELÉS'),
+(4, 'anonym4', 1, 'Kártyás', 45000, '0000', 'anonym4', 'anonym4', '20211114162336', 'DELETED'),
+(5, 'anonym5', 1, 'Kártyás', 60000, '0000', 'anonym5', 'anonym5', '20211114162450', 'DELETED'),
+(6, 'anonym6', 1, 'Kártyás', 60000, '0000', 'anonym6', 'anonym6', '20211114162826', 'DELETED'),
+(7, 'anonym7', 1, 'Kártyás', 15000, '0000', 'anonym7', 'anonym7', '20211114163012', 'DELETED'),
+(8, 'anonym8', 1, 'Kártyás', 75000, '0000', 'anonym8', 'anonym8', '20211114163236', 'DELETED'),
+(9, 'anonym9', 1, 'Kártyás', 15000, '0000', 'anonym9', 'anonym9', '20211114163354', 'DELETED'),
+(10, 'anonym10', 1, 'Kártyás', 15000, '0000', 'anonym10', 'anonym10', '20211114163502', 'DELETED'),
+(11, 'anonym11', 1, 'Kártyás', 15000, '0000', 'anonym11', 'anonym11', '20211114163537', 'DELETED'),
+(12, 'anonym12', 1, 'Kártyás', 15000, '0000', 'anonym12', 'anonym12', '20211114163713', 'DELETED'),
+(13, 'anonym13', 1, 'Kártyás', 15000, '0000', 'anonym13', 'anonym13', '20211114163857', 'DELETED'),
+(14, 'anonym14', 1, 'Kártyás', 15000, '0000', 'anonym14', 'anonym14', '20211114164031', 'DELETED'),
+(15, 'anonym15', 1, 'Kártyás', 60000, '0000', 'anonym15', 'anonym15', '20211114164642', 'DELETED'),
+(16, 'anonym16', 1, 'Kártyás', 15000, '0000', 'anonym16', 'anonym16', '20211114164842', 'DELETED'),
+(17, 'anonym17', 1, 'Kártyás', 39200, '0000', 'anonym17', 'anonym17', '20211114165741', 'DELETED'),
+(18, 'anonym18', 1, 'Kártyás', 39200, '0000', 'anonym18', 'anonym18', '20211114170121', 'DELETED'),
+(19, 'anonym19', 1, 'Kártyás', 65100, '0000', 'anonym19', 'anonym19', '20211114170210', 'DELETED'),
+(20, 'anonym20', 1, 'Kártyás', 201600, '0000', 'anonym20', 'anonym20', '20211114170304', 'DELETED'),
+(21, 'anonym21', 1, 'Kártyás', 39200, '0000', 'anonym21', 'anonym21', '20211114170403', 'DELETED'),
+(22, 'anonym22', 1, 'Kártyás', 65100, '0000', 'anonym22', 'anonym22', '20211114170438', 'DELETED'),
+(23, 'anonym23', 1, 'Kártyás', 87700, '0000', 'anonym23', 'anonym23', '20211114170552', 'DELETED'),
+(24, 'anonym24', 1, 'Kártyás', 87700, '0000', 'anonym24', 'anonym24', '20211114170634', 'DELETED'),
+(25, 'anonym25', 1, 'Kártyás', 65100, '0000', 'anonym25', 'anonym25', '20211114171113', 'DELETED'),
+(26, 'anonym26', 1, 'Kártyás', 65100, '0000', 'anonym26', 'anonym26', '20211114171344', 'DELETED');
 
 -- --------------------------------------------------------
 
@@ -274,7 +298,10 @@ INSERT INTO `vevo` (`VevoID`, `VevoNev`, `VevoPassword`, `VevoEmail`, `VevoSzamC
 (32, 'TesztReg', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'TREG@gmail.com', 'Nincs', 'Nincs', 0),
 (33, 'anonym33', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'anonym33', 'anonym33', 'anonym33', 0),
 (34, 'anonym34', '688787d8ff144c502c7f5cffaafe2cc588d86079f9de88304c26b0cb99ce91c6', 'anonym34', 'anonym34', 'anonym34', 0),
-(35, 'regTeszt', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'regTeszt@gmail.com', 'TESZTHELY', '12345678911', 0);
+(35, 'anonym35', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'anonym35', 'anonym35', 'anonym35', 0),
+(36, 'anonym36', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'anonym36', 'anonym36', 'anonym36', 0),
+(37, 'anonym37', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'anonym37', 'anonym37', 'anonym37', 0),
+(38, 'regTeszt', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'regTeszt@gmail.com', 'TESZTHELY', '12345678911', 0);
 
 --
 -- Indexek a kiírt táblákhoz
@@ -380,13 +407,13 @@ ALTER TABLE `termek`
 -- AUTO_INCREMENT a táblához `vasarlas`
 --
 ALTER TABLE `vasarlas`
-  MODIFY `SorSzam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `SorSzam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT a táblához `vevo`
 --
 ALTER TABLE `vevo`
-  MODIFY `VevoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `VevoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- Megkötések a kiírt táblákhoz
