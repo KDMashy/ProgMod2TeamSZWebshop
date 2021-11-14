@@ -47,7 +47,6 @@ public class tremekekVasarlasa extends HttpServlet {
                 Termek t = wbservice.getTermek(vtm.get(i), termekek);
                 egyeb += "//--SZÁMLA ITEM: "+vtm.get(i)+"--"+t.getTermekAr()+" Ft--Mennyiség: "+vtmInt.get(i)+"--/";
             }
-            
             stringData.add(session.getAttribute("name").toString());
             stringData.add(request.getParameter("fizmod"));
             stringData.add(request.getParameter("varos"));

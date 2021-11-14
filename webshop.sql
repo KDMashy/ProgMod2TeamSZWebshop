@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2021. Nov 14. 18:25
+-- Létrehozás ideje: 2021. Nov 14. 19:32
 -- Kiszolgáló verziója: 10.4.21-MariaDB
 -- PHP verzió: 8.0.10
 
@@ -190,7 +190,8 @@ INSERT INTO `termek` (`TermekID`, `TermekNev`, `TermekDesc`, `TermekAr`, `Termek
 (30, 'Acer V246HQLbi', '23.6”, 1920x1080 felbontású 1080p, HDMI csatlakozó, LED kijelző', 41800, 'RES/acer236.jpg', 1, 5),
 (31, 'Samsung F24T350FHR', '24”, 1920x1080 felbontású 1080p, HDMI csatlakozó, LED IPS kijelző', 55200, 'RES/samsung24.jpg', 0, 5),
 (32, 'LG 24MP59G-P', '23.8”, 1920x1080 felbontású 1080p, HDMI csatlakozó, IPS kijelző', 50400, 'RES/lg24.jpg', 0, 5),
-(33, 'Acer Nitro VG240Ybmiix', '23.8”, 1920x1080 felbontású 1080p, HDMI csatlakozó, IPS LED kijelző', 41800, 'RES/acer238.jpg', 1, 5);
+(33, 'Acer Nitro VG240Ybmiix', '23.8”, 1920x1080 felbontású 1080p, HDMI csatlakozó, IPS LED kijelző', 41800, 'RES/acer238.jpg', 1, 5),
+(34, 'anonymTermek34', 'anonymTermek34', 0, 'anonymTermek34', 0, 5);
 
 -- --------------------------------------------------------
 
@@ -241,7 +242,11 @@ INSERT INTO `vasarlas` (`SorSzam`, `Felhasznalo`, `Szamla`, `FizMod`, `Osszeg`, 
 (23, 'anonym23', 1, 'Kártyás', 87700, '0000', 'anonym23', 'anonym23', '20211114170552', 'DELETED'),
 (24, 'anonym24', 1, 'Kártyás', 87700, '0000', 'anonym24', 'anonym24', '20211114170634', 'DELETED'),
 (25, 'anonym25', 1, 'Kártyás', 65100, '0000', 'anonym25', 'anonym25', '20211114171113', 'DELETED'),
-(26, 'anonym26', 1, 'Kártyás', 65100, '0000', 'anonym26', 'anonym26', '20211114171344', 'DELETED');
+(26, 'anonym26', 1, 'Kártyás', 65100, '0000', 'anonym26', 'anonym26', '20211114171344', 'DELETED'),
+(27, 'regTeszt', 1, 'Kártyás', 45000, '7960', 'Teszthely', 'Teszt u. 3', '20211114191424', 'DELETED'),
+(28, 'regTeszt', 1, 'Kártyás', 55200, '7960', 'Teszthely', 'Teszt u. 3', '20211114191811', 'DELETED'),
+(29, 'regTeszt', 1, 'Kártyás', 15000, '7960', 'Teszthely', 'Teszt u. 3', '20211114192801', 'DELETED'),
+(30, 'regTeszt', 1, 'Kártyás', 0, '7960', 'Teszthely', 'Teszt u. 3', '20211114193243', 'DELETED');
 
 -- --------------------------------------------------------
 
@@ -401,13 +406,13 @@ ALTER TABLE `szerviz`
 -- AUTO_INCREMENT a táblához `termek`
 --
 ALTER TABLE `termek`
-  MODIFY `TermekID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `TermekID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT a táblához `vasarlas`
 --
 ALTER TABLE `vasarlas`
-  MODIFY `SorSzam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `SorSzam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT a táblához `vevo`
