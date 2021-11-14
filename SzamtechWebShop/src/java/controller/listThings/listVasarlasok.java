@@ -19,6 +19,8 @@ public class listVasarlasok extends HttpServlet {
         
         HttpSession session = request.getSession();
         String name = session.getAttribute("name").toString();
+        String basket = "http://localhost:20500/SzamtechWebShop/kosar";
+        String kepLink = "http://localhost:20500/SzamtechWebShop/menuMain";
         
         ArrayList<Vasarlas> vasarlasok = wbservice.getVasarlasokByName(name);
         
@@ -36,7 +38,7 @@ public class listVasarlasok extends HttpServlet {
                         "<body>\n" +
                         "    <header>\n" +
                         "        <nav>\n" +
-                        "            <a href='index.html'class='logo'><img src='RES/logo.png' alt='logo helye'></a>\n" +
+                        "            <a href='"+kepLink+"'class='logo'><img src='RES/logo.png' alt='logo helye'></a>\n" +
                         "            <form method='post'>\n" +
                         "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\">Kezdőlap</button>\n" +
                         "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\">Termékek</button>\n" +
@@ -44,7 +46,7 @@ public class listVasarlasok extends HttpServlet {
                         "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuProfil'\">Profil</button>\n" +
                         "            </form>\n" +
                         "            <div class='szolgaltatasok'>\n" +
-                        "                <a href='' class='funkciok'>\n" +
+                        "                <a href='"+basket+"' class='funkciok'>\n" +
                         "                    <img src='RES/basket.png' alt='kosár kép'>\n" +
                         "                </a>\n" +
                         "            </div>\n" +
