@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webshop</title>
+    <link rel="stylesheet" href="RES/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="http://localhost:20500/SzamtechWebShop/menuMain" class="logo"><img src="RES/logo.png" alt="logo helye"></a>
+            <form method='post'>
+                <button type="submit" name = "menup" onclick="form.action='menuMain'">Kezdőlap</button>
+                <button type="submit" name = "menup" onclick="form.action='menuTermekek'">Termékek</button>
+                <button type="submit" name = "menup" onclick="form.action='menuTamogatoink'">Támogatóink</button>
+                <button type="submit" name = "menup" onclick="form.action='menuProfil'">Profil</button>
+            </form>
+            <div class="szolgaltatasok">
+            <a href="" class="funkciok"><img src="RES/basket.png" alt="kosár kép"></a>
+            </div>
+        </nav>
+        <div class="header_atmenet">
+        </div>
+    </header>
+    <main class="kosarMain">
+        <div class="kosarContainer">
+            <table class="kosarTable">
+                <thead>
+                    <tr>
+                        <th>Termék neve</th>
+                        <th>Termék ára</th>
+                        <th>Mennyiség</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>pl1</td>
+                        <td>pl2</td>
+                        <td>pl3</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="vasarlasContainer">
+                <form action="tremekekVasarlasa">
+                    <div class="lakhely" style="border: 1px solid #999; padding: 15px">
+                        <label for="varos">Város:</label><br>
+                        <input type="text" name="varos" required><br><br>
+                        <label for="hszam">Utca/házszám:</label><br>
+                        <input type="text" name="hszam" required><br><br>
+                        <label for="irszam">Irányítószám:</label><br>
+                        <input type="text" name="irszam" min="1" max="4" required><br><br>
+                        <label for="area">Egyéb közlendő:</label><br>
+                        <textarea name="termekDesc" cols="30" rows="20" style="resize: none"></textarea><br>
+                    </div>
+                    <div class="fizmod" style="border: 1px solid #999; padding: 15px">
+                        <div class="elfogadC">
+                            <label for="elfogad">Kártyás</label>
+                            <input type="radio" name="fizmod" value="1"  id="elfogad" checked>
+                        </div>
+                        <div class="elfogadC">
+                            <label for="elfogad">Kézpénzes</label>
+                            <input type="radio" name="fizmod" value="0"  id="elfogad">
+                        </div>
+                    </div>
+                    <div class="felhf" style="border: 1px solid #999; padding: 15px">
+                        <div class="elfogadC">
+                            <label for="elfogad">Elfogadom a vásárlás feltételeit</label>
+                            <input type="radio" name="accept" value="1"  id="elfogad">
+                        </div>
+                        <div class="elfogadC">
+                            <label for="nemfogad">Nemfogadom el a vásárlás feltételeit</label>
+                            <input type="radio" name="accept" value="0" id="nemfogad" checked>
+                        </div>
+                    </div>
+                    <button type="submit">Vásárlás</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <section class = "bemutatkozas">
+            <div class="footer_atmenet">
+            </div>
+            <div class="footer_info_box">
+                <h3>Elérhetőségek:</h3>
+                <br>
+                <div class="footer_elerhetoseg">
+                    <img src="RES/free-phone-icon-vector-27.jpg" alt="">
+                    <p class="footer_elerhetoseg_szoveg">+36 20 123 4567</p>
+                </div>
+                <div class="footer_elerhetoseg">
+                    <img src="RES/email-vector-icon-png-17.jpg" alt="">
+                    <a href="mailto: eznemisletezik@gmail.com">eznemisletezik@gmail.com</a>
+                </div>
+                <div class="footer_elerhetoseg">
+                    <img src="RES/gps-icon-vector-7.jpg" alt="">
+                    <p class="footer_elerhetoseg_szoveg">7620 Pécs PTE - TTK</p>
+                </div>  
+            </div>
+            <div class="footer_info_box">
+                <h3>Információk rólunk: </h3>
+                <br><br>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, tempore!</p>
+                <br>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem blanditiis ipsum, nulla dicta facere eius quos quae quasi nihil tenetur?</p>
+                <br>
+            </div>
+            <div class="footer_info_box">
+                <h3>Támogatóint: </h3>
+                <br><br>
+                <div class = "footer_tamogatok">
+                    <p>lelépünk a pénzel kft</p>
+                    <br>
+                </div>
+            </div>
+        </section>
+    </footer>
+</body>
+</html>

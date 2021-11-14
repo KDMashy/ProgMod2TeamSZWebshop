@@ -1,3 +1,4 @@
+
 package controller;
 
 import java.io.IOException;
@@ -7,18 +8,20 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.KosarElem;
+import model.*;
+import service.*;
 
-public class logOut extends HttpServlet {
+public class lemond extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
+        WebShopService wbservice = new WebShopService();
         
-        session.invalidate();
+        Integer id = Integer.parseInt(request.getParameter("lemondas"));
         
-        response.sendRedirect("menuMain");
+        Boolean saved = wbservice.delVasarlas(id);
+        
+        response.sendRedirect("listVasarlasok");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

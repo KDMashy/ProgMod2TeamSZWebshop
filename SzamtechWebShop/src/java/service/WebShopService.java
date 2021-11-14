@@ -93,6 +93,8 @@ public class WebShopService{
                     }
                 }
             }
+            function f = new function();
+            exist = f.validName(name);
             //DB meghivas, regisztralando felhasznalo adatainak mentese
             if (exist == Boolean.FALSE) {
                 Class.forName("com.mysql.jdbc.Driver");
@@ -183,6 +185,10 @@ public class WebShopService{
                         + "TorzsVasarlo="+bool+" where VevoID="+vid+"";
                 PreparedStatement prestm = DBCon.prepareStatement(sql);
                 prestm.executeUpdate();
+                ArrayList<Vasarlas> vasarlasok = getVasarlasokByName(name);
+                for (Vasarlas v : vasarlasok){
+                    Boolean YESS = anonymVasarlasByName(name);
+                }
                 return Boolean.TRUE;
             } else {
                 return Boolean.FALSE;
@@ -393,7 +399,7 @@ public class WebShopService{
         for (Integer i = 0; i < tList.size(); i++) {
             if (tList.get(i).getTermekNev().equals(name)) {
                 tid = tList.get(i).getTermekID();
-                return tid++;
+                return tid;
             }
         }
         return tid = -1;
@@ -425,8 +431,7 @@ public class WebShopService{
         return szStringData;
     }
     //Vasarlas letrehozasa
-    public Boolean createSzamla(ArrayList<String> stringData, Short szamla,
-                            Integer sum, String date, 
+    public Boolean createSzamla(ArrayList<String> stringData, Short szamla, String date, 
                             ArrayList<Integer> mennyiseg,
                             ArrayList<String> vasaroltTermekek){
         try{
@@ -438,14 +443,12 @@ public class WebShopService{
             String hszam = stringData.get(3);
             String egyeb = stringData.get(4);
             String irszam = stringData.get(5);
-            sum = vasarlasSum(mennyiseg, vasaroltTermekek);
+            Integer sum = vasarlasSum(mennyiseg, vasaroltTermekek);
             String sql = "insert into vasarlas (Felhasznalo,Szamla,FizMod,Osszeg,IRSzam,Varos,UtcaHSzam,Idopont,Egyeb) "
                     + "values('"+user+"',"+szamla+",'"+fizmod+"',"+sum+",'"+irszam+"','"+varos+"','"+hszam+"',"+date+",'"+egyeb+"')";
             PreparedStatement prestm = DBCon.prepareStatement(sql);
             prestm.execute();
-            ArrayList<Termek> termekek = getTermekek();
-            Boolean egysegar = createEgysegArak(user, termekek, mennyiseg, vasaroltTermekek, date);
-            return egysegar;
+            return Boolean.TRUE;
         } catch (SQLException ex) {
             Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex.toString());
@@ -462,26 +465,19 @@ public class WebShopService{
         ArrayList<Termek> tList = getTermekek();
         for (Integer i = 0; i < tName.size(); i++) {
             tid = termekEll(tName.get(i), tList);
-            Integer resz = (sum+tList.get(tid).getTermekAr())*amount.get(i);
-            sum += resz;
+            sum += (tList.get(tid).getTermekAr()*amount.get(i));
         }
         return sum;
     }
     //Vasarlas lemondasa
-    public Boolean delVasarlas(String name, String date){
-        Integer vid;
+    public Boolean delVasarlas(Integer id){
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
-            vid = vasarlasEll(name, date);
-            if (vid >= 0) {
-                String sql = "update vasarlas set Egyeb='DELETED' where Felhasznalo='"+name+"',Idopont='"+date+"'";
-                PreparedStatement prestm = DBCon.prepareStatement(sql);
-                prestm.executeUpdate();
-                return Boolean.TRUE;
-            } else {
-                return Boolean.FALSE;
-            }
+            String sql = "update vasarlas set Egyeb='DELETED' where SorSzam="+id+"";
+            PreparedStatement prestm = DBCon.prepareStatement(sql);
+            prestm.executeUpdate();
+            return Boolean.TRUE;
         } catch (SQLException ex) {
             Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
             return Boolean.FALSE;
@@ -491,51 +487,77 @@ public class WebShopService{
         }
     }
     //Egysegarak leirasa
-    public Boolean createEgysegArak(String name, ArrayList<Termek> tList, 
-                    ArrayList<Integer> mennyiseg,
-                    ArrayList<String> vTermek,
-                    String date){
-        Integer vid, tid;
+    public Boolean createEgysegArak(String name, String date, Integer amount, ArrayList<Termek> tList){
+        Integer tid;
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
-            vid = vasarlasEll(name, date);
-            if (vid >= 0) {
-                for (Integer i = 0; i < vTermek.size(); i++) {
-                    tid = termekEll(name, tList);
-                    Integer ar = tList.get(tid--).getTermekAr();
-                    String sql = "insert into egysegarak (Vasarlas_SorSzam,Termek_TermekID,Termek_TermekAr,Termek_Mennyiseg) "
-                        + "values("+vid+","+tid+","+ar+","+mennyiseg.get(i)+")";
-                    PreparedStatement prestm = DBCon.prepareStatement(sql);
-                    prestm.execute();
-                }
-                return Boolean.TRUE;
-            } else {
-                return Boolean.FALSE;
-            }
+            tid = termekEll(name, tList);
+            Integer ar = tList.get(tid).getTermekAr();
+            String sql = "insert into egysegarak (Termek_TermekAr,Termek_Mennyiseg) "
+                + "values("+ar+","+amount+")";
+            PreparedStatement prestm = DBCon.prepareStatement(sql);
+            prestm.execute();
+            return Boolean.TRUE;
         } catch(Exception ex){
             System.err.println(ex.toString());
             return Boolean.FALSE;
         }
     }
+    //egysegarak beolvassasa
+    public ArrayList<Egysegarak> getEgysegarak(Integer vid){
+        ArrayList<Egysegarak> egyseg = new ArrayList<>();
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
+            String sql = "select * from egysegarak where Vasarlas_SorSzam="+vid+"";
+            PreparedStatement prestm = DBCon.prepareStatement(sql);
+            ResultSet rs = prestm.executeQuery();
+            while (rs.next()){
+                Egysegarak eg = new Egysegarak(rs.getInt(1), rs.getInt(2));
+                eg.setTermekTermekAr(rs.getInt(3));
+                eg.setTermekMennyiseg(rs.getShort(4));
+                egyseg.add(eg);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return egyseg;
+    }
+    public ArrayList<EgysegarakPK> getEgysegarakPK(Integer vid){
+        ArrayList<EgysegarakPK> egyseg = new ArrayList<>();
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
+            String sql = "select * from egysegarak where Vasarlas_SorSzam="+vid+"";
+            PreparedStatement prestm = DBCon.prepareStatement(sql);
+            ResultSet rs = prestm.executeQuery();
+            while (rs.next()){
+                EgysegarakPK eg = new EgysegarakPK(rs.getInt(1), rs.getInt(2));
+                egyseg.add(eg);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return egyseg;
+    }
     //Vasarlas anonymizalasa
-    public Boolean anonymVasarlas(String name, String date){
+    public Boolean anonymVasarlasByName(String name){
         Integer vid;
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
-            vid = vasarlasEll(name, date);
-            System.out.println(vid);
-            if (vid >= 0) {
-                String anonym = "Anonym"+vid;
-                String sql = "update vasarlas set Felhasznalo='"+anonym+"', IRSzam='0000', "
-                        + "Varos='"+anonym+"', UtcaHSzam='"+anonym+"', Egyeb='DELETED' where SorSzam="+vid+"";
-                PreparedStatement prestm = DBCon.prepareStatement(sql);
-                prestm.executeUpdate();
-                return Boolean.TRUE;
-            } else {
-                return Boolean.FALSE;
-            }
+            vid = vasarlasEll(name);
+            String anonym = "anonym"+vid;
+            String sql = "update vasarlas set Felhasznalo='"+anonym+"', IRSzam='0000', "
+                    + "Varos='"+anonym+"', UtcaHSzam='"+anonym+"', Egyeb='DELETED' where SorSzam="+vid+"";
+            PreparedStatement prestm = DBCon.prepareStatement(sql);
+            prestm.executeUpdate();
+            return Boolean.TRUE;
         } catch (SQLException ex) {
             Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
             return Boolean.FALSE;
@@ -600,6 +622,7 @@ public class WebShopService{
                 va.setVaros(rs.getString(7));
                 va.setUtcaHSzam(rs.getString(8));
                 va.setIdopont(rs.getString(9));
+                va.setEgyeb(rs.getString(10));
                 vasarlasok.add(va);
             }
         } catch (SQLException ex) {
@@ -609,9 +632,21 @@ public class WebShopService{
         }
         return vasarlasok;
     }
-    //vasarlas ellenorzes
+    //vasarlas ellenorzes by date
     private Integer vasarlasEll(String name, String date){
         ArrayList<Vasarlas> vList = getVasarlasok(name, date);
+        Integer vid;
+        for (Integer i = 0; i < vList.size(); i++) {
+            if (vList.get(i).getFelhasznalo().equals(name)) {
+                vid = vList.get(i).getSorSzam();
+                return vid;
+            }
+        }
+        return vid = -1;
+    }
+    //by name
+    private Integer vasarlasEll(String name){
+        ArrayList<Vasarlas> vList = getVasarlasokByName(name);
         Integer vid;
         for (Integer i = 0; i < vList.size(); i++) {
             if (vList.get(i).getFelhasznalo().equals(name)) {

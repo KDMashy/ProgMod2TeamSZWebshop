@@ -1,4 +1,4 @@
-package controller.listThings;
+package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -7,20 +7,20 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import model.*;
 import service.*;
 
-public class listVasarlasok extends HttpServlet {
+public class listEgysegarak extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         WebShopService wbservice = new WebShopService();
         
-        HttpSession session = request.getSession();
-        String name = session.getAttribute("name").toString();
+        Integer id = Integer.parseInt(request.getParameter("egysegarakMegt"));
         
-        ArrayList<Vasarlas> vasarlasok = wbservice.getVasarlasokByName(name);
+        ArrayList<Egysegarak> egyseg = wbservice.getEgysegarak(id);
+        ArrayList<EgysegarakPK> egysegPK = wbservice.getEgysegarakPK(id);
+        ArrayList<Termek> termekek = wbservice.getTermekek();
         
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -55,38 +55,16 @@ public class listVasarlasok extends HttpServlet {
                         "    <main class=\"tamogatoinkMain\">\n" +
                         "        <table class=\"theme\">\n" +
                         "            <thead>\n" +
-                        "                <th>Számla</th>\n" +
-                        "                <th>Fizetési mód</th>\n" +
-                        "                <th>Összeg</th>\n" +
-                        "                <th>Irányítószám</th>\n" +
-                        "                <th>Város</th>\n" +
-                        "                <th>Utca - Házszám</th>\n" +
-                        "                <th>Időpont</th>\n" +
-                        "                <th>Egyéb</th>\n" +
-                        "                <th>Lemondás</th>\n" +
+                        "                <th>Termék</th>\n" +
+                        "                <th>Termék ár</th>\n" +
+                        "                <th>Mennyiség</th>\n" +
                         "            </thead>\n" +
                         "            <tbody>\n");
-            for (Vasarlas v : vasarlasok){
-                if (v.getFelhasznalo().contains("anonym") == Boolean.FALSE) {
-                    out.print(  "            <tr>\n" +
-                            "                    <td style='text-align: center'>"+v.getSzamla()+"</td>\n" +
-                            "                    <td style='text-align: center'>"+v.getFizMod()+"</td>\n" +
-                            "                    <td style='text-align: center'>"+v.getOsszeg()+"</td>\n" +
-                            "                    <td style='text-align: center'>"+v.getIRSzam()+"</td>\n" +
-                            "                    <td style='text-align: center'>"+v.getVaros()+"</td>\n" +
-                            "                    <td style='text-align: center'>"+v.getUtcaHSzam()+"</td>\n" +
-                            "                    <td style='text-align: center'>"+v.getIdopont()+"</td>\n" +
-                            "                    <td style='text-align: center'>"+v.getEgyeb()+"</td>\n");
-                    if (v.getEgyeb().equals("DELETED")) {
-                        out.print("              <td style='text-align: center'>"+v.getEgyeb()+"</td>\n \n" +
-                                  "          </tr>\n");
-                    } else {
-                        out.print("              <td style='text-align: center'>\n " +
-                                  "              <form action='lemond' method='post'><button type='submit' name='lemondas' value='"+v.getSorSzam()+"'>Vásárlás lemondása</button></form>\n" +
-                                  "              </td>\n \n" +
-                                  "          </tr>\n");
-                    }     
-                }
+            for (EgysegarakPK v : egysegPK){
+                out.print(  "            <tr>\n" +
+                            "                    <td style='text-align: center'>"+termekek.get(v.getTermekTermekID()).getTermekNev()+"</td>\n" +
+                            "                    <td style='text-align: center'>"+termekek.get(v.getTermekTermekID()).getTermekAr()+"</td>\n" +
+                            "                    <td style='text-align: center'>"+egyseg.get(v.getVasarlasSorSzam()).getTermekMennyiseg()+"</td>\n"); 
             }
             out.print(  "            </tbody>\n" +
                         "        </table>\n" +

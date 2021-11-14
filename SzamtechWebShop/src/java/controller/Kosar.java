@@ -7,6 +7,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +15,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.KosarElem;
+import model.*;
+import service.*;
 
 /**
  *
@@ -34,26 +36,249 @@ public class Kosar extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        
+        request.setCharacterEncoding("UTF-8");
+        WebShopService wbservice = new WebShopService();
+        String basket = "http://localhost:20500/SzamtechWebShop/kosar";
+        String kepLink = "http://localhost:20500/SzamtechWebShop/menuMain";
         HttpSession session = request.getSession();
-        List<KosarElem> Kosar = (List<KosarElem>)session.getAttribute("kosar"); 
+        ArrayList<KosarElem> Kosar = (ArrayList<KosarElem>)session.getAttribute("kosar"); 
+        ArrayList<Termek> termekek = wbservice.getTermekek();
         
+        Integer SUM = 0;
+        
+        Integer added = Integer.parseInt(session.getAttribute("hasItem").toString());
+        
+        response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Kosar</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Kosar tartalma: </h1>");
+            out.print(  "<!DOCTYPE html>\n" +
+                        "<html lang=\"en\">\n" +
+                        "<head>\n" +
+                        "    <meta charset=\"UTF-8\">\n" +
+                        "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n" +
+                        "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
+                        "    <title>Webshop</title>\n" +
+                        "    <link rel=\"stylesheet\" href=\"RES/style.css\">\n" +
+                        "<style>.kosarMain{\n" +
+                        "    width: 70%;\n" +
+                        "    margin: 0 auto;\n" +
+                        "}\n" +
+                        ".kosarMain .kosarContainer{\n" +
+                        "    width: 90%;\n" +
+                        "    margin: 20px auto;\n" +
+                        "    background-color: rgba(153, 153, 153, 0.08);\n" +
+                        "    padding: 40px;\n" +
+                        "}\n" +
+                        ".kosarMain .kosarContainer .kosarTable{\n" +
+                        "    margin: 0 auto;\n" +
+                        "    border-collapse: collapse;\n" +
+                        "}\n" +
+                        ".kosarMain .kosarContainer .kosarTable thead{\n" +
+                        "    background-color: rgba(153, 153, 153, 0.29);\n" +
+                        "}\n" +
+                        ".kosarMain .kosarContainer .kosarTable thead th{\n" +
+                        "    padding: 15px 20px;\n" +
+                        "    border-bottom: 3px solid #999;\n" +
+                        "}\n" +
+                        ".kosarMain .kosarContainer .kosarTable td{\n" +
+                        "    padding: 15px 20px;\n" +
+                        "    border: 2px solid #999;\n" +
+                        "}\n" +
+                        ".kosarMain .kosarContainer .kosarTable tr{\n" +
+                        "    transition: background 0.3s, color 0.3s;\n" +
+                        "}\n" +
+                        ".kosarMain .kosarContainer .kosarTable tr:hover{\n" +
+                        "    background-color: #999;\n" +
+                        "    color: #fff;\n" +
+                        "}\n" +
+                        ".kosarMain .vasarlasContainer{\n" +
+                        "    text-align: center;\n" +
+                        "    margin: 25px auto;\n" +
+                        "    padding: 30px;\n" +
+                        "    width: 30%;\n" +
+                        "}\n" +
+                        ".kosarMain .vasarlasContainer button{\n" +
+                        "    padding: 15px 30px;\n" +
+                        "}\n" +
+                        ".kosarMain .elfogadC{\n" +
+                        "    display: flex;\n" +
+                        "    justify-content: space-between;\n" +
+                        "    margin-bottom: 15px;\n" +
+                        "}</style>"
+                    + "</head>\n" +
+                        "<body>\n" +
+                        "    <header>\n" +
+                        "        <nav>\n" +
+                        "            <a href=\""+kepLink+"\" class=\"logo\"><img src=\"RES/logo.png\" alt=\"logo helye\"></a>\n" +
+                        "            <form method='post'>\n" +
+                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\">Kezdőlap</button>\n" +
+                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\">Termékek</button>\n" +
+                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTamogatoink'\">Támogatóink</button>\n" +
+                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuProfil'\">Profil</button>\n" +
+                        "            </form>\n" +
+                        "            <div class=\"szolgaltatasok\">\n" +
+                        "            <a href=\""+basket+"\" class=\"funkciok\"><img src=\"RES/basket.png\" alt=\"kosár kép\"></a>\n" +
+                        "            </div>\n" +
+                        "        </nav>\n" +
+                        "        <div class=\"header_atmenet\">\n" +
+                        "        </div>\n" +
+                        "    </header>\n" +
+                        "    <main class=\"kosarMain\">\n" +
+                        "        <div class=\"kosarContainer\">\n" +
+                        "            <table class=\"kosarTable\">\n" +
+                        "                <thead>\n" +
+                        "                    <tr>\n" +
+                        "                        <th>Termék neve</th>\n" +
+                        "                        <th>Termék ára</th>\n" +
+                        "                        <th>Mennyiség</th>\n" +
+                        "                    </tr>\n" +
+                        "                </thead>\n" +
+                        "                <tbody>\n");
+            if (added == 1) {
+                for (Integer i = 0; i < Kosar.size(); i++){
+                    out.print(  "                    <tr>\n" +
+                                "                        <td>"+Kosar.get(i).getName()+"</td>\n");
+                    for (Termek term : termekek) {
+                        if (term.getTermekNev().equals(Kosar.get(i).getName()) == Boolean.TRUE) {
+                            out.print("                        <td>"+term.getTermekAr()+"</td>\n");
+                            SUM += (term.getTermekAr()*Kosar.get(i).getAmount());
+                        }
+                    }
+                    out.print(  "                        <td>"+Kosar.get(i).getAmount()+"</td>\n" +
+                                "                    </tr>\n");
+                }
+                out.print(  "                </tbody>\n" +
+                            "            </table>\n"
+                                    + "  <h1 style='text-align: center'>A végösszeg: "+SUM+"</h1>\n" +
+                            "            <div class=\"vasarlasContainer\">\n" +
+                            "                <form action=\"tremekekVasarlasa\">\n" +
+                            "                    <div class=\"lakhely\" style=\"border: 1px solid #999; padding: 15px\">\n" +
+                            "                        <label for=\"varos\">Város:</label><br>\n" +
+                            "                        <input type=\"text\" name=\"varos\" required><br><br>\n" +
+                            "                        <label for=\"hszam\">Utca/házszám:</label><br>\n" +
+                            "                        <input type=\"text\" name=\"hszam\" required><br><br>\n" +
+                            "                        <label for=\"irszam\">Irányítószám:</label><br>\n" +
+                            "                        <input type=\"text\" name=\"irszam\" min=\"1\" max=\"4\" required><br><br>\n" +
+                            "                        <label for=\"area\">Egyéb közlendő:</label><br>\n" +
+                            "                        <textarea name=\"egyebInfoByFelh\" cols=\"30\" rows=\"20\" style=\"resize: none\"></textarea><br>\n" +
+                            "                    </div>\n" +
+                            "                    <div class=\"fizetesimod\" style=\"border: 1px solid #999; padding: 15px\">\n" +
+                            "                        <div class=\"elfogadC\">\n" +
+                            "                            <label for=\"elfogad\">Kártyás</label>\n" +
+                            "                            <input type=\"radio\" name=\"fizmod\" value=\"Kártyás\"  id=\"elfogad\" checked>\n" +
+                            "                        </div>\n" +
+                            "                        <div class=\"elfogadC\">\n" +
+                            "                            <label for=\"elfogad\">Kézpénzes</label>\n" +
+                            "                            <input type=\"radio\" name=\"fizmod\" value=\"Kézpénzes\"  id=\"elfogad\">\n" +
+                            "                        </div>\n" +
+                            "                    </div>\n" +
+                            "                    <div class=\"felhf\" style=\"border: 1px solid #999; padding: 15px\">\n" +
+                            "                        <div class=\"elfogadC\">\n" +
+                            "                            <label for=\"elfogad\">Elfogadom a vásárlás feltételeit</label>\n" +
+                            "                            <input type=\"radio\" name=\"accept\" value=\"1\"  id=\"elfogad\">\n" +
+                            "                        </div>\n" +
+                            "                        <div class=\"elfogadC\">\n" +
+                            "                            <label for=\"nemfogad\">Nemfogadom el a vásárlás feltételeit</label>\n" +
+                            "                            <input type=\"radio\" name=\"accept\" value=\"0\" id=\"nemfogad\" checked>\n" +
+                            "                        </div>\n" +
+                            "                    </div>\n" +
+                            "                    <button type=\"submit\">Vásárlás</button>\n" +
+                            "                </form>\n" +
+                            "            </div>\n" +
+                            "        </div>\n" +
+                            "    </main>\n" +
+                            "    <footer>\n" +
+                            "        <section class = \"bemutatkozas\">\n" +
+                            "            <div class=\"footer_atmenet\">\n" +
+                            "            </div>\n" +
+                            "            <div class=\"footer_info_box\">\n" +
+                            "                <h3>Elérhetőségek:</h3>\n" +
+                            "                <br>\n" +
+                            "                <div class=\"footer_elerhetoseg\">\n" +
+                            "                    <img src=\"RES/free-phone-icon-vector-27.jpg\" alt=\"\">\n" +
+                            "                    <p class=\"footer_elerhetoseg_szoveg\">+36 20 123 4567</p>\n" +
+                            "                </div>\n" +
+                            "                <div class=\"footer_elerhetoseg\">\n" +
+                            "                    <img src=\"RES/email-vector-icon-png-17.jpg\" alt=\"\">\n" +
+                            "                    <a href=\"mailto: eznemisletezik@gmail.com\">eznemisletezik@gmail.com</a>\n" +
+                            "                </div>\n" +
+                            "                <div class=\"footer_elerhetoseg\">\n" +
+                            "                    <img src=\"RES/gps-icon-vector-7.jpg\" alt=\"\">\n" +
+                            "                    <p class=\"footer_elerhetoseg_szoveg\">7620 Pécs PTE - TTK</p>\n" +
+                            "                </div>  \n" +
+                            "            </div>\n" +
+                            "            <div class=\"footer_info_box\">\n" +
+                            "                <h3>Információk rólunk: </h3>\n" +
+                            "                <br><br>\n" +
+                            "                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, tempore!</p>\n" +
+                            "                <br>\n" +
+                            "                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem blanditiis ipsum, nulla dicta facere eius quos quae quasi nihil tenetur?</p>\n" +
+                            "                <br>\n" +
+                            "            </div>\n" +
+                            "            <div class=\"footer_info_box\">\n" +
+                            "                <h3>Támogatóint: </h3>\n" +
+                            "                <br><br>\n" +
+                            "                <div class = \"footer_tamogatok\">\n" +
+                            "                    <p>lelépünk a pénzel kft</p>\n" +
+                            "                    <br>\n" +
+                            "                </div>\n" +
+                            "            </div>\n" +
+                            "        </section>\n" +
+                            "    </footer>\n" +
+                            "</body>\n" +
+                            "</html>");
+            } else {
+                out.print(  "<td>Még nincs adat</td>\n"
+                        + "<td>Még nincs adat</td>\n"
+                        + "<td>Még nincs adat</td>\n"
+                        + "               </tbody>\n" +
+                            "            </table>\n"
+                                    + "  <h1 style='text-align: center'>A végösszeg: "+SUM+"</h1>\n" +
+                            "        </div>\n" +
+                            "    </main>\n" +
+                            "    <footer>\n" +
+                            "        <section class = \"bemutatkozas\">\n" +
+                            "            <div class=\"footer_atmenet\">\n" +
+                            "            </div>\n" +
+                            "            <div class=\"footer_info_box\">\n" +
+                            "                <h3>Elérhetőségek:</h3>\n" +
+                            "                <br>\n" +
+                            "                <div class=\"footer_elerhetoseg\">\n" +
+                            "                    <img src=\"RES/free-phone-icon-vector-27.jpg\" alt=\"\">\n" +
+                            "                    <p class=\"footer_elerhetoseg_szoveg\">+36 20 123 4567</p>\n" +
+                            "                </div>\n" +
+                            "                <div class=\"footer_elerhetoseg\">\n" +
+                            "                    <img src=\"RES/email-vector-icon-png-17.jpg\" alt=\"\">\n" +
+                            "                    <a href=\"mailto: eznemisletezik@gmail.com\">eznemisletezik@gmail.com</a>\n" +
+                            "                </div>\n" +
+                            "                <div class=\"footer_elerhetoseg\">\n" +
+                            "                    <img src=\"RES/gps-icon-vector-7.jpg\" alt=\"\">\n" +
+                            "                    <p class=\"footer_elerhetoseg_szoveg\">7620 Pécs PTE - TTK</p>\n" +
+                            "                </div>  \n" +
+                            "            </div>\n" +
+                            "            <div class=\"footer_info_box\">\n" +
+                            "                <h3>Információk rólunk: </h3>\n" +
+                            "                <br><br>\n" +
+                            "                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, tempore!</p>\n" +
+                            "                <br>\n" +
+                            "                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem blanditiis ipsum, nulla dicta facere eius quos quae quasi nihil tenetur?</p>\n" +
+                            "                <br>\n" +
+                            "            </div>\n" +
+                            "            <div class=\"footer_info_box\">\n" +
+                            "                <h3>Támogatóint: </h3>\n" +
+                            "                <br><br>\n" +
+                            "                <div class = \"footer_tamogatok\">\n" +
+                            "                    <p>lelépünk a pénzel kft</p>\n" +
+                            "                    <br>\n" +
+                            "                </div>\n" +
+                            "            </div>\n" +
+                            "        </section>\n" +
+                            "    </footer>\n" +
+                            "</body>\n" +
+                            "</html>");
+            }
             
-            Kosar.forEach((elem) -> out.println(" (id: " + elem.getID() + ", mennyiseg: " + elem.getAmount()+ ")"));
-            
-
-            out.println("</body>");
-            out.println("</html>");
+            //Kosar.forEach((elem) -> out.println(" (id: " + elem.getID() + ", mennyiseg: " + elem.getAmount()+ ")"));
         }
     }
 

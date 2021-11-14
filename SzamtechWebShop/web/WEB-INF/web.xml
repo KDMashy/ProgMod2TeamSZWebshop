@@ -100,6 +100,22 @@
         <servlet-name>targyOldal</servlet-name>
         <servlet-class>controller.targyOldal</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>lemond</servlet-name>
+        <servlet-class>controller.lemond</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>listEgysegarak</servlet-name>
+        <servlet-class>controller.listEgysegarak</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>termekErtekeles</servlet-name>
+        <servlet-class>controller.createThings.termekErtekeles</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>tremekekVasarlasa</servlet-name>
+        <servlet-class>controller.createThings.tremekekVasarlasa</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/reg</url-pattern>
@@ -215,6 +231,22 @@
     <servlet-mapping>
         <servlet-name>kosarhozAdas</servlet-name>
         <url-pattern>/kosarba</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>lemond</servlet-name>
+        <url-pattern>/lemond</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>listEgysegarak</servlet-name>
+        <url-pattern>/listEgysegarak</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>termekErtekeles</servlet-name>
+        <url-pattern>/termekErtekeles</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>tremekekVasarlasa</servlet-name>
+        <url-pattern>/tremekekVasarlasa</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -1,24 +1,28 @@
-package controller;
+package controller.createThings;
 
+import com.sun.xml.ws.config.metro.parser.jsr109.WebserviceDescriptionType;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.KosarElem;
+import model.*;
+import service.*;
 
-public class logOut extends HttpServlet {
+public class termekErtekeles extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
+        WebShopService wbservice = new WebShopService();
+        request.setCharacterEncoding("UTF-8");
+        Integer ertek = Integer.parseInt(request.getParameter("ertekelt"));
+        String comm = request.getParameter("ertekelesComment");
+        Integer tid = Integer.parseInt(request.getParameter("sendTermek"));
         
-        session.invalidate();
+        Boolean saved = wbservice.createErtekeles(tid, ertek, comm);
         
-        response.sendRedirect("menuMain");
+        response.sendRedirect("menuTermekek");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

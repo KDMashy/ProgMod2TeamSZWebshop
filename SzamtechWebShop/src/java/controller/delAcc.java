@@ -21,9 +21,7 @@ public class delAcc extends HttpServlet {
         
         Boolean saved = wbservice.anonymisation(name);
         
-        session.setAttribute("name", "");
-        session.setAttribute("password", "");
-        session.setAttribute("Type", 0);
+        session.invalidate();
         
         response.sendRedirect("menuLogin");
     }

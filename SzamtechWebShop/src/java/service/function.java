@@ -58,13 +58,12 @@ public class function implements interfaceList{
     @Override
     public Boolean validName(String name){
         try{
-            if (name.contains("drop")) return Boolean.FALSE;
-            else if (name.contains("update")) return Boolean.FALSE;
-            else if (name.contains("insert")) return Boolean.FALSE;
-            else if (name.contains("alter")) return Boolean.FALSE;
-            else if (name.contains("table")) return Boolean.FALSE;
-            
-            else return Boolean.TRUE;
+            if (name.contains("drop")) return Boolean.TRUE;
+            else if (name.contains("update")) return Boolean.TRUE;
+            else if (name.contains("insert")) return Boolean.TRUE;
+            else if (name.contains("alter")) return Boolean.TRUE;
+            else if (name.contains("table")) return Boolean.TRUE;
+            else return Boolean.FALSE;
         } catch(Exception ex){
             System.err.println(ex.toString());
             return Boolean.FALSE;

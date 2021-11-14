@@ -35,10 +35,10 @@ public class kosarhozAdas extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        
+        request.setCharacterEncoding("UTF-8");
         String termekName = request.getParameter("getTermek");
         String Amount = request.getParameter("amount");
+        Integer added = 1;
         
         HttpSession session = request.getSession();
         List<KosarElem> Kosar = (List<KosarElem>)session.getAttribute("kosar");
@@ -47,9 +47,10 @@ public class kosarhozAdas extends HttpServlet {
             Kosar = new ArrayList();
         }
         
-        Kosar.add(new KosarElem(Integer.parseInt(termekName), Integer.parseInt(Amount)));
+        Kosar.add(new KosarElem(termekName, Integer.parseInt(Amount)));
         
         session.setAttribute("kosar", Kosar);
+        session.setAttribute("hasItem", added);
         
         response.sendRedirect("menuTermekek");
     }

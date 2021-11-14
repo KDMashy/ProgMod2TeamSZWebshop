@@ -11,18 +11,18 @@ package model;
  */
 public class KosarElem {
     int Amount;
-    int ID;
+    String name;
     
-    public KosarElem (int ID ,int Amount) {
+    public KosarElem (String name ,int Amount) {
         this.Amount = Amount;
-        this.ID = ID;
+        this.name = name;
     }
 
     public int getAmount() {
         return Amount;
     }
 
-    public int getID() {
-        return ID;
+    public String getName() {
+        return name;
     }
 }

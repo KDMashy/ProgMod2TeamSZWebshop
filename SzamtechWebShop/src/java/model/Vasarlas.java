@@ -84,7 +84,7 @@ public class Vasarlas implements Serializable {
     @Size(min = 1, max = 100)
     @Column(name = "Idopont")
     private String idopont;
-    @Size(max = 45)
+    @Size(max = 10000)
     @Column(name = "Egyeb")
     private String egyeb;
 
