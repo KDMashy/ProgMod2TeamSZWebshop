@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.*;
 import service.*;
 
@@ -17,7 +18,9 @@ public class listPartner extends HttpServlet {
         WebShopService wbservice = new WebShopService();
         
         ArrayList<Partner> partnerek = wbservice.getPartners();
+        HttpSession session = request.getSession();
         
+        String adminName = session.getAttribute("name").toString();
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             out.print(  "<!DOCTYPE html>\n" +
@@ -31,7 +34,7 @@ public class listPartner extends HttpServlet {
                         "<body>\n" +
                         "    <div class='adminContainer'>\n" +
                         "        <header>\n" +
-                        "            <h1 class='showAdminName'>asd</h1>\n" +
+                        "            <h1 class='showAdminName'>"+adminName+"</h1>\n" +
                         "            <div class='function'>\n" +
                         "                <form action='backAdmin' method='post'>\n" +
                         "                    <button type='submit'>Vissza</button>\n" +
