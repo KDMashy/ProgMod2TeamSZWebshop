@@ -120,6 +120,10 @@
         <servlet-name>termekTorlese</servlet-name>
         <servlet-class>controller.termekTorlese</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>kosarUrites</servlet-name>
+        <servlet-class>controller.kosarUrites</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/reg</url-pattern>
@@ -255,6 +259,10 @@
     <servlet-mapping>
         <servlet-name>termekTorlese</servlet-name>
         <url-pattern>/termekTorlese</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>kosarUrites</servlet-name>
+        <url-pattern>/kosarUrites</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
