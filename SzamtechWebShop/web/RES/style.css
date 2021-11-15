@@ -31,7 +31,7 @@ header
 
 header nav
 {
-    height: 110px;
+    height: 16vh;
     display: flex;/*egymás mellé rakjuk a logókat*/
     justify-content: space-around;/*kitölti az elemekkel a teret. Két elem esetén, az egyik megy balra, a másik jobbra*/
     align-items: center;/*függőleges hözépre igazítás a navon belül*/
@@ -39,30 +39,29 @@ header nav
 }
 header .logo img/*A headeren, logon belüli képek*/
 {
-    width: 100%;
+    width: 7vw;
 }
 header .szolgaltatasok img
 {
-    width: 50px;
+    width: 4vw;
 }
 
 
 
 header img
 {
-    padding: 30px;
+    padding: 1vw;
     
 }
 
 
-header nav button
+header nav form button
 {
     
     color: white;
     text-decoration: none;
     text-transform: uppercase;
-    padding: 20px 35px ;/*link margók*/
-/*lekerekítés, 50 px el*/
+    padding: 3vh 4vw;
     transition: background 0.3s;/*a háttér elszíneződés időtartama*/
     background: rgb(145, 226, 22);
 }
@@ -83,12 +82,13 @@ header .funkciok{
 
 .header_atmenet{
     width: 100%;
-    height: 20px;
+    height: 2vh;
     background: linear-gradient(rgba(172, 255, 47, 1), rgba(172, 255, 47, 0.1));
     display: block;
     position:absolute;
     z-index: 2;
-    top: 110px;
+    top: 16vh;
+    ;
 }
 
 /*
@@ -109,26 +109,21 @@ HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE,
 .index_fix_hatter{
     background-image:url(lany_geppel.jpg);
     display: block;
-    background-size: 100%;
+    background-size: cover;
     background-repeat: no-repeat;
-    size: 100%;
-    background-position-y:70%;
-    height: 500px;
-
-
-
+    background-position:center center;
+    height: 80vh;
+    
     
 }
 
 .index_promo_teglalapok{
     display: flex;
     position:absolute;    
-    top: 50%;
+    top: 30%;
     left: 5%;
-    width: 20%;
-    flex-direction: column;
     
-    
+    flex-direction: column;  
     
 }
 
@@ -136,38 +131,34 @@ HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE,
 
 .index_promo_teglalapok p{
     position: relative;
-     width: 100%;
      height: 100%;
      display: flex;
     align-items: center; /** Y-axis align **/
     justify-content: center; /** X-axis align **/
 
     font-weight: bold;
-    font-size: 120%;
+    font-size: 1.5vw;
     font-family: monospace;
+    padding: 1vw;
+    width: 30vw;
     
 
 }
 
 
 .index_promo_teglalap_1{
-    height: 50px;
-    width: 90%;
+    
     background-color: rgba(65, 65, 65, 0.685);
-    margin-bottom: 10px;
+    margin-bottom: 2vh;
     border-radius: 20px;
-    
-
-    
 
 }
 
 .index_promo_teglalap_2{
     background-color: blanchedalmond;
     border-radius: 20px;
-    height: 50px;
-    width: 100%;
-    margin-bottom: 10px;
+    
+    margin-bottom: 2vh;
     
 
 }
@@ -175,9 +166,9 @@ HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE,
 .index_promo_teglalap_3{
     background-color: rgba(65, 65, 65, 0.685);
     border-radius: 20px;
-    height: 60px;
-    width: 120%;
-    padding: 10px;
+   
+    
+    
 
     
 }
@@ -194,7 +185,7 @@ HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE,
 }
 
 .index_ures{
-    height: 500px;
+    height: 30vw;
     background-color: rgba(0, 0, 255, 0.116);
 }
 
@@ -204,10 +195,11 @@ HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE,
 .mainContainer 
 {
     display: flex;
+    justify-content: space-around;
 }
 
 .termekek{
-    width: 70%;
+    width: 69%;
     background-color:silver;
     
 }
@@ -219,7 +211,7 @@ main .mainFlex{
 
 .leirasAside
 {
-    width: 30%;
+    width: 29%;
     background-color: rgba(188, 143, 143, 0.685);
 }
 
@@ -239,42 +231,101 @@ main .bemutatkozas{
 }
 
 .leirasAside form ul li{
-    margin: 25px;
+    
+    border-bottom: #032c25;
+    border-bottom-style: solid;
+    border-bottom-width: 50%;
+    margin-bottom: 25px;
+    
+}
+.termek_szures{
+    padding: 1vw;
+}
+.ar_szerint_no_csokken{
+    padding-left: 10px;
+    margin-bottom: 30px;
+}
+
+.leirasAside label{
+    font-size: 150%;
     
 }
 
-
-.leirasAside label{
-    font-size: 200%;
-    background-color: rgba(190, 119, 119, 0.568);
+.leirasAside h1{
+    padding-bottom: 1vw;
+    font-size: 150%;
+}
+.leirasAside h4{
+    padding-bottom: 1vw;
+    font-size: 120%;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
-input[type = checkbox]{
-    transform: scale(2);
+.temek_kereses{
+    padding: 1vw;
+}
+
+input[type = radio]{
+    transform: scale(1.5);
     margin: 10px;
 }
 
 
-main .termek img{
+.termekek .termek img{
     width: 90%;
     margin: 5% 15px;
 }
 
-main .termekContainer{
+.termekek .termekContainer{
     display: flex;
     justify-content: space-around;
 }
-main .termek{
+.termekek .termek{
     width: 32%;
     background-color: blueviolet;
     margin-bottom: 10px;
 }
 
-main .termek .termekAdat{
+.termekek .termek .termekAdat{
     width: 45%;
     text-align: center;
-    padding: 5px 15px;
+    padding: 20px 20px;
+
 }
+
+.termekek button{
+    z-index: 2;
+    height: 4vh;
+    width: 7vw;
+    border-radius: 20px;
+    background: linear-gradient(rgb(0, 204, 255), rgb(0, 255, 128));
+    transition: background 0.3s;
+
+}
+.termekek button:hover{
+    background: linear-gradient( rgb(0, 255, 128),rgb(0, 204, 255));
+    
+}
+
+.termek_szures button{
+    width: 12vw;
+    height: 7vh;
+    border-radius: 10px;
+    font-style:unset;
+    font-size: 150%;
+    background: linear-gradient( rgb(194, 177, 151),rgb(155, 136, 115));
+    transition: background 0.3s;
+}
+
+.termek_szures button:hover{
+    background: linear-gradient(rgb(155, 136, 115), rgb(194, 177, 151));
+}
+
+
+
+
+
 
 /*leiras.html main - vége*/
 /*________________________________________________________________________________*/
@@ -367,11 +418,15 @@ color: blue;
 
 footer{
     width: 100%;
-    height: 250px;
+    height: 40vh;
     background-color: rgba(188, 143, 143, 0.685);
     display: flex;
     align-items: center;
     position: relative;
+}
+
+footer p{
+    font-size: 1vw;
 }
 
 
@@ -403,18 +458,19 @@ footer .footer_elerhetoseg{
 }
 
 .footer_elerhetoseg img{
-    width: 40px;
-    height: 40px;
+    width: 10%;
+    height: 10%;
 }
 
 footer h3{
-    font-size: 150%;
+    font-size: 2vw;
     color:  rgb(68, 33, 24);
 }
 
 footer a{
     color: rgba(0, 0, 0, 0.7);
     text-decoration-color: rgba(0, 0, 0, 0.459);
+    font-size: 1vw;
     
 }
 

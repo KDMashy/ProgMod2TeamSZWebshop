@@ -24,6 +24,7 @@
             <a href="" class="funkciok"><img src="res/basket.png" alt="kosár kép"></a>
             </div>
         </nav>
+    
     </header>
 
 
@@ -34,23 +35,51 @@
     
     <div class="mainContainer">
         <aside class="leirasAside">
-            <form action="szures" method="oszt">
-                <ul>
-                    <li>
-                        <input type="checkbox" id = "1" name = "2">
-                       <label for="1">Szamitogep</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id = "2" name = "2">
-                      <label for="2">telefonok</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id = "3" name = "2">
-                        <label for="3">tabletek</label>
-                    </li>
-                </ul>
+            <form action="szures" method="post">
+                <br><br>
+                <div class="temek_kereses">
+                    <h1>Termék keresés:</h1>
+                <input type="text" name="szurText"><br>
+                </div>
                 
-                
+                <div class="termek_szures">
+                    <h1>Termék Szűrés:</h1>
+
+                    <div class="ar_szerint_no_csokken">
+                        <span>Ár szerint növekvő sorrend</span>
+                        <input type="radio" name="order" value="1" id="Tradio" checked=""><br>
+                        <span>Ár szerint csökkenő sorrend</span>
+                        <input type="radio" name="order" value="0" id="Tradio"><br>
+                    </div>
+                    <h4>Termék típusok:</h4>
+                    <ul>
+                        <li>
+                            <input type="radio" id="1" name="category" value="1">
+                            <label for="1">Alaplap</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="2" name="category" value="2">
+                            <label for="2">Processzor</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="3" name="category" value="3">
+                            <label for="3">Videókártya</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="4" name="category" value="4">
+                            <label for="4">Memória</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="5" name="category" value="5">
+                            <label for="5">Monitor</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="6" name="category" value="6" checked="">
+                            <label for="6">Minden termék</label>
+                        </li>
+                    </ul>
+                    <button type="submit">Szűrés</button>
+                </div>
                 
             </form>
         </aside>
@@ -60,7 +89,7 @@
                     <img src="res/lany_geppel.jpg" alt="">
                     <div class="termekContainer">
                         <h3 class="termekAdat">Termék neve</h3>
-                        <form class="termekAdat" action="t1" method="post"><button type="submit" name="t1">megtekintes</button></form>
+                        <form class="termekAdat" action="t1" method="post"><button type="submit" name="t1" class="liras_termek_button">megtekintes</button></form>
                         
                     </div>
                 </div>
@@ -68,7 +97,7 @@
                     <img src="res/lany_geppel.jpg" alt="">
                     <div class="termekContainer">
                         <h3 class="termekAdat">Termék neve</h3>
-                        <form class="termekAdat" action="t1" method="post"><button type="submit" name="t1">megtekintes</button></form>
+                        <form class="termekAdat" action="t1" method="post"><button type="submit" name="t1" class="liras_termek_button">megtekintes</button></form>
                         
                     </div>
                 </div>
@@ -76,7 +105,7 @@
                     <img src="res/lany_geppel.jpg" alt="">
                     <div class="termekContainer">
                         <h3 class="termekAdat">Termék neve</h3>
-                        <form class="termekAdat" action="t1" method="post"><button type="submit" name="t1">megtekintes</button></form>
+                        <form class="termekAdat" action="t1" method="post"><button type="submit" name="t1" class="liras_termek_button">megtekintes</button></form>
                         
                     </div>
                 </div>
@@ -84,7 +113,7 @@
                     <img src="res/lany_geppel.jpg" alt="">
                     <div class="termekContainer">
                         <h3 class="termekAdat">Termék neve</h3>
-                        <form class="termekAdat" action="t1" method="post"><button type="submit" name="t1">megtekintes</button></form>
+                        <form class="termekAdat" action="t1" method="post"><button type="submit" name="t1" class="liras_termek_button">megtekintes</button></form>
                         
                     </div>
                 </div>
