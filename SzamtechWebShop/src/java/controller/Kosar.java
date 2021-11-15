@@ -123,7 +123,7 @@ public class Kosar extends HttpServlet {
                         "    </header>\n" +
                         "    <main class=\"kosarMain\">\n" +
                         "        <div class=\"kosarContainer\">\n"
-                                + "<form method='post' action='kosarUrites'>\n" +
+                                + "<form action='kosarUrites' method='post' style='text-align: center'>\n" +
                         "                <button type=\"submit\">Kosár ürítése</button>\n" +
                         "            </form>" +
                         "            <table class=\"kosarTable\">\n" +

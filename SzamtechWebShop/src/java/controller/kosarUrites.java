@@ -36,7 +36,7 @@ public class kosarUrites extends HttpServlet {
         HttpSession session = request.getSession();
         session.setAttribute("kosar", new ArrayList());
         
-        response.sendRedirect("Kosar");
+        response.sendRedirect("kosar");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
