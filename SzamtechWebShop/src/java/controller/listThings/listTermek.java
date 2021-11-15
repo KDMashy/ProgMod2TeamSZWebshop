@@ -46,12 +46,13 @@ public class listTermek extends HttpServlet {
                         "                <table class='theme'>\n" +
                         "                    <thead>\n" +
                         "                        <tr>\n" +
-                        "                            <td>Termék neve</td>\n" +
-                        "                            <td>Leírás</td>\n" +
-                        "                            <td>Ár</td>\n" +
-                        "                            <td>Kép</td>\n" +
-                        "                            <td>Készleten van-e</td>\n" +
-                        "                            <td>Kategória</td>\n" +
+                        "                            <th>Termék neve</th>\n" +
+                        "                            <th>Leírás</th>\n" +
+                        "                            <th>Ár</th>\n" +
+                        "                            <th>Kép</th>\n" +
+                        "                            <th>Készleten van-e</th>\n" +
+                        "                            <th>Kategória</th>\n"
+                                + "                  <th>Termék törlése</th>" +
                         "                        </tr>\n" +
                         "                    </thead>\n" +
                         "                    <tbody>\n");
@@ -63,7 +64,10 @@ public class listTermek extends HttpServlet {
                             "                            <td>"+t.getTermekAr()+"</td>\n" +
                             "                            <td>"+t.getTermekKep()+"</td>\n" +
                             "                            <td>"+t.getTermekKeszlet()+"</td>\n" +
-                            "                            <td>"+t.getTermekKatID()+"</td>\n" +
+                            "                            <td>"+t.getTermekKatID()+"</td>\n"
+                                    + "                  <td><form action='termekTorlese' method='post'>"
+                                    + "<button type='submit' name='deleteTermek' value='"+t.getTermekID()+"'>Termék törlése</button>"
+                                    + "</form></td>\n" +
                             "                        </tr>\n");
                 }
             }

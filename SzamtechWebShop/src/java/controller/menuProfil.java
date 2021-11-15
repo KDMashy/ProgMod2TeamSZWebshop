@@ -16,7 +16,8 @@ public class menuProfil extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         WebShopService wbservice = new WebShopService();
-        String basket = "http://localhost:20500/SzamtechWebShop/kosar";
+        String kepLink = "/SzamtechWebShop/menuMain";
+        String basket = "/SzamtechWebShop/kosar";
         HttpSession session = request.getSession();
         String fname = session.getAttribute("name").toString();
         
@@ -28,8 +29,6 @@ public class menuProfil extends HttpServlet {
                 break;
             }
         }
-        
-        String kepLink = "http://localhost:20500/SzamtechWebShop/menuMain";
         
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -58,8 +57,6 @@ public class menuProfil extends HttpServlet {
                         "                </a>\n" +
                         "            </div>\n" +
                         "        </nav>\n" +
-                            "        <div class=\"header_atmenet\">\n" +
-                            "        </div>\n" +
                         "    </header>\n" +
                         "    <main class=\"mainProfil\">\n" +
                         "        <div class=\"felhasznalo\">\n" +
@@ -104,8 +101,6 @@ public class menuProfil extends HttpServlet {
                         "    </main>\n" +
                         "    <footer>\n" +
                         "        <section class = \"bemutatkozas\">\n" +
-                            "            <div class=\"footer_atmenet\">\n" +
-                            "            </div>\n" +
                         "            <div class=\"footer_info_box\">\n" +
                         "                <h3>Elérhetőségek:</h3>\n" +
                         "                <br>\n" +

@@ -17,8 +17,8 @@ public class menuTermekek extends HttpServlet {
             throws ServletException, IOException {
         WebShopService wbservice = new WebShopService();
         
-        String kepLink = "http://localhost:20500/SzamtechWebShop/menuMain";
-        String basket = "http://localhost:20500/SzamtechWebShop/kosar";
+        String kepLink = "/SzamtechWebShop/menuMain";
+        String basket = "/SzamtechWebShop/kosar";
         
         ArrayList<Termek> termekek = wbservice.getTermekek();
         
@@ -56,8 +56,6 @@ public class menuTermekek extends HttpServlet {
                             "            <a href='"+basket+"' class='funkciok'><img src='RES/basket.png' alt='kosár kép'></a>\n" +
                             "            </div>\n" +
                             "        </nav>\n" +
-                            "        <div class=\"header_atmenet\">\n" +
-                            "        </div>\n" +
                             "    </header>\n" +
                             "    <div class='mainContainer'>\n" +
                             "        <aside class='leirasAside'>\n" +
@@ -103,8 +101,6 @@ public class menuTermekek extends HttpServlet {
                             "    </div>\n" +
                             "    <footer>\n" +
                             "        <section class = \"bemutatkozas\">\n" +
-                            "            <div class=\"footer_atmenet\">\n" +
-                            "            </div>\n" +
                             "            <div class=\"footer_info_box\">\n" +
                             "                <h3>Elérhetőségek:</h3>\n" +
                             "                <br>\n" +

@@ -2,11 +2,13 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.*;
 import service.*;
 
 public class Login extends HttpServlet {
@@ -17,15 +19,24 @@ public class Login extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String lName = request.getParameter("name");
         String lPassword = request.getParameter("password");
-        
+        ArrayList<Vevo> vevok = wbservice.getVevok();
         Integer Login = wbservice.LoginAcc(lName, lPassword);
         
         lPassword = wbservice.encrypt(lPassword);
         
         HttpSession session = request.getSession();
         
+        String kepLink = "/SzamtechWebShop/menuMain";
+        
         if (Login == 1) {
             response.setContentType("text/html;charset=UTF-8");
+            for (Vevo v : vevok){
+                if (v.getVevoNev().equals(lName) == Boolean.TRUE ||
+                        v.getVevoEmail().equals(lName) == Boolean.TRUE) {
+                    lName = v.getVevoNev();
+                    break;
+                }
+            }
             session.setAttribute("name", lName);
             session.setAttribute("password", lPassword);
             session.setAttribute("Type", Login);
@@ -51,7 +62,7 @@ public class Login extends HttpServlet {
                         "<body>\n" +
                         "    <header>\n" +
                         "        <nav>\n" +
-                        "            <a href='index.html' class='logo'><img src='RES/logo.png' alt='logo helye'></a>\n" +
+                        "            <a href='"+kepLink+"' class='logo'><img src='RES/logo.png' alt='logo helye'></a>\n" +
                         "            <form method='post'>\n" +
                         "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\">Kezdőlap</button>\n" +
                         "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\">Termékek</button>\n" +
@@ -59,8 +70,6 @@ public class Login extends HttpServlet {
                         "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuLogin'\">Bejelentkezés</button>\n" +
                         "            </form>\n" +
                         "        </nav>\n" +
-                            "        <div class=\"header_atmenet\">\n" +
-                            "        </div>\n" +
                         "    </header>\n" +
                         "    <main class='logreg'>\n" +
                         "        <div class='regisztracio'>  \n" +
@@ -100,8 +109,6 @@ public class Login extends HttpServlet {
                         "    </main>\n" +
                         "    <footer>\n" +
                             "    <section class = \"bemutatkozas\">\n" +
-                            "            <div class=\"footer_atmenet\">\n" +
-                            "            </div>\n" +
                             "            <div class=\"footer_info_box\">\n" +
                             "                <h3>Elérhetőségek:</h3>\n" +
                             "                <br>\n" +

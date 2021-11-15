@@ -76,9 +76,11 @@ public class WebShopService{
             //ellenorzes, hogy letezik-e a regisztralando felhasznalo
             for (Integer i = 0; i < vevokLista.size(); i++) {
                 if (vevokLista.get(i).getVevoNev().equals(name) == Boolean.TRUE 
-                        || vevokLista.get(i).getVevoEmail().equals(email) == Boolean.TRUE) {
-                    exist = Boolean.TRUE;
-                    break;
+                        || vevokLista.get(i).getVevoEmail().equals(email) == Boolean.TRUE ||
+                    vevokLista.get(i).getVevoNev().equals(email) == Boolean.TRUE 
+                        || vevokLista.get(i).getVevoEmail().equals(name) == Boolean.TRUE) {
+                    exist = Boolean.FALSE;
+                    return exist;
                 } else {
                     exist = Boolean.FALSE;
                 }
@@ -86,8 +88,8 @@ public class WebShopService{
             if (exist == Boolean.FALSE) {
                 for (Integer i = 0; i < adminLista.size(); i++) {
                     if (adminLista.get(i).getAdminname().equals(name) == Boolean.TRUE) {
-                        exist = Boolean.TRUE;
-                        break;
+                        exist = Boolean.FALSE;
+                        return exist;
                     } else {
                         exist = Boolean.FALSE;
                     }
@@ -344,21 +346,15 @@ public class WebShopService{
         return termekek;
     }
     //Termek "torles"
-    public Boolean anonymTermek(String code){
-        Integer tid;
+    public Boolean anonymTermek(Integer tid){
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
-            tid = termekEll(code, getTermekek());
-            if (tid >= 0) {
-                String name = "anonymTermek"+tid;
-                String sql = "update termek set TermekNev='"+name+"' where TermekID="+tid+"";
-                PreparedStatement prestm = DBCon.prepareStatement(sql);
-                prestm.executeUpdate();
-                return Boolean.TRUE;
-            } else {
-                return Boolean.FALSE;
-            }
+            String name = "anonymTermek"+tid;
+            String sql = "update termek set TermekNev='"+name+"' where TermekID="+tid+"";
+            PreparedStatement prestm = DBCon.prepareStatement(sql);
+            prestm.executeUpdate();
+            return Boolean.TRUE;
         } catch (SQLException ex) {
             Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
             return Boolean.FALSE;
@@ -552,9 +548,7 @@ public class WebShopService{
             Class.forName("com.mysql.jdbc.Driver");
             Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
             vid = vasarlasEll(name);
-            String anonym = "anonym"+vid;
-            String sql = "update vasarlas set Felhasznalo='"+anonym+"', IRSzam='0000', "
-                    + "Varos='"+anonym+"', UtcaHSzam='"+anonym+"', Egyeb='DELETED' where SorSzam="+vid+"";
+            String sql = "update vasarlas set Felhasznalo='"+name+vid+"anonymised"+"' where SorSzam="+vid+"";
             PreparedStatement prestm = DBCon.prepareStatement(sql);
             prestm.executeUpdate();
             return Boolean.TRUE;

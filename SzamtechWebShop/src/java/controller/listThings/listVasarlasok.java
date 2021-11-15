@@ -19,8 +19,8 @@ public class listVasarlasok extends HttpServlet {
         
         HttpSession session = request.getSession();
         String name = session.getAttribute("name").toString();
-        String basket = "http://localhost:20500/SzamtechWebShop/kosar";
-        String kepLink = "http://localhost:20500/SzamtechWebShop/menuMain";
+        String basket = "/SzamtechWebShop/kosar";
+        String kepLink = "/SzamtechWebShop/menuMain";
         
         ArrayList<Vasarlas> vasarlasok = wbservice.getVasarlasokByName(name);
         
@@ -51,8 +51,6 @@ public class listVasarlasok extends HttpServlet {
                         "                </a>\n" +
                         "            </div>\n" +
                         "        </nav>\n" +
-                            "        <div class=\"header_atmenet\">\n" +
-                            "        </div>\n" +
                         "    </header>\n" +
                         "    <main class=\"tamogatoinkMain\">\n" +
                         "        <table class=\"theme\">\n" +
@@ -96,8 +94,6 @@ public class listVasarlasok extends HttpServlet {
                         "    </main>\n" +
                         "    <footer>\n" +
                         "        <section class = \"bemutatkozas\">\n" +
-                            "            <div class=\"footer_atmenet\">\n" +
-                            "            </div>\n" +
                         "            <div class=\"footer_info_box\">\n" +
                         "                <h3>Elérhetőségek:</h3>\n" +
                         "                <br>\n" +

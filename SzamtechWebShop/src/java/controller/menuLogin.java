@@ -11,7 +11,8 @@ public class menuLogin extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String kepLink = "http://localhost:20500/SzamtechWebShop/menuMain";
+        String kepLink = "/SzamtechWebShop/menuMain";
+        String basket = "/SzamtechWebShop/kosar";
         
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -35,8 +36,6 @@ public class menuLogin extends HttpServlet {
                         "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuLogin'\">Bejelentkezés</button>\n" +
                         "            </form>\n" +
                         "        </nav>\n" +
-                            "        <div class=\"header_atmenet\">\n" +
-                            "        </div>\n" +
                         "    </header>\n" +
                         "    <main class='logreg'>\n" +
                         "        <div class='regisztracio'>  \n" +
@@ -75,8 +74,6 @@ public class menuLogin extends HttpServlet {
                         "    </main>\n" +
                         "    <footer>\n" +
                             "    <section class = \"bemutatkozas\">\n" +
-                            "            <div class=\"footer_atmenet\">\n" +
-                            "            </div>\n" +
                             "            <div class=\"footer_info_box\">\n" +
                             "                <h3>Elérhetőségek:</h3>\n" +
                             "                <br>\n" +

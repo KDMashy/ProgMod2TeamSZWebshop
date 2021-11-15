@@ -12,14 +12,13 @@ public class menuMain extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String basket = "http://localhost:20500/SzamtechWebShop/kosar";
+        String kepLink = "/SzamtechWebShop/menuMain";
+        String basket = "/SzamtechWebShop/kosar";
         HttpSession session = request.getSession();
         Integer type = (Integer)session.getAttribute("Type");
         if (type == null) {
             type = 0;
         }
-        
-        String kepLink = "http://localhost:20500/SzamtechWebShop/menuMain";
         
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -47,8 +46,6 @@ public class menuMain extends HttpServlet {
                         "            <a href=\""+basket+"\" class=\"funkciok\"><img src=\"RES/basket.png\" alt=\"kosár kép\"></a>\n" +
                         "            </div>\n" +
                         "        </nav>\n" +
-                            "        <div class=\"header_atmenet\">\n" +
-                            "        </div>\n" +
                             "    </header>\n" +
                             "    <main class=\"index_main\">\n" +
                             "        <div class=\"index_fix_hatter\">\n" +
@@ -70,8 +67,6 @@ public class menuMain extends HttpServlet {
                             "    </main>\n" +
                             "    <footer>\n" +
                             "        <section class = \"bemutatkozas\">\n" +
-                            "            <div class=\"footer_atmenet\">\n" +
-                            "            </div>\n" +
                             "            <div class=\"footer_info_box\">\n" +
                             "                <h3>Elérhetőségek:</h3>\n" +
                             "                <br>\n" +
@@ -129,8 +124,6 @@ public class menuMain extends HttpServlet {
                             "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuLogin'\">Bejelentkezés</button>\n" +
                             "            </form>\n" +
                             "        </nav>\n" +
-                            "        <div class=\"header_atmenet\">\n" +
-                            "        </div>\n" +
                             "    </header>\n" +
                             "    <main class=\"index_main\">\n" +
                             "        <div class=\"index_fix_hatter\">\n" +
@@ -152,8 +145,6 @@ public class menuMain extends HttpServlet {
                             "    </main>\n" +
                             "    <footer>\n" +
                             "        <section class = \"bemutatkozas\">\n" +
-                            "            <div class=\"footer_atmenet\">\n" +
-                            "            </div>\n" +
                             "            <div class=\"footer_info_box\">\n" +
                             "                <h3>Elérhetőségek:</h3>\n" +
                             "                <br>\n" +

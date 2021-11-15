@@ -16,8 +16,8 @@ public class targyOldal extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         WebShopService wbservice = new WebShopService();
-        String basket = "http://localhost:20500/SzamtechWebShop/kosar";
-        String kepLink = "http://localhost:20500/SzamtechWebShop/menuMain";
+        String kepLink = "/SzamtechWebShop/menuMain";
+        String basket = "/SzamtechWebShop/kosar";
         ArrayList<Termek> termekek = wbservice.getTermekek();
         
         String termekName = request.getParameter("getTermek");
@@ -71,8 +71,6 @@ public class targyOldal extends HttpServlet {
                             "            <a href=\""+basket+"\" class=\"funkciok\"><img src=\"RES/basket.png\" alt=\"kosár kép\"></a>\n" +
                             "            </div>\n" +
                             "        </nav>\n" +
-                            "        <div class=\"header_atmenet\">\n" +
-                            "        </div>\n" +
                             "    </header>\n" +
                             "    <main class=\"termekleiras\">\n" +
                             "        <h1>"+t.getTermekNev()+"</h1>\n" +
@@ -102,8 +100,6 @@ public class targyOldal extends HttpServlet {
                 out.print(  "    </main>\n" +
                             "    <footer>\n" +
                             "        <section class = \"bemutatkozas\">\n" +
-                            "            <div class=\"footer_atmenet\">\n" +
-                            "            </div>\n" +
                             "            <div class=\"footer_info_box\">\n" +
                             "                <h3>Elérhetőségek:</h3>\n" +
                             "                <br>\n" +
@@ -152,7 +148,7 @@ public class targyOldal extends HttpServlet {
                             "<body>\n" +
                             "    <header>\n" +
                             "        <nav>\n" +
-                            "            <a href=\"index.html\"class=\"logo\"><img src=\"RES/logo.png\" alt=\"logo helye\"></a>\n" +
+                            "            <a href=\""+kepLink+"\"class=\"logo\"><img src=\"RES/logo.png\" alt=\"logo helye\"></a>\n" +
                             "            <form method='post'>\n" +
                             "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\">Kezdőlap</button>\n" +
                             "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\">Termékek</button>\n" +
@@ -160,8 +156,6 @@ public class targyOldal extends HttpServlet {
                             "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuLogin'\">Bejelentkezés</button>\n" +
                             "            </form>\n" +
                             "        </nav>\n" +
-                            "        <div class=\"header_atmenet\">\n" +
-                            "        </div>\n" +
                             "    </header>\n" +
                             "    <main class=\"termekleiras\">\n" +
                             "        <h1>"+t.getTermekNev()+"</h1>\n" +
@@ -177,8 +171,6 @@ public class targyOldal extends HttpServlet {
                 out.print(  "    </main>\n" +
                             "    <footer>\n" +
                             "        <section class = \"bemutatkozas\">\n" +
-                            "            <div class=\"footer_atmenet\">\n" +
-                            "            </div>\n" +
                             "            <div class=\"footer_info_box\">\n" +
                             "                <h3>Elérhetőségek:</h3>\n" +
                             "                <br>\n" +

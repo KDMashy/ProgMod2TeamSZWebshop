@@ -14,7 +14,8 @@ public class function implements interfaceList{
     public Integer userLogin(String name, String password, ArrayList<Vevo> vevokLista, ArrayList<Admin> adminLista){
         try{
             for (Integer i = 0; i < vevokLista.size(); i++) {
-                if (vevokLista.get(i).getVevoNev().equals(name) == Boolean.TRUE) {
+                if (vevokLista.get(i).getVevoNev().equals(name) == Boolean.TRUE ||
+                        vevokLista.get(i).getVevoEmail().equals(name) == Boolean.TRUE) {
                     if (vevokLista.get(i).getVevoPassword().equals(password)) {
                         return 1;
                     }

@@ -23,6 +23,9 @@ public class szures extends HttpServlet {
         String selected[] = request.getParameterValues("category");
         Integer happened = 0;
         
+        String kepLink = "/SzamtechWebShop/menuMain";
+        String basket = "/SzamtechWebShop/kosar";
+        
         ArrayList<Termek> termekek = wbservice.getTermekek();
         ArrayList<Termek> searched = new ArrayList<>();
         ArrayList<Termek> categorysed = new ArrayList<>();
@@ -99,7 +102,7 @@ public class szures extends HttpServlet {
                             "<body>\n" +
                             "    <header>\n" +
                             "        <nav>\n" +
-                            "            <a href='index.html'class='logo'><img src='RES/logo.png' alt='logo helye'></a>\n" +
+                            "            <a href='"+kepLink+"'class='logo'><img src='RES/logo.png' alt='logo helye'></a>\n" +
                             "            <form method='post'>\n" +
                             "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\">Kezdőlap</button>\n" +
                             "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\">Termékek</button>\n" +
@@ -107,11 +110,9 @@ public class szures extends HttpServlet {
                             "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuProfil'\">Profil</button>\n" +
                             "            </form>\n" +
                             "            <div class='szolgaltatasok'>\n" +
-                            "            <a href='' class='funkciok'><img src='RES/basket.png' alt='kosár kép'></a>\n" +
+                            "            <a href='"+basket+"' class='funkciok'><img src='RES/basket.png' alt='kosár kép'></a>\n" +
                             "            </div>\n" +
                             "        </nav>\n" +
-                            "        <div class=\"header_atmenet\">\n" +
-                            "        </div>\n" +
                             "    </header>\n" +
                             "    <div class='mainContainer'>\n" +
                             "        <aside class='leirasAside'>\n" +
@@ -157,8 +158,6 @@ public class szures extends HttpServlet {
                             "    </div>\n" +
                             "    <footer>\n" +
                             "        <section class = \"bemutatkozas\">\n" +
-                            "            <div class=\"footer_atmenet\">\n" +
-                            "            </div>\n" +
                             "            <div class=\"footer_info_box\">\n" +
                             "                <h3>Elérhetőségek:</h3>\n" +
                             "                <br>\n" +
@@ -210,7 +209,7 @@ public class szures extends HttpServlet {
                             "<body>\n" +
                             "    <header>\n" +
                             "        <nav>\n" +
-                            "            <a href='index.html'class='logo'><img src='RES/logo.png' alt='logo helye'></a>\n" +
+                            "            <a href='"+kepLink+"'class='logo'><img src='RES/logo.png' alt='logo helye'></a>\n" +
                             "            <form method='post'>\n" +
                             "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\">Kezdőlap</button>\n" +
                             "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\">Termékek</button>\n" +
@@ -218,8 +217,6 @@ public class szures extends HttpServlet {
                             "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuLogin'\">Bejelentkezés</button>\n" +
                             "            </form>\n" +
                             "        </nav>\n" +
-                            "        <div class=\"header_atmenet\">\n" +
-                            "        </div>\n" +
                             "    </header>\n" +
                             "    <div class='mainContainer'>\n" +
                             "        <aside class='leirasAside'>\n" +
@@ -265,8 +262,6 @@ public class szures extends HttpServlet {
                             "    </div>\n" +
                             "    <footer>\n" +
                             "        <section class = \"bemutatkozas\">\n" +
-                            "            <div class=\"footer_atmenet\">\n" +
-                            "            </div>\n" +
                             "            <div class=\"footer_info_box\">\n" +
                             "                <h3>Elérhetőségek:</h3>\n" +
                             "                <br>\n" +
