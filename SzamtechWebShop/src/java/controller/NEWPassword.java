@@ -2,21 +2,39 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.*;
+import service.*;
 
-public class menuLogin extends HttpServlet {
+public class NEWPassword extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException {      
+        
         String kepLink = "/SzamtechWebShop/menuMain";
         String basket = "/SzamtechWebShop/kosar";
         
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            out.print(  "<!DOCTYPE html>\n" +
+        WebShopService wbservice = new WebShopService();
+        ArrayList<Vevo> vevok = wbservice.getVevok();
+        
+        HttpSession session = request.getSession();
+        Vevo v = (Vevo)session.getAttribute("KERESENDO");
+        
+        String valasz = request.getParameter("forgotValasz");
+        if (v.getValasz().equals(valasz)) {
+            String password = request.getParameter("forgotPasw");
+            Boolean saved = wbservice.changeVevoPassw(v.getVevoNev(), password);
+            
+            response.sendRedirect("menuLogin");
+        } else {
+            response.setContentType("text/html;charset=UTF-8");
+            try (PrintWriter out = response.getWriter()) {
+                out.print(  "<!DOCTYPE html>\n" +
                         "<html lang='en'>\n" +
                         "<head>\n" +
                         "    <meta charset='UTF-8'>\n" +
@@ -48,22 +66,14 @@ public class menuLogin extends HttpServlet {
                         "                <input type='password' name='password' id='registerPasw'>    \n" +
                         "                <br><br>\n" +
                         "                <label><b>Email</b><br><br></label>    \n" +
-                        "                <input type='email' name='email' id='registerEmail'>\n" +
-                        "                <br><br>    \n"
-                                + "<label><b>Biztonsági kérdés</b><br><br></label>\n"
-                                + "<select name='biztonsagiKerdes' id='bkerdes' style='width: 80%; margin: 15px 0;'>\n"
-                                + "     <option value='KERDES1'>KERDES1</option>\n"
-                                + "     <option value='KERDES2'>KERDES2</option>\n"
-                                + "     <option value='KERDES3'>KERDES3</option>\n"
-                                + "     <option value='KERDES4'>KERDES4</option>\n"
-                                + "</select>\n"
-                                + "<label><b>Biztonsági kérdésre válasz</b><br><br></label>\n"
-                                + "<input type='text' name='kerdesValasz' style='margin-bottom: 15px'/>\n" +
+                        "                <input type='text' name='email' id='registerEmail'>\n" +
+                        "                <br><br>    \n" +
                         "                <input type='submit' id='log' value='Regisztráció' class='bekuld'>  \n" +
                         "            </form>     \n" +
                         "        </div>\n" +
                         "        <div class='bejelentkezes'>  \n" +
                         "            <h2>Bejelentkezés</h2><br>   \n" +
+                        "            <h2>Hibás felhasználónév, vagy jelszó</h2>\n" +
                         "            <form action='logAcc' method='post'>    \n" +
                         "                <label><b>Felhasználónév    \n" +
                         "                </b> \n" +
@@ -119,6 +129,7 @@ public class menuLogin extends HttpServlet {
                             "    </section>\n" +
                             "</footer>" +
                         "</body>");
+            }
         }
     }
 
@@ -127,28 +138,28 @@ public class menuLogin extends HttpServlet {
      * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request
-     * @param RESponse servlet RESponse
+     * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse RESponse)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, RESponse);
+        processRequest(request, response);
     }
 
     /**
      * Handles the HTTP <code>POST</code> method.
      *
      * @param request servlet request
-     * @param RESponse servlet RESponse
+     * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse RESponse)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, RESponse);
+        processRequest(request, response);
     }
 
     /**

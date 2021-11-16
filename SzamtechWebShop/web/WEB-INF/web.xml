@@ -124,6 +124,18 @@
         <servlet-name>kosarUrites</servlet-name>
         <servlet-class>controller.kosarUrites</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>elfelejtettJelszo</servlet-name>
+        <servlet-class>controller.elfelejtettJelszo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>forgotPassword</servlet-name>
+        <servlet-class>controller.forgotPassword</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NEWPassword</servlet-name>
+        <servlet-class>controller.NEWPassword</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/reg</url-pattern>
@@ -263,6 +275,18 @@
     <servlet-mapping>
         <servlet-name>kosarUrites</servlet-name>
         <url-pattern>/kosarUrites</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>elfelejtettJelszo</servlet-name>
+        <url-pattern>/elfelejtettJelszo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>forgotPassword</servlet-name>
+        <url-pattern>/forgotPassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NEWPassword</servlet-name>
+        <url-pattern>/NEWPassword</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

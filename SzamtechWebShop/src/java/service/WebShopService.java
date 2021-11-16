@@ -67,7 +67,7 @@ public class WebShopService{
         return Boolean.FALSE;
     }
     //Regisztracio
-    public Boolean RegAcc(String name, String email, String password){
+    public Boolean RegAcc(String name, String email, String password, String question, String answer){
         password = encrypt(password);
         ArrayList<Vevo> vevokLista = getVevok();
         ArrayList<Admin> adminLista = getAdmins();
@@ -101,7 +101,8 @@ public class WebShopService{
             if (exist == Boolean.FALSE) {
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
-                String sql = "insert into vevo (VevoNev,VevoPassword,VevoEmail) values('"+name+"','"+password+"','"+email+"')";
+                String sql = "insert into vevo (VevoNev,VevoPassword,VevoEmail,BiztonsagiKerdes,Valasz)"
+                        + " values('"+name+"','"+password+"','"+email+"','"+question+"','"+answer+"')";
                 PreparedStatement prestm = con.prepareStatement(sql);
                 prestm.execute();
                 return Boolean.TRUE;
@@ -134,6 +135,8 @@ public class WebShopService{
                 vv.setVevoSzamCim(rs.getString(5));
                 vv.setVevoAdoszam(rs.getString(6));
                 vv.setTorzsVasarlo(rs.getShort(7));
+                vv.setBiztonsagiKerdes(rs.getString(8));
+                vv.setValasz(rs.getString(9));
                 vevok.add(vv);
             }
         } catch (SQLException ex) {

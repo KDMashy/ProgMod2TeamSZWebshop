@@ -20,10 +20,12 @@ public class Register extends HttpServlet {
         String VevoName = request.getParameter("name");
         String VevoEmail = request.getParameter("email");
         String VevoPassw = request.getParameter("password");
+        String question = request.getParameter("biztonsagiKerdes");
+        String answer = request.getParameter("kerdesValasz");
         
         String kepLink = "/SzamtechWebShop/menuMain";
         
-        Boolean saved = wbservice.RegAcc(VevoName, VevoEmail, VevoPassw);
+        Boolean saved = wbservice.RegAcc(VevoName, VevoEmail, VevoPassw, question, answer);
         
         if (saved) {
             HttpSession session = request.getSession();

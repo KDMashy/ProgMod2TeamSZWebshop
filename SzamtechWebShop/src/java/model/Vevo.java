@@ -34,8 +34,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Vevo.findByVevoEmail", query = "SELECT v FROM Vevo v WHERE v.vevoEmail = :vevoEmail")
     , @NamedQuery(name = "Vevo.findByVevoSzamCim", query = "SELECT v FROM Vevo v WHERE v.vevoSzamCim = :vevoSzamCim")
     , @NamedQuery(name = "Vevo.findByVevoAdoszam", query = "SELECT v FROM Vevo v WHERE v.vevoAdoszam = :vevoAdoszam")
-    , @NamedQuery(name = "Vevo.findByTorzsVasarlo", query = "SELECT v FROM Vevo v WHERE v.torzsVasarlo = :torzsVasarlo")})
-public class Vevo implements Serializable{
+    , @NamedQuery(name = "Vevo.findByTorzsVasarlo", query = "SELECT v FROM Vevo v WHERE v.torzsVasarlo = :torzsVasarlo")
+    , @NamedQuery(name = "Vevo.findByBiztonsagiKerdes", query = "SELECT v FROM Vevo v WHERE v.biztonsagiKerdes = :biztonsagiKerdes")
+    , @NamedQuery(name = "Vevo.findByValasz", query = "SELECT v FROM Vevo v WHERE v.valasz = :valasz")})
+public class Vevo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -66,6 +68,16 @@ public class Vevo implements Serializable{
     private String vevoAdoszam;
     @Column(name = "TorzsVasarlo")
     private Short torzsVasarlo;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 1000)
+    @Column(name = "BiztonsagiKerdes")
+    private String biztonsagiKerdes;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 500)
+    @Column(name = "Valasz")
+    private String valasz;
 
     public Vevo() {
     }
@@ -74,11 +86,13 @@ public class Vevo implements Serializable{
         this.vevoID = vevoID;
     }
 
-    public Vevo(Integer vevoID, String vevoNev, String vevoPassword, String vevoEmail) {
+    public Vevo(Integer vevoID, String vevoNev, String vevoPassword, String vevoEmail, String biztonsagiKerdes, String valasz) {
         this.vevoID = vevoID;
         this.vevoNev = vevoNev;
         this.vevoPassword = vevoPassword;
         this.vevoEmail = vevoEmail;
+        this.biztonsagiKerdes = biztonsagiKerdes;
+        this.valasz = valasz;
     }
 
     public Integer getVevoID() {
@@ -135,6 +149,22 @@ public class Vevo implements Serializable{
 
     public void setTorzsVasarlo(Short torzsVasarlo) {
         this.torzsVasarlo = torzsVasarlo;
+    }
+
+    public String getBiztonsagiKerdes() {
+        return biztonsagiKerdes;
+    }
+
+    public void setBiztonsagiKerdes(String biztonsagiKerdes) {
+        this.biztonsagiKerdes = biztonsagiKerdes;
+    }
+
+    public String getValasz() {
+        return valasz;
+    }
+
+    public void setValasz(String valasz) {
+        this.valasz = valasz;
     }
 
     @Override
