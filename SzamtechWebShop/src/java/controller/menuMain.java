@@ -37,13 +37,13 @@ public class menuMain extends HttpServlet {
                         "        <nav>\n" +
                         "            <a href=\""+kepLink+"\" class=\"logo\"><img src=\"RES/logo.png\" alt=\"logo helye\"></a>\n" +
                         "            <form method='post'>\n" +
-                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\">Kezdőlap</button>\n" +
-                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\">Termékek</button>\n" +
-                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTamogatoink'\">Támogatóink</button>\n" +
-                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuProfil'\">Profil</button>\n" +
+                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\" class=\"fill\">Kezdőlap</button>\n" +
+                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\" class=\"fill\">Termékek</button>\n" +
+                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTamogatoink'\" class=\"fill\">Támogatóink</button>\n" +
+                        "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuProfil'\" class=\"fill\">Profil</button>\n" +
                         "            </form>\n" +
                         "            <div class=\"szolgaltatasok\">\n" +
-                        "            <a href=\""+basket+"\" class=\"funkciok\"><img src=\"RES/basket.png\" alt=\"kosár kép\"></a>\n" +
+                        "            <a href=\""+basket+"\" class=\"funkciok\"><img src=\"RES/basket1.png\" alt=\"kosár kép\"></a>\n" +
                         "            </div>\n" +
                         "        </nav>\n" +
                             "    </header>\n" +
@@ -61,8 +61,55 @@ public class menuMain extends HttpServlet {
                             "                </div>\n" +
                             "            </div>\n" +
                             "        </div>\n" +
-                            "        <div class=\"index_ures\">\n" +
-                            "            asdf\n" +
+                            "        <div id=\"kekhatter\">\n" +
+                            "            <div id=\"slider\">\n" +
+                            "                <input type=\"radio\" name=\"slider\" id=\"slide1\" checked>\n" +
+                            "                <input type=\"radio\" name=\"slider\" id=\"slide2\">\n" +
+                            "                <input type=\"radio\" name=\"slider\" id=\"slide3\">\n" +
+                            "                <input type=\"radio\" name=\"slider\" id=\"slide4\">\n" +
+                            "                <div id=\"slides\">\n" +
+                            "                   <div id=\"overflow\">\n" +
+                            "                      <div class=\"inner\">\n" +
+                            "                         <div class=\"slide slide_1\">\n" +
+                            "                            <div class=\"slide-content\">\n" +
+                            "                               <h2></h2>\n" +
+                            "                               <p></p>\n" +
+                            "                            </div>\n" +
+                            "                         </div>\n" +
+                            "                         <div class=\"slide slide_2\">\n" +
+                            "                            <div class=\"slide-content\">\n" +
+                            "                               <h2></h2>\n" +
+                            "                               <p></p>\n" +
+                            "                            </div>\n" +
+                            "                         </div>\n" +
+                            "                         <div class=\"slide slide_3\">\n" +
+                            "                            <div class=\"slide-content\">\n" +
+                            "                               <h2></h2>\n" +
+                            "                               <p></p>\n" +
+                            "                            </div>\n" +
+                            "                         </div>\n" +
+                            "                         <div class=\"slide slide_4\">\n" +
+                            "                            <div class=\"slide-content\">\n" +
+                            "                               <h2></h2>\n" +
+                            "                               <p></p>\n" +
+                            "                            </div>\n" +
+                            "                         </div>\n" +
+                            "                      </div>\n" +
+                            "                   </div>\n" +
+                            "                </div>\n" +
+                            "                <div id=\"controls\">\n" +
+                            "                   <label for=\"slide1\"></label>\n" +
+                            "                   <label for=\"slide2\"></label>\n" +
+                            "                   <label for=\"slide3\"></label>\n" +
+                            "                   <label for=\"slide4\"></label>\n" +
+                            "                </div>\n" +
+                            "                <div id=\"bullets\">\n" +
+                            "                   <label for=\"slide1\"></label>\n" +
+                            "                   <label for=\"slide2\"></label>\n" +
+                            "                   <label for=\"slide3\"></label>\n" +
+                            "                   <label for=\"slide4\"></label>\n" +
+                            "                </div>\n" +
+                            "             </div>\n" +
                             "        </div>\n" +
                             "    </main>\n" +
                             "    <footer>\n" +
@@ -118,10 +165,10 @@ public class menuMain extends HttpServlet {
                             "        <nav>\n" +
                             "            <a href=\""+kepLink+"\" class=\"logo\"><img src=\"RES/logo.png\" alt=\"logo helye\"></a>\n" +
                             "            <form method='post'>\n" +
-                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\">Kezdőlap</button>\n" +
-                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\">Termékek</button>\n" +
-                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTamogatoink'\">Támogatóink</button>\n" +
-                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuLogin'\">Bejelentkezés</button>\n" +
+                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\" class=\"fill\">Kezdőlap</button>\n" +
+                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\" class=\"fill\">Termékek</button>\n" +
+                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTamogatoink'\" class=\"fill\">Támogatóink</button>\n" +
+                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuLogin'\" class=\"fill\">Bejelentkezés</button>\n" +
                             "            </form>\n" +
                             "        </nav>\n" +
                             "    </header>\n" +
@@ -139,8 +186,55 @@ public class menuMain extends HttpServlet {
                             "                </div>\n" +
                             "            </div>\n" +
                             "        </div>\n" +
-                            "        <div class=\"index_ures\">\n" +
-                            "            asdf\n" +
+                            "        <div id=\"kekhatter\">\n" +
+                            "            <div id=\"slider\">\n" +
+                            "                <input type=\"radio\" name=\"slider\" id=\"slide1\" checked>\n" +
+                            "                <input type=\"radio\" name=\"slider\" id=\"slide2\">\n" +
+                            "                <input type=\"radio\" name=\"slider\" id=\"slide3\">\n" +
+                            "                <input type=\"radio\" name=\"slider\" id=\"slide4\">\n" +
+                            "                <div id=\"slides\">\n" +
+                            "                   <div id=\"overflow\">\n" +
+                            "                      <div class=\"inner\">\n" +
+                            "                         <div class=\"slide slide_1\">\n" +
+                            "                            <div class=\"slide-content\">\n" +
+                            "                               <h2></h2>\n" +
+                            "                               <p></p>\n" +
+                            "                            </div>\n" +
+                            "                         </div>\n" +
+                            "                         <div class=\"slide slide_2\">\n" +
+                            "                            <div class=\"slide-content\">\n" +
+                            "                               <h2></h2>\n" +
+                            "                               <p></p>\n" +
+                            "                            </div>\n" +
+                            "                         </div>\n" +
+                            "                         <div class=\"slide slide_3\">\n" +
+                            "                            <div class=\"slide-content\">\n" +
+                            "                               <h2></h2>\n" +
+                            "                               <p></p>\n" +
+                            "                            </div>\n" +
+                            "                         </div>\n" +
+                            "                         <div class=\"slide slide_4\">\n" +
+                            "                            <div class=\"slide-content\">\n" +
+                            "                               <h2></h2>\n" +
+                            "                               <p></p>\n" +
+                            "                            </div>\n" +
+                            "                         </div>\n" +
+                            "                      </div>\n" +
+                            "                   </div>\n" +
+                            "                </div>\n" +
+                            "                <div id=\"controls\">\n" +
+                            "                   <label for=\"slide1\"></label>\n" +
+                            "                   <label for=\"slide2\"></label>\n" +
+                            "                   <label for=\"slide3\"></label>\n" +
+                            "                   <label for=\"slide4\"></label>\n" +
+                            "                </div>\n" +
+                            "                <div id=\"bullets\">\n" +
+                            "                   <label for=\"slide1\"></label>\n" +
+                            "                   <label for=\"slide2\"></label>\n" +
+                            "                   <label for=\"slide3\"></label>\n" +
+                            "                   <label for=\"slide4\"></label>\n" +
+                            "                </div>\n" +
+                            "             </div>\n" +
                             "        </div>\n" +
                             "    </main>\n" +
                             "    <footer>\n" +

@@ -47,24 +47,33 @@ public class menuTermekek extends HttpServlet {
                             "        <nav>\n" +
                             "            <a href='"+kepLink+"'class='logo'><img src='RES/logo.png' alt='logo helye'></a>\n" +
                             "            <form method='post'>\n" +
-                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\">Kezdőlap</button>\n" +
-                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\">Termékek</button>\n" +
-                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTamogatoink'\">Támogatóink</button>\n" +
-                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuProfil'\">Profil</button>\n" +
+                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\" class=\"fill\">Kezdőlap</button>\n" +
+                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\" class=\"fill\">Termékek</button>\n" +
+                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTamogatoink'\" class=\"fill\">Támogatóink</button>\n" +
+                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuProfil'\" class=\"fill\">Profil</button>\n" +
                             "            </form>\n" +
                             "            <div class='szolgaltatasok'>\n" +
-                            "            <a href='"+basket+"' class='funkciok'><img src='RES/basket.png' alt='kosár kép'></a>\n" +
+                            "            <a href='"+basket+"' class='funkciok'><img src='RES/basket1.png' alt='kosár kép'></a>\n" +
                             "            </div>\n" +
                             "        </nav>\n" +
                             "    </header>\n" +
                             "    <div class='mainContainer'>\n" +
                             "        <aside class='leirasAside'>\n" +
                             "            <form action='szures' method='post'>\n" +
-                            "                <input type='text' name='szurText'><br>\n" +
-                            "                <span>Ár szerint növekvő sorrend</span>\n" +
-                            "                <input type='radio' name='order' value='1' id='Tradio' checked><br>\n" +
-                            "                <span>Ár szerint csökkenő sorrend</span>\n" +
-                            "                <input type='radio' name='order' value='0' id='Tradio'><br>\n" +
+                            "                <br><br>\n" +
+                            "                <div class=\"temek_kereses\">\n" +
+                            "                    <h1>Termék keresés:</h1>\n"
+                                    + "          <input type='text' name='szurText'><br>\n"
+                                    + "      </div>\n" +
+                            "                 <div class=\"termek_szures\">\n" +
+                        "                    <h1>Termék Szűrés:</h1>\n" +
+                        "                    <div class=\"ar_szerint_no_csokken\">\n" +
+                        "                        <span>Ár szerint növekvő sorrend</span>\n" +
+                        "                        <input type=\"radio\" name=\"order\" value=\"1\" id=\"Tradio\" checked><br>\n" +
+                        "                        <span>Ár szerint csökkenő sorrend</span>\n" +
+                        "                        <input type=\"radio\" name=\"order\" value=\"0\" id=\"Tradio\"><br>\n" +
+                        "                    </div>\n" +
+                        "                    <h4>Termék típusok:</h4>\n" +
                             "                <ul>\n");
                 for (Kategoria k : cat){
                     out.print(  "                    <li>\n" +
@@ -72,7 +81,7 @@ public class menuTermekek extends HttpServlet {
                                 "                        <label for='"+k.getKategoriaID()+"'>"+k.getKategoriaNev()+"</label>\n" +
                                 "                    </li>\n");
                 }
-                out.print(  "                    <li>\n" +
+                out.print(  "                        <li>\n" +
                                 "                        <input type='radio' id = '6' name='category' value='6' checked>\n" +
                                 "                        <label for='6'>Minden termék</label>\n" +
                                 "                    </li>\n");
@@ -85,13 +94,21 @@ public class menuTermekek extends HttpServlet {
                 for (Termek t :  termekek){
                     if (t.getTermekNev().contains("anonym") == Boolean.FALSE) {
                         out.print(  "                <div class='termek'>\n" +
-                                "                    <img src='"+t.getTermekKep()+"' alt=''>\n" +
-                                "                    <div class='termekContainer'>\n" +
-                                "                        <h3 class='termekAdat'>"+t.getTermekNev()+"</h3>\n" +
-                                "                        <h4 class='termekAdat'>"+t.getTermekAr()+"</h4>\n" +
-                                "                        <form class='termekAdat' action='targyOldal' method='post'>\n" +
-                                "                           <button type='submit' name='getTermek' value='"+t.getTermekID()+"'>Megtekintes</button>\n" +
-                                "                        </form>\n" +
+                                    "                    <img src='"+t.getTermekKep()+"' alt=''>\n" +
+                                    "                    <div class='termekContainer'>\n" +
+                                    "                        <div class=\"termeknev\">\n" +
+                                    "                            <h3 class=\"termekAdat\">"+t.getTermekNev()+"</h3>\n" +
+                                    "                        </div>\n" +
+                                    "                         <div class=\"nev_ar\">\n" +
+                                    "                            <div class=\"h5\">\n" +
+                                    "                                <h5>"+t.getTermekAr()+" FT</h5>\n" +
+                                    "                            </div>"
+                                                            + "  <div class=\"form\">\n" +
+                                        "                        <form class='termekAdat' action='targyOldal' method='post'>\n" +
+                                        "                           <button type='submit' name='getTermek' value='"+t.getTermekID()+"' class=\"liras_termek_button\">Megtekintes</button>\n" +
+                                        "                        </form>\n" +
+                                "                            </div>\n" +
+                                "                        </div>\n" +
                                 "                    </div>\n" +
                                 "                </div>\n");
                     }
@@ -154,10 +171,10 @@ public class menuTermekek extends HttpServlet {
                             "        <nav>\n" +
                             "            <a href='"+kepLink+"'class='logo'><img src='RES/logo.png' alt='logo helye'></a>\n" +
                             "            <form method='post'>\n" +
-                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\">Kezdőlap</button>\n" +
-                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\">Termékek</button>\n" +
-                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTamogatoink'\">Támogatóink</button>\n" +
-                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuLogin'\">Bejelentkezés</button>\n" +
+                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\" class=\"fill\">Kezdőlap</button>\n" +
+                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\" class=\"fill\">Termékek</button>\n" +
+                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTamogatoink'\" class=\"fill\">Támogatóink</button>\n" +
+                            "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuLogin'\" class=\"fill\">Bejelentkezés</button>\n" +
                             "            </form>\n" +
                             "        </nav>\n" +
                             "        <div class=\"header_atmenet\">\n" +
@@ -166,11 +183,20 @@ public class menuTermekek extends HttpServlet {
                             "    <div class='mainContainer'>\n" +
                             "        <aside class='leirasAside'>\n" +
                             "            <form action='szures' method='post'>\n" +
-                            "                <input type='text' name='szurText'><br>\n" +
-                            "                <span>Ár szerint növekvő sorrend</span>\n" +
-                            "                <input type='radio' name='order' value='1' id='Tradio' checked><br>\n" +
-                            "                <span>Ár szerint csökkenő sorrend</span>\n" +
-                            "                <input type='radio' name='order' value='0' id='Tradio'><br>\n" +
+                            "                <br><br>\n" +
+                            "                <div class=\"temek_kereses\">\n" +
+                            "                    <h1>Termék keresés:</h1>\n"
+                                    + "          <input type='text' name='szurText'><br>\n"
+                                    + "      </div>\n" +
+                            "                 <div class=\"termek_szures\">\n" +
+                        "                    <h1>Termék Szűrés:</h1>\n" +
+                        "                    <div class=\"ar_szerint_no_csokken\">\n" +
+                        "                        <span>Ár szerint növekvő sorrend</span>\n" +
+                        "                        <input type=\"radio\" name=\"order\" value=\"1\" id=\"Tradio\" checked><br>\n" +
+                        "                        <span>Ár szerint csökkenő sorrend</span>\n" +
+                        "                        <input type=\"radio\" name=\"order\" value=\"0\" id=\"Tradio\"><br>\n" +
+                        "                    </div>\n" +
+                        "                    <h4>Termék típusok:</h4>\n" +
                             "                <ul>\n");
                 for (Kategoria k : cat){
                     out.print(  "                    <li>\n" +
@@ -178,7 +204,7 @@ public class menuTermekek extends HttpServlet {
                                 "                        <label for='"+k.getKategoriaID()+"'>"+k.getKategoriaNev()+"</label>\n" +
                                 "                    </li>\n");
                 }
-                out.print(  "                    <li>\n" +
+                out.print(  "                        <li>\n" +
                                 "                        <input type='radio' id = '6' name='category' value='6' checked>\n" +
                                 "                        <label for='6'>Minden termék</label>\n" +
                                 "                    </li>\n");
@@ -191,13 +217,21 @@ public class menuTermekek extends HttpServlet {
                 for (Termek t :  termekek){
                     if (t.getTermekNev().contains("anonym") == Boolean.FALSE) {
                         out.print(  "                <div class='termek'>\n" +
-                                "                    <img src='"+t.getTermekKep()+"' alt=''>\n" + 
-                                "                    <div class='termekContainer'>\n" +
-                                "                        <h3 class='termekAdat'>"+t.getTermekNev()+"</h3>\n" +
-                                "                        <h4 class='termekAdat'>"+t.getTermekAr()+"</h4>\n" +
-                                "                        <form class='termekAdat' action='targyOldal' method='post'>\n" +
-                                "                           <button type='submit' name='getTermek' value='"+t.getTermekID()+"'>Megtekintes</button>\n" +
-                                "                        </form>\n" +
+                                    "                    <img src='"+t.getTermekKep()+"' alt=''>\n" +
+                                    "                    <div class='termekContainer'>\n" +
+                                    "                        <div class=\"termeknev\">\n" +
+                                    "                            <h3 class=\"termekAdat\">"+t.getTermekNev()+"</h3>\n" +
+                                    "                        </div>\n" +
+                                    "                         <div class=\"nev_ar\">\n" +
+                                    "                            <div class=\"h5\">\n" +
+                                    "                                <h5>"+t.getTermekAr()+" FT</h5>\n" +
+                                    "                            </div>"
+                                                            + "  <div class=\"form\">\n" +
+                                        "                        <form class='termekAdat' action='targyOldal' method='post'>\n" +
+                                        "                           <button type='submit' name='getTermek' value='"+t.getTermekID()+"' class=\"liras_termek_button\">Megtekintes</button>\n" +
+                                        "                        </form>\n" +
+                                "                            </div>\n" +
+                                "                        </div>\n" +
                                 "                    </div>\n" +
                                 "                </div>\n");
                     }
