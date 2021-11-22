@@ -45,7 +45,9 @@ public class menuMain extends HttpServlet {
                         "            <div class=\"szolgaltatasok\">\n" +
                         "            <a href=\""+basket+"\" class=\"funkciok\"><img src=\"RES/basket1.png\" alt=\"kosár kép\"></a>\n" +
                         "            </div>\n" +
-                        "        </nav>\n" +
+                        "        </nav>\n"
+                                + "<div class=\"header_atmenet\">\n" +
+                                    "        </div>\n" +
                             "    </header>\n" +
                             "    <main class=\"index_main\">\n" +
                             "        <div class=\"index_fix_hatter\">\n" +
@@ -170,7 +172,9 @@ public class menuMain extends HttpServlet {
                             "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTamogatoink'\" class=\"fill\">Támogatóink</button>\n" +
                             "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuLogin'\" class=\"fill\">Bejelentkezés</button>\n" +
                             "            </form>\n" +
-                            "        </nav>\n" +
+                            "        </nav>\n"
+                                + "<div class=\"header_atmenet\">\n" +
+                                    "        </div>\n" +
                             "    </header>\n" +
                             "    <main class=\"index_main\">\n" +
                             "        <div class=\"index_fix_hatter\">\n" +

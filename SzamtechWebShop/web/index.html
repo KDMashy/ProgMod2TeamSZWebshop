@@ -12,14 +12,13 @@
         <nav>
             <a href="http://localhost:20500/SzamtechWebShop/menuMain" class="logo"><img src="RES/logo.png" alt="logo helye"></a>
             <form method='post'>
-                <button type="submit" name = "menup" onclick="form.action='menuMain'">Kezdőlap</button>
-                <button type="submit" name = "menup" onclick="form.action='menuTermekek'">Termékek</button>
-                <button type="submit" name = "menup" onclick="form.action='menuTamogatoink'">Támogatóink</button>
-                <button type="submit" name = "menup" onclick="form.action='menuLogin'">Bejelentkezés</button>
+                <button type="submit" name = "menup" onclick="form.action='menuMain'" class="fill">Kezdőlap</button>
+                <button type="submit" name = "menup" onclick="form.action='menuTermekek'" class="fill">Termékek</button>
+                <button type="submit" name = "menup" onclick="form.action='menuTamogatoink'" class="fill">Támogatóink</button>
+                <button type="submit" name = "menup" onclick="form.action='menuLogin'" class="fill">Bejelentkezés</button>
             </form>
         </nav>
         <div class="header_atmenet">
-
         </div>
     </header>
     <main class="index_main">
@@ -36,8 +35,55 @@
                 </div>
             </div>
         </div>
-        <div class="index_ures">
-            asdf
+        <div id="kekhatter">
+            <div id="slider">
+                <input type="radio" name="slider" id="slide1" checked>
+                <input type="radio" name="slider" id="slide2">
+                <input type="radio" name="slider" id="slide3">
+                <input type="radio" name="slider" id="slide4">
+                <div id="slides">
+                   <div id="overflow">
+                      <div class="inner">
+                         <div class="slide slide_1">
+                            <div class="slide-content">
+                               <h2></h2>
+                               <p></p>
+                            </div>
+                         </div>
+                         <div class="slide slide_2">
+                            <div class="slide-content">
+                               <h2></h2>
+                               <p></p>
+                            </div>
+                         </div>
+                         <div class="slide slide_3">
+                            <div class="slide-content">
+                               <h2></h2>
+                               <p></p>
+                            </div>
+                         </div>
+                         <div class="slide slide_4">
+                            <div class="slide-content">
+                               <h2></h2>
+                               <p></p>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+                <div id="controls">
+                   <label for="slide1"></label>
+                   <label for="slide2"></label>
+                   <label for="slide3"></label>
+                   <label for="slide4"></label>
+                </div>
+                <div id="bullets">
+                   <label for="slide1"></label>
+                   <label for="slide2"></label>
+                   <label for="slide3"></label>
+                   <label for="slide4"></label>
+                </div>
+             </div>
         </div>
     </main>
     <footer>
