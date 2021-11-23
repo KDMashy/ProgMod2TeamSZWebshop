@@ -136,6 +136,18 @@
         <servlet-name>NEWPassword</servlet-name>
         <servlet-class>controller.NEWPassword</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SzervizTorlese</servlet-name>
+        <servlet-class>controller.SzervizTorlese</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PartnerTorlese</servlet-name>
+        <servlet-class>controller.PartnerTorlese</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GyartoTorlese</servlet-name>
+        <servlet-class>controller.GyartoTorlese</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/reg</url-pattern>
@@ -287,6 +299,18 @@
     <servlet-mapping>
         <servlet-name>NEWPassword</servlet-name>
         <url-pattern>/NEWPassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SzervizTorlese</servlet-name>
+        <url-pattern>/SzervizTorlese</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PartnerTorlese</servlet-name>
+        <url-pattern>/PartnerTorlese</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GyartoTorlese</servlet-name>
+        <url-pattern>/GyartoTorlese</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

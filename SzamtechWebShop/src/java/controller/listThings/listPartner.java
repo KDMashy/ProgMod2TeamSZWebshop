@@ -48,7 +48,8 @@ public class listPartner extends HttpServlet {
                         "                        <tr>\n" +
                         "                            <td>Partner neve</td>\n" +
                         "                            <td>Elérhetősége</td>\n" +
-                        "                            <td>Adószáma</td>\n" +
+                        "                            <td>Adószáma</td>\n" 
+                                + "                  <th>Partner törlése</th>" +
                         "                        </tr>\n" +
                         "                    </thead>\n" +
                         "                    <tbody>\n");
@@ -57,7 +58,10 @@ public class listPartner extends HttpServlet {
                     out.print(  "                        <tr>\n" +
                             "                            <td>"+t.getPartnerNev()+"</td>\n" +
                             "                            <td>"+t.getPartnerElerhetoseg()+"</td>\n" +
-                            "                            <td>"+t.getPartnerAdoszam()+"</td>\n" +
+                            "                            <td>"+t.getPartnerAdoszam()+"</td>\n"
+                                    + "                  <td><form action='PartnerTorlese' method='post'>"
+                                    + "<button type='submit' name='deletePartner' value='"+t.getPartnerID()+"'>Termék törlése</button>"
+                                    + "</form></td>\n" +
                             "                        </tr>\n");
                 }
             }

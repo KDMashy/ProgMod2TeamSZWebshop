@@ -61,7 +61,7 @@ public class Kosar extends HttpServlet {
                         "    <link rel=\"stylesheet\" href=\"RES/style.css\">\n" +
                         "<style>.kosarMain{\n" +
                         "    width: 70%;\n" +
-                        "    margin: 0 auto;\n" +
+                        "    margin: 0 auto; padding: 100px\n" +
                         "}\n" +
                         ".kosarMain .kosarContainer{\n" +
                         "    width: 90%;\n" +
@@ -188,8 +188,8 @@ public class Kosar extends HttpServlet {
                             "            </div>\n" +
                             "        </div>\n" +
                             "    </main>\n" +
-                            "    <footer>\n" +
-                            "        <section class = \"bemutatkozas\">\n" +
+                            "    <footer style='position='relative''>\n" +
+                            "        <section class = \"bemutatkozas\" style='position='absolute'; bottom: 0'>\n" +
                             "            <div class=\"footer_info_box\">\n" +
                             "                <h3>Elérhetőségek:</h3>\n" +
                             "                <br>\n" +

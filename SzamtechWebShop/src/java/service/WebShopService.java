@@ -933,6 +933,60 @@ public class WebShopService{
         }
         return kategoriak;
     }
+    //Partner Torlese
+    public Boolean anonymPartner(Integer tid){
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
+            String name = "anonymPartner"+tid;
+            String sql = "update partner set PartnerNev='"+name+"' where PartnerID="+tid+"";
+            PreparedStatement prestm = DBCon.prepareStatement(sql);
+            prestm.executeUpdate();
+            return Boolean.TRUE;
+        } catch (SQLException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+            return Boolean.FALSE;
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+            return Boolean.FALSE;
+        }
+    }
+    //Gyarto torlese
+    public Boolean anonymGyarto(Integer tid){
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
+            String name = "anonymGyarto"+tid;
+            String sql = "update gyarto set GyartoNev='"+name+"' where GyartoID="+tid+"";
+            PreparedStatement prestm = DBCon.prepareStatement(sql);
+            prestm.executeUpdate();
+            return Boolean.TRUE;
+        } catch (SQLException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+            return Boolean.FALSE;
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+            return Boolean.FALSE;
+        }
+    }
+    //Szerviz torlese
+    public Boolean anonymSzerviz(Integer tid){
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection DBCon = DriverManager.getConnection(DBServer, DBUsername, DBPassword);
+            String name = "anonymSzerviz"+tid;
+            String sql = "update szerviz set SzervizNev='"+name+"' where SzervizID="+tid+"";
+            PreparedStatement prestm = DBCon.prepareStatement(sql);
+            prestm.executeUpdate();
+            return Boolean.TRUE;
+        } catch (SQLException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+            return Boolean.FALSE;
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(WebShopService.class.getName()).log(Level.SEVERE, null, ex);
+            return Boolean.FALSE;
+        }
+    }
     //Password encryption
     public String encrypt(String password){
         function f = new function();

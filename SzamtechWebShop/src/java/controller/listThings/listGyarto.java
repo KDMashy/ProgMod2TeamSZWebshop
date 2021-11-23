@@ -48,16 +48,22 @@ public class listGyarto extends HttpServlet {
                         "                        <tr>\n" +
                         "                            <td>Gyártó neve</td>\n" +
                         "                            <td>Elérhetőség</td>\n" +
-                        "                            <td>Gyártói Garancia</td>\n" +
+                        "                            <td>Gyártói Garancia</td>\n" 
+                                + "                  <th>Gyártó törlése</th>" +
                         "                        </tr>\n" +
                         "                    </thead>\n" +
                         "                    <tbody>\n");
             for (Gyarto t : gyartok){
-                out.print(  "                        <tr>\n" +
+                if (t.getGyartoNev().contains("anonym") == Boolean.FALSE) {
+                    out.print(  "                        <tr>\n" +
                             "                            <td>"+t.getGyartoNev()+"</td>\n" +
                             "                            <td>"+t.getGyartoElerhetoseg()+"</td>\n" +
-                            "                            <td>"+t.getGyartoiGarancia()+"</td>\n" +
+                            "                            <td>"+t.getGyartoiGarancia()+"</td>\n"
+                                    + "                  <td><form action='GyartoTorlese' method='post'>"
+                                    + "<button type='submit' name='deleteGyarto' value='"+t.getGyartoID()+"'>Gyártó törlése</button>"
+                                    + "</form></td>\n" +
                             "                        </tr>\n");
+                }
             }
             out.print(  "                    </tbody>\n" +
                         "                                        </table>\n" +

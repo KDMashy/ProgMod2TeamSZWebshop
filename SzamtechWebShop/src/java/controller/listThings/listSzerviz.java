@@ -47,7 +47,8 @@ public class listSzerviz extends HttpServlet {
                         "                    <thead>\n" +
                         "                        <tr>\n" +
                         "                            <td>Szervíz neve</td>\n" +
-                        "                            <td>Elérhetősége</td>\n" +
+                        "                            <td>Elérhetősége</td>\n" 
+                                + "                  <th>Szerviz törlése</th>" +
                         "                        </tr>\n" +
                         "                    </thead>\n" +
                         "                    <tbody>\n");
@@ -55,7 +56,10 @@ public class listSzerviz extends HttpServlet {
                 if (t.getSzervizNev().contains("anonym") == Boolean.FALSE) {
                     out.print(  "                        <tr>\n" +
                             "                            <td>"+t.getSzervizNev()+"</td>\n" +
-                            "                            <td>"+t.getSzervizElerhetoseg()+"</td>\n" +
+                            "                            <td>"+t.getSzervizElerhetoseg()+"</td>\n"
+                                    + "                  <td><form action='SzervizTorlese' method='post'>"
+                                    + "<button type='submit' name='deleteSzerviz' value='"+t.getSzervizID()+"'>Szerviz törlése</button>"
+                                    + "</form></td>\n" +
                             "                        </tr>\n");
                 }
             }
