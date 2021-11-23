@@ -72,21 +72,30 @@ public class Login extends HttpServlet {
                         "        </nav>\n" +
                         "    </header>\n" +
                         "    <main class='logreg'>\n" +
-                        "        <div class='regisztracio'>  \n" +
-                        "            <h2>Regisztráció</h2><br>   \n" +
-                        "            <form action='reg' method='post'>    \n" +
-                        "                <label><b>Felhasználónév</b><br><br></label>    \n" +
-                        "                <input type='text' name='name' id='registerName'>    \n" +
-                        "                <br><br>    \n" +
-                        "                <label><b>Jelszó</b><br><br></label>    \n" +
-                        "                <input type='password' name='password' id='registerPasw'>    \n" +
-                        "                <br><br>\n" +
-                        "                <label><b>Email</b><br><br></label>    \n" +
-                        "                <input type='text' name='email' id='registerEmail'>\n" +
-                        "                <br><br>    \n" +
-                        "                <input type='submit' id='log' value='Regisztráció' class='bekuld'>  \n" +
-                        "            </form>     \n" +
-                        "        </div>\n" +
+                                "        <div class='regisztracio'>  \n" +
+                                "            <h2>Regisztráció</h2><br>   \n" +
+                                "            <form action='reg' method='post'>    \n" +
+                                "                <label><b>Felhasználónév</b><br><br></label>    \n" +
+                                "                <input type='text' name='name' minlength=\"4\" id='registerName' required>    \n" +
+                                "                <br><br>    \n" +
+                                "                <label><b>Jelszó</b><br><br></label>    \n" +
+                                "                <input type='password' name='password' minlength=\"4\" id='registerPasw' required>    \n" +
+                                "                <br><br>\n" +
+                                "                <label><b>Email</b><br><br></label>    \n" +
+                                "                <input type='email' name='email' id='registerEmail' required>\n" +
+                                "                <br><br>    \n"
+                                        + "<label><b>Biztonsági kérdés</b><br><br></label>\n"
+                                        + "<select name='biztonsagiKerdes' id='bkerdes' style='width: 80%; margin: 15px 0;'>\n"
+                                        + "     <option value='KERDES1'>KERDES1</option>\n"
+                                        + "     <option value='KERDES2'>KERDES2</option>\n"
+                                        + "     <option value='KERDES3'>KERDES3</option>\n"
+                                        + "     <option value='KERDES4'>KERDES4</option>\n"
+                                        + "</select>\n"
+                                        + "<label><b>Biztonsági kérdésre válasz</b><br><br></label>\n"
+                                        + "<input type='text' name='kerdesValasz' style='margin-bottom: 15px' required/>\n" +
+                                "                <input type='submit' id='log' value='Regisztráció' class='bekuld'>  \n" +
+                                "            </form>     \n" +
+                                "        </div>\n" +
                         "        <div class='bejelentkezes'>  \n" +
                         "            <h2>Bejelentkezés</h2><br>   \n" +
                         "            <h2>Hibás felhasználónév, vagy jelszó</h2>\n" +

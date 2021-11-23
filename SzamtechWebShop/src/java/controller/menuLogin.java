@@ -42,13 +42,13 @@ public class menuLogin extends HttpServlet {
                         "            <h2>Regisztráció</h2><br>   \n" +
                         "            <form action='reg' method='post'>    \n" +
                         "                <label><b>Felhasználónév</b><br><br></label>    \n" +
-                        "                <input type='text' name='name' id='registerName'>    \n" +
+                        "                <input type='text' name='name' minlength=\"4\" id='registerName' required>    \n" +
                         "                <br><br>    \n" +
                         "                <label><b>Jelszó</b><br><br></label>    \n" +
-                        "                <input type='password' name='password' id='registerPasw'>    \n" +
+                        "                <input type='password' name='password' minlength=\"4\" id='registerPasw' required>    \n" +
                         "                <br><br>\n" +
                         "                <label><b>Email</b><br><br></label>    \n" +
-                        "                <input type='email' name='email' id='registerEmail'>\n" +
+                        "                <input type='email' name='email' id='registerEmail' required>\n" +
                         "                <br><br>    \n"
                                 + "<label><b>Biztonsági kérdés</b><br><br></label>\n"
                                 + "<select name='biztonsagiKerdes' id='bkerdes' style='width: 80%; margin: 15px 0;'>\n"
@@ -58,7 +58,7 @@ public class menuLogin extends HttpServlet {
                                 + "     <option value='KERDES4'>KERDES4</option>\n"
                                 + "</select>\n"
                                 + "<label><b>Biztonsági kérdésre válasz</b><br><br></label>\n"
-                                + "<input type='text' name='kerdesValasz' style='margin-bottom: 15px'/>\n" +
+                                + "<input type='text' name='kerdesValasz' style='margin-bottom: 15px' required/>\n" +
                         "                <input type='submit' id='log' value='Regisztráció' class='bekuld'>  \n" +
                         "            </form>     \n" +
                         "        </div>\n" +
@@ -69,13 +69,13 @@ public class menuLogin extends HttpServlet {
                         "                </b> \n" +
                         "                <br><br>      \n" +
                         "                </label>    \n" +
-                        "                <input type='text' name='name' id='registerName'>    \n" +
+                        "                <input type='text' name='name' id='registerName' required>    \n" +
                         "                <br><br>    \n" +
                         "                <label><b>Jelszó     \n" +
                         "                </b>    \n" +
                         "                <br><br>   \n" +
                         "                </label>    \n" +
-                        "                <input type='password' name='password' id='registerPasw'>    \n" +
+                        "                <input type='password' name='password' minlength=\"3\" id='registerPasw' required>    \n" +
                         "                <br><br>    \n" +
                         "                <input type='submit' id='log' value='bejelentkezés' class='bekuld'>  \n" +
                         "            </form>     \n"

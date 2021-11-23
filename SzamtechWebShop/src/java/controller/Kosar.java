@@ -155,10 +155,10 @@ public class Kosar extends HttpServlet {
                             "                <form action=\"tremekekVasarlasa\">\n" +
                             "                    <div class=\"lakhely\" style=\"border: 1px solid #999; padding: 15px\">\n" +
                             "                        <label for=\"varos\">Város:</label><br>\n" +
-                            "                        <input type=\"text\" name=\"varos\" required><br><br>\n" +
+                            "                        <input type=\"text\" name=\"varos\" minlength=\"3\" required><br><br>\n" +
                             "                        <label for=\"hszam\">Utca/házszám:</label><br>\n" +
-                            "                        <input type=\"text\" name=\"hszam\" required><br><br>\n" +
-                            "                        <label for=\"irszam\">Irányítószám:</label><br>\n" +
+                            "                        <input type=\"text\" name=\"hszam\" minlength=\"3\" required><br><br>\n" +
+                            "                        <label for=\"irszam\" minlength=\"4\" maxlength='4'>Irányítószám:</label><br>\n" +
                             "                        <input type=\"text\" name=\"irszam\" min=\"1\" max=\"4\" required><br><br>\n" +
                             "                        <label for=\"area\">Egyéb közlendő:</label><br>\n" +
                             "                        <textarea name=\"egyebInfoByFelh\" cols=\"30\" rows=\"20\" style=\"resize: none\"></textarea><br>\n" +
