@@ -42,10 +42,10 @@ public class menuLogin extends HttpServlet {
                         "            <h2>Regisztráció</h2><br>   \n" +
                         "            <form action='reg' method='post'>    \n" +
                         "                <label><b>Felhasználónév</b><br><br></label>    \n" +
-                        "                <input type='text' name='name' minlength=\"4\" id='registerName' required>    \n" +
+                        "                <input type='text' name='name' minlength=\"4\" maxlength='20' id='registerName' required>    \n" +
                         "                <br><br>    \n" +
                         "                <label><b>Jelszó</b><br><br></label>    \n" +
-                        "                <input type='password' name='password' minlength=\"4\" id='registerPasw' required>    \n" +
+                        "                <input type='password' name='password' minlength=\"4\" maxlength='16' id='registerPasw' required>    \n" +
                         "                <br><br>\n" +
                         "                <label><b>Email</b><br><br></label>    \n" +
                         "                <input type='email' name='email' id='registerEmail' required>\n" +

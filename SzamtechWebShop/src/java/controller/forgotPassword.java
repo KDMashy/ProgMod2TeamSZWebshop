@@ -74,7 +74,7 @@ public class forgotPassword extends HttpServlet {
                             "        </div>\n" +
                             "    </main>\n" +
                             "    <footer>\n" +
-                            "        <section class = \"bemutatkozas\">\n" +
+                            "        <section class = \"bemutatkozas\" >\n" +
                             "            <div class=\"footer_info_box\">\n" +
                             "                <h3>Elérhetőségek:</h3>\n" +
                             "                <br>\n" +
@@ -170,11 +170,13 @@ public class forgotPassword extends HttpServlet {
                         "                <input type='password' name='password' id='registerPasw'>    \n" +
                         "                <br><br>    \n" +
                         "                <input type='submit' id='log' value='bejelentkezés' class='bekuld'>  \n" +
-                        "            </form>     \n" +
+                        "            </form>     \n" 
+                                + "<form action='elfelejtettJelszo' method='post' style='margin-top: 25px;'><input type='submit' value='Elfelejtett jelszó' class='bekuld'></form>\n" +
+                        "        </div>    \n" +
                         "        </div>    \n" +
                         "    </main>\n" +
                         "    <footer>\n" +
-                            "    <section class = \"bemutatkozas\">\n" +
+                            "    <section class = \"bemutatkozas\" style='margin-top:100px;'>\n" +
                             "            <div class=\"footer_info_box\">\n" +
                             "                <h3>Elérhetőségek:</h3>\n" +
                             "                <br>\n" +

@@ -76,8 +76,10 @@ public class menuProfil extends HttpServlet {
                         "            </div>\n" +
                         "            <div class=\"fhFunction\">\n" +
                         "                <form action=\"chUserSettings\" method=\"post\">\n" +
-                        "                    <input type=\"text\" name=\"szamCim\" /><br>\n" +
-                        "                    <input type=\"text\" name=\"adSzam\" minlength=\"11\" maxlength=\"11\"/><br>\n" +
+                        "          <h3>Számlázási cím</h3>          "
+                                + "<input type=\"text\" name=\"szamCim\" /><br>\n" +
+                        "          <h3>Adószám</h3>          "
+                                + "<input type=\"text\" name=\"adSzam\" minlength=\"11\" maxlength=\"11\"/><br>\n" +
                         "                    <button type=\"submit\">Adatok változtatása</button>\n" +
                         "                </form>\n" +
                         "            </div>\n" +

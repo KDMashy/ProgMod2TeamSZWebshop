@@ -64,6 +64,21 @@ public class function implements interfaceList{
             else if (name.contains("insert")) return Boolean.TRUE;
             else if (name.contains("alter")) return Boolean.TRUE;
             else if (name.contains("table")) return Boolean.TRUE;
+            else if (name.contains("null")) return Boolean.TRUE;
+            else if (name.contains("\"")) return Boolean.TRUE;
+            else if (name.contains("'")) return Boolean.TRUE;
+            else if (name.contains("*")) return Boolean.TRUE;
+            else if (name.contains("-")) return Boolean.TRUE;
+            else if (name.contains("+")) return Boolean.TRUE;
+            else if (name.contains("|")) return Boolean.TRUE;
+            else if (name.contains("(")) return Boolean.TRUE;
+            else if (name.contains(")")) return Boolean.TRUE;
+            else if (name.contains("[")) return Boolean.TRUE;
+            else if (name.contains("]")) return Boolean.TRUE;
+            else if (name.contains("{")) return Boolean.TRUE;
+            else if (name.contains("}")) return Boolean.TRUE;
+            else if (name.contains(">")) return Boolean.TRUE;
+            else if (name.contains("<")) return Boolean.TRUE;
             else return Boolean.FALSE;
         } catch(Exception ex){
             System.err.println(ex.toString());

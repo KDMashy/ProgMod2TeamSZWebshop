@@ -22,15 +22,15 @@ public class szures extends HttpServlet {
         Short bool = Short.parseShort(request.getParameter("order"));
         String selected[] = request.getParameterValues("category");
         Integer happened = 0;
-        
+        //szukseges linkek
         String kepLink = "/SzamtechWebShop/menuMain";
         String basket = "/SzamtechWebShop/kosar";
-        
+        //szukseges listak
         ArrayList<Termek> termekek = wbservice.getTermekek();
         ArrayList<Termek> searched = new ArrayList<>();
         ArrayList<Termek> categorysed = new ArrayList<>();
         ArrayList<Kategoria> cat = wbservice.getCategoryes();
-        
+        //szovegesen szurt termekek keresese
         if (searchTermek.equals("") == Boolean.FALSE) {
             for (Termek t : termekek) {
                 if (t.getTermekNev().toLowerCase().contains(searchTermek.toLowerCase())) {
@@ -43,7 +43,7 @@ public class szures extends HttpServlet {
         if (happened == 1) {
             termekek = searched;
         }
-        
+        //ar szerinti rendezes
         Termek x = new Termek();
         if (bool == 0) {
             for (Integer j = 0; j < termekek.size() - 1; j++) {
@@ -66,7 +66,7 @@ public class szures extends HttpServlet {
                 }
             }
         }
-        
+        //kategoria szerinti kereses
         if (Integer.parseInt(selected[0]) != 6) {
             for (Integer i = 0; i < termekek.size(); i++) {
                 for (Integer j = 0; j < selected.length; j++) {
