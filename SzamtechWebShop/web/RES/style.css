@@ -21,15 +21,18 @@ HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, HEADER ELEJE, HEADER ELEJE,
 
 header
 {
+    
     width: 100%;
     display: flex;
     flex-direction: column;
+
 }
 
 
 
 header nav
 {
+    /*background: rgb(172, 255, 47);*/
     background-color: rgba(29, 243, 143, 0.527);
     height: 16vh;
     display: flex;/*egymás mellé rakjuk a logókat*/
@@ -96,6 +99,7 @@ header button{
   }
 /*gomb vége*/
 
+/*
 header nav form button
 {
     
@@ -103,7 +107,7 @@ header nav form button
     text-decoration: none;
     text-transform: uppercase;
     padding: 3vh 4vw;
-    transition: background 0.3s;/*a háttér elszíneződés időtartama*/
+    transition: background 0.3s;
     background: rgb(145, 226, 22);
 }
 
@@ -111,6 +115,7 @@ header nav button:hover
 {
     background: rgba(0, 0, 0, 0.25);
 }
+*/
 
 header .funkciok{
     transition: background 0.3s;
@@ -152,8 +157,10 @@ HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE,
     display: block;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position:center center;
     height: 80vh;
+    
+    
 }
 
 .index_promo_teglalapok{
@@ -162,9 +169,7 @@ HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE,
     top: 30%;
     left: 5%;
     
-    flex-direction: column;
-    
-    
+    flex-direction: column;  
     
 }
 
@@ -183,24 +188,22 @@ HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE,
     padding: 1vw;
     width: 30vw;
     
-    
 
 }
 
 
 .index_promo_teglalap_1{
+    
     background-color: rgba(65, 65, 65, 0.685);
     margin-bottom: 2vh;
     border-radius: 20px;
-    
-
-    
 
 }
 
 .index_promo_teglalap_2{
     background-color: blanchedalmond;
     border-radius: 20px;
+    
     margin-bottom: 2vh;
     
 
@@ -209,6 +212,10 @@ HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE,
 .index_promo_teglalap_3{
     background-color: rgba(65, 65, 65, 0.685);
     border-radius: 20px;
+   
+    
+    
+
     
 }
 /*felirat beállítások*/
@@ -379,6 +386,7 @@ HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE,
     }
  }
 
+
 /*index.html main - vége*/
 /*________________________________________________________________________________*/
 /*leiras.html main - eleje*/
@@ -526,7 +534,7 @@ input[type = radio]{
     border-radius: 20px;
     background: linear-gradient(rgb(0, 204, 255), rgb(0, 255, 128));
     transition: background 0.3s;
-    border: 1px;
+    border-: 1px;
     border: black;
 
 }
@@ -548,6 +556,12 @@ input[type = radio]{
 .termek_szures button:hover{
     background: linear-gradient(rgb(155, 136, 115), rgb(194, 177, 151));
 }
+
+
+
+
+
+
 /*leiras.html main - vége*/
 /*________________________________________________________________________________*/
 
@@ -602,7 +616,7 @@ color: blue;
 
 
 /*termekleiras.html main - eleje*/
-
+/*
 .termekleiras{
     width: 70%;
     margin: 0 auto;
@@ -625,7 +639,103 @@ color: blue;
     font-family: 'Times New Roman', Times, serif;
 
 }
+*/
 
+
+.termekleiras{
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    
+}
+.termekleiras h1{
+    margin: 10px auto;
+    font-size: 200%;
+    font-family: "Roboto Mono", monospace;
+    transition: transform 1.5s 0s ease, all 0.5s 0s ease;
+}
+.termekleiras h1:hover{
+    transform: scale(1.3);
+    transition: transform 0.5s 0s ease, all 0.5s 0s ease;
+    cursor: pointer;
+}
+
+.termekleiras img{
+    width: 50%;
+    margin: 30px auto;
+    transition: transform 0.5s 0s ease, all 0.5s 0s ease;
+}
+
+.termekleiras img:hover{
+    width: 50%;
+    margin: 30px auto;
+    transform: scale(1.05);
+    transition: transform 0.5s 0s ease, all 0.5s 0s ease;
+    cursor: pointer;
+}
+
+.termekleiras p1{
+    margin: 10px auto;
+    font-size: 110%;
+    font-family: "Roboto Mono", monospace;
+    transition: transform 0.5s 0s ease, all 0.5s 0s ease;
+
+
+}
+.termekleiras p1:hover{
+    transform: scale(1.2);
+    transition: transform 0.5s 0s ease, all 0.5s 0s ease;
+    cursor: pointer;
+}
+
+.termekleiras p2{
+    margin: 10px auto;
+    font-size: 110%;
+    font-family: "Roboto Mono", monospace;
+    transition: transform 0.5s 0s ease, all 0.5s 0s ease;
+}
+
+.termekleiras p2:hover{
+    transform: scale(1.2);
+    transition: transform 0.5s 0s ease, all 0.5s 0s ease;
+    cursor: pointer;
+}
+
+.termekleiras p3{
+    margin: 10px auto;
+    font-size: 110%;
+    font-family: "Roboto Mono", monospace;
+    transition: transform 0.5s 0s ease, all 0.5s 0s ease;
+
+}
+
+.termekleiras p3:hover{
+    transform: scale(1.2);
+    transition: transform 0.5s 0s ease, all 0.5s 0s ease;
+    cursor: pointer;
+}
+
+.termekleiras p4{
+    margin: 10px auto;
+    font-size: 110%;
+    font-family: "Roboto Mono", monospace;
+    transition: transform 0.5s 0s ease, all 0.5s 0s ease;
+
+}
+
+.termekleiras p4:hover{
+    transform: scale(1.2);
+    transition: transform 0.5s 0s ease, all 0.5s 0s ease;
+    cursor: pointer;
+}
+
+.termekleiras form1{
+    margin: 10px auto;
+    font-size: 110%;
+    font-family: "Roboto Mono", monospace;
+
+}
 
 /*termekleiras.html main - vége*/
 
@@ -634,6 +744,7 @@ color: blue;
 
 
 /*footer - kezdet*/
+
 
 
 footer{

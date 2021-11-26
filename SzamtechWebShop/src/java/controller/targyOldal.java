@@ -77,11 +77,11 @@ public class targyOldal extends HttpServlet {
                             "    <main class=\"termekleiras\">\n" +
                             "        <h1>"+t.getTermekNev()+"</h1>\n" +
                             "        <img src=\""+t.getTermekKep()+"\" alt=\"\">\n" +
-                            "        <p>Értékelés: "+atl+"</p>\n" +
-                            "        <p class =\"leiras\">"+t.getTermekDesc()+"</p>\n" +
-                            "        <p class=\"ar\">"+t.getTermekAr()+" + ÁFA</p>\n");
+                            "        <p1 class =\"adatok\">Értékelés: "+atl+"</p1>\n" +
+                            "        <p1 class =\"leiras\">"+t.getTermekDesc()+"</p1>\n" +
+                            "        <p2 class=\"ar\">"+t.getTermekAr()+" Ft + ÁFA</p2>\n");
                 if (t.getTermekKeszlet() == 1) {
-                    out.print("        <p class=\"raktaron\">"+van+"</p>\n" +
+                    out.print("        <p3 class=\"raktaron\">"+van+"</p3>\n" +
                             "        <form action=\"kosarba\" style='text-align: center; margin: 20px auto'>\n" +
                             "            <input type=\"number\" name=\"amount\" min='1' value='1' required>\n" +
                             "            <button type=\"submit\" name=\"getTermek\" value=\"" + termekName + "\">Kosárhoz adás</button>\n" +
@@ -162,11 +162,11 @@ public class targyOldal extends HttpServlet {
                             "    <main class=\"termekleiras\">\n" +
                             "        <h1>"+t.getTermekNev()+"</h1>\n" +
                             "        <img src=\""+t.getTermekKep()+"\" alt=\"\">\n" +
-                            "        <p>Értékelés: "+atl+"</p>\n" +
-                            "        <p class =\"leiras\">"+t.getTermekDesc()+"</p>\n" +
-                            "        <p class=\"ar\">"+t.getTermekAr()+" + ÁFA</p>\n" +
-                            "        <p class=\"raktaron\">"+van+"</p>\n" +
-                            "        <p>A vásárlás lehetőség csak bejelentkezés után elérhető</p><h1 style='text-transform: uppercase'>Étékelések</h1>");
+                            "        <p1 class =\"adatok\">Értékelés: "+atl+"</p1>\n" +
+                            "        <p1 class =\"leiras\">"+t.getTermekDesc()+"</p1>\n" +
+                            "        <p2 class=\"ar\">"+t.getTermekAr()+" Ft + ÁFA</p2>\n" +
+                            "        <p3 class=\"raktaron\">"+van+"</p3>\n" +
+                            "        <p3>A vásárlás lehetőség csak bejelentkezés után elérhető</p3><h1 style='text-transform: uppercase'>Étékelések</h1>");
                 for (Ertekeles ertek : ertekek){
                     out.print("<p style='text-align: center; border: 1px solid #999; padding: 30px 50px'>Értékelés:<br>"+ertek.getErtek()+"asd<br>Comment:<br>asd"+ertek.getComment()+"asd</p>");
                 }
