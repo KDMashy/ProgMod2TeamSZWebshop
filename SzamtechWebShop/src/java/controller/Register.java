@@ -50,12 +50,14 @@ public class Register extends HttpServlet {
                                 "        <nav>\n" +
                                 "            <a href='"+kepLink+"' class='logo'><img src='RES/logo.png' alt='logo helye'></a>\n" +
                                 "            <form method='post'>\n" +
-                                "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\">Kezdőlap</button>\n" +
-                                "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\">Termékek</button>\n" +
-                                "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTamogatoink'\">Támogatóink</button>\n" +
-                                "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuLogin'\">Bejelentkezés</button>\n" +
+                                "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuMain'\" class=\"fill\">Kezdőlap</button>\n" +
+                                "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTermekek'\" class=\"fill\">Termékek</button>\n" +
+                                "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTamogatoink'\" class=\"fill\">Támogatóink</button>\n" +
+                                "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuLogin'\" class=\"fill\">Bejelentkezés</button>\n" +
                                 "            </form>\n" +
-                                "        </nav>\n" +
+                                "        </nav>\n"
+                                + "<div class=\"header_atmenet\">\n" +
+                                    "        </div>\n" +
                                 "    </header>\n" +
                                 "    <main class='logreg'>\n" +
                                 "        <div class='regisztracio'>  \n" +
@@ -77,7 +79,7 @@ public class Register extends HttpServlet {
                                         + "     <option value='KERDES2'>KERDES2</option>\n"
                                         + "     <option value='KERDES3'>KERDES3</option>\n"
                                         + "     <option value='KERDES4'>KERDES4</option>\n"
-                                        + "</select>\n"
+                                        + "</select><br>\n"
                                         + "<label><b>Biztonsági kérdésre válasz</b><br><br></label>\n"
                                         + "<input type='text' name='kerdesValasz' style='margin-bottom: 15px' required/>\n" +
                                 "                <input type='submit' id='log' value='Regisztráció' class='bekuld'>  \n" +
@@ -99,11 +101,14 @@ public class Register extends HttpServlet {
                                 "                <input type='password' name='password' id='registerPasw'>    \n" +
                                 "                <br><br>    \n" +
                                 "                <input type='submit' id='log' value='bejelentkezés' class='bekuld'>  \n" +
-                                "            </form>     \n" +
+                                "            </form>     \n"
+                                + "<form action='elfelejtettJelszo' method='post' style='margin-top: 25px;'><input type='submit' value='Elfelejtett jelszó' class='bekuld'></form>\n" +
                                 "        </div>    \n" +
                                 "    </main>\n" +
                                 "    <footer>\n" +
-                                    "    <section class = \"bemutatkozas\">\n" +
+                                    "    <section class = \"bemutatkozas\">\n"
+                                + "<div class=\"footer_atmenet\">\n" +
+"            </div>\n" +
                                     "            <div class=\"footer_info_box\">\n" +
                                     "                <h3>Elérhetőségek:</h3>\n" +
                                     "                <br>\n" +

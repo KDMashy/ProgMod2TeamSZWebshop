@@ -58,7 +58,7 @@ public class menuLogin extends HttpServlet {
                                 + "     <option value='KERDES2'>KERDES2</option>\n"
                                 + "     <option value='KERDES3'>KERDES3</option>\n"
                                 + "     <option value='KERDES4'>KERDES4</option>\n"
-                                + "</select>\n"
+                                + "</select><br>\n"
                                 + "<label><b>Biztonsági kérdésre válasz</b><br><br></label>\n"
                                 + "<input type='text' name='kerdesValasz' style='margin-bottom: 15px' required/>\n" +
                         "                <input type='submit' id='log' value='Regisztráció' class='bekuld'>  \n" +

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2021. Nov 14. 19:32
+-- Létrehozás ideje: 2021. Nov 29. 11:14
 -- Kiszolgáló verziója: 10.4.21-MariaDB
 -- PHP verzió: 8.0.10
 
@@ -73,7 +73,7 @@ CREATE TABLE `gyarto` (
 --
 
 INSERT INTO `gyarto` (`GyartoID`, `GyartoNev`, `GyartoElerhetoseg`, `GyartoiGarancia`) VALUES
-(1, 'TesztGyártó', 'áéő', 1);
+(1, 'anonymGyarto1', 'áéő', 1);
 
 -- --------------------------------------------------------
 
@@ -115,7 +115,7 @@ CREATE TABLE `partner` (
 --
 
 INSERT INTO `partner` (`PartnerID`, `PartnerNev`, `PartnerElerhetoseg`, `PartnerAdoszam`) VALUES
-(1, 'TesztPartner1', 'áéő', NULL),
+(1, 'anonymPartner1', 'áéő', NULL),
 (2, 'anonymPartner2', 'Tesztelés', NULL);
 
 -- --------------------------------------------------------
@@ -135,7 +135,7 @@ CREATE TABLE `szerviz` (
 --
 
 INSERT INTO `szerviz` (`SzervizID`, `SzervizNev`, `SzervizElerhetoseg`) VALUES
-(1, 'TesztSzervíz', 'áéő');
+(1, 'anonymSzerviz1', 'áéő');
 
 -- --------------------------------------------------------
 
@@ -191,7 +191,8 @@ INSERT INTO `termek` (`TermekID`, `TermekNev`, `TermekDesc`, `TermekAr`, `Termek
 (31, 'Samsung F24T350FHR', '24”, 1920x1080 felbontású 1080p, HDMI csatlakozó, LED IPS kijelző', 55200, 'RES/samsung24.jpg', 0, 5),
 (32, 'LG 24MP59G-P', '23.8”, 1920x1080 felbontású 1080p, HDMI csatlakozó, IPS kijelző', 50400, 'RES/lg24.jpg', 0, 5),
 (33, 'Acer Nitro VG240Ybmiix', '23.8”, 1920x1080 felbontású 1080p, HDMI csatlakozó, IPS LED kijelző', 41800, 'RES/acer238.jpg', 1, 5),
-(34, 'anonymTermek34', 'anonymTermek34', 0, 'anonymTermek34', 0, 5);
+(34, 'anonymTermek34', 'anonymTermek34', 0, 'anonymTermek34', 0, 5),
+(35, 'anonymTermek35', 'TESZT', 12345, 'RES/asd.png', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -243,10 +244,10 @@ INSERT INTO `vasarlas` (`SorSzam`, `Felhasznalo`, `Szamla`, `FizMod`, `Osszeg`, 
 (24, 'anonym24', 1, 'Kártyás', 87700, '0000', 'anonym24', 'anonym24', '20211114170634', 'DELETED'),
 (25, 'anonym25', 1, 'Kártyás', 65100, '0000', 'anonym25', 'anonym25', '20211114171113', 'DELETED'),
 (26, 'anonym26', 1, 'Kártyás', 65100, '0000', 'anonym26', 'anonym26', '20211114171344', 'DELETED'),
-(27, 'regTeszt', 1, 'Kártyás', 45000, '7960', 'Teszthely', 'Teszt u. 3', '20211114191424', 'DELETED'),
-(28, 'regTeszt', 1, 'Kártyás', 55200, '7960', 'Teszthely', 'Teszt u. 3', '20211114191811', 'DELETED'),
-(29, 'regTeszt', 1, 'Kártyás', 15000, '7960', 'Teszthely', 'Teszt u. 3', '20211114192801', 'DELETED'),
-(30, 'regTeszt', 1, 'Kártyás', 0, '7960', 'Teszthely', 'Teszt u. 3', '20211114193243', 'DELETED');
+(27, 'anonym27', 1, 'Kártyás', 45000, '0000', 'anonym27', 'anonym27', '20211114191424', 'DELETED'),
+(28, 'anonym28', 1, 'Kártyás', 55200, '0000', 'anonym28', 'anonym28', '20211114191811', 'DELETED'),
+(29, 'anonym29', 1, 'Kártyás', 15000, '0000', 'anonym29', 'anonym29', '20211114192801', 'DELETED'),
+(30, 'anonym30', 1, 'Kártyás', 0, '0000', 'anonym30', 'anonym30', '20211114193243', 'DELETED');
 
 -- --------------------------------------------------------
 
@@ -261,52 +262,63 @@ CREATE TABLE `vevo` (
   `VevoEmail` varchar(100) NOT NULL,
   `VevoSzamCim` varchar(45) DEFAULT 'Nincs',
   `VevoAdoszam` char(11) DEFAULT 'Nincs',
-  `TorzsVasarlo` tinyint(4) DEFAULT 0
+  `TorzsVasarlo` tinyint(4) DEFAULT 0,
+  `BiztonsagiKerdes` varchar(1000) NOT NULL,
+  `Valasz` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- A tábla adatainak kiíratása `vevo`
 --
 
-INSERT INTO `vevo` (`VevoID`, `VevoNev`, `VevoPassword`, `VevoEmail`, `VevoSzamCim`, `VevoAdoszam`, `TorzsVasarlo`) VALUES
-(1, 'anonym1', '54d5cb2d332dbdb4850293caae4559ce88b65163f1ea5d4e4b3ac49d772ded14', 'anonym1', 'anonym1', 'anonym1', 0),
-(2, 'anonym2', 'daf9358fe344ec2f58f2a501d411091db9e1fa1febd72840e9ad483be0a67b44', 'anonym2', 'anonym2', 'anonym2', 0),
-(3, 'anonym3', '54d5cb2d332dbdb4850293caae4559ce88b65163f1ea5d4e4b3ac49d772ded14', 'anonym3', 'anonym3', 'anonym3', 0),
-(4, 'anonym4', 'a8849f15d7236514c9d20c567dff9f90d72697bc1506c7e2d7d50b8f825d689c', 'anonym4', 'anonym4', 'anonym4', 0),
-(5, 'anonym5', 'd9b5f58f0b38198293971865a14074f59eba3e82595becbe86ae51f1d9f1f65e', 'anonym5', 'anonym5', 'anonym5', 0),
-(6, 'anonym6', 'd7c15f947ca64d1fdb1a79109358d91a9fcc3f62d1414ab8a512218777fb950a', 'anonym6', 'anonym6', 'anonym6', 0),
-(7, 'anonym7', '16ecab1875791e2b6ed0c9a6dae5a12a79d92120e1c3afbd3a9c8535ce44666d', 'anonym7', 'anonym7', 'anonym7', 0),
-(8, 'anonym8', '1e6ed5a6a8954718c4d6d6b3f59497f9823b62ccdc1810133edc252d5d9e370b', 'anonym8', 'anonym8', 'anonym8', 0),
-(9, 'anonym9', '88113fc33e2217f55157eb23142e048647ec8675f62d4f662fadbb8b1231c7bd', 'anonym9', 'anonym9', 'anonym9', 0),
-(10, 'anonym10', 'a4b4be1a41389805870471a4dad44bcc6c3e4d76197e74a348b4a15c632a880a', 'anonym10', 'anonym10', 'anonym10', 0),
-(11, 'anonym11', '0512b9ad82455922876d22184705b0ae2d468ace15e969d53a6a3a67a6846640', 'anonym11', 'anonym11', 'anonym11', 0),
-(12, 'anonym12', '6f73c61c105fcb9550a7441a2cb6a966f8525b31d017e93895e1530e461a91d9', 'anonym12', 'anonym12', 'anonym12', 0),
-(13, 'anonym13', 'ba8b56fb0deb3c78c141e79627df7440054e6d27b7568306cf099c1ddc170dfb', 'anonym13', 'anonym13', 'anonym13', 0),
-(14, 'anonym14', '9fc0cc4fb75ed3d44626ace019a4c15e6710f064cb008a93e29e8510a53076b9', 'anonym14', 'anonym14', 'anonym14', 0),
-(15, 'anonym15', '1b9eb80dea8ee8eab1f5983b7f74b98d0ddc50e90964f35aa6016e126eb68845', 'anonym15', 'anonym15', 'anonym15', 0),
-(16, 'anonym16', 'a4b4be1a41389805870471a4dad44bcc6c3e4d76197e74a348b4a15c632a880a', 'anonym16', 'anonym16', 'anonym16', 0),
-(17, 'anonym17', 'a4b4be1a41389805870471a4dad44bcc6c3e4d76197e74a348b4a15c632a880a', 'anonym17', 'anonym17', 'anonym17', 0),
-(18, 'anonym18', 'a4b4be1a41389805870471a4dad44bcc6c3e4d76197e74a348b4a15c632a880a', 'anonym18', 'anonym18', 'anonym18', 0),
-(19, 'anonym19', 'a4b4be1a41389805870471a4dad44bcc6c3e4d76197e74a348b4a15c632a880a', 'anonym19', 'anonym19', 'anonym19', 0),
-(20, 'anonym20', 'a4b4be1a41389805870471a4dad44bcc6c3e4d76197e74a348b4a15c632a880a', 'anonym20', 'anonym20', 'anonym20', 0),
-(21, 'anonym21', '275543d2bbaaa1595f97b60d5f1314728ef7069c5c8d648d5d576bd1f2115398', 'anonym21', 'anonym21', 'anonym21', 0),
-(22, 'anonym22', '60eb68565a0c5253b3cae332e58613479fb14ac18f91016f1a95bcabd48e94d4', 'anonym22', 'anonym22', 'anonym22', 0),
-(23, 'anonym23', '441e556cf3c8f609e7320c9024a9c39a2d860e93d2a9b2f0d65519af71b0c6d1', 'anonym23', 'anonym23', 'anonym23', 0),
-(24, 'anonym24', 'c26a9deae1c0bb4a8de9c6003bc3e8ef0dc446f18c513f82f20b3c6c74cce653', 'anonym24', 'anonym24', 'anonym24', 0),
-(25, 'Klepe', 'daf9358fe344ec2f58f2a501d411091db9e1fa1febd72840e9ad483be0a67b44', 'Klepe@gmail.com', NULL, NULL, NULL),
-(26, 'KlepeTesztel03', 'a4b4be1a41389805870471a4dad44bcc6c3e4d76197e74a348b4a15c632a880a', 'KlepeT@gmail.com', NULL, NULL, NULL),
-(27, 'KlepeTesztel30', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'KlepeT3@gmail.com', NULL, NULL, NULL),
-(28, 'RandomFelhasználó', '1c1c65e8f2de96f1f1dd8a3b574871477a13cc8fbd46b591e988206170735238', 'Random@gmail.com', NULL, NULL, NULL),
-(29, 'KlepeT', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'KlepeT0@gmail.com', NULL, NULL, 0),
-(30, 'KlepeTesztel33', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'KlepeT33@gmail.com', 'Nincs', 'Nincs', 0),
-(31, 'Klepe123', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Klepe123@gmail.com', 'Nincs', 'Nincs', 0),
-(32, 'TesztReg', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'TREG@gmail.com', 'Nincs', 'Nincs', 0),
-(33, 'anonym33', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'anonym33', 'anonym33', 'anonym33', 0),
-(34, 'anonym34', '688787d8ff144c502c7f5cffaafe2cc588d86079f9de88304c26b0cb99ce91c6', 'anonym34', 'anonym34', 'anonym34', 0),
-(35, 'anonym35', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'anonym35', 'anonym35', 'anonym35', 0),
-(36, 'anonym36', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'anonym36', 'anonym36', 'anonym36', 0),
-(37, 'anonym37', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'anonym37', 'anonym37', 'anonym37', 0),
-(38, 'regTeszt', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'regTeszt@gmail.com', 'TESZTHELY', '12345678911', 0);
+INSERT INTO `vevo` (`VevoID`, `VevoNev`, `VevoPassword`, `VevoEmail`, `VevoSzamCim`, `VevoAdoszam`, `TorzsVasarlo`, `BiztonsagiKerdes`, `Valasz`) VALUES
+(1, 'anonym1', '54d5cb2d332dbdb4850293caae4559ce88b65163f1ea5d4e4b3ac49d772ded14', 'anonym1', 'anonym1', 'anonym1', 0, 'NONE', 'NONE'),
+(2, 'anonym2', 'daf9358fe344ec2f58f2a501d411091db9e1fa1febd72840e9ad483be0a67b44', 'anonym2', 'anonym2', 'anonym2', 0, 'NONE', 'NONE'),
+(3, 'anonym3', '54d5cb2d332dbdb4850293caae4559ce88b65163f1ea5d4e4b3ac49d772ded14', 'anonym3', 'anonym3', 'anonym3', 0, 'NONE', 'NONE'),
+(4, 'anonym4', 'a8849f15d7236514c9d20c567dff9f90d72697bc1506c7e2d7d50b8f825d689c', 'anonym4', 'anonym4', 'anonym4', 0, 'NONE', 'NONE'),
+(5, 'anonym5', 'd9b5f58f0b38198293971865a14074f59eba3e82595becbe86ae51f1d9f1f65e', 'anonym5', 'anonym5', 'anonym5', 0, 'NONE', 'NONE'),
+(6, 'anonym6', 'd7c15f947ca64d1fdb1a79109358d91a9fcc3f62d1414ab8a512218777fb950a', 'anonym6', 'anonym6', 'anonym6', 0, 'NONE', 'NONE'),
+(7, 'anonym7', '16ecab1875791e2b6ed0c9a6dae5a12a79d92120e1c3afbd3a9c8535ce44666d', 'anonym7', 'anonym7', 'anonym7', 0, 'NONE', 'NONE'),
+(8, 'anonym8', '1e6ed5a6a8954718c4d6d6b3f59497f9823b62ccdc1810133edc252d5d9e370b', 'anonym8', 'anonym8', 'anonym8', 0, 'NONE', 'NONE'),
+(9, 'anonym9', '88113fc33e2217f55157eb23142e048647ec8675f62d4f662fadbb8b1231c7bd', 'anonym9', 'anonym9', 'anonym9', 0, 'NONE', 'NONE'),
+(10, 'anonym10', 'a4b4be1a41389805870471a4dad44bcc6c3e4d76197e74a348b4a15c632a880a', 'anonym10', 'anonym10', 'anonym10', 0, 'NONE', 'NONE'),
+(11, 'anonym11', '0512b9ad82455922876d22184705b0ae2d468ace15e969d53a6a3a67a6846640', 'anonym11', 'anonym11', 'anonym11', 0, 'NONE', 'NONE'),
+(12, 'anonym12', '6f73c61c105fcb9550a7441a2cb6a966f8525b31d017e93895e1530e461a91d9', 'anonym12', 'anonym12', 'anonym12', 0, 'NONE', 'NONE'),
+(13, 'anonym13', 'ba8b56fb0deb3c78c141e79627df7440054e6d27b7568306cf099c1ddc170dfb', 'anonym13', 'anonym13', 'anonym13', 0, 'NONE', 'NONE'),
+(14, 'anonym14', '9fc0cc4fb75ed3d44626ace019a4c15e6710f064cb008a93e29e8510a53076b9', 'anonym14', 'anonym14', 'anonym14', 0, 'NONE', 'NONE'),
+(15, 'anonym15', '1b9eb80dea8ee8eab1f5983b7f74b98d0ddc50e90964f35aa6016e126eb68845', 'anonym15', 'anonym15', 'anonym15', 0, 'NONE', 'NONE'),
+(16, 'anonym16', 'a4b4be1a41389805870471a4dad44bcc6c3e4d76197e74a348b4a15c632a880a', 'anonym16', 'anonym16', 'anonym16', 0, 'NONE', 'NONE'),
+(17, 'anonym17', 'a4b4be1a41389805870471a4dad44bcc6c3e4d76197e74a348b4a15c632a880a', 'anonym17', 'anonym17', 'anonym17', 0, 'NONE', 'NONE'),
+(18, 'anonym18', 'a4b4be1a41389805870471a4dad44bcc6c3e4d76197e74a348b4a15c632a880a', 'anonym18', 'anonym18', 'anonym18', 0, 'NONE', 'NONE'),
+(19, 'anonym19', 'a4b4be1a41389805870471a4dad44bcc6c3e4d76197e74a348b4a15c632a880a', 'anonym19', 'anonym19', 'anonym19', 0, 'NONE', 'NONE'),
+(20, 'anonym20', 'a4b4be1a41389805870471a4dad44bcc6c3e4d76197e74a348b4a15c632a880a', 'anonym20', 'anonym20', 'anonym20', 0, 'NONE', 'NONE'),
+(21, 'anonym21', '275543d2bbaaa1595f97b60d5f1314728ef7069c5c8d648d5d576bd1f2115398', 'anonym21', 'anonym21', 'anonym21', 0, 'NONE', 'NONE'),
+(22, 'anonym22', '60eb68565a0c5253b3cae332e58613479fb14ac18f91016f1a95bcabd48e94d4', 'anonym22', 'anonym22', 'anonym22', 0, 'NONE', 'NONE'),
+(23, 'anonym23', '441e556cf3c8f609e7320c9024a9c39a2d860e93d2a9b2f0d65519af71b0c6d1', 'anonym23', 'anonym23', 'anonym23', 0, 'NONE', 'NONE'),
+(24, 'anonym24', 'c26a9deae1c0bb4a8de9c6003bc3e8ef0dc446f18c513f82f20b3c6c74cce653', 'anonym24', 'anonym24', 'anonym24', 0, 'NONE', 'NONE'),
+(25, 'Klepe', 'daf9358fe344ec2f58f2a501d411091db9e1fa1febd72840e9ad483be0a67b44', 'Klepe@gmail.com', NULL, NULL, NULL, 'NONE', 'NONE'),
+(26, 'KlepeTesztel03', 'a4b4be1a41389805870471a4dad44bcc6c3e4d76197e74a348b4a15c632a880a', 'KlepeT@gmail.com', NULL, NULL, NULL, 'NONE', 'NONE'),
+(27, 'KlepeTesztel30', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'KlepeT3@gmail.com', NULL, NULL, NULL, 'NONE', 'NONE'),
+(28, 'RandomFelhasználó', '1c1c65e8f2de96f1f1dd8a3b574871477a13cc8fbd46b591e988206170735238', 'Random@gmail.com', NULL, NULL, NULL, 'NONE', 'NONE'),
+(29, 'KlepeT', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'KlepeT0@gmail.com', NULL, NULL, 0, 'NONE', 'NONE'),
+(30, 'KlepeTesztel33', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'KlepeT33@gmail.com', 'Nincs', 'Nincs', 0, 'NONE', 'NONE'),
+(31, 'Klepe123', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Klepe123@gmail.com', 'Nincs', 'Nincs', 0, 'NONE', 'NONE'),
+(32, 'TesztReg', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'TREG@gmail.com', 'Nincs', 'Nincs', 0, 'NONE', 'NONE'),
+(33, 'anonym33', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'anonym33', 'anonym33', 'anonym33', 0, 'NONE', 'NONE'),
+(34, 'anonym34', '688787d8ff144c502c7f5cffaafe2cc588d86079f9de88304c26b0cb99ce91c6', 'anonym34', 'anonym34', 'anonym34', 0, 'NONE', 'NONE'),
+(35, 'anonym35', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'anonym35', 'anonym35', 'anonym35', 0, 'NONE', 'NONE'),
+(36, 'anonym36', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'anonym36', 'anonym36', 'anonym36', 0, 'NONE', 'NONE'),
+(37, 'anonym37', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'anonym37', 'anonym37', 'anonym37', 0, 'NONE', 'NONE'),
+(38, 'anonym38', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'anonym38', 'anonym38', 'anonym38', 0, 'NONE', 'NONE'),
+(39, 'anonym39', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'anonym39', 'anonym39', 'anonym39', 0, 'NONE', 'NONE'),
+(40, 'anonym40', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'anonym40', 'anonym40', 'anonym40', 0, 'NONE', 'NONE'),
+(41, 'anonym41', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'anonym41', 'anonym41', 'anonym41', 0, 'NONE', 'NONE'),
+(42, 'regTeszt', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'regTeszt@gmail.com', 'Nincs', 'Nincs', 0, 'NONE', 'NONE'),
+(43, 'anonym43', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'anonym43', 'anonym43', 'anonym43', 0, 'NONE', 'NONE'),
+(44, 'KerdesTeszt', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Kerdes@gmail.com', 'Nincs', 'Nincs', 0, 'KERDES1', 'IGEN'),
+(45, 'asdfgt', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'asdfgthjt123@gmail.com', 'Nincs', 'Nincs', 0, 'KERDES1', 'IGEN'),
+(46, 'regTeszt2', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'regTeszt2@gmail.com', 'Nincs', 'Nincs', 0, 'KERDES1', 'IGEN'),
+(47, 'regTeszt3', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'regTeszt3@gmail.com', 'Nincs', 'Nincs', 0, 'KERDES1', 'IGEN');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -406,7 +418,7 @@ ALTER TABLE `szerviz`
 -- AUTO_INCREMENT a táblához `termek`
 --
 ALTER TABLE `termek`
-  MODIFY `TermekID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `TermekID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT a táblához `vasarlas`
@@ -418,7 +430,7 @@ ALTER TABLE `vasarlas`
 -- AUTO_INCREMENT a táblához `vevo`
 --
 ALTER TABLE `vevo`
-  MODIFY `VevoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `VevoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- Megkötések a kiírt táblákhoz
