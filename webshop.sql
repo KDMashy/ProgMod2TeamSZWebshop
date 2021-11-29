@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2021. Nov 29. 11:14
+-- Létrehozás ideje: 2021. Nov 29. 11:45
 -- Kiszolgáló verziója: 10.4.21-MariaDB
 -- PHP verzió: 8.0.10
 
@@ -54,6 +54,27 @@ CREATE TABLE `egysegarak` (
   `Termek_TermekAr` int(10) UNSIGNED NOT NULL,
   `Termek_Mennyiseg` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `ertekeles`
+--
+
+CREATE TABLE `ertekeles` (
+  `ErtekID` int(11) NOT NULL,
+  `tErtekID` int(11) NOT NULL,
+  `Ertek` int(11) NOT NULL,
+  `Comment` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- A tábla adatainak kiíratása `ertekeles`
+--
+
+INSERT INTO `ertekeles` (`ErtekID`, `tErtekID`, `Ertek`, `Comment`) VALUES
+(1, 33, 5, 'Nagyszerű!'),
+(2, 14, 5, 'Nagyszerű!');
 
 -- --------------------------------------------------------
 
@@ -247,7 +268,8 @@ INSERT INTO `vasarlas` (`SorSzam`, `Felhasznalo`, `Szamla`, `FizMod`, `Osszeg`, 
 (27, 'anonym27', 1, 'Kártyás', 45000, '0000', 'anonym27', 'anonym27', '20211114191424', 'DELETED'),
 (28, 'anonym28', 1, 'Kártyás', 55200, '0000', 'anonym28', 'anonym28', '20211114191811', 'DELETED'),
 (29, 'anonym29', 1, 'Kártyás', 15000, '0000', 'anonym29', 'anonym29', '20211114192801', 'DELETED'),
-(30, 'anonym30', 1, 'Kártyás', 0, '0000', 'anonym30', 'anonym30', '20211114193243', 'DELETED');
+(30, 'anonym30', 1, 'Kártyás', 0, '0000', 'anonym30', 'anonym30', '20211114193243', 'DELETED'),
+(31, 'regTeszt', 1, 'Kártyás', 15000, 'TEST', 'Teszthely', 'Teszt u. 3', '20211129112811', 'tesztelés<-MEGJEGYZÉS///--SZÁMLA ITEM: ASRock A520M-HVS--13000 Ft--Mennyiség: 1--/');
 
 -- --------------------------------------------------------
 
@@ -313,12 +335,12 @@ INSERT INTO `vevo` (`VevoID`, `VevoNev`, `VevoPassword`, `VevoEmail`, `VevoSzamC
 (39, 'anonym39', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'anonym39', 'anonym39', 'anonym39', 0, 'NONE', 'NONE'),
 (40, 'anonym40', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'anonym40', 'anonym40', 'anonym40', 0, 'NONE', 'NONE'),
 (41, 'anonym41', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'anonym41', 'anonym41', 'anonym41', 0, 'NONE', 'NONE'),
-(42, 'regTeszt', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'regTeszt@gmail.com', 'Nincs', 'Nincs', 0, 'NONE', 'NONE'),
+(42, 'regTeszt', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'regTeszt@gmail.com', 'TESZTHELY', '12345678911', 0, 'NONE', 'NONE'),
 (43, 'anonym43', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'anonym43', 'anonym43', 'anonym43', 0, 'NONE', 'NONE'),
 (44, 'KerdesTeszt', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Kerdes@gmail.com', 'Nincs', 'Nincs', 0, 'KERDES1', 'IGEN'),
 (45, 'asdfgt', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'asdfgthjt123@gmail.com', 'Nincs', 'Nincs', 0, 'KERDES1', 'IGEN'),
-(46, 'regTeszt2', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'regTeszt2@gmail.com', 'Nincs', 'Nincs', 0, 'KERDES1', 'IGEN'),
-(47, 'regTeszt3', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'regTeszt3@gmail.com', 'Nincs', 'Nincs', 0, 'KERDES1', 'IGEN');
+(46, 'anonym46', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'anonym46', 'anonym46', 'anonym46', 0, 'KERDES1', 'IGEN'),
+(47, 'regTeszt3', '8d23cf6c86e834a7aa6eded54c26ce2bb2e74903538c61bdd5d2197997ab2f72', 'regTeszt3@gmail.com', 'Nincs', 'Nincs', 0, 'KERDES1', 'IGEN');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -337,6 +359,12 @@ ALTER TABLE `egysegarak`
   ADD PRIMARY KEY (`Vasarlas_SorSzam`,`Termek_TermekID`),
   ADD KEY `fk_Termek_has_Vasarlas_Vasarlas1_idx` (`Vasarlas_SorSzam`),
   ADD KEY `fk_Termek_has_Vasarlas_Termek_idx` (`Termek_TermekID`);
+
+--
+-- A tábla indexei `ertekeles`
+--
+ALTER TABLE `ertekeles`
+  ADD PRIMARY KEY (`ErtekID`);
 
 --
 -- A tábla indexei `gyarto`
@@ -391,6 +419,12 @@ ALTER TABLE `admin`
   MODIFY `ADMINID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT a táblához `ertekeles`
+--
+ALTER TABLE `ertekeles`
+  MODIFY `ErtekID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT a táblához `gyarto`
 --
 ALTER TABLE `gyarto`
@@ -424,7 +458,7 @@ ALTER TABLE `termek`
 -- AUTO_INCREMENT a táblához `vasarlas`
 --
 ALTER TABLE `vasarlas`
-  MODIFY `SorSzam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `SorSzam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT a táblához `vevo`
