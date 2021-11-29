@@ -115,7 +115,9 @@ public class menuMain extends HttpServlet {
                             "        </div>\n" +
                             "    </main>\n" +
                             "    <footer>\n" +
-                            "        <section class = \"bemutatkozas\">\n" +
+                            "        <section class = \"bemutatkozas\">\n"
+                                + "<div class=\"footer_atmenet\">\n" +
+"            </div>\n" +
                             "            <div class=\"footer_info_box\">\n" +
                             "                <h3>Elérhetőségek:</h3>\n" +
                             "                <br>\n" +
@@ -242,7 +244,9 @@ public class menuMain extends HttpServlet {
                             "        </div>\n" +
                             "    </main>\n" +
                             "    <footer>\n" +
-                            "        <section class = \"bemutatkozas\">\n" +
+                            "        <section class = \"bemutatkozas\">\n"
+                                + "<div class=\"footer_atmenet\">\n" +
+"            </div>\n" +
                             "            <div class=\"footer_info_box\">\n" +
                             "                <h3>Elérhetőségek:</h3>\n" +
                             "                <br>\n" +

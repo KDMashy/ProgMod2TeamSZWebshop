@@ -55,9 +55,12 @@ public class menuTamogatoink extends HttpServlet {
                         "                    <img src='RES/basket1.png' alt='kosár kép'>\n" +
                         "                </a>\n" +
                         "            </div>\n" +
-                        "        </nav>\n" +
+                        "        </nav>\n"
+                                + "<div class=\"header_atmenet\">\n" +
+                                    "        </div>\n" +
                         "    </header>\n" +
-                        "    <main class=\"tamogatoinkMain\">\n" +
+                        "    <main class=\"tamogatoinkMain\">\n"
+                    + "<div class='tamogatoinkPH'></div>" +
                         "        <table class=\"theme\">\n" +
                         "            <thead>\n" +
                         "                <th>Partnerek nevei</th>\n" +
@@ -118,10 +121,13 @@ public class menuTamogatoink extends HttpServlet {
                 }
             }
             out.print(  "            </tbody>\n" +
-                        "        </table>\n" +
+                        "        </table>\n"
+                    + "<div class='tamogatoinkPH'></div>" +
                         "    </main>\n" +
                         "    <footer>\n" +
-                        "        <section class = \"bemutatkozas\">\n" +
+                        "        <section class = \"bemutatkozas\">\n"
+                                + "<div class=\"footer_atmenet\">\n" +
+"            </div>\n" +
                         "            <div class=\"footer_info_box\">\n" +
                         "                <h3>Elérhetőségek:</h3>\n" +
                         "                <br>\n" +
@@ -178,9 +184,12 @@ public class menuTamogatoink extends HttpServlet {
                         "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTamogatoink'\" class=\"fill\">Támogatóink</button>\n" +
                         "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuLogin'\" class=\"fill\">Bejelentkezés</button>\n" +
                         "            </form>\n" +
-                        "        </nav>\n" +
+                        "        </nav>\n"
+                                + "<div class=\"header_atmenet\">\n" +
+                                    "        </div>\n" +
                         "    </header>\n" +
-                        "    <main class=\"tamogatoinkMain\">\n" +
+                        "    <main class=\"tamogatoinkMain\">\n"
+                    + "<div class='tamogatoinkPH'></div>" +
                         "        <table class=\"theme\">\n" +
                         "            <thead>\n" +
                         "                <th>Partnerek nevei</th>\n" +
@@ -241,10 +250,13 @@ public class menuTamogatoink extends HttpServlet {
                 }
             }
             out.print(  "            </tbody>\n" +
-                        "        </table>\n" +
+                        "        </table>\n"
+                    + "<div class='tamogatoinkPH'></div>" +
                         "    </main>\n" +
                         "    <footer>\n" +
-                        "        <section class = \"bemutatkozas\">\n" +
+                        "        <section class = \"bemutatkozas\">\n"
+                                + "<div class=\"footer_atmenet\">\n" +
+"            </div>\n" +
                         "            <div class=\"footer_info_box\">\n" +
                         "                <h3>Elérhetőségek:</h3>\n" +
                         "                <br>\n" +

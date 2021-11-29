@@ -35,7 +35,9 @@ public class menuLogin extends HttpServlet {
                         "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuTamogatoink'\" class=\"fill\">Támogatóink</button>\n" +
                         "                <button type=\"submit\" name = \"menup\" onclick=\"form.action='menuLogin'\" class=\"fill\">Bejelentkezés</button>\n" +
                         "            </form>\n" +
-                        "        </nav>\n" +
+                        "        </nav>\n"
+                                + "<div class=\"header_atmenet\">\n" +
+                                    "        </div>\n" +
                         "    </header>\n" +
                         "    <main class='logreg'>\n" +
                         "        <div class='regisztracio'>  \n" +
@@ -83,7 +85,9 @@ public class menuLogin extends HttpServlet {
                         "        </div>    \n" +
                         "    </main>\n" +
                         "    <footer>\n" +
-                            "    <section class = \"bemutatkozas\">\n" +
+                            "    <section class = \"bemutatkozas\">\n"
+                                + "<div class=\"footer_atmenet\">\n" +
+"            </div>\n" +
                             "            <div class=\"footer_info_box\">\n" +
                             "                <h3>Elérhetőségek:</h3>\n" +
                             "                <br>\n" +

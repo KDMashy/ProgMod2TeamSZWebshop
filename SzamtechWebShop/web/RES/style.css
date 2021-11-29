@@ -394,11 +394,12 @@ HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE, HEADER VÉGE,
 {
     display: flex;
     justify-content: space-around;
+    background-color: rgba(100, 148, 237, 0.329);
 }
 
 .termekek{
     width: 69%;
-    background-color:silver;
+    
     
 }
 main .mainFlex{
@@ -410,7 +411,9 @@ main .mainFlex{
 .leirasAside
 {
     width: 29%;
-    background-color: rgba(188, 143, 143, 0.685);
+    /*background-color: rgba(188, 143, 143, 0.685);*/
+    background-color: #c392e69f;
+    border-radius: 20px;
 }
 
 main .bemutatkozas{
@@ -473,6 +476,7 @@ input[type = radio]{
 .termekek .termek img{
     width: 90%;
     margin: 5px 15px;
+    border-radius: 5px;
 }
 
 .termekek .termekContainer{
@@ -491,8 +495,9 @@ input[type = radio]{
 
 .termekek .termek{
     width: 32%;/*bizonyos méreteknél ezt kell átírni, hogy jó legyen  width: 48%;*/
-    background-color: rgba(137, 43, 226, 0.329);
+    background-color:#d6ba739f;
     margin-bottom: 10px;
+    border-radius: 10px;
 }
 
 .termekek .termek .termekAdat{
@@ -528,14 +533,15 @@ input[type = radio]{
 
 
 .termekek button{
+    font-family: "Roboto Mono", monospace;
     z-index: 2;
     height: 5vh;
     width: 8vw;
     border-radius: 20px;
     background: linear-gradient(rgb(0, 204, 255), rgb(0, 255, 128));
     transition: background 0.3s;
-    border-: 1px;
-    border: black;
+    border-width: 1px;
+    border-color: black;
 
 }
 .termekek button:hover{
@@ -568,6 +574,12 @@ input[type = radio]{
 
 
 /*regisztracio.html main - kezdete*/
+
+.logreg{
+    
+    background-color: rgba(100, 148, 237, 0.329);
+    
+}
 
 .bejelentkezes, .regisztracio{  
     width: 382px;  
@@ -647,6 +659,7 @@ color: blue;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+    background-color: rgba(100, 148, 237, 0.226);
     
 }
 .termekleiras h1{
@@ -658,7 +671,7 @@ color: blue;
 .termekleiras h1:hover{
     transform: scale(1.3);
     transition: transform 0.5s 0s ease, all 0.5s 0s ease;
-    cursor: pointer;
+    cursor: default;
 }
 
 .termekleiras img{
@@ -672,7 +685,7 @@ color: blue;
     margin: 30px auto;
     transform: scale(1.05);
     transition: transform 0.5s 0s ease, all 0.5s 0s ease;
-    cursor: pointer;
+    cursor: default;
 }
 
 .termekleiras p1{
@@ -686,7 +699,7 @@ color: blue;
 .termekleiras p1:hover{
     transform: scale(1.2);
     transition: transform 0.5s 0s ease, all 0.5s 0s ease;
-    cursor: pointer;
+    cursor: default;
 }
 
 .termekleiras p2{
@@ -699,7 +712,7 @@ color: blue;
 .termekleiras p2:hover{
     transform: scale(1.2);
     transition: transform 0.5s 0s ease, all 0.5s 0s ease;
-    cursor: pointer;
+    cursor: default;
 }
 
 .termekleiras p3{
@@ -713,7 +726,7 @@ color: blue;
 .termekleiras p3:hover{
     transform: scale(1.2);
     transition: transform 0.5s 0s ease, all 0.5s 0s ease;
-    cursor: pointer;
+    cursor: default;
 }
 
 .termekleiras p4{
@@ -727,7 +740,7 @@ color: blue;
 .termekleiras p4:hover{
     transform: scale(1.2);
     transition: transform 0.5s 0s ease, all 0.5s 0s ease;
-    cursor: pointer;
+    cursor: default;
 }
 
 .termekleiras form1{
@@ -822,13 +835,15 @@ footer a{
 
 /*Klepe kontárkodik*/
 .tamogatoinkMain {
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     background-color: rgba(114, 114, 114, 0.21);
 }
+.tamogatoinkMain .tamogatoinkPH{
+    height: 50px;
+}
 .tamogatoinkMain .theme{
     width: 90%;
-    margin: 100px auto;
     border-collapse: collapse;
     border-left: 5px solid #999;
     border-right: 5px solid #999;
