@@ -52,7 +52,8 @@ public class listVasarlasok extends HttpServlet {
                         "            </div>\n" +
                         "        </nav>\n" +
                         "    </header>\n" +
-                        "    <main class=\"tamogatoinkMain\">\n" +
+                        "    <main class=\"tamogatoinkMain\">\n"
+                    + "<div class='tamogatoinkPH'></div>" +
                         "        <table class=\"theme\">\n" +
                         "            <thead>\n" +
                         "                <th>Számla</th>\n" +
@@ -90,7 +91,8 @@ public class listVasarlasok extends HttpServlet {
             }
             out.print(  "            </tbody>\n" +
                         "        </table>\n" +
-                        "        <hr>\n" +
+                        "        <hr>\n"
+                    + "<div class='tamogatoinkPH'></div>" +
                         "    </main>\n" +
                         "    <footer>\n" +
                         "        <section class = \"bemutatkozas\">\n" +

@@ -121,7 +121,8 @@ public class Kosar extends HttpServlet {
                         "            </div>\n" +
                         "        </nav>\n" +
                         "    </header>\n" +
-                        "    <main class=\"kosarMain\">\n" +
+                        "    <main class=\"kosarMain\">\n"
+                    + "<div class='tamogatoinkPH'></div>" +
                         "        <div class=\"kosarContainer\">\n"
                                 + "<form action='kosarUrites' method='post' style='text-align: center'>\n" +
                         "                <button type=\"submit\">Kosár ürítése</button>\n" +
@@ -186,7 +187,8 @@ public class Kosar extends HttpServlet {
                             "                    <button type=\"submit\">Vásárlás</button>\n" +
                             "                </form>\n" +
                             "            </div>\n" +
-                            "        </div>\n" +
+                            "        </div>\n"
+                    + "<div class='tamogatoinkPH'></div>" +
                             "    </main>\n" +
                             "    <footer style='position='relative''>\n" +
                             "        <section class = \"bemutatkozas\" style='position='absolute'; bottom: 0'>\n" +
